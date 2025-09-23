@@ -1,0 +1,310 @@
+Metadata:
+	Title: mod-title
+	Version: rab-build2-on-release-20250330
+	Website: https://www.openra.net
+	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
+	WindowTitle: mod-windowtitle
+
+PackageFormats: Mix
+
+FileSystem: ContentInstallerFileSystem
+	SystemPackages:
+		^EngineDir
+		$rab: rab
+		^EngineDir|mods/common: common
+		~^SupportDir|Content/ra/v2/: content
+		common|scripts
+		rab|scripts
+		rab|uibits
+	ContentPackages:
+		content|allies.mix
+		content|conquer.mix
+		content|interior.mix
+		content|lores.mix: lores
+		content|hires.mix
+		content|local.mix
+		content|russian.mix
+		content|snow.mix
+		content|sounds.mix
+		content|speech.mix
+		content|temperat.mix
+		content|expand
+		content|expand/expand2.mix
+		content|expand/lores1.mix
+		content|expand/hires1.mix
+		content|cnc/desert.mix
+		~content|movies
+		~content|scores.mix
+		~content|general.mix
+		# Below are mod-provided (system) packages that need to be loaded after the content packages so they can override content assets.
+		rab|bits
+		rab|bits/desert
+	RequiredContentFiles:
+		content|expand/chrotnk1.aud
+		content|expand/fixit1.aud
+		content|expand/jburn1.aud
+		content|expand/jchrge1.aud
+		content|expand/jcrisp1.aud
+		content|expand/jdance1.aud
+		content|expand/jjuice1.aud
+		content|expand/jjump1.aud
+		content|expand/jlight1.aud
+		content|expand/jpower1.aud
+		content|expand/jshock1.aud
+		content|expand/jyes1.aud
+		content|expand/madchrg2.aud
+		content|expand/madexplo.aud
+		content|expand/mboss1.aud
+		content|expand/mhear1.aud
+		content|expand/mhotdig1.aud
+		content|expand/mhowdy1.aud
+		content|expand/mhuh1.aud
+		content|expand/mlaff1.aud
+		content|expand/mrise1.aud
+		content|expand/mwrench1.aud
+		content|expand/myeehaw1.aud
+		content|expand/myes1.aud
+	ContentInstallerMod: ra-content
+
+MapFolders:
+	rab|maps: System
+	~^SupportDir|maps/ra/release-20250330: User
+
+Rules:
+	rab|rules/misc.yaml
+	rab|rules/ai.yaml
+	rab|rules/player.yaml
+	rab|rules/palettes.yaml
+	rab|rules/world.yaml
+	rab|rules/defaults.yaml
+	rab|rules/vehicles.yaml
+	rab|rules/husks.yaml
+	rab|rules/structures.yaml
+	rab|rules/infantry.yaml
+	rab|rules/civilian.yaml
+	rab|rules/decoration.yaml
+	rab|rules/aircraft.yaml
+	rab|rules/ships.yaml
+	rab|rules/fakes.yaml
+
+Sequences:
+	rab|sequences/ships.yaml
+	rab|sequences/vehicles.yaml
+	rab|sequences/structures.yaml
+	rab|sequences/infantry.yaml
+	rab|sequences/aircraft.yaml
+	rab|sequences/misc.yaml
+	rab|sequences/decorations.yaml
+
+TileSets:
+	rab|tilesets/snow.yaml
+	rab|tilesets/interior.yaml
+	rab|tilesets/temperat.yaml
+	rab|tilesets/desert.yaml
+
+Cursors:
+	rab|cursors.yaml
+
+Chrome:
+	rab|chrome.yaml
+
+Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll
+
+ChromeLayout:
+	common|chrome/ingame.yaml
+	common|chrome/ingame-chat.yaml
+	common|chrome/ingame-transients.yaml
+	common|chrome/ingame-fmvplayer.yaml
+	common|chrome/ingame-info.yaml
+	common|chrome/ingame-infoscripterror.yaml
+	common|chrome/ingame-infobriefing.yaml
+	common|chrome/ingame-infoobjectives.yaml
+	common|chrome/ingame-infostats.yaml
+	common|chrome/ingame-info-lobby-options.yaml
+	common|chrome/ingame-menu.yaml
+	rab|chrome/ingame-observer.yaml
+	rab|chrome/ingame-player.yaml
+	common|chrome/ingame-perf.yaml
+	common|chrome/ingame-debug.yaml
+	common|chrome/ingame-debug-hpf.yaml
+	common|chrome/ingame-debuginfo.yaml
+	common|chrome/ingame-infochat.yaml
+	common|chrome/mainmenu.yaml
+	common|chrome/mainmenu-prompts.yaml
+	common|chrome/settings.yaml
+	common|chrome/settings-display.yaml
+	common|chrome/settings-audio.yaml
+	common|chrome/settings-input.yaml
+	common|chrome/settings-hotkeys.yaml
+	common|chrome/settings-advanced.yaml
+	common|chrome/credits.yaml
+	common|chrome/lobby.yaml
+	common|chrome/lobby-mappreview.yaml
+	common|chrome/lobby-players.yaml
+	common|chrome/lobby-options.yaml
+	common|chrome/lobby-music.yaml
+	common|chrome/lobby-servers.yaml
+	common|chrome/lobby-kickdialogs.yaml
+	common|chrome/color-picker.yaml
+	common|chrome/map-chooser.yaml
+	common|chrome/multiplayer-browser.yaml
+	common|chrome/multiplayer-browserpanels.yaml
+	common|chrome/multiplayer-createserver.yaml
+	common|chrome/multiplayer-directconnect.yaml
+	common|chrome/connection.yaml
+	common|chrome/replaybrowser.yaml
+	common|chrome/gamesave-browser.yaml
+	rab|chrome/gamesave-loading.yaml
+	common|chrome/dropdowns.yaml
+	common|chrome/musicplayer.yaml
+	common|chrome/tooltips.yaml
+	common|chrome/assetbrowser.yaml
+	common|chrome/missionbrowser.yaml
+	common|chrome/confirmation-dialogs.yaml
+	common|chrome/editor.yaml
+	common|chrome/playerprofile.yaml
+	common|chrome/text-notifications.yaml
+
+FluentMessages:
+	common|fluent/common.ftl
+	common|fluent/chrome.ftl
+	common|fluent/hotkeys.ftl
+	common|fluent/rules.ftl
+	rab|fluent/ra.ftl
+	rab|fluent/chrome.ftl
+	rab|fluent/hotkeys.ftl
+	rab|fluent/rules.ftl
+
+AllowUnusedFluentMessagesInExternalPackages: false
+
+Weapons:
+	rab|weapons/explosions.yaml
+	rab|weapons/ballistics.yaml
+	rab|weapons/missiles.yaml
+	rab|weapons/other.yaml
+	rab|weapons/smallcaliber.yaml
+	rab|weapons/superweapons.yaml
+
+Voices:
+	rab|audio/voices.yaml
+
+Notifications:
+	rab|audio/notifications.yaml
+
+Music:
+	rab|audio/music.yaml
+
+Hotkeys:
+	common|hotkeys/game.yaml
+	common|hotkeys/observer.yaml
+	common|hotkeys/production-common.yaml
+	common|hotkeys/supportpowers.yaml
+	common|hotkeys/viewport.yaml
+	common|hotkeys/chat.yaml
+	common|hotkeys/editor.yaml
+	common|hotkeys/control-groups.yaml
+	rab|hotkeys.yaml
+
+LoadScreen: LogoStripeLoadScreen
+	Image: rab|uibits/loadscreen.png
+	Image2x: rab|uibits/loadscreen-2x.png
+	Image3x: rab|uibits/loadscreen-3x.png
+
+ServerTraits:
+	LobbyCommands
+	SkirmishLogic
+	PlayerPinger
+	MasterServerPinger
+	LobbySettingsNotification
+
+ChromeMetrics:
+	common|metrics.yaml
+	rab|metrics.yaml
+
+Fonts:
+	Tiny:
+		Font: common|FreeSans.ttf
+		Size: 10
+		Ascender: 8
+	TinyBold:
+		Font: common|FreeSansBold.ttf
+		Size: 10
+		Ascender: 8
+	Small:
+		Font: common|FreeSans.ttf
+		Size: 12
+		Ascender: 9
+	Regular:
+		Font: common|FreeSans.ttf
+		Size: 14
+		Ascender: 11
+	Bold:
+		Font: common|FreeSansBold.ttf
+		Size: 14
+		Ascender: 11
+	MediumBold:
+		Font: common|FreeSansBold.ttf
+		Size: 18
+		Ascender: 14
+	BigBold:
+		Font: common|FreeSansBold.ttf
+		Size: 24
+		Ascender: 18
+	Title:
+		Font: rab|ZoodRangmah.ttf
+		Size: 48
+		Ascender: 26
+
+Missions:
+	rab|missions.yaml
+
+MapGrid:
+	TileSize: 24,24
+	Type: Rectangular
+
+DefaultOrderGenerator: UnitOrderGenerator
+
+SupportsMapsFrom: ra, rab
+
+SoundFormats: Aud, Wav
+
+SpriteFormats: ShpD2, ShpTD, TmpRA, TmpTD, ShpTS
+
+VideoFormats: Vqa, Wsa
+
+TerrainFormat: DefaultTerrain
+
+SpriteSequenceFormat: ClassicTilesetSpecificSpriteSequence
+
+AssetBrowser:
+	SpriteExtensions: .shp, .tmp, .tem, .des, .sno, .int
+	AudioExtensions: .aud, .wav, .r00, .r01, .r02, .r03, .v00, .v01, .v02, .v03
+	VideoExtensions: .vqa, .wsa
+
+GameSpeeds:
+	DefaultSpeed: default
+	Speeds:
+		slowest:
+			Name: options-game-speed.slowest
+			Timestep: 80
+			OrderLatency: 2
+		slower:
+			Name: options-game-speed.slower
+			Timestep: 50
+			OrderLatency: 3
+		default:
+			Name: options-game-speed.normal
+			Timestep: 40
+			OrderLatency: 3
+		fast:
+			Name: options-game-speed.fast
+			Timestep: 35
+			OrderLatency: 4
+		faster:
+			Name: options-game-speed.faster
+			Timestep: 30
+			OrderLatency: 4
+		fastest:
+			Name: options-game-speed.fastest
+			Timestep: 20
+			OrderLatency: 6

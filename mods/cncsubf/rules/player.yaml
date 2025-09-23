@@ -1,0 +1,130 @@
+^BasePlayer:
+	AlwaysVisible:
+	Shroud:
+	PlayerResources:
+		ResourceValues:
+			Tiberium: 35
+			BlueTiberium: 60
+
+EditorPlayer:
+	Inherits: ^BasePlayer
+
+Player:
+	Inherits: ^BasePlayer
+	PlaceBuilding:
+		NewOptionsNotification: NewOptions
+		CannotPlaceNotification: BuildingCannotPlaceAudio
+		NewOptionsTextNotification: notification-new-construction-options
+		CannotPlaceTextNotification: notification-cannot-deploy-here
+	TechTree:
+	SupportPowerManager:
+	ScriptTriggers:
+	MissionObjectives:
+		WinNotification: Win
+		LoseNotification: Lose
+		LeaveNotification: Leave
+	ConquestVictoryConditions:
+	PowerManager:
+		SpeechNotification: LowPower
+		TextNotification: notification-low-power
+	AllyRepair:
+	PlayerResources:
+		CashTickUpNotification: CashTickUp
+		CashTickDownNotification: CashTickDown
+		SelectableCash: 2500, 5000, 7500, 10000, 20000
+		DefaultCash: 7500
+	DeveloperMode:
+		CheckboxDisplayOrder: 9
+	BaseAttackNotifier:
+		TextNotification: notification-base-under-attack
+		AllyTextNotification: notification-ally-under-attack
+	Shroud:
+		FogCheckboxDisplayOrder: 3
+	LobbyPrerequisiteCheckbox@GLOBALFACTUNDEPLOY:
+		ID: factundeploy
+		Label: checkbox-redeployable-mcvs.label
+		Description: checkbox-redeployable-mcvs.description
+		Enabled: True
+		DisplayOrder: 7
+		Prerequisites: global-factundeploy
+	LobbyPrerequisiteCheckbox@GLOBALC17STEALTH:
+		ID: C17-Stealth
+		Label: checkbox-stealth-deliveries.label
+		Description: checkbox-stealth-deliveries.description
+		Enabled: False
+		DisplayOrder: 8
+		Prerequisites: global-C17-stealth
+	PlayerStatistics:
+	FrozenActorLayer:
+	PlaceBeacon:
+	ProvidesTechPrerequisite@low:
+		Name: options-tech-level.low
+		Prerequisites: techlevel.low
+		Id: low
+	ProvidesTechPrerequisite@medium:
+		Name: options-tech-level.medium
+		Prerequisites: techlevel.low, techlevel.medium
+		Id: medium
+	ProvidesTechPrerequisite@nosuper:
+		Name: options-tech-level.no-powers
+		Prerequisites: techlevel.low, techlevel.medium, techlevel.high
+		Id: nopowers
+	ProvidesTechPrerequisite@all:
+		Name: options-tech-level.unrestricted
+		Prerequisites: techlevel.low, techlevel.medium, techlevel.high, techlevel.superweapons
+		Id: unrestricted
+	GrantConditionOnPrerequisiteManager:
+	ResourceStorageWarning:
+		TextNotification: notification-silos-needed
+	PlayerExperience:
+	GameSaveViewportManager:
+	PlayerRadarTerrain:
+    ProvidesPrerequisite@assault:
+        Prerequisite: player.assault
+        Factions: gdia, noda
+    ProvidesPrerequisite@support:
+        Prerequisite: player.support
+        Factions: gdib, nodb
+    ProvidesPrerequisite@defense:
+        Prerequisite: player.defense
+        Factions: gdic, nodc
+    ProvidesPrerequisite@raider:
+        Prerequisite: player.raider
+        Factions: gdid, nodd
+    ProvidesPrerequisite@heavy:
+        Prerequisite: player.heavy
+        Factions: gdie, node
+	ProductionIconOverlayManager:
+		Type: Veterancy
+		Image: iconchevrons
+		Sequence: veteran
+    ProvidesPrerequisite@assaultgdi:
+        Prerequisite: upgrade.gdia
+        Factions: gdia
+    ProvidesPrerequisite@assaultnod:
+        Prerequisite: upgrade.noda
+        Factions: noda
+    ProvidesPrerequisite@supportgdi:
+        Prerequisite: upgrade.gdib
+        Factions: gdib
+    ProvidesPrerequisite@supportnod:
+        Prerequisite: upgrade.nodb
+        Factions: nodb
+    ProvidesPrerequisite@defensegdi:
+        Prerequisite: upgrade.gdic
+        Factions: gdic
+    ProvidesPrerequisite@defensenod:
+        Prerequisite: upgrade.nodc
+        Factions: nodc
+    ProvidesPrerequisite@raidergdi:
+        Prerequisite: upgrade.gdid
+        Factions: gdid
+    ProvidesPrerequisite@raidernod:
+        Prerequisite: upgrade.nodd
+        Factions: nodd
+    ProvidesPrerequisite@heavygdi:
+        Prerequisite: upgrade.gdie
+        Factions: gdie
+    ProvidesPrerequisite@heavynod:
+        Prerequisite: upgrade.node
+        Factions: node

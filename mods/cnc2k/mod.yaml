@@ -1,0 +1,281 @@
+Metadata:
+	Title: mod-title
+	Version: cnc2k-build1-on-release-20250330
+	Website: https://www.openra.net
+	WebIcon32: https://www.openra.net/images/icons/cnc_32x32.png
+	WindowTitle: mod-windowtitle
+
+PackageFormats: Mix
+
+FileSystem: ContentInstallerFileSystem
+	SystemPackages:
+		^EngineDir
+		$cnc2k: cnc2k
+		^EngineDir|mods/common: common
+		~^SupportDir|Content/cnc: content
+		common|scripts
+		cnc2k|scripts
+		cnc2k|uibits
+	ContentPackages:
+		content|speech.mix
+		content|conquer.mix
+		content|sounds.mix
+		content|tempicnh.mix
+		content|temperat.mix
+		content|winter.mix
+		content|desert.mix
+		~content|movies
+		~content|scores.mix
+		~content|scores2.mix
+		~content|scores-covertops.mix
+		~content|transit.mix
+		~content|general.mix
+		# Below are mod-provided (system) packages that need to be loaded after the content packages so they can override content assets.
+		cnc2k|bits/snow.mix
+		cnc2k|bits
+		cnc2k|bits/jungle
+		cnc2k|bits/desert
+		cnc2k|bits/ss
+	ContentInstallerMod: cnc-content
+
+MapFolders:
+	cnc2k|maps: System
+	~^SupportDir|maps/cnc/release-20250330: User
+
+Rules:
+	cnc2k|rules/misc.yaml
+	cnc2k|rules/ai.yaml
+	cnc2k|rules/player.yaml
+	cnc2k|rules/world.yaml
+	cnc2k|rules/palettes.yaml
+	cnc2k|rules/defaults.yaml
+	cnc2k|rules/structures.yaml
+	cnc2k|rules/infantry.yaml
+	cnc2k|rules/vehicles.yaml
+	cnc2k|rules/trees.yaml
+	cnc2k|rules/civilian.yaml
+	cnc2k|rules/civilian-desert.yaml
+	cnc2k|rules/tech.yaml
+	cnc2k|rules/ships.yaml
+	cnc2k|rules/aircraft.yaml
+	cnc2k|rules/husks.yaml
+
+Sequences:
+	cnc2k|sequences/structures.yaml
+	cnc2k|sequences/vehicles.yaml
+	cnc2k|sequences/infantry.yaml
+	cnc2k|sequences/aircraft.yaml
+	cnc2k|sequences/decorations.yaml
+	cnc2k|sequences/misc.yaml
+	cnc2k|sequences/funpark.yaml
+	cnc2k|sequences/civilian.yaml
+	cnc2k|sequences/campaign.yaml
+
+TileSets:
+	cnc2k|tilesets/desert.yaml
+	cnc2k|tilesets/winter.yaml
+	cnc2k|tilesets/snow.yaml
+	cnc2k|tilesets/temperat.yaml
+	cnc2k|tilesets/jungle.yaml
+
+Weapons:
+	cnc2k|weapons/explosions.yaml
+	cnc2k|weapons/ballistics.yaml
+	cnc2k|weapons/missiles.yaml
+	cnc2k|weapons/other.yaml
+	cnc2k|weapons/smallcaliber.yaml
+	cnc2k|weapons/superweapons.yaml
+
+Cursors:
+	cnc2k|cursors.yaml
+
+Chrome:
+	cnc2k|chrome.yaml
+
+Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll
+
+ChromeLayout:
+	cnc2k|chrome/mainmenu.yaml
+	cnc2k|chrome/mainmenu-prompts.yaml
+	cnc2k|chrome/playerprofile.yaml
+	cnc2k|chrome/encyclopedia.yaml
+	cnc2k|chrome/multiplayer-browser.yaml
+	cnc2k|chrome/multiplayer-browserpanels.yaml
+	cnc2k|chrome/multiplayer-createserver.yaml
+	cnc2k|chrome/multiplayer-directconnect.yaml
+	cnc2k|chrome/lobby.yaml
+	cnc2k|chrome/lobby-mappreview.yaml
+	cnc2k|chrome/lobby-players.yaml
+	cnc2k|chrome/lobby-options.yaml
+	cnc2k|chrome/lobby-music.yaml
+	cnc2k|chrome/lobby-servers.yaml
+	cnc2k|chrome/lobby-kickdialogs.yaml
+	cnc2k|chrome/connection.yaml
+	cnc2k|chrome/color-picker.yaml
+	cnc2k|chrome/mapchooser.yaml
+	cnc2k|chrome/replaybrowser.yaml
+	cnc2k|chrome/gamesave-browser.yaml
+	cnc2k|chrome/gamesave-loading.yaml
+	cnc2k|chrome/ingame.yaml
+	cnc2k|chrome/ingame-chat.yaml
+	common|chrome/ingame-transients.yaml
+	cnc2k|chrome/ingame-menu.yaml
+	cnc2k|chrome/ingame-debug.yaml
+	common|chrome/ingame-debug-hpf.yaml
+	cnc2k|chrome/ingame-infochat.yaml
+	cnc2k|chrome/ingame-info.yaml
+	cnc2k|chrome/ingame-infobriefing.yaml
+	common|chrome/ingame-infoscripterror.yaml
+	cnc2k|chrome/ingame-infoobjectives.yaml
+	cnc2k|chrome/ingame-infostats.yaml
+	cnc2k|chrome/ingame-info-lobby-options.yaml
+	cnc2k|chrome/ingame-debuginfo.yaml
+	cnc2k|chrome/music.yaml
+	cnc2k|chrome/settings.yaml
+	cnc2k|chrome/settings-display.yaml
+	cnc2k|chrome/settings-audio.yaml
+	cnc2k|chrome/settings-input.yaml
+	cnc2k|chrome/settings-hotkeys.yaml
+	cnc2k|chrome/settings-advanced.yaml
+	cnc2k|chrome/credits.yaml
+	cnc2k|chrome/dialogs.yaml
+	cnc2k|chrome/tooltips.yaml
+	cnc2k|chrome/assetbrowser.yaml
+	cnc2k|chrome/missionbrowser.yaml
+	cnc2k|chrome/editor.yaml
+	common|chrome/text-notifications.yaml
+
+FluentMessages:
+	common|fluent/common.ftl
+	common|fluent/hotkeys.ftl
+	common|fluent/rules.ftl
+	cnc2k|fluent/cnc.ftl
+	cnc2k|fluent/chrome.ftl
+	cnc2k|fluent/hotkeys.ftl
+	cnc2k|fluent/rules.ftl
+
+AllowUnusedFluentMessagesInExternalPackages: false
+
+Voices:
+	cnc2k|audio/voices.yaml
+
+Notifications:
+	cnc2k|audio/notifications.yaml
+
+Music:
+	cnc2k|audio/music.yaml
+
+Hotkeys:
+	common|hotkeys/game.yaml
+	common|hotkeys/observer.yaml
+	common|hotkeys/production-common.yaml
+	common|hotkeys/supportpowers.yaml
+	common|hotkeys/viewport.yaml
+	common|hotkeys/chat.yaml
+	common|hotkeys/editor.yaml
+	common|hotkeys/control-groups.yaml
+	cnc2k|hotkeys.yaml
+
+LoadScreen: CncLoadScreen
+	Image: cnc2k|uibits/chrome.png
+	Image2x: cnc2k|uibits/chrome-2x.png
+	Image3x: cnc2k|uibits/chrome-3x.png
+
+ServerTraits:
+	LobbyCommands
+	SkirmishLogic
+	PlayerPinger
+	MasterServerPinger
+	LobbySettingsNotification
+
+ChromeMetrics:
+	common|metrics.yaml
+	cnc2k|metrics.yaml
+
+Fonts:
+	Tiny:
+		Font: common|FreeSans.ttf
+		Size: 10
+		Ascender: 8
+	TinyBold:
+		Font: common|FreeSansBold.ttf
+		Size: 10
+		Ascender: 8
+	Small:
+		Font: common|FreeSans.ttf
+		Size: 12
+		Ascender: 9
+	Regular:
+		Font: common|FreeSans.ttf
+		Size: 14
+		Ascender: 11
+	Bold:
+		Font: common|FreeSansBold.ttf
+		Size: 14
+		Ascender: 11
+	MediumBold:
+		Font: common|FreeSansBold.ttf
+		Size: 18
+		Ascender: 14
+	BigBold:
+		Font: common|FreeSansBold.ttf
+		Size: 24
+		Ascender: 18
+	Title:
+		Font: common|FreeSansBold.ttf
+		Size: 32
+		Ascender: 24
+
+Missions:
+	cnc2k|missions.yaml
+
+MapGrid:
+	TileSize: 24,24
+	Type: Rectangular
+
+DefaultOrderGenerator: UnitOrderGenerator
+
+SupportsMapsFrom: cnc
+
+SoundFormats: Aud, Wav
+
+SpriteFormats: ShpTD, TmpTD, ShpTS, TmpRA
+
+VideoFormats: Vqa, Wsa
+
+TerrainFormat: DefaultTerrain
+
+SpriteSequenceFormat: ClassicTilesetSpecificSpriteSequence
+
+AssetBrowser:
+	SpriteExtensions: .shp, .tem, .win, .sno, .des, .jun
+	AudioExtensions: .aud, .wav, .v00, .v01, .v02, .v03, .var
+	VideoExtensions: .vqa, .wsa
+
+GameSpeeds:
+	DefaultSpeed: default
+	Speeds:
+		slowest:
+			Name: options-game-speed.slowest
+			Timestep: 80
+			OrderLatency: 2
+		slower:
+			Name: options-game-speed.slower
+			Timestep: 50
+			OrderLatency: 3
+		default:
+			Name: options-game-speed.normal
+			Timestep: 40
+			OrderLatency: 3
+		fast:
+			Name: options-game-speed.fast
+			Timestep: 35
+			OrderLatency: 4
+		faster:
+			Name: options-game-speed.faster
+			Timestep: 30
+			OrderLatency: 4
+		fastest:
+			Name: options-game-speed.fastest
+			Timestep: 20
+			OrderLatency: 6

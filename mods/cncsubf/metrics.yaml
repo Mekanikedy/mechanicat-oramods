@@ -1,0 +1,20 @@
+# General dumping-ground for UI element sizes, etc.
+
+Metrics:
+	FactionSuffix-gdi: gdi
+	FactionSuffix-gdia: gdi
+	FactionSuffix-gdib: gdi
+	FactionSuffix-gdic: gdi
+	FactionSuffix-gdid: gdi
+	FactionSuffix-gdie: gdi
+	FactionSuffix-nod: nod
+	FactionSuffix-noda: nod
+	FactionSuffix-nodb: nod
+	FactionSuffix-nodc: nod
+	FactionSuffix-nodd: nod
+	FactionSuffix-node: nod
+	ButtonDepth: 0
+	ButtonFont: Bold
+	TextfieldColorHighlight: 800000
+	LobbyOptionChangedSound: LobbyOptionChanged
+	PlayerLeftSound: PlayerLeft
