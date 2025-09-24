@@ -29,6 +29,7 @@ another specific unit and building gets more expensive also instead of a type.
 
 And lastly, each subfaction gets to build two units a the first rank of unit Veterancy.  
 Those differ between sides due to faction asymmetry.  
+
 GDI Assault: Medium Tank, Jeep\
 GDI Support: Orca, APC\
 GDI Defense: Rocket Launcher(MRLS), Rocket Soldier  
@@ -38,7 +39,7 @@ GDI Heavy: Mammoth Tank, Commando
 Nod Assault: Buggy, Recon Bike\
 Nod Support: Artillery, Apache\
 Nod Defense: Light Tank, Mobile SAM  
-Nod Raider: Flame Tank, Flamethrower\ 
+Nod Raider: Flame Tank, Flamethrower  
 Nod Heavy: Stealth Tank, Chemical Warrior 
 
 
