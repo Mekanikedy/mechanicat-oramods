@@ -19,7 +19,7 @@ and can carry up to 8 Infantry.\
 A second paratroopers plane is available for the Chinese, ensuring\
 they can deploy double the amount of paratroopers by air.
 
-Adds 1 tickbox option in the lobby: enable Volkov 
+Adds 1 tickbox option in the lobby: enable Volkov  
 when toggled on, allows any Soviet to build Volkov as a commando unit.\
 Volkov has stats that are based on the one in 'Situation Critical' scenario,\
 with further adjustments to become more balanced in multiplayer.\
@@ -31,9 +31,9 @@ and can build Advanced Minelayer with +3 capacity.
 
 Korea has Howitzer as unique unit, which is an artillery piece   
 using the cruiser's gun and is heavy armored.\
-They also can build Advanced version of the Longbow, that is\ 
-s loosely based on the one included in the 'Fresh Tracks' mission.\ 
-This version has +2 ammo capacity, increased speed,\ 
+They also can build Advanced version of the Longbow, that is\
+s loosely based on the one included in the 'Fresh Tracks' mission.\
+This version has +2 ammo capacity, increased speed,\
 and stealth detection within 6c, also detects Submarines. 
 
 The OpenRA engine and SDK scripts are made available under the [GPLv3](https://github.com/OpenRA/OpenRA/blob/bleed/COPYING) license, and any executable code developed by a mod and loaded by the engine (i.e. custom mod DLLs, lua scripts) must be released under a compatible license.  Your mod data files (artwork, sound files, yaml, etc) are not part of your mod's source code, so you are free to distribute these assets under different terms (e.g. allowing redistribution in unmodified form, but not for use in other works).
