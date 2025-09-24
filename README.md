@@ -52,7 +52,7 @@ later in the tech-tree becoming available, near the end instead of available at 
 
 Mobile Radar (GDI) and Mobile Jammer (Nod)  
 the Mobile Radar acts as stealth detector and radar, the jammer prevents radar and detection.\
-The Mobile Jammer does NOT deflect missiles as it does in the OpenRA Red Alert mod.\
+The Mobile Jammer does NOT deflect missiles as it does in the OpenRA Red Alert mod. 
 
 Megan, a female Commando equivelant unit for Nod  
 She looks like a red-headed Tanya with rifle instead of pistoles, she uses Tanya voicelines.\
