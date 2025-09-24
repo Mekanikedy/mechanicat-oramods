@@ -23,21 +23,21 @@ Assault: -20% cost of Vehicles, +10% cost of Aircraft\
 Support: -20% cost of Aircraft, +10% cost of Vehicles\
 Defense: -20% cost of Defenses, +10% cost of Infantry\
 Raider:  -20% cost of Infantry, +10% cost of Defenses\
-Heavy: -25% cost of Superweapon, +10% cost of Refinery and Harvester\ 
-here the bonus is 5% greater as it affects only a specific structure,   
+Heavy: -25% cost of Superweapon, +10% cost of Refinery and Harvester  
+here the bonus is 5% greater as it affects only a specific structure,\
 another specific unit and building gets more expensive also instead of a type. 
 
 And lastly, each subfaction gets to build two units a the first rank of unit Veterancy.  
 Those differ between sides due to faction asymmetry.  
 GDI Assault: Medium Tank, Jeep\
 GDI Support: Orca, APC\
-GDI Defense: Rocket Launcher(MRLS), Rocket Soldier\ 
+GDI Defense: Rocket Launcher(MRLS), Rocket Soldier  
 GDI Raider: Minigunner, Grenadier\
 GDI Heavy: Mammoth Tank, Commando
 
 Nod Assault: Buggy, Recon Bike\
 Nod Support: Artillery, Apache\
-Nod Defense: Light Tank, Mobile SAM\ 
+Nod Defense: Light Tank, Mobile SAM  
 Nod Raider: Flame Tank, Flamethrower\ 
 Nod Heavy: Stealth Tank, Chemical Warrior 
 
