@@ -32,7 +32,7 @@ and can build Advanced Minelayer with +3 capacity.
 Korea has Howitzer as unique unit, which is an artillery piece   
 using the cruiser's gun and is heavy armored.\
 They also can build Advanced version of the Longbow, that is\
-s loosely based on the one included in the 'Fresh Tracks' mission.\
+loosely based on the one included in the 'Fresh Tracks' mission.\
 This version has +2 ammo capacity, increased speed,\
 and stealth detection within 6c, also detects Submarines. 
 
