@@ -61,6 +61,15 @@ BADR.Bomber:
 	Armament:
 		Weapon: ParaBomb
 
+BADR.Tankdrop:
+	Inherits: BADR
+	-MapEditorData:
+	ParaDrop:
+		DropRange: 2c0
+		ChuteSound: chute1.aud
+	RenderSprites:
+		Image: badr
+
 MIG:
 	Inherits: ^Plane
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
@@ -378,6 +387,8 @@ HELI.Korea:
 		Range: 6c0
 		DetectionTypes: Cloak, Underwater
 	RenderDetectionCircle:
+    WithColoredOverlay:
+        Color: 00000045
 	RenderSprites:
 		Image: heli
 

@@ -606,8 +606,10 @@ MNLY.Spain:
 	AmmoPool:
 		Ammo: 8
 		RearmSound: minelay1.aud
+    WithColoredOverlay:
+        Color: 00000045
 	RenderSprites:
-		Image: mnly
+		Image: MNLY
 
 TRUK:
 	Inherits: ^Vehicle

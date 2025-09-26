@@ -36,4 +36,10 @@ loosely based on the one included in the 'Fresh Tracks' mission.\
 This version has +2 ammo capacity, increased speed,\
 and stealth detection within 6c, also detects Submarines. 
 
+Other, visual only changes  
+Light Tank barrel length shortened, Medium Tank barrel is longer.\
+Heavy Tank turret adjusted upwards one pixel, it was clipping into the body.\
+Chinook gained a new triple-bladed rotor, and a new icon better representing it.\
+
+
 The OpenRA engine and SDK scripts are made available under the [GPLv3](https://github.com/OpenRA/OpenRA/blob/bleed/COPYING) license, and any executable code developed by a mod and loaded by the engine (i.e. custom mod DLLs, lua scripts) must be released under a compatible license.  Your mod data files (artwork, sound files, yaml, etc) are not part of your mod's source code, so you are free to distribute these assets under different terms (e.g. allowing redistribution in unmodified form, but not for use in other works).

@@ -1733,6 +1733,7 @@ AFLD:
 		ChargeInterval: 7500
 		Name: actor-afld.paratrooperspower-airdrop-name
 		Description: actor-afld.paratrooperspower-airdrop-description
+        UnitType: badr.tankdrop
 		DropItems: 3TNKR1,3TNKR1
 		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
 		SelectTargetSpeechNotification: SelectTarget

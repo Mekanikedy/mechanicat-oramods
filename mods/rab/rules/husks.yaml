@@ -248,6 +248,8 @@ HELI.Korea.Husk:
 		Sequence: rotor2
 	Tooltip:
 		Name: actor-heli-korea-husk-name
+    WithColoredOverlay:
+        Color: 00000045
 
 HIND.Husk:
 	Inherits: ^HelicopterHusk
