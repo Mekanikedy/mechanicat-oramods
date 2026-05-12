@@ -1,8 +1,163 @@
-In this branch of the mechanicat-oramods repository are the files for one of my OpenRA modifications, the Unholy Mod that is based on RA. 
+In this branch of the mechanicat-oramods repository are the files for one of my OpenRA modifications, the Red Alert Unholy mod that is based on red-alert-release-20250330.
 
-In this mod you can play as Unholy Alliance, a combination of Allies and Soviet factions. 
-You can also play as either Allies or Soviet, that uses the whole arsenal of all nations of their side combined.
-the Belarus from my Red Alert B mod is available as extra Soviet nation.
-There are other numerous changes that i wouldve bothered to document, if anybody ever played my mods.
+changes compared to the default mod
+- Can play as Allies, or as Soviet that uses combined arsenal from all nations of their side
+- Random changed to give either Allies or Soviet
+- Unholy Alliance faction added that combines Allies and Soviet
+- Weapon range of Rifle Infantry reduced by -1c
+- Grenadier set to always explode on death
+- Engineer cost increased to 500$ from 450$
+- Shock Trooper does not require a Tesla Coil anymore
+- Shock Trooper cost increased to 450$ from 350$
+- Shock Trooper always explodes on death when getting crushed
+- cost of Yak Attack Plane decreased to 1150$ from 1350$
+- range of Yak Attack Plane's machineguns slightly increased to 6c830 from 6c0
+- cost of MiG Attack Plane decreased to 1800$ from 2000$
+- MiG Attack Plane obtained +2 ammo, in effect this means it fires one more time before returning
+- contrail effects of planes adjusted to not use player coloring
+- Chinook renamed to Air Transport
+- Transport Helicopter graphic reverted to classic version
+- Blackhawk got disabled
+- Longbow renamed to Apache
+- Apache cost reduced to 1500$ from 2000$
+- Hind enabled to be built for Soviets with a Soviet Tech Center from the Helipad
+- Vehicles will get slowed down when crushing Infantry, Vehicles or Walls
+- Light Tank requires a Service Depot
+- Light Tank leaves a husk when destroyed
+- Medium Tank cost reduced to 800$ from 850$
+- fixed the turret offset on Heavy Tank sprite (by adjusting 1px upwards) 
+- Mammoth Tank can crush most Vehicles in addition
+- Range of Mammoth Tank cannons increased by 0c512, from 4c768 to 5c256
+- Mammoth Tank cost reduced to 1800$ from 2000$
+- Tesla Tank does not require a Tesla Coil anymore
+- Chrono Tank teleport recharges in 15sec, up from 10sec
+- Chrono Tank can only teleport over 13cells distance, down from infinite
+- APC made available for both Allies and Soviet
+- APC cost reduced to 800$ from 850$
+- Carry capacity of APC increased to 6 from 5
+- Artillery cost reduced to 800$ from 850$
+- Artillery range decreased to 10 from 12
+- V2 Rocket Launcher range increased to 12 from 10
+- disabled the variation of mine sprite among Allies and Soviet, both use minv now
+- the mine sprite fixed to have a blinking red light
+- Minelayer cost reduced to 700$ from 800$
+- Added +1 Mine capacity for Minelayers
+- Minelayers are now amphibian and can traverse bodies of water
+- Mines can be also laid on open water to become Sea Mines
+- Sea Mines get detected by submarine detection, minelayers, or Sonar use
+- Sonar changed to no longer require a infiltration of enemy naval production
+- Sonar now 'pings' the affected submarines, preventing them from submerging again for 10seconds
+- Sonar is made available for both Allies and Soviet
+- Sonar now properly pause recharging when on low power
+- Sonar recharge time increased to 1.5min from 30sec
+- cost of Naval Transport increased to 600$ from 500$
+- Naval Transport carry capacity increased to 8 from 5
+- Vehicles changed to have a cargo weight of 2
+- The following has a cargo weight of 4: Mammoth Tank, MCV, M.A.D. Tank, Harvester
+- Gunboat cost reduced to 450$ from 500$
+- Destroyer cost reduced to 900$ from 1000$
+- Cruiser cost reduced to 1800$ from 2400$
+- on Submarines added a secondary Grenadelauncher weapon for use against targets on land
+- ensured that Torpedoes cannot get jammed
+- Missile Submarine tech requirement changed to Radar Dome from Soviet Tech Center
+- Removed the anti-air attack from Missile Submarines
+- the range of Missile Submarine weapon increased to 24c from 20c
+- Missile Submarine cost reduced to 1650$ from 2000$
+- new: SAM Submarine added at Soviet Tech Center level, that has double the anti-air attacks
+- Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
+- Submarines will get surfaced while crossing shallow bridges
+- Supply Truck can deliver only to Construction Yards
+- Harvester cost reduced to 1000$ from 1100$
+- Ore Refinery now properly refunds 400$ when sold
+- increased the value of ore and gems to 30/60 from 25/50
+- added a lobby checkbox option for enabling ERCC Refinery
+- Mobile Radar Jammer tech requirement changed to Radar Dome from Allies Tech Center
+- Mobile Radar Jammer has become specific to England faction
+- Mobile Gap Generator can be built by every Allies faction
+- the Spy no longer can attack
+- British Spy changed to Armed Spy that can attack, and uses a sniper while in pillbox
+- Thief cost reduced to 475$ from 500$
+- The cloaking mechanism of Thief changed to that of Dune2000's Saboteur
+- Tanya cost reduced to 1200$ from 1800$
+- new: Volkov added for Soviets as a commando unit
+- added unique voice variant for Volkov
+- Phase Transport cost increased to 1100$ from 1000$
+- Phase Transport's weapon changed to rockets of the Destroyer ship, and can now attack air too
+- Carry capacity of Phase Transport reduced to 3 from 5
+- Fake structures follow the tech-tree and get built at 1/5 the cost of normal versions
+- Added fake versions of Soviet Barracks, Soviet Tech Center, Iron Curtain
+- new: Belarus faction added to Soviet side
+- M.A.D. Tank became specific to Belarus faction
+- a thumping M.A.D. Tank now slows Vehicles in effect radius, and forces infantry to ground
+- M.A.D. Tank cost increased to 2200$ from 2000$
+- added Air Drop support power that delivers 2 Heavy Tanks for Belarus faction
+- added a parachutable, veteran version of the Heavy Tank to be used by the Air Drop support power
+- Gap Generator radius increased to 7c from 6c, same radius as the mobile version
+- cost of Gap Generator increased to 1000$ from 800$
+- Gap Generator can be deployed when charge is ready to consume -100 power, and generates shroud in 10c range while active, it lasts for 1min duration
+- Mobile Gap Generator can be toggled on-off, while off enjoys a movespeed boost increase
+- the BuildTimeSpeedReduction steps modified to "100, 90, 75, 67, 50" from "100, 86, 75, 67, 60, 55, 50" for all production queues
+- the LowPowerModifier reduced to 250 from 300 for all production queues
+- Mechanic cost reduced to 475$ from 500$
+- Mechanic can repair transports from within, this does not stack with multiple Mechanics inside
+- Medic can always self-heal without the need of a hospital
+- slightly reduced the range of Medic heal(and thus Mechanic repair too) from 4c0 to 3c682
+- Allies Barracks enables self-heal on infantry within 2c512 radius
+- new: added an seperate Unholy Barracks for the Unholy Alliance faction
+- the tech building Communications Center renamed to Observatory
+- the name of Forward Command extended with the word Post
+- tech buildings leave behind a husk when destroyed, that can be restored to function with an engineer
+- cost of MCV(and subsequently Construction Yard) increased to 2500$ from 2000$
+- added faction specific Construction Yard graphics
+- Concrete Wall becomes available with a Barracks
+- walls can be built slightly less further away than before
+- new: added buildable Gates
+- disabled Sandbag and Barbed Wire fence from being built
+- reduced the auto-connect range of walls to 6 from 8
+- the cloak detection gets paused while on low power of all defenses 
+- added a secondary anti-submarine depthcharge attack on Gun Turrets
+- Flame Tower tech requirement changed to Weapon Factory from Barracks
+- Flame Tower can fire over walls now
+- added +1 range to Flame Tower weapon
+- the cloak detection of Flame Towers increased to 6c0 from 5c0
+- Construction Yards provide +30 Power
+- increased the range check of structures for buildable area by +1 (in effect this means: bases can be built more spaced out)
+- removed the tech requirement for Barracks and Ore Refinery
+- Construction Yards, both types of Power Plants, Radar Domes, Tech Centers reduced in building footprint size by removing the bib infront of
+- Tesla Coil tech requirement changed to Radar Dome from War Factory
+- Radar Dome cost reduced to 1200$ from 1500$
+- Service Depot cost reduced to 1000$ from 1200$
+- Service Depot building footprint changed to be a square shape rather than a plus shape
+- modified tech requirement for War Factory, Naval Yard, Submarine Pen and Radar Dome to be any Power Plant and a Ore Refinery
+- Helipad made available for both Allies and Soviet
+- removed bib from Helipad
+- Airfield cost increased to 625$ from 500$
+- Added seperate Airfields for Russia and Belarus
+- Spy Plane recharge time decreased to 1.5min from 2.5min
+- Paratroopers recharge time decreased to 3min from 5min
+- Paratroopers reordered to have the two Rocket Soldier nearer center of the group
+- Parabombs recharge time decreased to 4.5min from 5min
+- made all Airfield support powers pause recharging while on low power
+- Chronoshift recharge time increased to 3min from 2min
+- the duration of Chronoshift increased to 30sec from 16sec
+- Iron Curtain cost reduced to 1500$ from 2000$
+- Invulnerability recharge time increased to 3min from 2min
+- the duration of Invulnerability corrected to 500 from 400 (now actually lasts 20sec as described)
+- Kennel tech requirement changed to a Soviet Barracks from any Power Plant
+- cost of Soviet Tech Center increased to 2000$ from 1500$
+- fixed animation of Allies Tech Center during sattelite launch
+- GPS Sattelite changed to reveal whole map to owner for 1.5min when ready and deployed
+- GPS Sattelite recharges in 4.5min, down from 8min
+- Atom Bomb recharge time decreased to 7.5min from 9min
+- Normal and Turtle AI playing Soviet will make use of Iron Curtain
+- Rush AI will build 3x Barracks
+- Normal AI will build 3x War Factories
+- Turtle AI will build 2x Barracks and War Factories
+- Turtle AI will try to use a Thief to capture Medium Tanks, Heavy Tanks, Mammoth Tanks, Mobile Radar Jammers
+- Naval AI will build 3x Naval production structures
+- Allies AI will make use of Medics and Mechanics
+- every AI will try to use a Engineer to capture Oil Derricks, Hospitals, Forward Command Posts, Observatories and Biological Labs
+- the amount of selectable starting credits set to 7500, 15000, 30000 with the default option being 7500
+- noob protection on Ore Refineries disabled, resources will go to waste if not have enough storage
 
 The OpenRA engine and SDK scripts are made available under the [GPLv3](https://github.com/OpenRA/OpenRA/blob/bleed/COPYING) license, and any executable code developed by a mod and loaded by the engine (i.e. custom mod DLLs, lua scripts) must be released under a compatible license.  Your mod data files (artwork, sound files, yaml, etc) are not part of your mod's source code, so you are free to distribute these assets under different terms (e.g. allowing redistribution in unmodified form, but not for use in other works).
