@@ -150,18 +150,22 @@
 		BlinkInterval: 32
 		BlinkPatterns:
 			hospitalheal: On, Off
+			barracksheal: On, Off
 	WithDecoration@RANK-2:
 		BlinkInterval: 32
 		BlinkPatterns:
 			hospitalheal: On, Off
+			barracksheal: On, Off
 	WithDecoration@RANK-3:
 		BlinkInterval: 32
 		BlinkPatterns:
 			hospitalheal: On, Off
+			barracksheal: On, Off
 	WithDecoration@RANK-ELITE:
 		BlinkInterval: 32
 		BlinkPatterns:
 			hospitalheal: On, Off
+			barracksheal: On, Off
 
 ^IronCurtainable:
 	WithColoredOverlay@IRONCURTAIN:
@@ -311,6 +315,19 @@
 	HitShape:
 	MapEditorData:
 		Categories: Vehicle
+	ExternalCondition@CRUSH:
+		Condition: slowdown
+        TotalCap: 1
+	SpeedMultiplier@CRUSH:
+		RequiresCondition: slowdown
+		Modifier: 80
+	Crushable:
+		CrushClasses: vehicle
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	GrantExternalConditionToCrusher:
+		OnCrushCondition: slowdown
+		OnCrushDuration: 50
 
 ^TrackedVehicle:
 	Inherits: ^Vehicle
@@ -386,7 +403,7 @@
 		Delay: 100
 		StartIfBelow: 100
 		DamageCooldown: 125
-		RequiresCondition: hospitalheal
+		RequiresCondition: ( barracksheal || hospitalheal )
 	GrantConditionOnPrerequisite@HOSPITAL:
 		Condition: hospital
 		Prerequisites: hosp
@@ -401,9 +418,14 @@
 		Sequence: medic
 		Position: BottomRight
 		Margin: 17, 4
-		RequiresCondition: hospitalheal
+		RequiresCondition: barracksheal || hospitalheal
 		BlinkInterval: 32
 		BlinkPattern: Off, On
+	ExternalCondition@BARRACKS:
+		Condition: barracks
+	GrantCondition@BARRACKS:
+		RequiresCondition: barracks && damaged
+		Condition: barracksheal
 	DeathSounds@NORMAL:
 		DeathTypes: DefaultDeath, BulletDeath, SmallExplosionDeath, ExplosionDeath
 	DeathSounds@BURNED:
@@ -441,6 +463,9 @@
 	DetectCloaked:
 		DetectionTypes: Cloak
 		Range: 1c512
+	GrantExternalConditionToCrusher:
+		OnCrushCondition: slowdown
+		OnCrushDuration: 50
 
 ^Soldier:
 	Inherits: ^Infantry
@@ -706,6 +731,7 @@
 		PreviewAlpha: 0.65
 	RequiresBuildableArea:
 		AreaTypes: building
+		Adjacent: 3
 	SoundOnDamageTransition:
 		DamagedSounds: kaboom1.aud
 		DestroyedSounds: kaboom22.aud
@@ -814,7 +840,7 @@
 		LineBuildFootprintAlpha: 0.65
 	RequiresBuildableArea:
 		AreaTypes: building
-		Adjacent: 7
+		Adjacent: 6
 	SoundOnDamageTransition:
 		DamagedSounds: sandbag2.aud
 		DestroyedSounds: sandbag2.aud
@@ -844,6 +870,9 @@
 		Terrain: Wall
 	MapEditorData:
 		Categories: Wall
+	GrantExternalConditionToCrusher:
+		OnCrushCondition: slowdown
+		OnCrushDuration: 50
 
 ^TechBuilding:
 	Inherits: ^BasicBuilding
@@ -1386,7 +1415,7 @@
 		TerrainTypes: Clear, Road
 	RequiresBuildableArea:
 		AreaTypes: building
-		Adjacent: 4
+		Adjacent: 6
 	MapEditorData:
 		Categories: Wall
 	Gate:
@@ -1408,3 +1437,37 @@
 		Position: Center
 		Palette: player
 		IsPlayerPalette: True
+
+^TechBuildingHusk:
+	Inherits@1: ^SpriteActor
+	Inherits@shape: ^1x1Shape
+	Interactable:
+	AppearsOnRadar:
+	Health:
+		HP: 20000
+	Armor:
+		Type: Concrete
+	DamageMultiplier@IsInvulnerable:
+		Modifier: 0
+	Building:
+		Dimensions: 1,1
+		Footprint: x
+	WithSpriteBody:
+	Targetable:
+		RequiresForceFire: true
+		TargetTypes: Ground, Husk, NoAutoTarget
+	Tooltip:
+		GenericName: meta-techbuilding-husk-name
+		GenericStancePrefix: false
+		ShowOwnerRow: false
+	FrozenUnderFog:
+	ScriptTriggers:
+	MapEditorData:
+		Categories: Husk
+	CaptureManager:
+	Capturable:
+		Types: restore-tech
+		ValidRelationships: Enemy, Neutral, Ally
+	CapturableProgressBlink:
+	Targetable@AIFixer:
+		TargetTypes: IgnoreThis

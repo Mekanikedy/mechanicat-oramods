@@ -75,7 +75,7 @@
             WaterFord: 88
 	Locomotor@HEAVYTRACKED:
 		Name: heavytracked
-		Crushes: wall, infantry, mine, crate, heavywall
+		Crushes: wall, infantry, mine, crate, heavywall, vehicle
         CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
@@ -269,7 +269,7 @@ World:
 	StartingUnits@lightallies:
 		Class: light
 		ClassName: options-starting-units.light-support
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk
 		InnerSupportRadius: 3
@@ -282,10 +282,18 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
+	StartingUnits@lightunholy:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: unholy
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,ftrk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
 	StartingUnits@heavyallies:
 		Class: heavy
 		ClassName: options-starting-units.heavy-support
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,2tnk,2tnk,2tnk
 		InnerSupportRadius: 3
@@ -296,6 +304,14 @@ World:
 		Factions: soviet, russia, ukraine, belarus
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk,3tnk,3tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyunholy:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: unholy
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,apc,ftrk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	MapStartingLocations:

@@ -79,7 +79,7 @@ GAP:
 	Inherits: ^ScienceBuilding
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Valued:
-		Cost: 800
+		Cost: 1000
 	Tooltip:
 		Name: actor-gap.name
 	Buildable:
@@ -104,12 +104,31 @@ GAP:
 		Range: 5c0
 	WithBuildingBib:
 		HasMinibib: true
-	CreatesShroud:
+	CreatesShroud@normal:
 		Range: 7c0
-		RequiresCondition: !disabled
-	RenderShroudCircle:
+		RequiresCondition: !disabled && !charged
+	CreatesShroud@charged:
+		Range: 10c0
+		RequiresCondition: !disabled && charged
+	WithRangeCircle@normal:
+		Color: 008B8B
+		Width: 1
+		BorderColor: 000000
+		BorderWidth: 3
+		Range: 7c0
+		RequiresCondition: !charged
+	WithRangeCircle@charged:
+		Color: 008B8B
+		Width: 1
+		BorderColor: 000000
+		BorderWidth: 3
+		Range: 10c0
+		RequiresCondition: charged
 	Power:
 		Amount: -60
+	PowerMultiplier:
+		Modifier: 168
+		RequiresCondition: charged
 	MustBeDestroyed:
 		RequiredForShortGame: false
 	FireWarheadsOnDeath:
@@ -119,6 +138,14 @@ GAP:
 		Type: Rectangle
 			TopLeft: -512, -512
 			BottomRight: 512, 512
+	GrantChargedConditionOnToggle:
+        InitialCharge: 0
+		ActivatedCondition: charged
+		CanCancelCondition: false
+		ChargeDuration: 1500
+		ChargeThreshhold: -1
+		ConditionDuration: 1500
+		PauseOnCondition: disabled
 
 SPEN:
 	Inherits: ^Building
@@ -132,7 +159,7 @@ SPEN:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 50
-		Prerequisites: anypower, ~structures.soviet, ~techlevel.low
+		Prerequisites: anypower, proc, ~structures.soviet, ~techlevel.low
 		Description: actor-spen.description
 	Targetable:
 		TargetTypes: WaterActor, Structure, C4, DetonateAttack, SpyInfiltrate
@@ -299,7 +326,7 @@ SYRD:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 40
-		Prerequisites: anypower, ~structures.allies, ~techlevel.low
+		Prerequisites: anypower, proc, ~structures.allies, ~techlevel.low
 		Description: actor-syrd.description
 	Valued:
 		Cost: 1000
@@ -449,7 +476,7 @@ IRON:
 		BuildLimit: 1
 		Description: actor-iron.description
 	Valued:
-		Cost: 2000
+		Cost: 1500
 	Tooltip:
 		Name: actor-iron.name
 	Building:
@@ -476,6 +503,7 @@ IRON:
 		HasMinibib: true
 	GrantExternalConditionPower@IRONCURTAIN:
 		PauseOnCondition: disabled
+        OrderName: Invulnerability
 		Icon: invuln
 		ChargeInterval: 4500
 		Name: actor-iron.grantexternalconditionpower-ironcurtain-name
@@ -612,7 +640,7 @@ TSLA:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 80
-		Prerequisites: weap, ~structures.soviet, ~techlevel.medium
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium
 		Description: actor-tsla.description
 	Valued:
 		Cost: 1200
@@ -711,7 +739,7 @@ DOME:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 90
-		Prerequisites: anypower, ~techlevel.medium
+		Prerequisites: anypower, proc, ~techlevel.medium
 		Description: actor-dome.description
 	Valued:
 		Cost: 1200
@@ -811,6 +839,10 @@ PBOX:
 		Amount: -20
 	DetectCloaked:
 		Range: 6c0
+		RequiresCondition: !lowpower
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 
 HBOX:
 	Inherits: ^Defense
@@ -862,6 +894,10 @@ HBOX:
 	-SpawnActorsOnSell:
 	DetectCloaked:
 		Range: 6c0
+		RequiresCondition: !lowpower
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 	RenderRangeCircle:
 		FallbackRange: 6c0
 	AttackGarrisoned:
@@ -925,6 +961,10 @@ GUN:
 		Amount: -40
 	DetectCloaked:
 		Range: 6c0
+		RequiresCondition: !lowpower
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 	-BodyOrientation:
 	ClassicFacingBodyOrientation:
 
@@ -934,7 +974,7 @@ FTUR:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 60
-		Prerequisites: barr, ~structures.soviet, ~techlevel.low
+		Prerequisites: weap, ~structures.soviet, ~techlevel.low
 		Description: actor-ftur.description
 	Valued:
 		Cost: 600
@@ -967,7 +1007,11 @@ FTUR:
 	Power:
 		Amount: -20
 	DetectCloaked:
-		Range: 5c0
+		Range: 6c0
+		RequiresCondition: !lowpower
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 	ProvidesPrerequisite@buildingname:
 	FireWarheadsOnDeath:
 		Weapon: BuildingExplode
@@ -1102,6 +1146,8 @@ ATEK:
 	Power:
 		Amount: -200
 	ProvidesPrerequisite@buildingname:
+	WithSupportPowerActivationOverlay:
+		RequiresCondition: !build-incomplete
 
 WEAP:
 	Inherits: ^Building
@@ -1112,7 +1158,7 @@ WEAP:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 80
-		Prerequisites: anypower, ~techlevel.low
+		Prerequisites: anypower, proc, ~techlevel.low
 		Description: actor-weap.description
 	Valued:
 		Cost: 2000
@@ -1362,7 +1408,7 @@ PROC:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 60
-		Prerequisites: ~techlevel.infonly
+		Prerequisites: ~techlevel.infonly, ~!global-ercc-refinery
 		Description: actor-proc.description
 	Valued:
 		Cost: 1400
@@ -1388,6 +1434,7 @@ PROC:
 	RevealsShroud@GAPGEN:
 		Range: 4c0
 	Refinery:
+		DiscardExcessResources: true
 	DockHost:
 		Type: Unload
 		DockAngle: 256
@@ -1625,7 +1672,7 @@ AFLD:
 		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.russia, ~!structures.ukraine, ~!structures.belarus
 		Description: actor-afld.description
 	Valued:
-		Cost: 500
+		Cost: 625
 	Tooltip:
 		Name: actor-afld.name
 	Selectable:
@@ -1738,7 +1785,7 @@ AFLD:
 		OrderName: UkraineParabombs
 		Prerequisites: aircraft.ukraine
 		Icon: parabombs
-		ChargeInterval: 9000
+		ChargeInterval: 6750
 		Name: actor-afld.airstrikepower-parabombs-name
 		Description: actor-afld.airstrikepower-parabombs-description
 		SelectTargetSpeechNotification: SelectTarget
@@ -1916,7 +1963,7 @@ STEK:
 		Prerequisites: weap, dome, ~structures.soviet, ~techlevel.high
 		Description: actor-stek.description
 	Valued:
-		Cost: 1500
+		Cost: 2000
 	Tooltip:
 		Name: actor-stek.name
 	ProvidesPrerequisite:
@@ -2043,7 +2090,7 @@ KENN:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 175
-		Prerequisites: anypower, ~structures.soviet, ~techlevel.infonly
+		Prerequisites: barr, ~structures.soviet, ~techlevel.infonly
 		Description: actor-kenn.description
 	Valued:
 		Cost: 200
@@ -2208,6 +2255,17 @@ TENT:
 		PlayerExperience: 10
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+	ProximityExternalCondition@barracksheal:
+		Condition: barracks
+		ValidRelationships: Ally
+		Range: 2c512
+	WithRangeCircle:
+		Range: 2c512
+		Color: FC0000
+		Width: 1
+		BorderColor: ECECEC
+		BorderWidth: 3
+        RequiresCondition: !build-incomplete
 
 FIX:
 	Inherits: ^Building
@@ -2615,7 +2673,6 @@ ABAR:
 	ProvidesPrerequisite@belarusianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: infantry.belarus
-
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
@@ -2625,3 +2682,93 @@ ABAR:
 		PlayerExperience: 10
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+
+ERCC:
+	Inherits: ^Building
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 60
+		Prerequisites: ~techlevel.infonly, ~global-ercc-refinery
+		Description: actor-proc.description
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: actor-proc.name
+	Building:
+		Footprint: =xx x=+ ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 3072, 1920, 0, -170
+		DecorationBounds: 3072, 3200, 42, -170
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ThiefInfiltrate, SpyInfiltrate
+	Health:
+		HP: 90000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Refinery:
+		DiscardExcessResources: true
+	DockHost:
+		Type: Unload
+		DockAngle: 256
+		DockOffset: 0,512,0
+	StoresPlayerResources:
+		Capacity: 2000
+	CustomSellValue:
+		Value: 400
+	Sellable:
+        RefundPercent: 100
+	FreeActor:
+		Actor: HARV
+		SpawnOffset: 1,1
+		Facing: 256
+	InfiltrateForCash:
+		Percentage: 50
+		PlayerExperience: 5
+		PlayerExperiencePercentage: 1
+		Types: SpyInfiltrate, ThiefInfiltrate
+		InfiltratedNotification: CreditsStolen
+		InfiltratedTextNotification: notification-credits-stolen
+	WithBuildingBib:
+	WithIdleOverlay@TOP:
+		RequiresCondition: !build-incomplete
+		Sequence: idle-top
+	Power:
+		Amount: -30
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
+	ProvidesPrerequisite@buildingname:
+    ProvidesPrerequisite@refinerycopy:
+        Prerequisite: proc
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 598
+	HitShape@TOP:
+		TargetableOffsets: 1680,0,0
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, -512
+	HitShape@BOTTOMLEFT:
+		TargetableOffsets: -1260,-1024,0
+		Type: Rectangle
+			TopLeft: -1536, 598
+			BottomRight: -512, 1280
+	-ActorPreviewPlaceBuildingPreview:
+	SequencePlaceBuildingPreview:
+		Sequence: idle
+		SequenceAlpha: 0.65
+	WithResourceStoragePipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 17
+		FullSequence: pip-yellow

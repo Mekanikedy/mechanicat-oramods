@@ -93,10 +93,26 @@ Player:
 					Attractiveness: -5
 					TargetMetric: None
 					CheckRadius: 8c0
+			ironcurtain:
+				OrderName: Invulnerability
+				MinimumAttractiveness: 1000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Ally
+					Types: Vehicle
+					Attractiveness: 5
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Infantry
+					Attractiveness: -2
+					TargetMetric: Value
+					CheckRadius: 2c0
 	HarvesterBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
 		HarvesterTypes: harv
-		RefineryTypes: proc
+		RefineryTypes: proc,ercc
 	BaseBuilderBotModule@rush:
 		RequiresCondition: enable-rush-ai
 		MinimumExcessPower: 60
@@ -104,17 +120,20 @@ Player:
 		ExcessPowerIncrement: 40
 		ExcessPowerIncreaseThreshold: 4
 		ConstructionYardTypes: fact
-		RefineryTypes: proc
+		RefineryTypes: proc,ercc
 		PowerTypes: powr,apwr
-		BarracksTypes: barr,tent
+		BarracksTypes: barr,tent,abar
 		VehiclesFactoryTypes: weap
-		ProductionTypes: barr,tent,weap
+		ProductionTypes: barr,tent,abar,weap
 		SiloTypes: silo
 		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
+		PlaceDefenseTowardsEnemyChance: 50
 		BuildingLimits:
 			proc: 4
-			barr: 1
-			tent: 1
+			ercc: 4
+			barr: 3
+			tent: 3
+			abar: 3
 			kenn: 1
 			dome: 1
 			weap: 1
@@ -123,9 +142,11 @@ Player:
 			fix: 1
 		BuildingFractions:
 			proc: 30
+			ercc: 30
 			barr: 1
 			kenn: 1
 			tent: 1
+			abar: 1
 			weap: 1
 			pbox: 7
 			gun: 7
@@ -148,32 +169,40 @@ Player:
 		ExcessPowerIncrement: 40
 		ExcessPowerIncreaseThreshold: 4
 		ConstructionYardTypes: fact
-		RefineryTypes: proc
+		RefineryTypes: proc,ercc
 		PowerTypes: powr,apwr
-		BarracksTypes: barr,tent
+		BarracksTypes: barr,tent,abar
 		VehiclesFactoryTypes: weap
-		ProductionTypes: barr,tent,weap,afld,hpad
+		ProductionTypes: barr,tent,abar,weap,afld,hpad
 		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
 		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
+		PlaceDefenseTowardsEnemyChance: 50
 		BuildingLimits:
 			proc: 4
+			ercc: 4
 			barr: 1
 			tent: 1
+			abar: 1
 			dome: 1
-			weap: 1
+			weap: 3
 			spen: 1
 			syrd: 1
 			hpad: 4
 			afld: 4
+			afld.russia: 4
 			afld.ukraine: 4
+			afld.belarus: 4
 			atek: 1
 			stek: 1
 			fix: 1
+			iron: 1
 		BuildingFractions:
 			proc: 15
+			ercc: 15
 			tent: 1
 			barr: 1
+			abar: 1
 			kenn: 1
 			dome: 1
 			weap: 6
@@ -181,7 +210,9 @@ Player:
 			spen: 1
 			syrd: 1
 			afld: 4
+			afld.russia: 4
 			afld.ukraine: 4
+			afld.belarus: 4
 			pbox: 7
 			gun: 7
 			ftur: 10
@@ -193,6 +224,7 @@ Player:
 			atek: 1
 			stek: 1
 			mslo: 1
+			iron: 1
 		BuildingDelays:
 			dome: 3000
 	BaseBuilderBotModule@turtle:
@@ -202,38 +234,48 @@ Player:
 		ExcessPowerIncrement: 50
 		ExcessPowerIncreaseThreshold: 4
 		ConstructionYardTypes: fact
-		RefineryTypes: proc
+		RefineryTypes: proc,ercc
 		PowerTypes: powr,apwr
-		BarracksTypes: barr,tent
+		BarracksTypes: barr,tent,abar
 		VehiclesFactoryTypes: weap
-		ProductionTypes: barr,tent,weap,afld,hpad
+		ProductionTypes: barr,tent,abar,weap,afld,hpad
 		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
 		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
+		PlaceDefenseTowardsEnemyChance: 50
 		BuildingLimits:
 			proc: 4
-			barr: 1
-			tent: 1
+			ercc: 4
+			barr: 2
+			tent: 2
+			abar: 2
 			kenn: 1
 			dome: 1
-			weap: 1
+			weap: 2
 			spen: 1
 			syrd: 1
 			hpad: 4
 			afld: 4
+			afld.russia: 4
 			afld.ukraine: 4
+			afld.belarus: 4
 			atek: 1
 			stek: 1
 			fix: 1
+			iron: 1
 		BuildingFractions:
 			proc: 30
+			ercc: 30
 			tent: 1
 			barr: 1
+			abar: 1
 			kenn: 1
 			weap: 3
 			hpad: 2
 			afld: 2
+			afld.russia: 2
 			afld.ukraine: 2
+			afld.belarus: 2
 			spen: 1
 			syrd: 1
 			pbox: 10
@@ -248,44 +290,53 @@ Player:
 			atek: 1
 			stek: 1
 			mslo: 1
+			iron: 1
 		BuildingDelays:
 			dome: 3000
 	BaseBuilderBotModule@naval:
 		RequiresCondition: enable-naval-ai
-		MinimumExcessPower: 60
-		MaximumExcessPower: 400
-		ExcessPowerIncrement: 40
-		ExcessPowerIncreaseThreshold: 4
+		MinimumExcessPower: 50
+		MaximumExcessPower: 300
+		ExcessPowerIncrement: 20
+		ExcessPowerIncreaseThreshold: 2
 		ConstructionYardTypes: fact
-		RefineryTypes: proc
+		RefineryTypes: proc,ercc
 		PowerTypes: powr,apwr
-		BarracksTypes: barr,tent
+		BarracksTypes: barr,tent,abar
 		VehiclesFactoryTypes: weap
-		ProductionTypes: barr,tent,weap,afld,hpad
+		ProductionTypes: barr,tent,abar,weap,afld,hpad
 		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
 		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
+		PlaceDefenseTowardsEnemyChance: 50
 		BuildingLimits:
 			proc: 3
+			ercc: 3
 			dome: 1
 			barr: 1
 			tent: 1
-			spen: 1
-			syrd: 1
+			abar: 1
+			spen: 3
+			syrd: 3
 			hpad: 8
 			afld: 8
+			afld.russia: 8
 			afld.ukraine: 8
+			afld.belarus: 8
 			weap: 1
 			atek: 1
 			stek: 1
 			fix: 1
 		BuildingFractions:
 			proc: 25
+			ercc: 25
 			dome: 1
 			weap: 1
 			hpad: 15
 			afld: 15
+			afld.russia: 15
 			afld.ukraine: 15
+			afld.belarus: 15
 			atek: 1
 			stek: 1
 			spen: 1
@@ -307,13 +358,13 @@ Player:
 	SquadManagerBotModule@rush:
 		RequiresCondition: enable-rush-ai
 		SquadSize: 20
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
-		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
+		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		ConstructionYardTypes: fact
 		AirUnitsTypes: mig, yak, heli, hind, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
-		IgnoredEnemyTargetTypes: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	McvManagerBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
 		McvTypes: mcv
@@ -326,8 +377,10 @@ Player:
 			e2: 15
 			e3: 30
 			e4: 15
+			e6: 5
 			dog: 15
 			shok: 15
+			medi: 10
 			harv: 10
 			apc: 30
 			jeep: 20
@@ -345,17 +398,20 @@ Player:
 			harv: 8
 			jeep: 4
 			ftrk: 4
+			medi: 3
+			e6: 1
 	SquadManagerBotModule@normal:
 		RequiresCondition: enable-normal-ai
-		SquadSize: 40
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
-		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
+		SquadSize: 20
+		SquadSizeRandomBonus: 20
+		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
 		AirUnitsTypes: mig, yak, heli, hind, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
-		IgnoredEnemyTargetTypes: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@normal:
 		RequiresCondition: enable-normal-ai
 		UnitsToBuild:
@@ -363,8 +419,11 @@ Player:
 			e2: 15
 			e3: 30
 			e4: 15
+			e6: 5
 			dog: 15
 			shok: 15
+			medi: 10
+			mech: 10
 			harv: 15
 			apc: 30
 			jeep: 20
@@ -377,31 +436,39 @@ Player:
 			4tnk: 25
 			ttnk: 25
 			stnk: 5
+			mrj: 3
 			heli: 30
 			mh60: 30
 			mig: 30
 			yak: 30
 			ss: 10
 			msub: 10
+			typh: 10
 			dd: 10
 			ca: 10
 			pt: 10
 		UnitLimits:
+			e2: 5
+			e4: 5
 			dog: 4
+			mech: 3
+			medi: 3
 			harv: 8
 			jeep: 4
 			ftrk: 4
+			mrj: 1
+			e6: 1
 	SquadManagerBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		SquadSize: 10
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
-		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly
+		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly, e6, thf
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
 		AirUnitsTypes: mig, yak, heli, hind, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
-		IgnoredEnemyTargetTypes: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		UnitsToBuild:
@@ -409,6 +476,8 @@ Player:
 			e2: 15
 			e3: 30
 			e4: 15
+			e6: 5
+			thf: 1
 			dog: 15
 			shok: 15
 			harv: 15
@@ -429,6 +498,7 @@ Player:
 			yak: 30
 			ss: 10
 			msub: 10
+			typh: 10
 			dd: 10
 			ca: 10
 			pt: 10
@@ -439,6 +509,8 @@ Player:
 			jeep: 4
 			ftrk: 4
 			mnly: 2
+			e6: 1
+			thf: 1
 	MinelayerBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		MinelayingActorTypes: mnly
@@ -449,14 +521,14 @@ Player:
 	SquadManagerBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		SquadSize: 1
-		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
+		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
 		AirUnitsTypes: mig, yak, heli, hind, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
-		IgnoredEnemyTargetTypes: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		UnitsToBuild:
@@ -471,14 +543,25 @@ Player:
 			yak: 60
 			ss: 10
 			msub: 30
+			typh: 20
 			dd: 30
 			ca: 20
 			pt: 10
+			e6: 1
 		UnitLimits:
 			harv: 4
 			ftrk: 3
 			arty: 1
 			v2rl: 1
 			jeep: 1
+			e6: 1
 		UnitDelays:
 			harv: 10000
+	CaptureManagerBotModule@engineer:
+		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
+		CapturingActorTypes: e6
+		CapturableActorTypes: oilb, hosp, fcom, miss, bio
+	CaptureManagerBotModule@thief:
+		RequiresCondition: enable-turtle-ai
+		CapturingActorTypes: thf
+		CapturableActorTypes: 2tnk, 3tnk, 4tnk, mrj

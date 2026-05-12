@@ -52,7 +52,7 @@ Maverick:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 50
 	Range: 9c0
-	MinRange: 2c0
+	MinRange: 2c512
 	Report: missile7.aud
 	Burst: 2
 	BurstDelays: 7

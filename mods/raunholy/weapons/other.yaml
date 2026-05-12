@@ -26,6 +26,7 @@ FireballLauncher:
 	Inherits: ^FireWeapon
 	Burst: 2
 	BurstDelays: 20
+	Range: 6c0
 	Projectile: Bullet
 		Speed: 250
 		TrailImage: fb2
@@ -126,7 +127,7 @@ DogJaw:
 
 Heal:
 	ReloadDelay: 80
-	Range: 4c0
+	Range: 3c682
 	Report: heal2.aud
 	ValidTargets: Heal
 	Projectile: Bullet
@@ -137,7 +138,7 @@ Heal:
 		ValidTargets: Heal
 	Warhead@2Dam: SpreadDamage
 		Spread: 213
-		Damage: -5000
+		Damage: -4000
 		ValidRelationships: Ally
 		ValidTargets: Heal
 		DebugOverlayColor: 00FF00
@@ -234,16 +235,23 @@ DemoTruckTargeting:
 
 MADTankThump:
 	ValidTargets: GroundActor, WaterActor
-	InvalidTargets: MADTank, Infantry
+	InvalidTargets: MADTank
 	Warhead@1Dam: HealthPercentageDamage
 		Spread: 7c0
 		Damage: 1
+        DamageTypes: Prone50Percent, TriggerProne
 		ValidTargets: GroundActor, WaterActor
-		InvalidTargets: MADTank, Infantry
+		InvalidTargets: MADTank
 	Warhead@Shake: ShakeScreen
 		Duration: 10
 		Intensity: 3
 		Multiplier: 1,0
+	Warhead@3: GrantExternalCondition
+		Range: 7c0
+		Duration: 24
+		Condition: slowdown
+		ValidTargets: Vehicle, Ship
+        InvalidTargets: MADTank
 
 MADTankDetonate:
 	ValidTargets: GroundActor, WaterActor

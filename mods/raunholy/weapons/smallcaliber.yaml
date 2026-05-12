@@ -325,6 +325,10 @@ SilencedPPK:
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 
+SilencedSniper:
+	Inherits: SilencedPPK
+	Range: 5c0
+
 Colt45:
 	Inherits: ^SnipeWeapon
 	ReloadDelay: 7

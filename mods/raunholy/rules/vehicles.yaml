@@ -58,7 +58,7 @@ V2RL:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 130
-		Prerequisites: ~vehicles.allies, ~techlevel.low
+		Prerequisites: fix, ~vehicles.allies, ~techlevel.low
 		Description: actor-1tnk.description
 	Valued:
 		Cost: 700
@@ -90,6 +90,8 @@ V2RL:
 	AttackTurreted:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: 1TNK.Husk
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	WithProductionIconOverlay:
@@ -236,6 +238,9 @@ V2RL:
         RequiresCondition: !parachute
 	AttackTurreted:
         PauseOnCondition: parachute
+	SpeedMultiplier@CRUSH:
+		RequiresCondition: slowdown && !parachute
+		Modifier: 80
 
 4TNK:
 	Inherits: ^TrackedVehicle
@@ -243,7 +248,7 @@ V2RL:
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 230
+		BuildPaletteOrder: 220
 		Prerequisites: fix, stek, ~vehicles.soviet, ~techlevel.high
 		Description: actor-4tnk.description
 	Valued:
@@ -300,6 +305,7 @@ V2RL:
 		Prerequisites: vehicles.upgraded
 	Passenger:
 		Weight: 4
+    -Crushable:
 
 ARTY:
 	Inherits: ^TrackedVehicle
@@ -307,7 +313,7 @@ ARTY:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 220
+		BuildPaletteOrder: 230
 		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
 		Description: actor-arty.description
 	Valued:
@@ -412,6 +418,9 @@ HARV:
 		ResourceSequences:
 			Ore: pip-yellow
 			Gems: pip-red
+	Passenger:
+		Weight: 4
+    -Crushable:
 
 MCV:
 	Inherits: ^Vehicle
@@ -453,6 +462,7 @@ MCV:
 		Condition: invulnerability
 	Passenger:
 		Weight: 4
+    -Crushable:
 
 JEEP:
 	Inherits: ^Vehicle
@@ -498,6 +508,14 @@ JEEP:
 		Types: Infantry
 		MaxWeight: 1
 		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+	ChangesHealth:
+		RequiresCondition: selfrepair
+		PercentageStep: 14 #==20 health, same as external mechanic repairing
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	WithProductionIconOverlay:
@@ -542,8 +560,16 @@ APC:
 	WithMuzzleOverlay:
 	Cargo:
 		Types: Infantry
-		MaxWeight: 5
+		MaxWeight: 6
 		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+	ChangesHealth:
+		RequiresCondition: selfrepair
+		PercentageStep: 14 #==20 health, same as external mechanic repairing
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	WithProductionIconOverlay:
@@ -583,7 +609,7 @@ MNLY:
 		TerrainTypes: Clear, Road, Beach, Ore, Gems, Rough, Bridge, Water, WaterFord
 	MineImmune:
 	AmmoPool:
-		Ammo: 5
+		Ammo: 6
 		RearmSound: minelay1.aud
 	DetectCloaked:
 		Range: 5c0
@@ -649,7 +675,7 @@ MGG:
 		Prerequisites: atek, ~vehicles.allies, ~techlevel.high
 		Description: actor-mgg.description
 	Valued:
-		Cost: 1000
+		Cost: 800
 	Tooltip:
 		Name: actor-mgg.name
 	UpdatesPlayerStatistics:
@@ -663,6 +689,7 @@ MGG:
 	WithIdleOverlay@SPINNER:
 		Offset: -299,0,171
 		Sequence: spinner
+		PauseOnCondition: disabled
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -671,9 +698,17 @@ MGG:
 		Range: 4c0
 	CreatesShroud:
 		Range: 7c0
+		RequiresCondition: !disabled
 	RenderShroudCircle:
+		RequiresCondition: !disabled
 	SpawnActorOnDeath:
 		Actor: MGG.Husk
+	GrantConditionOnDeploy:
+		DeployedCondition: disabled
+		SkipMakeAnimation: true
+	SpeedMultiplier:
+		Modifier: 110
+		RequiresCondition: disabled
 
 MRJ:
 	Inherits: ^Vehicle
@@ -933,6 +968,7 @@ QTNK:
 		DecorationBounds: 1877, 1621, 0, -170
 	Passenger:
 		Weight: 4
+    -Crushable:
 
 STNK:
 	Inherits: ^Vehicle
@@ -945,7 +981,7 @@ STNK:
 		Prerequisites: atek, ~vehicles.france, ~techlevel.high
 		Description: actor-stnk.description
 	Valued:
-		Cost: 1000
+		Cost: 1100
 	Tooltip:
 		Name: actor-stnk.name
 	UpdatesPlayerStatistics:

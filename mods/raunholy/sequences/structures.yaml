@@ -14,6 +14,21 @@ fcom:
 			DESERT: bib3.des
 		Length: *
 
+fcom.destroyed:
+	Defaults:
+		Filename: fcom.shp
+	idle:
+		Start: 1
+	dead:
+		Start: 1
+		Tick: 800
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+
 hosp:
 	Defaults:
 		Filename: hosp.shp
@@ -44,6 +59,21 @@ hosp:
 	icon:
 		Filename: hospicon.shp
 
+hosp.destroyed:
+	idle:
+		Filename: hosp.shp
+		Start: 8
+		Length: 1
+		Offset: 0,-2
+	bib:
+		TilesetFilenames:
+			SNOW: mbHOSP.sno
+			INTERIOR: mbHOSP.int
+			TEMPERAT: mbHOSP.tem
+			DESERT: mbHOSP.des
+		Length: *
+		Offset: 0,1
+
 bio:
 	Defaults:
 		Filename: bio.shp
@@ -57,6 +87,17 @@ bio:
 		Filename: biomake.shp
 		Length: *
 		Tick: 80
+
+bio.destroyed:
+	Defaults:
+		Filename: bio.shp
+	idle:
+		Start: 2
+		Offset: 0,-2
+	dead:
+		Start: 2
+		Tick: 800
+		Offset: 0,-2
 
 oilb:
 	Defaults:
@@ -74,6 +115,16 @@ oilb:
 			DESERT: bib3.des
 		Length: *
 		Offset: 0,0
+
+oilb.destroyed:
+	Defaults:
+		Filename: oilb.shp
+		Offset: 0,-6
+	idle:
+		Start: 1
+	dead: 
+		Start: 1
+		Tick: 800
 
 fact:
 	Defaults:
@@ -254,6 +305,8 @@ barr:
 		Length: *
 	icon:
 		Filename: barricon.shp
+	fake-icon:
+		Filename: barficon.shp
 
 tent:
 	Defaults:
@@ -371,6 +424,8 @@ stek:
 		Length: *
 	icon:
 		Filename: stekicon.shp
+	fake-icon:
+		Filename: steficon.shp
 
 weap:
 	Defaults:
@@ -803,6 +858,8 @@ iron:
 		Offset: 0,-2
 	icon:
 		Filename: ironicon.shp
+	fake-icon:
+		Filename: iroficon.shp
 
 pdox:
 	Defaults:
@@ -872,6 +929,21 @@ miss:
 	make:
 		Filename: missmake.shp
 		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+
+miss.destroyed:
+	Defaults:
+		Filename: miss.shp
+	idle:
+		Start: 2
+	dead:
+		Start: 2
+		Tick: 800
 	bib:
 		Filename: bib2.tem
 		TilesetFilenames:
@@ -1018,3 +1090,42 @@ abar:
 		Length: *
 	icon:
 		Filename: abaricon.shp
+
+ercc:
+	Defaults:
+		Filename: ercc.shp
+	idle:
+		Offset: 2, 3
+		ZOffset: -1c511
+	damaged-idle:
+		Offset: 2, 3
+		ZOffset: -1c511
+		Start: 1
+	idle-top:
+		Filename: ercc-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 0
+	damaged-idle-top:
+		Filename: ercc-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 1
+	make:
+		Filename: erccmake.shp
+		Offset: 5, -1
+		Length: *
+	dead:
+		Filename: erccdead.shp
+		Offset: 2, 3
+		Tick: 800
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Offset: 2, 8
+		ZOffset: -1c612
+		Length: *
+	icon:
+		Filename: procicon.shp

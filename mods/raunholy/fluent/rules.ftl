@@ -18,6 +18,10 @@ checkbox-reusable-engineers =
     .label = Reusable Engineers
     .description = Engineers stay on the battlefield after capturing a structure
 
+checkbox-ercc-refinery =
+    .label = ERCC Refinery
+    .description = Enables a more open version of Ore Refinery
+
 notification-insufficient-funds = Insufficient funds.
 notification-new-construction-options = New construction options.
 notification-cannot-deploy-here = Cannot deploy here.
@@ -42,7 +46,7 @@ faction-allies =
 faction-england =
     .name = England
     .description = England: Counterintelligence
-     Special Unit: British Spy
+     Special Unit: Armed Spy
      Special Unit: Mobile Radar Jammer
 
 faction-france =
@@ -185,6 +189,7 @@ meta-neutralplane-generic-name = Plane
 meta-helicopter-generic-name = Helicopter
 meta-basicbuilding-generic-name = Structure
 meta-techbuilding-name = Civilian Building
+meta-techbuilding-husk-name = Husk (Civilian Building)
 meta-ammobox-name = Ammo Box
 meta-civfield-name = Field
 
@@ -273,7 +278,25 @@ actor-facf =
     .generic-name = Construction Yard
     .description = Looks like a Construction Yard.
 
+actor-barf =
+    .name = Fake Soviet Barracks
+    .generic-name = Soviet Barracks
+    .description = Looks like an Soviet Barracks.
+
+actor-stef =
+    .name = Fake Soviet Tech Center
+    .generic-name = Soviet Tech Center
+    .description = Looks like an Soviet Tech Center.
+
+actor-irof =
+    .name = Fake Iron Curtain
+    .generic-name = Iron Curtain
+    .description =
+    Looks like a Iron Curtain.
+    Maximum of one can be built.
+
 ## husks.yaml
+actor-1tnk-husk-name = Husk (Light Tank)
 actor-2tnk-husk-name = Husk (Medium Tank)
 actor-3tnk-husk-name = Husk (Heavy Tank)
 actor-4tnk-husk-name = Husk (Mammoth Tank)
@@ -291,6 +314,11 @@ actor-heli-husk-name = Longbow
 actor-hind-husk-name = Hind
 actor-u2-husk-name = Husk (Spy Plane)
 actor-mh60-husk-name = Black Hawk
+actor-hosp-husk-name = Husk (Hospital)
+actor-fcom-husk-name = Husk (Forward Command Post)
+actor-miss-husk-name = Husk (Observatory)
+actor-bio-husk-name = Husk (Biological Lab)
+actor-oilb-husk-name = Husk (Oil Derrick)
 
 ## infantry.yaml
 notification-building-infiltrated = Building infiltrated.
@@ -336,7 +364,9 @@ actor-e6 =
     .name = Engineer
     .description =
     Infiltrates and captures
-    enemy structures.
+    enemy and tech structures.
+    Can also restore destroyed
+    bridges and tech structures.
       Unarmed
 
 actor-spy =
@@ -351,7 +381,7 @@ actor-spy =
       Special Ability: Disguised
 
 actor-spy-england =
-    .disguisetooltip-name = British Spy
+    .disguisetooltip-name = Armed Spy
     .description =
     Infiltrates enemy structures for intel or
     sabotage. Exact effect depends on the
@@ -386,6 +416,7 @@ actor-medi =
     .name = Medic
     .description =
     Heals nearby infantry.
+    Self-heals slowly while out of combat.
       Unarmed
 
 actor-mech =
@@ -393,6 +424,7 @@ actor-mech =
     .description =
     Repairs nearby vehicles and restores husks to
     working condition by capturing them.
+    Can also repair transports from within.
       Unarmed
 
 actor-einstein-name = Prof. Einstein
@@ -546,6 +578,7 @@ actor-gap =
     .name = Gap Generator
     .description =
     Obscures the enemy's view with shroud.
+    Can be supercharged to expand radius.
     Requires power to operate.
 
 actor-spen =
@@ -582,10 +615,10 @@ actor-pdox =
       Special Ability: Chronoshift
     .chronoshiftpower-chronoshift-name = Chronoshift
     .chronoshiftpower-chronoshift-description = Teleports a group of units across
-    the map for 20 seconds.
+    the map for 30 seconds.
     .chronoshiftpower-advancedchronoshift-name = Advanced Chronoshift
     .chronoshiftpower-advancedchronoshift-description = Teleports a large group of units across
-    the map for 20 seconds.
+    the map for 30 seconds.
 
 actor-tsla =
     .name = Tesla Coil
@@ -630,7 +663,7 @@ actor-hbox =
       Weak vs Tanks and Aircraft
 
 actor-gun =
-    .name = Turret
+    .name = Gun Turret
     .description =
     Anti-Armor base defense.
     Can detect cloaked units.
@@ -757,7 +790,7 @@ actor-kenn =
 actor-tent =
     .name = Allied Barracks
     .description =
-    Trains infantry.
+    Trains and heals infantry.
 
 actor-fix =
     .name = Service Depot
@@ -837,7 +870,8 @@ actor-4tnk =
     .generic-name = Tank
     .description =
     Large, slow tank with anti-air capabilities.
-    Can crush concrete walls.
+    Can crush concrete walls and most vehicles.
+    Self-repairs slowly while out of combat.
       Strong vs Vehicles, Infantry and Aircraft
       Weak vs Nothing
 
@@ -852,8 +886,8 @@ actor-harv =
     .name = Ore Truck
     .generic-name = Harvester
     .description =
-    Collects Ore and Gems for
-    processing.
+    Collects Ore and Gems for processing.
+    Self-repairs slowly while out of combat.
       Unarmed
 
 actor-mcv =
@@ -898,6 +932,7 @@ actor-mgg =
     .name = Mobile Gap Generator
     .description =
     Regenerates shroud to obscure nearby areas.
+    Can be toggled on/off via the deploy command.
       Unarmed
 
 actor-mrj =
@@ -939,11 +974,11 @@ actor-ctnk =
       Special ability: Can teleport
 
 actor-qtnk =
-    .name = MAD Tank
+    .name = M.A.D. Tank
     .generic-name = Tank
     .description =
     Deals seismic damage to nearby vehicles
-    and structures.
+    and structures. Slows affected vehicles.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
 
@@ -962,12 +997,12 @@ actor-hosp =
     .capturable-desc = Capture to enable self-healing for infantry.
 
 actor-fcom =
-    .name = Forward Command
+    .name = Forward Command Post
     .captured-desc = Provides buildable area.
     .capturable-desc = Capture to give buildable area.
 
 actor-miss =
-    .name = Communications Center
+    .name = Observatory
     .captured-desc = Provides range of vision.
     .capturable-desc = Capture to give visual range.
 

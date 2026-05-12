@@ -41,7 +41,7 @@ TENF:
 	Buildable:
 		BuildPaletteOrder: 880
 		Queue: Defense
-		Prerequisites: anypower, ~structures.france, ~techlevel.infonly
+		Prerequisites: ~structures.france, ~techlevel.infonly
 		Description: actor-tenf.description
 		Icon: fake-icon
 	Tooltip:
@@ -74,7 +74,7 @@ SYRF:
 	Buildable:
 		BuildPaletteOrder: 890
 		Queue: Defense
-		Prerequisites: anypower, ~structures.france, ~techlevel.medium
+		Prerequisites: anypower, proc, ~structures.france, ~techlevel.low
 		Description: actor-syrf.description
 		Icon: fake-icon
 	Tooltip:
@@ -121,7 +121,7 @@ SPEF:
 	Buildable:
 		BuildPaletteOrder: 890
 		Queue: Defense
-		Prerequisites: ~disabled
+		Prerequisites: anypower, proc, ~structures.unholy, ~techlevel.low
 		Description: actor-spef.description
 		Icon: fake-icon
 	Tooltip:
@@ -163,7 +163,7 @@ WEAF:
 		Bounds: 3072, 2048
 	Buildable:
 		BuildPaletteOrder: 920
-		Prerequisites: anypower, ~structures.france, ~techlevel.medium
+		Prerequisites: anypower, proc, ~structures.france, ~techlevel.medium
 		Queue: Defense
 		Description: actor-weaf.description
 		Icon: fake-icon
@@ -211,7 +211,7 @@ DOMF:
 	Buildable:
 		BuildPaletteOrder: 930
 		Queue: Defense
-		Prerequisites: anypower, ~structures.france, ~techlevel.medium
+		Prerequisites: anypower, proc, ~structures.france, ~techlevel.medium
 		Description: actor-domf.description
 		Icon: fake-icon
 	Building:
@@ -436,3 +436,104 @@ FACF:
 		Type: Rectangle
 			TopLeft: -1536, -1536
 			BottomRight: 1536, 1536
+
+BARF:
+	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 2048, 2048
+	Buildable:
+		BuildPaletteOrder: 885
+		Queue: Defense
+		Prerequisites: ~structures.unholy, ~techlevel.infonly
+		Description: actor-barf.description
+		Icon: fake-icon
+	Tooltip:
+		Name: actor-barf.name
+		GenericName: actor-barf.generic-name
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	RenderSprites:
+		Image: BARR
+	Valued:
+		Cost: 100
+	Health:
+		HP: 60000
+	Armor:
+		Type: Wood
+	WithBuildingBib:
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 490,-470,0, 355,512,0, -355,-512,0, -630,512,0
+
+STEF:
+	Inherits: ^FakeBuilding
+	Inherits@shape: ^3x2Shape
+	HitShape:
+		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
+	Buildable:
+		BuildPaletteOrder: 975
+		Queue: Defense
+		Prerequisites: weap, dome, ~structures.unholy, ~techlevel.high
+		Description: actor-stef.description
+		Icon: fake-icon
+	Tooltip:
+		Name: actor-stef.name
+		GenericName: actor-stef.generic-name
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Building:
+		Footprint: XxX XxX
+		Dimensions: 3,2
+		LocalCenterOffset: 0,-256,0
+	Health:
+		HP: 80000
+	Armor:
+		Type: Wood
+	WithBuildingBib:
+	RenderSprites:
+		Image: STEK
+	Selectable:
+		Bounds: 3072, 2048
+	Valued:
+		Cost: 400
+
+IROF:
+	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
+	Inherits@IDISABLE: ^DisableOnLowPower
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 2048, 2048
+	Tooltip:
+		Name: actor-irof.name
+		GenericName: actor-irof.generic-name
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Buildable:
+		BuildPaletteOrder: 985
+		Queue: Defense
+		Prerequisites: stek, ~structures.unholy, ~techlevel.unrestricted
+		BuildLimit: 1
+		Description: actor-irof.description
+		Icon: fake-icon
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Image: IRON
+	WithBuildingBib:
+		HasMinibib: true
+	Valued:
+		Cost: 300
+	Health:
+		HP: 100000
+	Armor:
+		Type: Wood
+	FireWarheadsOnDeath:
+		DamageThreshold: 50

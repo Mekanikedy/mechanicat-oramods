@@ -26,6 +26,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	ClassicProductionQueue@Defense:
 		Type: Defense
 		DisplayOrder: 1
@@ -40,6 +41,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	ClassicProductionQueue@Vehicle:
 		Type: Vehicle
 		DisplayOrder: 3
@@ -54,7 +56,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
-		BuildTimeSpeedReduction: 100, 75, 60, 50
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	ClassicProductionQueue@Infantry:
 		Type: Infantry
 		DisplayOrder: 2
@@ -69,6 +71,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	ClassicProductionQueue@Ship:
 		Type: Ship
 		DisplayOrder: 5
@@ -83,6 +86,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	ClassicProductionQueue@Aircraft:
 		Type: Aircraft
 		DisplayOrder: 4
@@ -97,6 +101,7 @@ Player:
 		OnHoldAudio: OnHold
 		CancelledAudio: Cancelled
 		SpeedUp: True
+		BuildTimeSpeedReduction: 100, 90, 75, 67, 50
 	PlaceBuilding:
 		NewOptionsNotification: NewOptions
 		CannotPlaceNotification: BuildingCannotPlaceAudio
@@ -115,6 +120,8 @@ Player:
 		TextNotification: notification-low-power
 	AllyRepair:
 	PlayerResources:
+		SelectableCash: 7500, 15000, 30000
+		DefaultCash: 7500
 		InsufficientFundsNotification: InsufficientFunds
 		InsufficientFundsTextNotification: notification-insufficient-funds
 		CashTickUpNotification: CashTickUp
@@ -145,6 +152,13 @@ Player:
 		Enabled: False
 		DisplayOrder: 9
 		Prerequisites: global-reusable-engineers
+	LobbyPrerequisiteCheckbox@ERCCREFINERY:
+		ID: ercc-refinery
+		Label: checkbox-ercc-refinery.label
+		Description: checkbox-ercc-refinery.description
+		Enabled: True
+		DisplayOrder: 11
+		Prerequisites: global-ercc-refinery
 	FrozenActorLayer:
 	BaseAttackNotifier:
 		TextNotification: notification-base-under-attack

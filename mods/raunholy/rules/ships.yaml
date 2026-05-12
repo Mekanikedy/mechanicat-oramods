@@ -263,6 +263,14 @@ LST:
 		MaxWeight: 8
 		PassengerFacing: 0
 		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+	ChangesHealth:
+		RequiresCondition: selfrepair
+		PercentageStep: 14 #==20 health, same as external mechanic repairing
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
 	-Chronoshiftable:
 	Selectable:
 		DecorationBounds: 1536, 1536

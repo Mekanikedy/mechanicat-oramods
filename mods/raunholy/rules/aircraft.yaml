@@ -107,7 +107,7 @@ MIG:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
 	AmmoPool:
-		Ammo: 8
+		Ammo: 10
 		AmmoCondition: ammo
 	Selectable:
 		Bounds: 1536, 1194, 0, 85
@@ -149,7 +149,7 @@ YAK:
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 40
 		Prerequisites: ~afld, ~techlevel.medium
 		Description: actor-yak.description
 	Valued:
@@ -270,6 +270,14 @@ TRAN:
 		Types: Infantry
 		MaxWeight: 8
 		AfterUnloadDelay: 40
+		PassengerConditions:
+			mech: selfrepair
+	ChangesHealth:
+		RequiresCondition: selfrepair
+		PercentageStep: 14 #==20 health, same as external mechanic repairing
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
 	SpawnActorOnDeath:
 		Actor: TRAN.Husk
 	Selectable:
@@ -281,7 +289,7 @@ HELI:
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 30
 		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
 		Description: actor-heli.description
 	Valued:
