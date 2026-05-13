@@ -90,56 +90,56 @@ CRATE:
 	GiveUnitCrateAction@jeep:
 		SelectionShares: 6
 		Units: jeep
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@1tnk:
 		SelectionShares: 6
 		Units: 1tnk
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@apc:
 		SelectionShares: 6
 		Units: apc
-		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@ftrk:
 		SelectionShares: 6
 		Units: ftrk
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@arty:
 		SelectionShares: 5
 		Units: arty
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.medium, dome
 	GiveUnitCrateAction@v2rl:
 		SelectionShares: 5
 		Units: v2rl
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.medium, dome
 	GiveUnitCrateAction@2tnk:
 		SelectionShares: 4
 		Units: 2tnk
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.medium, fix
 	GiveUnitCrateAction@3tnk:
 		SelectionShares: 4
 		Units: 3tnk
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.medium, fix
 	GiveUnitCrateAction@squadlight:
 		SelectionShares: 10
 		Units: e1,e1,e1,e3,e3
-		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus, unholy
 	GiveUnitCrateAction@squadheavyallies:
 		SelectionShares: 7
 		Units: e1,e1,e1,e1,e3,e3,e3,e6,medi
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		TimeDelay: 4500
 	GiveUnitCrateAction@squadheavysoviet:
 		SelectionShares: 7
 		Units: e1,e1,e4,e4,e3,e3,e3,e6
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		TimeDelay: 4500
 	GrantExternalConditionCrateAction@invuln:
 		SelectionShares: 5
@@ -150,33 +150,38 @@ CRATE:
 	GiveUnitCrateAction@lst:
 		SelectionShares: 6
 		Units: lst
-		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@pt:
 		SelectionShares: 6
 		Units: pt
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@ss:
 		SelectionShares: 4
 		Units: ss
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.low
 	GiveUnitCrateAction@dd:
 		SelectionShares: 4
 		Units: dd
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.medium, dome
 	GiveUnitCrateAction@msub:
 		SelectionShares: 4
 		Units: msub
-		ValidFactions: soviet, russia, ukraine, belarus
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.medium, dome
 	GiveUnitCrateAction@ca:
 		SelectionShares: 3
 		Units: ca
-		ValidFactions: allies, england, france, germany
+		ValidFactions: allies, england, france, germany, unholy
 		Prerequisites: techlevel.high, atek
+	GiveUnitCrateAction@typh:
+		SelectionShares: 3
+		Units: typh
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
+		Prerequisites: techlevel.high, stek
 
 MONEYCRATE:
 	Inherits: ^Crate
@@ -450,7 +455,7 @@ powerproxy.paratroopers:
 		ClockSequence: clock
 		CircleSequence: circles
 
-barracks.upgraded:
+infantry.upgraded:
 	AlwaysVisible:
 	ProvidesPrerequisite:
 
@@ -507,6 +512,7 @@ fact.colorpicker:
             soviet: fact
             russia: fact
             ukraine: fact
+            belarus: fact
 		Palette: colorpicker
 
 CTFLAG:
@@ -530,7 +536,7 @@ CTFLAG:
 gpssactivator:
 	Interactable:
 	EditorOnlyTooltip:
-		Name: (Timed GPS Sattelite Activator)
+		Name: actor-gpssactivator-name
 	AlwaysVisible:
 	Aircraft:
 		Repulsable: False
@@ -560,12 +566,12 @@ gpssactivator:
 		Queue: SupportPower
 		Prerequisites: ~disabled
 	Tooltip:
-		Name: "Dummy Actor to activate Timed GPS Sattelite"
+		Name: actor-gpssactivator-description
 
 gpss:
 	Interactable:
 	EditorOnlyTooltip:
-		Name: (Timed GPS Sattelite)
+		Name: actor-gpss-name
 	AlwaysVisible:
 	Aircraft:
 		Repulsable: False
@@ -579,7 +585,7 @@ gpss:
 	ProvidesPrerequisite:
 		Prerequisite: gpss
 	Health:
-		HP: 2250
+		HP: 3000
 	HitShape:
 	ChangesHealth:
 		Step: -1
@@ -592,7 +598,7 @@ gpss:
 		Icon: gps
 		Actors: e1
 		Type: Infantry
-		ChargeInterval: 2251
+		ChargeInterval: 3001
 		SupportPowerPaletteOrder: 120
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		RequiresCondition: gpss-activated
@@ -603,12 +609,235 @@ gpss:
 		Prerequisites: gpss
 		Condition: gpss-activated
 	GrantConditionOnPrerequisite@satelliteexists:
-		Prerequisites: uplink
+		Prerequisites: uplink, dome
 		Condition: uplinkexists
 	KillsSelf:
         #   Delay: 2
 		RequiresCondition: !uplinkexists
 	ActorLostNotification:
 		Notification: SatelliteTerminated
-        TextNotification: GPS Sattelite terminated.
+        TextNotification: notification-sattelite-lost
 		#   NotifyAll: True
+
+#   this is required to prevent stacking duration issues from 
+#   multiple sources of Veterancy infiltrated.
+#   the alternative is to complicate the Spy Infilration code with
+#   one Infiltrates per production structure.
+infveterancyactivator:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-infveterancyactivator.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	Health:
+		HP: 1
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	SpawnActorOnDeath:
+		Actor: infantry.upgraded2
+		SpawnAfterDefeat: False
+        RequiresCondition: !infveterancyenabled
+	GrantConditionOnPrerequisite@veterancyenabling:
+		Prerequisites: infantry.upgraded
+		Condition: infveterancyenabled
+	KillsSelf:
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~disabled
+	Tooltip:
+		Name: actor-infveterancyactivator.description
+
+infantry.upgraded2:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-infantry-upgraded.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite:
+		Prerequisite: infantry.upgraded
+	Health:
+		HP: 3000
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	ProduceActorPower@veterancyactivesign:
+        OrderName: InfantryVeterancy
+		Name: actor-infantry-upgraded.produceactorpower-infantryveterancy-name
+		Description: actor-infantry-upgraded.produceactorpower-infantryveterancy-description
+		Icon: infvet
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 3001
+		SupportPowerPaletteOrder: 120
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: infveterancyactivated
+	GrantConditionOnPrerequisite@veterancyactivation:
+		Prerequisites: infantry.upgraded
+		Condition: infveterancyactivated
+
+vehveterancyactivator:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-vehveterancyactivator.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	Health:
+		HP: 1
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	SpawnActorOnDeath:
+		Actor: vehicles.upgraded2
+		SpawnAfterDefeat: False
+        RequiresCondition: !vehveterancyenabled
+	GrantConditionOnPrerequisite@veterancyenabling2:
+		Prerequisites: vehicles.upgraded
+		Condition: vehveterancyenabled
+	KillsSelf:
+	Buildable:
+		Queue: Vehicle
+		Prerequisites: ~disabled
+	Tooltip:
+		Name: actor-vehveterancyactivator.description
+
+vehicles.upgraded2:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-vehicles-upgraded.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite:
+		Prerequisite: vehicles.upgraded
+	Health:
+		HP: 3000
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	ProduceActorPower@veterancyactivesign2:
+        OrderName: VehicleVeterancy
+		Name: actor-vehicles-upgraded.produceactorpower-vehiclesveterancy-name
+		Description: actor-vehicles-upgraded.produceactorpower-vehiclesveterancy-description
+		Icon: vehvet
+		Actors: jeep
+		Type: Vehicle
+		ChargeInterval: 3001
+		SupportPowerPaletteOrder: 220
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: vehveterancyactivated
+	GrantConditionOnPrerequisite@veterancyactivation2:
+		Prerequisites: vehicles.upgraded
+		Condition: vehveterancyactivated
+
+airveterancyactivator:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-airveterancyactivator.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	Health:
+		HP: 1
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	SpawnActorOnDeath:
+		Actor: aircraft.upgraded2
+		SpawnAfterDefeat: False
+        RequiresCondition: !airveterancyenabled
+	GrantConditionOnPrerequisite@veterancyenabling3:
+		Prerequisites: aircraft.upgraded
+		Condition: airveterancyenabled
+	KillsSelf:
+	Buildable:
+		Queue: Aircraft
+		Prerequisites: ~disabled
+	Tooltip:
+		Name: actor-airveterancyactivator.description
+
+aircraft.upgraded2:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-aircraft-upgraded.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite:
+		Prerequisite: aircraft.upgraded
+	Health:
+		HP: 3000
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	ProduceActorPower@veterancyactivesign3:
+        OrderName: AircraftVeterancy
+		Name: actor-aircraft-upgraded.produceactorpower-aircraftveterancy-name
+		Description: actor-aircraft-upgraded.produceactorpower-aircraftveterancy-description
+		Icon: airvet
+		Actors: tran
+		Type: Aircraft
+		ChargeInterval: 3001
+		SupportPowerPaletteOrder: 320
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: airveterancyactivated
+	GrantConditionOnPrerequisite@veterancyactivation3:
+		Prerequisites: aircraft.upgraded
+		Condition: airveterancyactivated

@@ -782,9 +782,6 @@ rank:
 		Start: 1
 	rank-veteran-3:
 		Start: 2
-	rank-elite:
-		Start: 3
-		Offset: 1, 3
 
 iconchevrons:
 	veteran:
@@ -870,6 +867,12 @@ icon:
 		Filename: sonricon.shp
 	airdrop:
 		Filename: ptnkicon.shp
+	infvet:
+		Filename: tentrankicon.shp
+	vehvet:
+		Filename: weaprankicon.shp
+	airvet:
+		Filename: hpadrankicon.shp
 
 quee:
 	Defaults:

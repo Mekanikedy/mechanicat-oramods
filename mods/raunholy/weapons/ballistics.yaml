@@ -105,7 +105,7 @@ TurretGun:
 			None: 90
 			Wood: 40
 			Light: 60
-			Heavy: 25
+			Heavy: 30
 		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
 	Warhead@3Eff: CreateEffect
 		Explosions: artillery_explosion

@@ -102,10 +102,10 @@ E1:
 		Palette: player-noshadow
 		IsPlayerPalette: true
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 
 E1R1:
 	Inherits: E1
@@ -165,10 +165,10 @@ E2:
         Chance: 100
         DeathTypes: CrushingDeath
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 
 E3:
 	Inherits: ^Soldier
@@ -192,16 +192,24 @@ E3:
 	Armament@PRIMARY:
 		Weapon: RedEye
 		LocalOffset: 0,0,555
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
 	Armament@SECONDARY:
 		Name: secondary
 		Weapon: Dragon
 		LocalOffset: 0,0,555
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: RedEye
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
 	Armament@GARRISONEDSECONDARY:
 		Name: garrisoned
 		Weapon: Dragon
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
 	TakeCover:
 		ProneOffset: 384,0,-395
 	WithInfantryBody:
@@ -213,12 +221,12 @@ E3:
 		Palette: player-noshadow
 		IsPlayerPalette: true
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	AutoTarget:
 		ScanRadius: 5
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 
 E3R1:
 	Inherits: E3
@@ -273,10 +281,10 @@ E4:
 		Palette: player-noshadow
 		IsPlayerPalette: true
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 
 E6:
 	Inherits: ^Soldier
@@ -462,10 +470,10 @@ E7:
 	Voiced:
 		VoiceSet: TanyaVoice
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 
 E8:
 	Inherits: GNRL
@@ -508,10 +516,10 @@ E8:
 	Armament@GARRISONED:
         Weapon: PortaCannon
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	Targetable:
 		RequiresCondition: !parachute
 		TargetTypes: GroundActor, Infantry, Disguise, Ant
@@ -546,7 +554,7 @@ MEDI:
 	Mobile:
 		Speed: 49
 	RevealsShroud:
-		Range: 3c0
+		Range: 4c0
 	Passenger:
 		CustomPipType: blue
 	Armament:
@@ -624,18 +632,6 @@ MEDI:
 		BlinkPatterns:
 			hospitalheal: On, Off
 			-barracksheal:
-	WithDecoration@RANK-ELITE:
-		Image: rank
-		Sequence: rank-elite
-		Palette: effect
-		Position: BottomRight
-		Margin: 5, 6
-		ValidRelationships: Ally, Enemy, Neutral
-		RequiresCondition: rank-elite
-		BlinkInterval: 32
-		BlinkPatterns:
-			hospitalheal: On, Off
-			-barracksheal:
 
 MECH:
 	Inherits: ^Soldier
@@ -657,7 +653,7 @@ MECH:
 		Speed: 49
 		Voice: Move
 	RevealsShroud:
-		Range: 3c0
+		Range: 4c0
 	Passenger:
 		CustomPipType: blue
 		Voice: Move
@@ -867,10 +863,10 @@ SHOK:
 	Voiced:
 		VoiceSet: ShokVoice
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	FireWarheadsOnDeath:
 		Weapon: SHOKExplode
 		EmptyWeapon: SHOKExplode

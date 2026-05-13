@@ -38,46 +38,11 @@ OILB:
 	CashTrickler:
 		Interval: 250
 		Amount: 100
-	SpawnActorOnDeath:
-		Actor: OILB.Husk
-		OwnerType: InternalName
 
 OILB.Husk:
-	Inherits: ^TechBuilding
-	Inherits@shape: ^2x2Shape
-	Selectable:
-		Priority: 0
-		Bounds: 2048, 2048
-	CapturableProgressBar:
-	CapturableProgressBlink:
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Tooltip:
-		Name: actor-oilb-husk-name
-	CaptureManager:
-	Capturable:
-		Types: building-husk
 	TransformOnCapture:
 		IntoActor: OILB
 		ForceHealthPercentage: 50
-	Targetable:
-		TargetTypes: building-husk
-
-E6:
-	Captures@husk:
-		RequiresCondition: !global-reusable-engineers
-		CaptureTypes: building-husk
-		PlayerExperience: 10
-		CaptureDelay: 200
-		EnterCursor: goldwrench
-	Captures@husk-reusable:
-		RequiresCondition: global-reusable-engineers
-		CaptureTypes: building-husk
-		PlayerExperience: 10
-		CaptureDelay: 375
-		EnterCursor: goldwrench
-		ConsumedByCapture: False
 
 WEAP:
 	Buildable:

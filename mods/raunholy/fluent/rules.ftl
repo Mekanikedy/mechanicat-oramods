@@ -482,7 +482,42 @@ actor-lar1-name = Ant Larva
 actor-lar2-name = Ant Larvae
 actor-mpspawn-name = (multiplayer starting point)
 actor-waypoint-name = (waypoint for scripted behavior)
-actor-ctflag-name = Flag
+actor-gpssactivator =
+    .name = (Timed GPS Sattelite Activator)
+    .description =
+    Dummy Actor to activate Timed GPS Sattelite.
+actor-gpss-name = (Timed GPS Sattelite)
+notification-sattelite-lost = GPS Sattelite terminated.
+actor-infveterancyactivator =
+    .name = (Timed Infantry Veterancy Activator)
+    .description =
+    Dummy Actor to activate Timed Infantry Veterancy.
+actor-infantry-upgraded =
+    .name = (Timed Infantry Veterancy)
+    .produceactorpower-infantryveterancy-name = Infantry Veterancy
+    .produceactorpower-infantryveterancy-description =
+    Displays the amount of time the
+    Infantry Veterancy is still active.
+actor-vehveterancyactivator =
+    .name = (Timed Vehicle Veterancy Activator)
+    .description =
+    Dummy Actor to activate Timed Vehicle Veterancy.
+actor-vehicles-upgraded =
+    .name = (Timed Vehicle Veterancy)
+    .produceactorpower-vehiclesveterancy-name = Vehicle Veterancy
+    .produceactorpower-vehiclesveterancy-description =
+    Displays the amount of time the
+    Vehicle Veterancy is still active.
+actor-airveterancyactivator =
+    .name = (Timed Aircraft Veterancy Activator)
+    .description =
+    Dummy Actor to activate Timed Aircraft Veterancy.
+actor-aircraft-upgraded =
+    .name = (Timed Aircraft Veterancy)
+    .produceactorpower-aircraftveterancy-name = Aircraft Veterancy
+    .produceactorpower-aircraftveterancy-description =
+    Displays the amount of time the
+    Aircraft Veterancy is still active.
 
 ## ships.yaml
 actor-ss =

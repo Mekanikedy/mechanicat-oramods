@@ -69,7 +69,7 @@ MSLO:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
-		Amount: -150
+		Amount: -200
 	MustBeDestroyed:
 		RequiredForShortGame: false
 	WithSupportPowerActivationAnimation:
@@ -531,7 +531,7 @@ IRON:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
-		Amount: -200
+		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
 
@@ -629,6 +629,12 @@ PDOX:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
 		Amount: -200
+	PowerMultiplier:
+		Modifier: 75
+		RequiresCondition: !pdox-germany
+	GrantConditionOnPrerequisite@germanstructure:
+		Prerequisites: pdox.germany
+		Condition: pdox-germany
 	MustBeDestroyed:
 		RequiredForShortGame: false
 	ProvidesPrerequisite@buildingname:
@@ -1125,7 +1131,7 @@ ATEK:
 		Icon: gps
 		Actors: gpssactivator
 		Type: SupportPower
-		ChargeInterval: 6750
+		ChargeInterval: 6000
 		SupportPowerPaletteOrder: 20
 		LaunchSpeechNotification:
 		IncomingSpeechNotification:
@@ -1264,7 +1270,7 @@ WEAP:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	InfiltrateForSupportPower:
-		Proxy: vehicles.upgraded
+		Proxy: vehveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 	-ActorPreviewPlaceBuildingPreview:
@@ -1655,7 +1661,7 @@ HPAD:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	InfiltrateForSupportPower:
-		Proxy: aircraft.upgraded
+		Proxy: airveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 
@@ -1838,7 +1844,7 @@ AFLD:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	InfiltrateForSupportPower:
-		Proxy: aircraft.upgraded
+		Proxy: airveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 	WithResupplyAnimation:
@@ -2076,7 +2082,7 @@ BARR:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
-		Proxy: barracks.upgraded
+		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 	Targetable:
@@ -2250,7 +2256,7 @@ TENT:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
-		Proxy: barracks.upgraded
+		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 	Targetable:
@@ -2677,7 +2683,7 @@ ABAR:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
-		Proxy: barracks.upgraded
+		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
 	Targetable:

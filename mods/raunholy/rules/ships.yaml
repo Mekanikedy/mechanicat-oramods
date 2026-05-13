@@ -148,6 +148,8 @@ DD:
 		Weapon: Stinger
 		LocalOffset: 0,-100,0, 0,100,0
 		LocalYaw: 64, -64
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
 	Armament@SECONDARY:
 		Weapon: DepthCharge
 		LocalOffset: 0,-100,0, 0,100,0
@@ -156,6 +158,8 @@ DD:
 		Weapon: StingerAA
 		LocalOffset: 0,-100,0, 0,100,0
 		LocalYaw: 64, -64
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
 	AttackTurreted:
 	WithSpriteTurret:
 	DetectCloaked:
@@ -296,7 +300,7 @@ PT:
 		Type: Heavy
 	Mobile:
 		TurnSpeed: 28
-		Speed: 142
+		Speed: 128
 	RevealsShroud:
 		MinRange: 6c0
 		Range: 8c0
@@ -340,7 +344,7 @@ TYPH:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 55000
+		HP: 52500
 	Armor:
 		Type: Light
 	Mobile:

@@ -79,7 +79,7 @@ MIG:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 8000
+		HP: 9000
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 13c0
@@ -311,11 +311,13 @@ HELI:
 	Armament@PRIMARY:
 		Weapon: HellfireAA
 		LocalOffset: 0,-213,-85, 0,213,-85
-		PauseOnCondition: !ammo
+		PauseOnCondition: !ammo && reload-ground
+		ReloadingCondition: reload-air
 	Armament@SECONDARY:
 		Weapon: HellfireAG
 		LocalOffset: 0,213,-85, 0,-213,-85
-		PauseOnCondition: !ammo
+		PauseOnCondition: !ammo && reload-air
+		ReloadingCondition: reload-ground
 	AttackAircraft:
 		FacingTolerance: 80
 		PersistentTargeting: false

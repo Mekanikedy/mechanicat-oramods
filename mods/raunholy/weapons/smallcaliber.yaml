@@ -81,7 +81,7 @@ FLAK-23-AG:
 		Versus:
 			None: 150
 			Wood: 10
-			Light: 40
+			Light: 30
 			Heavy: 10
 			Concrete: 10
 		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath

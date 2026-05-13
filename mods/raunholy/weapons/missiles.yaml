@@ -72,12 +72,13 @@ Maverick:
 
 Dragon:
 	Inherits: ^AntiGroundMissile
+	ReloadDelay: 55
 	Projectile: Missile
 		TrailImage: smokey
 
 HellfireAG:
 	Inherits: ^AntiGroundMissile
-	ReloadDelay: 34
+	ReloadDelay: 35
 	MinRange: 1c256
 	Burst: 2
 	BurstDelays: 10
@@ -95,7 +96,7 @@ HellfireAG:
 
 HellfireAA:
 	Inherits: ^AntiAirMissile
-	ReloadDelay: 30
+	ReloadDelay: 35
 	MinRange: 1c256
 	Range: 4c0
 	Burst: 2
@@ -159,7 +160,7 @@ Nike:
 
 RedEye:
 	Inherits: Nike
-	ReloadDelay: 50
+	ReloadDelay: 55
 	Projectile: Missile
 		Inaccuracy: 0
 		HorizontalRateOfTurn: 80
@@ -217,6 +218,7 @@ APTusk:
 		TrailImage: smokey
 		HorizontalRateOfTurn: 40
 		RangeLimit: 7c204
+		Blockable: false
 
 APTusk.stnk:
 	Inherits: APTusk
@@ -343,7 +345,7 @@ SCUD:
 			Wood: 75
 			Tree: 75
 			Light: 70
-			Heavy: 40
+			Heavy: 50
 			Concrete: 100
 		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath, Incendiary
 	Warhead@3Eff: CreateEffect

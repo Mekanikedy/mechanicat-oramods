@@ -263,7 +263,7 @@ V2RL:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 43
+		Speed: 54
 		Locomotor: heavytracked
 	RevealsShroud:
 		MinRange: 4c0
@@ -373,7 +373,7 @@ HARV:
 	Harvester:
 		Resources: Ore,Gems
 		BaleUnloadDelay: 1
-		SearchFromProcRadius: 15
+		SearchFromProcRadius: 10
 		SearchFromHarvesterRadius: 8
 		HarvestFacings: 8
 		EmptyCondition: no-ore
@@ -826,11 +826,15 @@ FTRK:
 		Recoil: 85
 		LocalOffset: 512,0,192
 		MuzzleSequence: muzzle
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
 	Armament@AG:
 		Weapon: FLAK-23-AG
 		Recoil: 85
 		LocalOffset: 512,0,192
 		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
 	AttackTurreted:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
@@ -918,7 +922,7 @@ CTNK:
 		FacingTolerance: 0
 	PortableChrono:
 		ChargeDelay: 375
-        MaxDistance: 13
+        MaxDistance: 15
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
@@ -942,13 +946,13 @@ QTNK:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 90000
+		HP: 60000
 	Armor:
 		Type: Heavy
 	Mobile:
 		RequiresCondition: !deployed
 		PauseOnCondition: being-captured
-		Speed: 46
+		Speed: 54
 	Chronoshiftable:
 		RequiresCondition: !deployed && !being-captured
 	RevealsShroud:
@@ -969,6 +973,14 @@ QTNK:
 	Passenger:
 		Weight: 4
     -Crushable:
+	ToggleConditionOnOrder@InvulnerabilityDisable:
+		Condition: invulnerability
+		OrderName: deploy
+		RequiresCondition: invulnerability && !deployed
+	WithColoredOverlay@IRONCURTAIN:
+		RequiresCondition: invulnerability && !deployed
+	DamageMultiplier@IRONCURTAIN:
+		RequiresCondition: invulnerability && !deployed
 
 STNK:
 	Inherits: ^Vehicle
@@ -1007,10 +1019,14 @@ STNK:
 		Weapon: Stinger
 		LocalOffset: 192,-100,176, 192,100,176
 		LocalYaw: 64, -64
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
 	Armament@SECONDARY:
 		Weapon: StingerAA
 		LocalOffset: 192,-100,176, 192,100,176
 		LocalYaw: 64, -64
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
 	Turreted:
 		TurnSpeed: 20
 	AttackTurreted:

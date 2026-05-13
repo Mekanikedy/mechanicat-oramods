@@ -52,66 +52,42 @@
 			200: rank-veteran
 			400: rank-veteran
 			800: rank-veteran
-			1600: rank-veteran
 		LevelUpImage: crate-effects
-	GrantCondition@RANK-ELITE:
-		RequiresCondition: rank-veteran >= 4
-		Condition: rank-elite
 	DamageMultiplier@RANK-1:
 		RequiresCondition: rank-veteran == 1
-		Modifier: 95
+		Modifier: 90
 	DamageMultiplier@RANK-2:
 		RequiresCondition: rank-veteran == 2
-		Modifier: 90
+		Modifier: 75
 	DamageMultiplier@RANK-3:
 		RequiresCondition: rank-veteran == 3
-		Modifier: 85
-	DamageMultiplier@RANK-ELITE:
-		RequiresCondition: rank-elite
-		Modifier: 75
+		Modifier: 50
 	FirepowerMultiplier@RANK-1:
 		RequiresCondition: rank-veteran == 1
-		Modifier: 105
+		Modifier: 110
 	FirepowerMultiplier@RANK-2:
 		RequiresCondition: rank-veteran == 2
-		Modifier: 110
+		Modifier: 115
 	FirepowerMultiplier@RANK-3:
 		RequiresCondition: rank-veteran == 3
 		Modifier: 120
-	FirepowerMultiplier@RANK-ELITE:
-		RequiresCondition: rank-elite
-		Modifier: 130
-	SpeedMultiplier@RANK-1:
-		RequiresCondition: rank-veteran == 1
-		Modifier: 105
-	SpeedMultiplier@RANK-2:
-		RequiresCondition: rank-veteran == 2
-		Modifier: 110
-	SpeedMultiplier@RANK-3:
-		RequiresCondition: rank-veteran == 3
-		Modifier: 120
-	SpeedMultiplier@RANK-ELITE:
-		RequiresCondition: rank-elite
-		Modifier: 140
-	ReloadDelayMultiplier@RANK-1:
-		RequiresCondition: rank-veteran == 1
-		Modifier: 95
-	ReloadDelayMultiplier@RANK-2:
-		RequiresCondition: rank-veteran == 2
-		Modifier: 90
 	ReloadDelayMultiplier@RANK-3:
 		RequiresCondition: rank-veteran == 3
-		Modifier: 85
-	ReloadDelayMultiplier@RANK-ELITE:
-		RequiresCondition: rank-elite
-		Modifier: 75
-	ChangesHealth@ELITE:
+		Modifier: 50
+	ChangesHealth@RANK-2:
 		Step: 0
 		PercentageStep: 5
-		Delay: 100
+		Delay: 125
 		StartIfBelow: 100
 		DamageCooldown: 125
-		RequiresCondition: rank-elite
+		RequiresCondition: rank-veteran == 2
+	ChangesHealth@RANK-3:
+		Step: 0
+		PercentageStep: 5
+		Delay: 75
+		StartIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: rank-veteran == 3
 	WithDecoration@RANK-1:
 		Image: rank
 		Sequence: rank-veteran-1
@@ -136,14 +112,13 @@
 		Margin: 5, 6
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: rank-veteran == 3
-	WithDecoration@RANK-ELITE:
-		Image: rank
-		Sequence: rank-elite
-		Palette: effect
-		Position: BottomRight
-		Margin: 5, 6
-		ValidRelationships: Ally, Enemy, Neutral
-		RequiresCondition: rank-elite
+
+^GainsExperienceAircraft:
+	Inherits: ^GainsExperience
+	-ReloadDelayMultiplier@RANK-3:
+	ReloadAmmoDelayMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 50
 
 ^InfantryExperienceHospitalOverrides:
 	WithDecoration@RANK-1:
@@ -157,11 +132,6 @@
 			hospitalheal: On, Off
 			barracksheal: On, Off
 	WithDecoration@RANK-3:
-		BlinkInterval: 32
-		BlinkPatterns:
-			hospitalheal: On, Off
-			barracksheal: On, Off
-	WithDecoration@RANK-ELITE:
 		BlinkInterval: 32
 		BlinkPatterns:
 			hospitalheal: On, Off
@@ -685,7 +655,7 @@
 
 ^Plane:
 	Inherits: ^NeutralPlane
-	Inherits@2: ^GainsExperience
+	Inherits@2: ^GainsExperienceAircraft
 	Huntable:
 	Repairable:
 		RepairActors: fix
@@ -1467,7 +1437,6 @@
 	CaptureManager:
 	Capturable:
 		Types: restore-tech
-		ValidRelationships: Enemy, Neutral, Ally
 	CapturableProgressBlink:
 	Targetable@AIFixer:
 		TargetTypes: IgnoreThis
