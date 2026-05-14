@@ -56,6 +56,7 @@ Maverick:
 	Report: missile7.aud
 	Burst: 2
 	BurstDelays: 7
+	ValidTargets: Ground, Water, GroundActor, WaterActor, Underwater
 	Projectile: Missile
 		Speed: 256
 		Inaccuracy: 316
@@ -69,6 +70,7 @@ Maverick:
 			Light: 90
 			Heavy: 115
 			Concrete: 100
+		ValidTargets: GroundActor, WaterActor, Underwater
 
 Dragon:
 	Inherits: ^AntiGroundMissile
@@ -82,6 +84,7 @@ HellfireAG:
 	MinRange: 1c256
 	Burst: 2
 	BurstDelays: 10
+	ValidTargets: Ground, Water, GroundActor, WaterActor, Underwater
 	Projectile: Missile
 		Speed: 256
 		HorizontalRateOfTurn: 40
@@ -93,6 +96,7 @@ HellfireAG:
 			Wood: 90
 			Light: 90
 			Concrete: 100
+		ValidTargets: GroundActor, WaterActor, Underwater
 
 HellfireAA:
 	Inherits: ^AntiAirMissile
@@ -228,6 +232,7 @@ APTusk.stnk:
 TorpTube:
 	ReloadDelay: 100
 	Range: 9c0
+	MinRange: 2c0 
 	Report: torpedo1.aud
 	ValidTargets: Water, WaterActor, Underwater, Bridge
 	Burst: 2
@@ -235,7 +240,7 @@ TorpTube:
 	Projectile: Missile
 		Image: torpedo
 		Arm: 3
-		Speed: 85
+		Speed: 125
 		TrailImage: bubbles
 		HorizontalRateOfTurn: 4
 		RangeLimit: 10c819
@@ -243,7 +248,7 @@ TorpTube:
 		Palette: shadow
 		MaximumLaunchAngle: 0
 		CruiseAltitude: 0
-        Jammable: false
+		Jammable: false
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
 		Damage: 18000

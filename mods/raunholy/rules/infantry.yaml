@@ -411,6 +411,11 @@ SPY.England:
 		MuzzleSequence: garrison-muzzle
 	AttackMove:
 		Voice: Move
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
 	RenderSprites:
 		Image: spy
 

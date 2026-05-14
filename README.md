@@ -35,7 +35,6 @@ new: Belarus
 
 Buildings
 - tech buildings leave behind a husk when destroyed, that can be restored to function with an engineer
-- the cloak detection gets paused while on low power of all defenses 
 - removed the tech requirement for Barracks and Ore Refinery
 - modified tech requirement for War Factory, Naval Yard, Submarine Pen and Radar Dome to be any Power Plant and a Ore Refinery
 - increased the range check of structures for buildable area by +1 (in effect this means: bases can be built more spaced out)
@@ -110,6 +109,15 @@ Communications Center
 Forward Command
 - the name of Forward Command extended with the word Post
 
+Defenses
+- the cloak detection gets paused while on low power of all defenses except the Pillboxes
+
+Pillbox
+- needs to be loaded in order to detect cloaked units
+
+Camo Pillbox
+- needs to be loaded in order to detect cloaked units
+
 Gun Turret
 - added a secondary anti-submarine depthcharge attack on Gun Turrets
 
@@ -142,7 +150,6 @@ new: Gates
 - Gates can be rotated uing the Toggle Variants hotkey (default:V)
 
 Infantry units
-- Units that have got both a anti-ground and anti-air weapon now have got them linked to share the weapon-reload time to prevent double-firing. This affects Rocket Soldier, Mobile Flak, Apache, and Phase Transport units
 
 Rifle Infantry
 - Weapon range of Rifle Infantry reduced by -1c
@@ -178,6 +185,7 @@ Shock Trooper
 Spy
 - the Spy no longer can attack
 - British Spy changed to Armed Spy that can attack, and uses a sniper while in pillbox
+- the Armed Spy can be produced with veterancy rank when infiltrated an enemy barracks
 - The production veterancy from infiltrating enemy unit production got changed to be timed instead of permanent, and lasts for 2min duration
 
 Thief
@@ -208,6 +216,8 @@ Supply Truck
 
 Jeep
 - ^LightMG damage multiplier versus Light Armor reduced to 30 from 40
+- can detect cloaked units within 2c512 radius when loaded
+- comes with a Rifle Infantry passenger by default
 
 Mobile Flak
 - linked anti-ground and anti-air attacks to prevent double-firing
@@ -257,6 +267,7 @@ Minelayer
 Mobile Radar Jammer
 - Mobile Radar Jammer tech requirement changed to Radar Dome from Allies Tech Center
 - Mobile Radar Jammer has become specific to England faction
+- two hostile Mobile Radar Jammers cancel the missile jamming of each other out when within 5c0 radius
 
 Chrono Tank
 - Chrono Tank teleport recharges in 15sec, down from 20sec
@@ -304,6 +315,8 @@ Submarine
 - on Submarines added a secondary Grenadelauncher weapon for use against targets on land
 - ensured that Torpedoes cannot get jammed
 - Speed of Torpedoes increased to 125 from 85
+- minimum range of 2 added to Torpedo weapon
+- Submarine cost reduced to 850$ from 950$
 
 Missile Submarine
 - Missile Submarine tech requirement changed to Radar Dome from Soviet Tech Center
@@ -322,11 +335,13 @@ Air units
 Yak Attack Plane
 - cost of Yak Attack Plane decreased to 1150$ from 1350$
 - range of Yak Attack Plane's machineguns slightly increased to 6c830 from 6c0
+- given a secondary weapon so that it can attack enemy aircraft
 
 MiG Attack Plane
 - cost of MiG Attack Plane decreased to 1800$ from 2000$
 - MiG Attack Plane obtained +2 ammo, in effect this means it fires one more time before returning
 - Increase hitpoints of MiG Attack Plane by +1000, from 8000 to 9000
+- Maverick missiles set to target submarines in addition
 
 Chinook
 - Chinook renamed to Air Transport
@@ -340,9 +355,12 @@ Longbow
 - Apache cost reduced to 1500$ from 2000$
 - increased reload delay from 34 and 30 to 35 for both of Apache attacks
 - linked anti-ground and anti-air attacks to prevent double-firing
+- the Apache can be deployed to detect submarines when charged up
+- Hellfire missiles can shoot at detected submarines
 
 Hind
 - Hind enabled to be built for Soviets with a Soviet Tech Center from the Helipad
+- the Hind can throw depthcharges at detected submarines. this does not use ammo
 
 Support Powers
 - made all Airfield support powers pause recharging while on low power

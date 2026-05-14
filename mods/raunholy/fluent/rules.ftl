@@ -42,6 +42,13 @@ resource-minerals = Valuable Minerals
 faction-allies =
     .name = Allies
     .description = every Allies country in one
+     Special Ability: 
+        - Can build fake structures
+     Special Units:
+        - Armed Spy
+        - Mobile Radar Jammer
+        - Chrono Tank
+        - Phase Transport
 
 faction-england =
     .name = England
@@ -64,6 +71,14 @@ faction-germany =
 faction-soviet =
     .name = Soviet
     .description = every Soviet country in one
+     Special Abilities:
+        - Parabombs
+        - Air Drop
+     Special Units:
+        - Shock Trooper
+        - Tesla Tank
+        - Demolition Truck
+        - M.A.D. Tank
 
 faction-russia =
     .name = Russia
@@ -86,21 +101,39 @@ faction-belarus =
 faction-unholy =
     .name = Unholy Alliance
     .description = Allies and Soviet both
+     Special Abilities: 
+        - Can build fake structures
+        - Parabombs
+        - Air Drop
+     Special Units:
+        - Armed Spy
+        - Mobile Radar Jammer
+        - Chrono Tank
+        - Phase Transport
+        - Shock Trooper
+        - Tesla Tank
+        - Demolition Truck
+        - M.A.D. Tank
 
 faction-random =
-    .name = Random
-    .description = Any Side
-     Allies or Soviet is chosen at random when the game starts
+    .name = Any Country
+    .description = Random Any Country
+     A random country is chosen when the game starts
 
 faction-randomallies =
-    .name = Allies
+    .name = Allies Country
     .description = Random Allied Country
      A random Allied country is chosen when the game starts
 
 faction-randomsoviet =
-    .name = Soviet
+    .name = Soviet Country
     .description = Random Soviet Country
      A random Soviet country is chosen when the game starts
+
+faction-randomcountry =
+    .name = Random
+    .description = Any Side
+     Allies or Soviet is chosen at random when the game starts
 
 ## aircraft.yaml
 actor-badr-name = Badger
@@ -109,6 +142,7 @@ actor-mig =
     .name = MiG Attack Plane
     .description =
     Fast Ground-Attack Plane.
+    Can attack detected submarines.
       Strong vs Buildings and Vehicles
       Weak vs Infantry and Aircraft
 
@@ -116,6 +150,7 @@ actor-yak =
     .name = Yak Attack Plane
     .description =
     Attack Plane with dual machine guns.
+    Can attack enemy aircraft.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
@@ -129,6 +164,8 @@ actor-heli =
     .name = Apache
     .description =
     Helicopter gunship with multi-purpose missiles.
+    Can attack enemy aircraft.
+    Can detect submarines for a limited time.
       Strong vs Buildings, Vehicles and Aircraft
       Weak vs Infantry
 
@@ -136,6 +173,7 @@ actor-hind =
     .name = Hind
     .description =
     Helicopter gunship with dual chain guns.
+    Can use depthcharges against submarines.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
@@ -350,6 +388,7 @@ actor-e3 =
     .name = Rocket Soldier
     .description =
     Anti-tank/Anti-aircraft infantry.
+    Can attack enemy aircraft.
       Strong vs Vehicles and Aircraft
       Weak vs Infantry
 
@@ -542,6 +581,7 @@ actor-dd =
     .name = Destroyer
     .description =
     Fast multi-role ship.
+    Can attack enemy aircraft.
     Can detect submarines.
       Strong vs Naval units, Vehicles and Aircraft
       Weak vs Infantry
@@ -572,6 +612,7 @@ actor-typh =
     .name = SAM Submarine
     .description =
     Submerged anti-air unit.
+    Can attack enemy aircraft.
     Can detect other submarines.
       Strong vs Aircraft
       Weak vs Naval units
@@ -669,6 +710,7 @@ actor-agun =
     .description =
     Anti-Air base defense.
     Requires power to operate.
+    Can attack enemy aircraft.
       Strong vs Aircraft
       Weak vs Ground units
 
@@ -684,7 +726,7 @@ actor-pbox =
     .description =
     Static defense with a fireport for
     a garrisoned soldier.
-    Can detect cloaked units.
+    Can detect cloaked units when loaded.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
@@ -693,7 +735,7 @@ actor-hbox =
     .description =
     Camouflaged static defense with a fireport
     for a garrisoned soldier.
-    Can detect cloaked units.
+    Can detect cloaked units when loaded.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
@@ -718,6 +760,7 @@ actor-sam =
     .description =
     Anti-Air base defense.
     Requires power to operate.
+    Can attack enemy aircraft.
       Strong vs Aircraft
       Weak vs Ground units
 
@@ -907,6 +950,7 @@ actor-4tnk =
     Large, slow tank with anti-air capabilities.
     Can crush concrete walls and most vehicles.
     Self-repairs slowly while out of combat.
+    Can attack enemy aircraft.
       Strong vs Vehicles, Infantry and Aircraft
       Weak vs Nothing
 
@@ -936,6 +980,7 @@ actor-jeep =
     .description =
     Fast scout and anti-infantry vehicle.
     Can carry just one infantry unit.
+    Can detect cloaked units when loaded.
       Strong vs Infantry
       Weak vs Vehicles and Aircraft
 
@@ -989,6 +1034,7 @@ actor-ftrk =
     .name = Mobile Flak
     .description =
     Mobile unit with a Flak cannon.
+    Can attack enemy aircraft.
       Strong vs Infantry, Light armor and Aircraft
       Weak vs Tanks
 
@@ -1022,6 +1068,7 @@ actor-stnk =
     .description =
     Light armored infantry transport which can
     cloak. Armed with multi-role missiles.
+    Can attack enemy aircraft.
       Strong vs Vehicles, Aircraft
       Weak vs Infantry, Defenses
 

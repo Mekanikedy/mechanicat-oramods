@@ -61,7 +61,7 @@ MSLO:
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
-		SupportPowerPaletteOrder: 70
+		SupportPowerPaletteOrder: 10
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
@@ -520,7 +520,7 @@ IRON:
 		DisplayRadarPing: True
 		Condition: invulnerability
 		OnFireSound: ironcur9.aud
-		SupportPowerPaletteOrder: 10
+		SupportPowerPaletteOrder: 40
 		Dimensions: 3, 3
 		Footprint: _x_ xxx _x_
 		BlockedCursor: move-blocked
@@ -799,7 +799,7 @@ PBOX:
 	Valued:
 		Cost: 600
 	CustomSellValue:
-		Value: 400
+		Value: 500
 	Health:
 		HP: 40000
 	Armor:
@@ -826,6 +826,7 @@ PBOX:
 		Types: Infantry
 		MaxWeight: 1
 		InitialUnits: e1
+		LoadedCondition: loaded
 		PassengerConditions:
 			e3: RocketSoldier
 	WithRangeCircle@ROCKETSOLDIER:
@@ -845,10 +846,9 @@ PBOX:
 		Amount: -20
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: !lowpower
-	GrantConditionOnPowerState@LOWPOWER:
-		Condition: lowpower
-		ValidPowerStates: Low, Critical
+		RequiresCondition: loaded
+	GivesExperience:
+		Experience: 500
 
 HBOX:
 	Inherits: ^Defense
@@ -865,7 +865,7 @@ HBOX:
 	Valued:
 		Cost: 750
 	CustomSellValue:
-		Value: 550
+		Value: 650
 	Health:
 		HP: 40000
 	Armor:
@@ -896,14 +896,12 @@ HBOX:
 	Cargo:
 		Types: Infantry
 		MaxWeight: 1
+		LoadedCondition: loaded
 		InitialUnits: e1
 	-SpawnActorsOnSell:
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: !lowpower
-	GrantConditionOnPowerState@LOWPOWER:
-		Condition: lowpower
-		ValidPowerStates: Low, Critical
+		RequiresCondition: loaded
 	RenderRangeCircle:
 		FallbackRange: 6c0
 	AttackGarrisoned:
@@ -915,6 +913,8 @@ HBOX:
 	Power:
 		Amount: -20
 	-MustBeDestroyed:
+	GivesExperience:
+		Experience: 650
 
 GUN:
 	Inherits: ^Defense
@@ -1132,7 +1132,7 @@ ATEK:
 		Actors: gpssactivator
 		Type: SupportPower
 		ChargeInterval: 6000
-		SupportPowerPaletteOrder: 20
+		SupportPowerPaletteOrder: 50
 		LaunchSpeechNotification:
 		IncomingSpeechNotification:
 		DisplayTimerRelationships: None
@@ -1761,7 +1761,7 @@ AFLD:
 		CircleSequence: circles
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 60
+		SupportPowerPaletteOrder: 90
 	ParatroopersPower@paratroopers:
 		PauseOnCondition: lowpower
 		OrderName: SovietParatroopers
@@ -1785,7 +1785,7 @@ AFLD:
 		CircleSequence: circles
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 50
+		SupportPowerPaletteOrder: 80
 	AirstrikePower@parabombs:
 		PauseOnCondition: lowpower
 		OrderName: UkraineParabombs
@@ -1809,7 +1809,7 @@ AFLD:
 		CircleSequence: circles
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 40
+		SupportPowerPaletteOrder: 60
 	ParatroopersPower@airdrop:
 		PauseOnCondition: lowpower
 		OrderName: BelarusAirdrop
@@ -1833,7 +1833,7 @@ AFLD:
 		CircleSequence: circles
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 40
+		SupportPowerPaletteOrder: 70
 	ProductionBar:
 		ProductionType: Aircraft
 	SupportPowerChargeBar:

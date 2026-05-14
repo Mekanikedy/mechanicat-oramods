@@ -8,7 +8,7 @@ SS:
 		Prerequisites: ~spen, ~techlevel.low
 		Description: actor-ss.description
 	Valued:
-		Cost: 950
+		Cost: 850
 	Tooltip:
 		Name: actor-ss.name
 	UpdatesPlayerStatistics:
@@ -151,7 +151,7 @@ DD:
 		PauseOnCondition: reload-air
 		ReloadingCondition: reload-ground
 	Armament@SECONDARY:
-		Weapon: DepthCharge
+		Weapon: DepthCharge2
 		LocalOffset: 0,-100,0, 0,100,0
 		LocalYaw: 80, -80
 	Armament@TERTIARY:

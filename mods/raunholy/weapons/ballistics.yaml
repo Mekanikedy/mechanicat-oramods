@@ -262,3 +262,14 @@ GrenadeLauncher:
 		ImpactSounds: kaboom25.aud
 	Warhead@4EffWater: CreateEffect
 		Explosions: small_splash
+
+HeliDepthCharge:
+	Inherits: DepthCharge
+	ReloadDelay: 60
+	Projectile: Bullet
+		Inaccuracy: 0
+	Range: 0c938
+
+DepthCharge2:
+	Inherits: DepthCharge
+	Burst: 2

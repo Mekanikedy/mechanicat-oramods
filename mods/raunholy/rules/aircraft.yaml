@@ -172,7 +172,14 @@ YAK:
 		Weapon: ChainGun.Yak
 		LocalOffset: 256,-213,0, 256,213,0
 		MuzzleSequence: muzzle
-		PauseOnCondition: !ammo
+		PauseOnCondition: !ammo || reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+		Weapon: ChainGun.Yak.AA
+		LocalOffset: 256,-213,0, 256,213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo || reload-ground
+		ReloadingCondition: reload-air
 	AttackAircraft:
 		FacingTolerance: 80
 		PersistentTargeting: false
@@ -289,7 +296,7 @@ HELI:
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
 		Description: actor-heli.description
 	Valued:
@@ -311,12 +318,12 @@ HELI:
 	Armament@PRIMARY:
 		Weapon: HellfireAA
 		LocalOffset: 0,-213,-85, 0,213,-85
-		PauseOnCondition: !ammo && reload-ground
+		PauseOnCondition: !ammo || reload-ground
 		ReloadingCondition: reload-air
 	Armament@SECONDARY:
 		Weapon: HellfireAG
 		LocalOffset: 0,213,-85, 0,-213,-85
-		PauseOnCondition: !ammo && reload-air
+		PauseOnCondition: !ammo || reload-air
 		ReloadingCondition: reload-ground
 	AttackAircraft:
 		FacingTolerance: 80
@@ -366,6 +373,18 @@ HELI:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: aircraft.upgraded
+	DetectCloaked:
+		Range: 3c768
+		DetectionTypes: Underwater
+		RequiresCondition: active
+	RenderDetectionCircle:
+	GrantChargedConditionOnToggle:
+		InitialCharge: 0
+		ActivatedCondition: active
+		CanCancelCondition: false
+		ChargeDuration: 1125
+		ChargeThreshhold: -1
+		ConditionDuration: 500
 
 HIND:
 	Inherits: ^Helicopter
@@ -373,7 +392,7 @@ HIND:
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
-		BuildPaletteOrder: 20
+		BuildPaletteOrder: 30
 		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
 		Description: actor-hind.description
 	Valued:
@@ -397,6 +416,13 @@ HIND:
 		LocalOffset: 85,-213,-85, 85,213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HeliDepthCharge
+		LocalOffset: 0,0,-85
+	ReloadArmamentsBar:
+		Armaments: secondary
+		Color: 8B008B
 	AttackAircraft:
 		FacingTolerance: 80
 		PersistentTargeting: false
@@ -415,6 +441,7 @@ HIND:
 		Sequence: slow-rotor
 		RequiresCondition: !airborne
 	AmmoPool:
+		Armaments: primary
 		Ammo: 24
 		ReloadDelay: 8
 		AmmoCondition: ammo

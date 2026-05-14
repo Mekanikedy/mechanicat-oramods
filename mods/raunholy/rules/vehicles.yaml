@@ -471,7 +471,7 @@ JEEP:
 	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 120
+		BuildPaletteOrder: 110
 		Prerequisites: ~vehicles.allies, ~techlevel.low
 		Description: actor-jeep.description
 	Valued:
@@ -507,7 +507,9 @@ JEEP:
 	Cargo:
 		Types: Infantry
 		MaxWeight: 1
+		InitialUnits: e1
 		LoadingCondition: notmobile
+		LoadedCondition: loaded
 		PassengerConditions:
 			mech: selfrepair
 	ChangesHealth:
@@ -521,6 +523,13 @@ JEEP:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+	DetectCloaked:
+		DetectionTypes: Cloak
+		Range: 2c512
+		RequiresCondition: loaded
+	RenderDetectionCircle:
+	GivesExperience:
+		Experience: 400
 
 APC:
 	Inherits: ^TrackedVehicle
@@ -671,7 +680,7 @@ MGG:
 	Inherits: ^Vehicle
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 330
+		BuildPaletteOrder: 360
 		Prerequisites: atek, ~vehicles.allies, ~techlevel.high
 		Description: actor-mgg.description
 	Valued:
@@ -745,7 +754,15 @@ MRJ:
 	JamsMissiles:
 		Range: 5c0
 		DeflectionRelationships: Neutral, Enemy
+		RequiresCondition: !mrj-jammed
 	RenderJammerCircle:
+		RequiresCondition: !mrj-jammed
+	ProximityExternalCondition@NOMISSILEJAM:
+		Range: 5c0
+		ValidRelationships: Enemy, Neutral
+		Condition: mrj-jammed
+	ExternalCondition@NOMISSILEJAM:
+		Condition: mrj-jammed
 
 TTNK:
 	Inherits: ^TrackedVehicle
@@ -796,7 +813,7 @@ FTRK:
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 110
+		BuildPaletteOrder: 120
 		Prerequisites: ~vehicles.soviet, ~techlevel.low
 		Description: actor-ftrk.description
 	Valued:
@@ -891,7 +908,7 @@ CTNK:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 350
+		BuildPaletteOrder: 340
 		Prerequisites: atek, ~vehicles.germany, ~techlevel.high
 		Description: actor-ctnk.description
 	Valued:
@@ -989,7 +1006,7 @@ STNK:
 	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 360
+		BuildPaletteOrder: 350
 		Prerequisites: atek, ~vehicles.france, ~techlevel.high
 		Description: actor-stnk.description
 	Valued:

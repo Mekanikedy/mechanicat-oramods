@@ -365,3 +365,11 @@ PortaCannon:
 		Explosions: water_piff
 		ValidTargets: Water, Underwater
 		InvalidTargets: Ship, Structure, Bridge
+
+ChainGun.Yak.AA:
+	Inherits: ChainGun.Yak
+	ValidTargets: AirborneActor
+	MinRange: 0c768
+	Warhead@1Dam: SpreadDamage
+		Damage: 1000
+		ValidTargets: AirborneActor
