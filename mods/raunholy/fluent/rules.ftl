@@ -258,9 +258,9 @@ actor-fpwr =
     .description = Looks like a Power Plant.
 
 actor-tenf =
-    .name = Fake Allied Barracks
-    .generic-name = Allied Barracks
-    .description = Looks like an Allied Barracks.
+    .name = Fake Allies Barracks
+    .generic-name = Allies Barracks
+    .description = Looks like an Allies Barracks.
 
 actor-syrf =
     .name = Fake Naval Yard
@@ -293,9 +293,9 @@ actor-fapw =
     .description = Looks like an Advanced Power Plant.
 
 actor-atef =
-    .name = Fake Allied Tech Center
-    .generic-name = Allied Tech Center
-    .description = Looks like an Allied Tech Center.
+    .name = Fake Allies Tech Center
+    .generic-name = Allies Tech Center
+    .description = Looks like an Allies Tech Center.
 
 actor-pdof =
     .name = Fake Chronosphere
@@ -765,9 +765,9 @@ actor-sam =
       Weak vs Ground units
 
 actor-atek =
-    .name = Allied Tech Center
+    .name = Allies Tech Center
     .description =
-    Provides advanced Allied technology.
+    Provides advanced Allies technology.
       Special Ability: GPS Satellite
     .gpspower-name = GPS Satellite
     .gpspower-description =
@@ -866,7 +866,7 @@ actor-kenn =
     Trains Attack Dogs.
 
 actor-tent =
-    .name = Allied Barracks
+    .name = Allies Barracks
     .description =
     Trains and heals infantry.
 

@@ -297,6 +297,10 @@ barr:
 		Length: *
 		Offset: 0,-6
 		Tick: 80
+	dead:
+		Filename: barrdead.shp
+		Offset: 0,-6
+		Tick: 800
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:
@@ -328,6 +332,12 @@ tent:
 			DESERT: tentmake.des
 		Length: *
 		Tick: 80
+	dead:
+		Filename: tentdead.tem
+		TilesetFilenames:
+			SNOW: tentdead.sno
+			DESERT: tentdead.des
+		Tick: 800
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:
@@ -372,6 +382,10 @@ dome:
 		Filename: domemake.shp
 		Length: *
 		Offset: 0,-4
+	dead:
+		Filename: domedead.shp
+		Offset: 0,-4
+		Tick: 800
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:
@@ -396,6 +410,9 @@ atek:
 		Filename: sputdoor.shp
 		Length: *
 		Offset: -4,0
+	dead:
+		Filename: atekdead.shp
+		Tick: 800
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:
@@ -416,6 +433,9 @@ stek:
 	make:
 		Filename: stekmake.shp
 		Length: *
+	dead:
+		Filename: stekdead.shp
+		Tick: 800
 	bib:
 		Filename: bib2.tem
 		TilesetFilenames:
@@ -439,6 +459,9 @@ weap:
 	make:
 		Filename: weapmake.shp
 		Length: *
+	dead:
+		Filename: weapdead.shp
+		Tick: 800
 	build-top:
 		Filename: weap3.shp
 		Length: 10
@@ -478,6 +501,10 @@ hpad:
 	make:
 		Filename: hpadmake.shp
 		Length: *
+	dead:
+		Start: 14
+		ZOffset: -1023
+		Tick: 800
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:
@@ -518,6 +545,11 @@ afld:
 		Filename: afldmake.shp
 		Length: *
 		Offset: 0,-4
+	dead:
+		Filename: aflddead.shp
+		ZOffset: -1023
+		Offset: 0,-4
+		Tick: 800
 	icon:
 		Filename: afldicon.shp
 
@@ -533,6 +565,10 @@ spen:
 		Filename: spenmake.shp
 		Length: *
 		Offset: 0,2
+	dead:
+		Filename: spendead.shp
+		Offset: 0,2
+		Tick: 800
 	icon:
 		Filename: spenicon.shp
 	fake-icon:
@@ -547,6 +583,9 @@ syrd:
 	make:
 		Filename: syrdmake.shp
 		Length: *
+	dead:
+		Filename: syrddead.shp
+		Tick: 800
 	icon:
 		Filename: syrdicon.shp
 	fake-icon:
@@ -576,6 +615,10 @@ fix:
 		Filename: fixmake.shp
 		Length: *
 		Offset: 0,1
+	dead:
+		Filename: fixdead.shp
+		Offset: 0,1
+		Tick: 800
 	bib:
 		TilesetFilenames:
 			SNOW: mbFIX.sno
@@ -1071,17 +1114,17 @@ abar:
 		Filename: abar.shp
 	idle:
 		Length: 10
-		Offset: 0,-6
+		Offset: 0,-4
 		Tick: 100
 	damaged-idle:
 		Start: 10
 		Length: 10
-		Offset: 0,-6
+		Offset: 0,-4
 		Tick: 100
 	make:
 		Filename: abarmake.shp
 		Length: *
-		Offset: 0,-6
+		Offset: 0,-4
 	bib:
 		Filename: bib3.tem
 		TilesetFilenames:

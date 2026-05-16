@@ -3,8 +3,8 @@
 	Shroud:
 	PlayerResources:
 		ResourceValues:
-			Ore: 30
-			Gems: 60
+			Ore: 25
+			Gems: 50
 
 EditorPlayer:
 	Inherits: ^BasePlayer

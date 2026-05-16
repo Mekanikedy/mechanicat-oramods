@@ -317,6 +317,9 @@ SPEN:
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 SYRD:
 	Inherits: ^Building
@@ -464,6 +467,9 @@ SYRD:
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 IRON:
 	Inherits: ^ScienceBuilding
@@ -783,6 +789,9 @@ DOME:
 	ProvidesPrerequisite@buildingname:
 	ExternalCondition@JAMMED:
 		Condition: jammed
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 PBOX:
 	Inherits: ^Defense
@@ -1154,6 +1163,9 @@ ATEK:
 	ProvidesPrerequisite@buildingname:
 	WithSupportPowerActivationOverlay:
 		RequiresCondition: !build-incomplete
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 WEAP:
 	Inherits: ^Building
@@ -1277,6 +1289,9 @@ WEAP:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequenceAlpha: 0.65
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 FACT:
 	Inherits: ^Building
@@ -1664,6 +1679,9 @@ HPAD:
 		Proxy: airveterancyactivator
 		Types: SpyInfiltrate
 		PlayerExperience: 10
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 AFLD:
 	Inherits: ^Building
@@ -1852,6 +1870,9 @@ AFLD:
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 AFLD.Russia:
 	Inherits: AFLD
@@ -1992,6 +2013,9 @@ STEK:
 	Power:
 		Amount: -100
 	ProvidesPrerequisite@buildingname:
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 BARR:
 	Inherits: ^Building
@@ -2087,6 +2111,9 @@ BARR:
 		PlayerExperience: 10
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 KENN:
 	Inherits: ^Building
@@ -2272,6 +2299,9 @@ TENT:
 		BorderColor: ECECEC
 		BorderWidth: 3
         RequiresCondition: !build-incomplete
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 FIX:
 	Inherits: ^Building
@@ -2323,6 +2353,9 @@ FIX:
 		TargetableOffsets: 840,0,0, 598,-640,0, 598,640,0, -1060,0,0, -768,-640,0, -768,640,0
 		Type: Polygon
 			Points: -1536,-300, -640,-811, 640,-811, 1536,-300, 1536,555, 640,1110, -640,1110, -1536,555
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
 
 SBAG:
 	Inherits: ^Wall

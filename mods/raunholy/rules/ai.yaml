@@ -99,16 +99,37 @@ Player:
 				FineScanRadius: 2
 				Consideration@1:
 					Against: Ally
+					Types: Repair
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@2:
+					Against: Ally
 					Types: Vehicle
 					Attractiveness: 5
 					TargetMetric: Value
 					CheckRadius: 3c0
-				Consideration@2:
+				Consideration@3:
 					Against: Ally
 					Types: Infantry
 					Attractiveness: -2
 					TargetMetric: Value
 					CheckRadius: 2c0
+			sonarpulse:
+				OrderName: SonarPulse
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: WaterActor
+					Attractiveness: 2
+					TargetMetric: None
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Enemy
+					Types: WaterStructure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 10c0
 	HarvesterBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
 		HarvesterTypes: harv
@@ -358,6 +379,7 @@ Player:
 	SquadManagerBotModule@rush:
 		RequiresCondition: enable-rush-ai
 		SquadSize: 20
+		SquadSizeRandomBonus: 0
 		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		ConstructionYardTypes: fact
@@ -371,6 +393,7 @@ Player:
 		ConstructionYardTypes: fact
 		McvFactoryTypes: weap
 	UnitBuilderBotModule@rush:
+		IdleBaseUnitsMaximum: 20
 		RequiresCondition: enable-rush-ai
 		UnitsToBuild:
 			e1: 65
@@ -413,6 +436,7 @@ Player:
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@normal:
+		IdleBaseUnitsMaximum: 20
 		RequiresCondition: enable-normal-ai
 		UnitsToBuild:
 			e1: 65
@@ -461,6 +485,7 @@ Player:
 	SquadManagerBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		SquadSize: 10
+		SquadSizeRandomBonus: 10
 		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly, e6, thf
 		ConstructionYardTypes: fact
@@ -470,6 +495,7 @@ Player:
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@turtle:
+		IdleBaseUnitsMaximum: 10
 		RequiresCondition: enable-turtle-ai
 		UnitsToBuild:
 			e1: 65
@@ -521,6 +547,7 @@ Player:
 	SquadManagerBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		SquadSize: 1
+		SquadSizeRandomBonus: 0
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
 		ConstructionYardTypes: fact

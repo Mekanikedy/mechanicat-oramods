@@ -39,6 +39,7 @@ Buildings
 - modified tech requirement for War Factory, Naval Yard, Submarine Pen and Radar Dome to be any Power Plant and a Ore Refinery
 - increased the range check of structures for buildable area by +1 (in effect this means: bases can be built more spaced out)
 - Construction Yards, both types of Power Plants, Radar Domes, Tech Centers, Helipads reduced in building footprint size by removing the bib infront of
+- names of structures where it says Allied, got changed to Allies instead
 
 Construction Yard
 - cost of MCV(and subsequently Construction Yard) increased to 2500$ from 2000$
@@ -63,6 +64,9 @@ Kennel
 
 Ore Refinery
 - Ore Refinery now properly refunds 400$ when sold
+
+War Factory
+- added a second exit for vehicle production
 
 Service Depot
 - Service Depot cost reduced to 1000$ from 1200$
@@ -114,9 +118,13 @@ Defenses
 
 Pillbox
 - needs to be loaded in order to detect cloaked units
+- Pillbox refund value set to 500$ from 600$
+- gives experience worth 500$ when destroyed. discounted the initial passenger from unit xp value
 
 Camo Pillbox
 - needs to be loaded in order to detect cloaked units
+- Camo Pillbox refund value set to 650$ from 550$
+- gives experience worth 650$ when destroyed. discounted the initial passenger from unit xp value
 
 Gun Turret
 - added a secondary anti-submarine depthcharge attack on Gun Turrets
@@ -214,10 +222,11 @@ Harvester
 Supply Truck
 - Supply Truck can deliver only to Construction Yards
 
-Jeep
+Ranger Jeep
 - ^LightMG damage multiplier versus Light Armor reduced to 30 from 40
 - can detect cloaked units within 2c512 radius when loaded
 - comes with a Rifle Infantry passenger by default
+- gives experience worth 400$ when destroyed. discounted the passenger from unit xp value
 
 Mobile Flak
 - linked anti-ground and anti-air attacks to prevent double-firing
@@ -331,6 +340,7 @@ new: SAM Submarine
 
 Air units
 - contrail effects of planes adjusted to not use player coloring
+- Blackhawk got disabled
 
 Yak Attack Plane
 - cost of Yak Attack Plane decreased to 1150$ from 1350$
@@ -348,7 +358,7 @@ Chinook
 - Transport Helicopter graphic reverted to classic version
 
 Blackhawk
-- Blackhawk got disabled
+- disabled
 
 Longbow
 - Longbow renamed to Apache
