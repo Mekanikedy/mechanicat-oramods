@@ -342,8 +342,8 @@ actor-harv-fullhusk-name = Husk (Ore Truck)
 actor-harv-emptyhusk-name = Husk (Ore Truck)
 actor-mcv-husk-name = Husk (Mobile Construction Vehicle)
 actor-mgg-husk-name = Husk (Mobile Gap Generator)
-actor-tran-husk-name = Chinook
-actor-tran-husk1-name = Husk (Chinook)
+actor-tran-husk-name = Air Transport
+actor-tran-husk1-name = Husk (Air Transport)
 actor-tran-husk2-name = Husk (Chinook)
 actor-badr-husk-name = Badger
 actor-mig-husk-name = MiG Attack Plane
@@ -662,12 +662,14 @@ actor-spen =
     .description =
     Produces and repairs submarines
     and transports.
+    Can detect submarines.
 
 actor-syrd =
     .name = Naval Yard
     .description =
     Produces and repairs ships and
     transports.
+    Can detect submarines.
 
 actor-iron =
     .name = Iron Curtain

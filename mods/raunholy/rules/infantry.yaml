@@ -412,10 +412,10 @@ SPY.England:
 	AttackMove:
 		Voice: Move
 	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
 		Types: Veterancy
-		Prerequisites: barracks.upgraded
+		Prerequisites: infantry.upgraded
 	RenderSprites:
 		Image: spy
 

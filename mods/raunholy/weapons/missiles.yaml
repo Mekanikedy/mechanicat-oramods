@@ -350,7 +350,7 @@ SCUD:
 			Wood: 75
 			Tree: 75
 			Light: 70
-			Heavy: 50
+			Heavy: 45
 			Concrete: 100
 		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath, Incendiary
 	Warhead@3Eff: CreateEffect

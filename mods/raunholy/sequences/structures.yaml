@@ -296,7 +296,6 @@ barr:
 		Filename: barrmake.shp
 		Length: *
 		Offset: 0,-6
-		Tick: 80
 	dead:
 		Filename: barrdead.shp
 		Offset: 0,-6
@@ -331,7 +330,6 @@ tent:
 			SNOW: tentmake.sno
 			DESERT: tentmake.des
 		Length: *
-		Tick: 80
 	dead:
 		Filename: tentdead.tem
 		TilesetFilenames:

@@ -546,11 +546,14 @@
 ^Submarine:
 	Inherits: ^Ship
 	Targetable:
-		TargetTypes: WaterActor, Ship, Submarine, Repair
+		TargetTypes: WaterActor, Ship, Submarine
 		RequiresCondition: !underwater
 	Targetable@UNDERWATER:
 		TargetTypes: Underwater, Submarine
 		RequiresCondition: underwater
+	Targetable@REPAIR:
+		RequiresCondition: damaged && !underwater
+		TargetTypes: Repair
 	Cloak:
 		DetectionTypes: Underwater
 		InitialDelay: 0
@@ -699,6 +702,7 @@
 		UndeploySounds: cashturn.aud
 	ActorPreviewPlaceBuildingPreview:
 		PreviewAlpha: 0.65
+		Animated: false
 	RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 3

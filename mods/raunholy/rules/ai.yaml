@@ -393,7 +393,6 @@ Player:
 		ConstructionYardTypes: fact
 		McvFactoryTypes: weap
 	UnitBuilderBotModule@rush:
-		IdleBaseUnitsMaximum: 20
 		RequiresCondition: enable-rush-ai
 		UnitsToBuild:
 			e1: 65
@@ -436,7 +435,6 @@ Player:
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@normal:
-		IdleBaseUnitsMaximum: 20
 		RequiresCondition: enable-normal-ai
 		UnitsToBuild:
 			e1: 65
@@ -495,7 +493,6 @@ Player:
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@turtle:
-		IdleBaseUnitsMaximum: 10
 		RequiresCondition: enable-turtle-ai
 		UnitsToBuild:
 			e1: 65

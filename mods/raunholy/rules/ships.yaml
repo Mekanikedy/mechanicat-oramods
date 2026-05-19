@@ -105,7 +105,7 @@ MSUB:
 		InitialStanceAI: ReturnFire
 	DetectCloaked:
 		DetectionTypes: Underwater
-		Range: 4c0
+		Range: 5c0
 	RenderDetectionCircle:
 	FireWarheadsOnDeath:
 		Weapon: UnitExplodeSubmarine
@@ -384,7 +384,7 @@ TYPH:
 		InitialStanceAI: Defend
 	DetectCloaked:
 		DetectionTypes: Underwater
-		Range: 4c0
+		Range: 5c0
 	RenderDetectionCircle:
 	FireWarheadsOnDeath:
 		Weapon: UnitExplodeSubmarine

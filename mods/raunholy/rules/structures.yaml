@@ -162,7 +162,7 @@ SPEN:
 		Prerequisites: anypower, proc, ~structures.soviet, ~techlevel.low
 		Description: actor-spen.description
 	Targetable:
-		TargetTypes: WaterActor, Structure, C4, DetonateAttack, SpyInfiltrate
+		TargetTypes: WaterActor, Structure, C4, DetonateAttack, WaterStructure
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
@@ -231,6 +231,7 @@ SPEN:
 		ProductionTypes: Ship
 	Production:
 		Produces: Ship, Submarine
+		PauseOnCondition: build-incomplete
 	-SpawnActorsOnSell:
 	RepairsUnits:
 		HpPerStep: 1000
@@ -336,7 +337,7 @@ SYRD:
 	Tooltip:
 		Name: actor-syrd.name
 	Targetable:
-		TargetTypes: WaterActor, Structure, C4, DetonateAttack
+		TargetTypes: WaterActor, Structure, C4, DetonateAttack, WaterStructure
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
@@ -380,6 +381,7 @@ SYRD:
 		ProductionTypes: Ship, Boat
 	Production:
 		Produces: Ship, Boat
+		PauseOnCondition: build-incomplete
 	-SpawnActorsOnSell:
 	RepairsUnits:
 		HpPerStep: 1000
@@ -1214,6 +1216,7 @@ WEAP:
 		ExitCell: 0,2
 	Production:
 		Produces: Vehicle
+		PauseOnCondition: build-incomplete
 	ProvidesPrerequisite@allies:
 		Factions: allies, england, france, germany, unholy
 		Prerequisite: vehicles.allies
@@ -1350,6 +1353,7 @@ FACT:
 		Range: 4c0
 	Production:
 		Produces: Building, Defense
+		PauseOnCondition: build-incomplete
 	Valued:
 		Cost: 2500
 	Tooltip:
@@ -1607,6 +1611,7 @@ HPAD:
 		DisableStop: false
 	Production:
 		Produces: Aircraft, Helicopter
+		PauseOnCondition: build-incomplete
 	Reservable:
 	ProductionBar:
 		ProductionType: Aircraft
@@ -1725,6 +1730,7 @@ AFLD:
 		DisableStop: false
 	Production:
 		Produces: Aircraft, Plane
+		PauseOnCondition: build-incomplete
 	Reservable:
 	ProvidesPrerequisite@soviet:
 		Factions: soviet, russia, ukraine, belarus, unholy
@@ -2066,6 +2072,7 @@ BARR:
 		ProductionTypes: Soldier, Infantry
 	Production:
 		Produces: Infantry, Soldier
+		PauseOnCondition: build-incomplete
 	GrantExternalConditionToProduced:
 		Condition: produced
 	ProductionBar:
@@ -2187,6 +2194,7 @@ KENN:
 		ProductionTypes: Dog, Infantry
 	Production:
 		Produces: Infantry, Dog
+		PauseOnCondition: build-incomplete
 	ProductionBar:
 		ProductionType: Infantry
 	-SpawnActorsOnSell:
@@ -2243,6 +2251,7 @@ TENT:
 		ProductionTypes: Soldier, Infantry
 	Production:
 		Produces: Infantry, Soldier
+		PauseOnCondition: build-incomplete
 	GrantExternalConditionToProduced:
 		Condition: produced
 	ProductionBar:
@@ -2642,6 +2651,7 @@ ABAR:
 		ProductionTypes: Soldier, Infantry
 	Production:
 		Produces: Infantry, Soldier
+		PauseOnCondition: build-incomplete
 	GrantExternalConditionToProduced:
 		Condition: produced
 	ProductionBar:
