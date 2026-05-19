@@ -3,9 +3,9 @@ changes compared to the default mod:
 
 Economy
 - the amount of selectable starting credits set to 7500, 15000, 30000 with the default option being 7500
-- increased the value of ore and gems to 30/60 from 25/50
 - noob protection on Ore Refineries disabled, resources will go to waste if not have enough storage
 - added a lobby checkbox option for enabling ERCC Refinery (default: on)
+- increased the value of ore and gems to 30/60 from 25/50
 
 Production
 - the BuildTimeSpeedReduction steps modified to "100, 90, 75, 67, 50" from "100, 86, 75, 67, 60, 55, 50" for all production queues
@@ -33,6 +33,9 @@ new: Belarus
 - added Air Drop support power that delivers 2 Heavy Tanks for Belarus faction
 - added a parachutable, veteran version of the Heavy Tank to be used by the Air Drop support power
 
+Miscellaneus
+- Units(or Defenses) that are capable of attacking air units will say so in their tooltip
+
 Buildings
 - tech buildings leave behind a husk when destroyed, that can be restored to function with an engineer
 - removed the tech requirement for Barracks and Ore Refinery
@@ -40,6 +43,7 @@ Buildings
 - increased the range check of structures for buildable area by +1 (in effect this means: bases can be built more spaced out)
 - Construction Yards, both types of Power Plants, Radar Domes, Tech Centers, Helipads reduced in building footprint size by removing the bib infront of
 - names of structures where it says Allied, got changed to Allies instead
+- slightly reordered all structures in the sidebar production tab to be more sensible
 
 Construction Yard
 - cost of MCV(and subsequently Construction Yard) increased to 2500$ from 2000$
@@ -55,12 +59,16 @@ Advanced Power Plant
 
 Allies Barracks
 - Allies Barracks enables self-heal on infantry within 2c512 radius
+- normalized the animation speed of the waving flag graphic
 
-new: Unholy Barracks
-- added an seperate Unholy Barracks for the Unholy Alliance faction
+Soviet Barracks
+- normalized the animation speed of the waving flag graphic
 
 Kennel
 - Kennel tech requirement changed to a Soviet Barracks from any Power Plant
+
+new: Unholy Barracks
+- added an seperate Unholy Barracks for the Unholy Alliance faction
 
 Ore Refinery
 - Ore Refinery now properly refunds 400$ when sold
@@ -115,6 +123,7 @@ Forward Command
 
 Defenses
 - the cloak detection gets paused while on low power of all defenses except the Pillboxes
+- disabled Sandbag and Barbed Wire fence from being built
 
 Pillbox
 - needs to be loaded in order to detect cloaked units
@@ -144,10 +153,12 @@ Gap Generator
 - Gap Generator can be deployed when charge is ready to consume -100 power, and generates shroud in 10c range while active, it lasts for 1min duration
 
 Sandbag
-- disabled Sandbag and Barbed Wire fence from being built
+- price increased to 50$ from 30$
+- disabled
 
 Barbed Wire
-- disabled Sandbag and Barbed Wire fence from being built
+- price increased to 50$ from 30$
+- disabled
 
 Concrete Wall
 - Concrete Wall becomes available with a Barracks
@@ -170,8 +181,12 @@ Rocket Soldier
 - Rocket Soldier reloads weapon slightly slower, increased reload delay from 50 to 55
 - linked anti-ground and anti-air attacks to prevent double-firing
 
+Flamethrower
+- Flamethrower tech requirement changed to Radar Dome from Flame Tower
+
 Engineer
 - Engineer cost increased to 500$ from 450$
+- can restore destroyed tech-buildings
 - extended tooltip to mention restoring bridges and tech-building husks
 
 Medic
@@ -259,7 +274,7 @@ Artillery
 
 V2 Rocket Launcher
 - V2 Rocket Launcher range increased to 12 from 10
-- V2 Missile damage multiplier versus Heavy Armor increased to 50 from 40
+- V2 Missile damage multiplier versus Heavy Armor increased to 45 from 40
 
 Tesla Tank
 - Tesla Tank does not require a Tesla Coil anymore
@@ -304,6 +319,7 @@ M.A.D. Tank
 Sea units
 - Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
 - Submarines will get surfaced while crossing shallow bridges
+- Submarines with Invulnerability will not submerge until the effect is over
 
 Naval Transport
 - cost of Naval Transport increased to 600$ from 500$
@@ -332,6 +348,7 @@ Missile Submarine
 - Removed the anti-air attack from Missile Submarines
 - the range of Missile Submarine weapon increased to 24c from 20c
 - Missile Submarine cost reduced to 1650$ from 2000$
+- the range of detecting other submarines increased to 5 from 4
 
 new: SAM Submarine 
 - SAM Submarine added at Soviet Tech Center level
@@ -374,6 +391,7 @@ Hind
 
 Support Powers
 - made all Airfield support powers pause recharging while on low power
+- rearranged the sidetab ordering of all support powers to be more sensible
 
 Sonar
 - Sonar changed to no longer require a infiltration of enemy naval production

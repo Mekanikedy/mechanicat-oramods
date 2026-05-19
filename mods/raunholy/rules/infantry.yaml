@@ -330,11 +330,20 @@ E6:
 		EnterCursor: ability
 		EnterBlockedCursor: move-blocked
 	Captures@RESTORETECH:
+		RequiresCondition: !global-reusable-engineers
 		CaptureTypes: restore-tech
 		PlayerExperience: 10
 		EnterCursor: goldwrench
 		EnterBlockedCursor: goldwrench-blocked
 		CaptureDelay: 200
+	Captures@REUSABLE-RESTORETECH:
+		RequiresCondition: global-reusable-engineers
+		CaptureTypes: restore-tech
+		PlayerExperience: 10
+		CaptureDelay: 375
+		ConsumedByCapture: False
+		EnterCursor: goldwrench
+		EnterBlockedCursor: goldwrench-blocked
 	Voiced:
 		VoiceSet: EngineerVoice
 	-AttackFrontal:
