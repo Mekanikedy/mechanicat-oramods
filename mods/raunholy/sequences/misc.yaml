@@ -169,6 +169,12 @@ pips:
 		Length: *
 		Tick: 300
 		Offset: 0, -6
+	pip-skull:
+		Filename: pip-skull.shp
+		Offset: -2, 0
+	pip-redstar:
+		Filename: pip-redstar.shp
+		Offset: -2, 0
 
 v2:
 	idle:

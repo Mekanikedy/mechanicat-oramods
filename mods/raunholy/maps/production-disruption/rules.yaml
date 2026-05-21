@@ -63,6 +63,8 @@ MSUB:
 	-Cloak:
 	-GrantConditionOnDamageState@UNCLOAK:
 	-Targetable@UNDERWATER:
+	-GrantConditionOnDamageState@DAMAGED:
+	-Targetable@REPAIR:
 	Targetable:
 		-RequiresCondition:
     -GrantConditionOnTerrain@CROSSINGFORD:

@@ -358,3 +358,11 @@ SCUD:
 		ImpactSounds: firebl3.aud
 	Warhead@4EffWater: CreateEffect
 		Explosions: large_splash
+
+Dragon.pbox:
+	Inherits: Dragon
+	Range: 6c0
+
+RedEye.pbox:
+	Inherits: RedEye
+	Range: 6c0

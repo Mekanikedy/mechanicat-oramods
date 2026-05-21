@@ -238,7 +238,7 @@
 		RepairActors: fix
 	Chronoshiftable:
 	Passenger:
-        Weight: 2
+        Weight: 3
 		CargoType: Vehicle
 	AttackMove:
 	HiddenUnderFog:

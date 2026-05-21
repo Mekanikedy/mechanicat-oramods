@@ -163,7 +163,7 @@ E2:
 		EmptyWeapon: UnitExplodeSmall
 		DamageSource: Killer
         Chance: 100
-        DeathTypes: CrushingDeath
+        DeathTypes: CrushingDeath, FireDeath, ExplosionDeath
 	ProducibleWithLevel:
 		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
@@ -202,12 +202,12 @@ E3:
 		ReloadingCondition: reload-ground
 	Armament@GARRISONED:
 		Name: garrisoned
-		Weapon: RedEye
+		Weapon: RedEye.pbox
 		PauseOnCondition: reload-ground
 		ReloadingCondition: reload-air
 	Armament@GARRISONEDSECONDARY:
 		Name: garrisoned
-		Weapon: Dragon
+		Weapon: Dragon.pbox
 		PauseOnCondition: reload-air
 		ReloadingCondition: reload-ground
 	TakeCover:
@@ -350,6 +350,20 @@ E6:
 
 SPY:
 	Inherits: ^Soldier
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyadisguise
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovdisguise
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -374,6 +388,9 @@ SPY:
 		Voice: Move
 	Disguise:
 		DisguisedCondition: disguise
+		DisguisedAsConditions:
+			e7: tanyadisguise
+			e8: volkovdisguise
 	Infiltrates:
 		Types: SpyInfiltrate
 		Notification: BuildingInfiltrated
@@ -488,6 +505,12 @@ E7:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: infantry.upgraded
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
 
 E8:
 	Inherits: GNRL
@@ -528,7 +551,9 @@ E8:
 	Armament:
 		Weapon: PortaCannon
 	Armament@GARRISONED:
+		Name: garrisoned
         Weapon: PortaCannon
+		MuzzleSequence: garrison-muzzle
 	ProducibleWithLevel:
 		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
@@ -546,6 +571,12 @@ E8:
 	VoiceAnnouncement:
 		RequiresCondition: produced
 		Voice: Build
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
 	RenderSprites:
 		Image: E8
 
@@ -817,7 +848,7 @@ THF:
 		RequiresCondition: cloaked
 		InitialDelay: 0
 		CloakDelay: 25
-		UncloakOn: Attack, Unload, Infiltrate, Demolish, Damage, Move
+		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Damage
 		DetectionTypes: Cloak
 		PauseOnCondition: cloak-force-disabled
 	GrantConditionOnDamageState@UNCLOAK:

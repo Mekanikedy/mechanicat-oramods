@@ -161,7 +161,7 @@ actor-tran =
       Unarmed
 
 actor-heli =
-    .name = Apache
+    .name = Longbow
     .description =
     Helicopter gunship with multi-purpose missiles.
     Can attack enemy aircraft.

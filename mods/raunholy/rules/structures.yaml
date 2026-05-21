@@ -74,6 +74,14 @@ MSLO:
 		RequiredForShortGame: false
 	WithSupportPowerActivationAnimation:
 		RequiresCondition: !build-incomplete
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 200
+		UncloakOn: Damage, Infiltrate, Demolish, SupportPower
+		PauseOnCondition: cloak-force-disabled || build-incomplete || disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
 
 GAP:
 	Inherits: ^ScienceBuilding
@@ -839,11 +847,8 @@ PBOX:
 		InitialUnits: e1
 		LoadedCondition: loaded
 		PassengerConditions:
-			e3: RocketSoldier
-	WithRangeCircle@ROCKETSOLDIER:
-		Color: FFFF0080
-		Range: 5c0
-		RequiresCondition: RocketSoldier
+			e7: tanyainside
+			e8: volkovinside
 	-SpawnActorsOnSell:
 	AttackGarrisoned:
 		PauseOnCondition: build-incomplete
@@ -860,6 +865,20 @@ PBOX:
 		RequiresCondition: loaded
 	GivesExperience:
 		Experience: 500
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
 
 HBOX:
 	Inherits: ^Defense
@@ -890,6 +909,7 @@ HBOX:
 	Cloak:
 		InitialDelay: 125
 		CloakDelay: 60
+		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Dock
 		PauseOnCondition: cloak-force-disabled
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
@@ -909,6 +929,9 @@ HBOX:
 		MaxWeight: 1
 		LoadedCondition: loaded
 		InitialUnits: e1
+		PassengerConditions:
+			e7: tanyainside
+			e8: volkovinside
 	-SpawnActorsOnSell:
 	DetectCloaked:
 		Range: 6c0
@@ -926,6 +949,20 @@ HBOX:
 	-MustBeDestroyed:
 	GivesExperience:
 		Experience: 650
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
 
 GUN:
 	Inherits: ^Defense

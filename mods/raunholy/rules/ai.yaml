@@ -436,6 +436,7 @@ Player:
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@normal:
 		RequiresCondition: enable-normal-ai
+		IdleBaseUnitsMaximum: 500
 		UnitsToBuild:
 			e1: 65
 			e2: 15

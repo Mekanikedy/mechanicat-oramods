@@ -269,15 +269,37 @@ LST:
 		LoadingCondition: notmobile
 		PassengerConditions:
 			mech: selfrepair
-	ChangesHealth:
+			e7: tanyainside
+			e8: volkovinside
+	ChangesHealth@MECHANIC:
 		RequiresCondition: selfrepair
-		PercentageStep: 14 #==20 health, same as external mechanic repairing
+		Step: 2000
 		Delay: 81
 		StartIfBelow: 100
 		DamageCooldown: 150
 	-Chronoshiftable:
 	Selectable:
 		DecorationBounds: 1536, 1536
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+		BlinkInterval: 32
+		BlinkPatterns:
+			volkovinside: Off, On
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
+		BlinkInterval: 32
+		BlinkPatterns:
+			tanyainside: On, Off
 
 PT:
 	Inherits: ^Ship
