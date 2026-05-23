@@ -3,13 +3,16 @@ In this branch of the mechanicat-oramods repository are the files for one of my 
 this mod also has got a mod-map variant, that can be found here:
 https://resource.openra.net/maps/67423/
 
+Known Issues
+- Mechanic cannot flash the target when it uses ChangesHealth to repair from within a transport
+- a Spy disguised as a Tanya/Volkov will lose the commando pip indicator when entered a transport
 
 changes compared to the default mod:
 - some things are unavailable in the mod-map version. those are going to get marked with ** before them
 
 Economy
 - the amount of selectable starting credits set to 7500, 15000, 30000 with the default option being 7500
-- noob protection on Ore Refineries disabled, resources will go to waste if not have enough storage
+- noob protection on Ore Refineries disabled, resources will go to wacte if not have enough storage
 - added a lobby checkbox option for enabling ERCC Refinery (default: on)
 - increased the value of ore and gems to 30/60 from 25/50
 
@@ -126,6 +129,7 @@ Fake structures
 
 Communications Center
 - the tech building Communications Center renamed to Observatory
+- radius of provided vision increased to 12c from 10c
 
 Forward Command
 - the name of Forward Command extended with the word Post
@@ -156,6 +160,11 @@ Flame Tower
 
 Tesla Coil
 - Tesla Coil tech requirement changed to Radar Dome from War Factory
+- Tesla Coils can get empowered by Shock Troopers charge, this stacks up to 3 times
+- the range and damage of an empowered Tesla Coil gets improved with each charge applied
+- an empowered Tesla Coil is able to function normally while on low power
+- each Shock Trooper can apply only 1 charge at a time, multiple are required to reach maximum
+- empowered Tesla Coils shoot a different color lightning to better distinguish
 
 Gap Generator
 - Gap Generator radius increased to 7c from 6c, same radius as the mobile version
@@ -171,7 +180,7 @@ Barbed Wire
 - **disabled
 
 Concrete Wall
-- Concrete Wall becomes available with a Barracks
+- **Concrete Wall becomes available with a Barracks
 - reduced the auto-connect range of walls to 6 from 8
 
 **new: Gates
@@ -209,7 +218,6 @@ Medic
 Mechanic
 - Mechanic cost reduced to 475$ from 500$
 - Mechanic can repair transports from within, but only while out of combat. this does not stack with multiple Mechanics inside
-known issue: cannot flash the target when it uses ChangesHealth
 - slightly reduced the range of Mechanic repair from 4c0 to 3c682
 - +1 Sight radius for Mechanic, from 3c to 4c
 
@@ -217,6 +225,7 @@ Shock Trooper
 - Shock Trooper does not require a Tesla Coil anymore
 - Shock Trooper cost increased to 450$ from 350$
 - Shock Trooper always explodes on death when getting crushed
+- Shock Trooper can zap a friendly Tesla Coil to empower it for 6sec
 
 Spy
 - the Spy no longer can attack
@@ -331,8 +340,8 @@ M.A.D. Tank
 - M.A.D. Tank movespeed increased to 54 from 46
 - M.A.D. Tank hitpoints reduced to 60000 from 90000
 
-Sea units
-- Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
+Naval units
+- **Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
 - Submarines will get surfaced while crossing shallow bridges
 - Submarines with Invulnerability will not submerge until the effect is over
 
@@ -370,7 +379,7 @@ new: SAM Submarine
 - has 52500 hitpoints and double the anti-air attacks
 - Costs 2100$ to build
 
-Air units
+Aircraft units
 - contrail effects of planes adjusted to not use player coloring
 - Blackhawk got disabled
 

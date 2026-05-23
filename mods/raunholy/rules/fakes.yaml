@@ -217,6 +217,7 @@ DOMF:
 		Dimensions: 2,2
 		LocalCenterOffset: 0,-256,0
 	WithBuildingBib:
+		HasMinibib: true
 	RenderSprites:
 		Image: DOME
 	Valued:
@@ -392,6 +393,14 @@ MSLF:
 		Type: Wood
 	FireWarheadsOnDeath:
 		DamageThreshold: 50
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 200
+		UncloakOn: Damage, Infiltrate, Demolish, SupportPower
+		PauseOnCondition: cloak-force-disabled || build-incomplete || disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Medium
 
 FACF:
 	Inherits: ^FakeBuilding

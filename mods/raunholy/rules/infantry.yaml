@@ -883,9 +883,20 @@ SHOK:
 	Armament@PRIMARY:
 		Weapon: PortaTesla
 		LocalOffset: 427,0,341
+		PauseOnCondition: reload-charge
+		ReloadingCondition: reload-attack
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: PortaTesla
+	Armament@SECONDARY:
+		Weapon: TeslaCharge
+		LocalOffset: 427,0,341
+		PauseOnCondition: reload-attack
+		ReloadingCondition: reload-charge
+		Cursor: powerdown
+		OutsideRangeCursor: powerdown
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
 	TakeCover:
 		ProneOffset: 227,0,-245
 	AttackFrontal:

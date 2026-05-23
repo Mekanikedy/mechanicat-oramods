@@ -483,6 +483,7 @@ actor-shok =
     .name = Shock Trooper
     .description =
     Elite infantry with portable Tesla coils.
+    Can empower Tesla coils with charge.
       Strong vs Infantry and Vehicles
       Weak vs Aircraft
 

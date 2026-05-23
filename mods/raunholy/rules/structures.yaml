@@ -687,6 +687,19 @@ TSLA:
 	Armament:
 		Weapon: TeslaZap
 		LocalOffset: 0,0,896
+		RequiresCondition: (!lowpower && !charged) || (lowpower && charged == 1)
+	Armament@1:
+		Weapon: TeslaZapBoost1
+		LocalOffset: 0,0,896
+		RequiresCondition: (!lowpower && charged == 1) || (lowpower && charged == 2)
+	Armament@2:
+		Weapon: TeslaZapBoost2
+		LocalOffset: 0,0,896
+		RequiresCondition: (!lowpower && charged == 2) || (lowpower && charged >= 3)
+	Armament@3:
+		Weapon: TeslaZapBoost3
+		LocalOffset: 0,0,896
+		RequiresCondition: !lowpower && charged >= 3
 	AttackTesla:
 		PauseOnCondition: disabled || build-incomplete
 		ChargeAudio: tslachg2.aud
@@ -698,6 +711,38 @@ TSLA:
 		Range: 6c0
 		RequiresCondition: !disabled
 	ProvidesPrerequisite@buildingname:
+	ExternalCondition@CHARGED:
+		Condition: charged
+		SourceCap: 1
+		TotalCap: 3
+	Targetable@CHARGED:
+		TargetTypes: TeslaCharge
+		RequiresCondition: !powerdown && !(charged == 3)
+	GrantConditionOnPowerState@LOWPOWER:
+		RequiresCondition: !charged
+	TimedConditionBar@CHARGED:
+		Condition: charged
+		Color: f4f442
+	WithDecoration@CHARGED:
+		Image: poweroff
+		Sequence: offline
+		Palette: chrome
+		Position: Center
+		Offsets:
+			repairing: 10, 0
+		ValidRelationships: Ally
+		RequiresCondition: charged
+		BlinkInterval: 64
+		RequiresSelection: true
+	ToggleConditionOnOrder:
+		DisabledSound: EnablePower
+		EnabledSound: DisablePower
+		Condition: powerdown
+		OrderName: PowerDown
+		PauseOnCondition: charged2
+	GrantCondition@CHARGED:
+		Condition: charged2
+		RequiresCondition: charged
 
 AGUN:
 	Inherits: ^Defense
@@ -789,6 +834,7 @@ DOME:
 		Range: 6c0
 		RequiresCondition: !disabled
 	WithBuildingBib:
+		HasMinibib: true
 	ProvidesRadar:
 		RequiresCondition: !jammed && !disabled
 	InfiltrateForExploration:

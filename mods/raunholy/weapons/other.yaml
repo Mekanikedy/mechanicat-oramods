@@ -281,3 +281,43 @@ DetectionPing:
 SHOKExplode:
 	Inherits: PortaTesla
 	-Report:
+
+TeslaCharge:
+	ReloadDelay: 70
+	Range: 1c0
+	Report: teslacharge.aud
+	ValidTargets: TeslaCharge
+	Projectile: TeslaZap
+	Warhead@Charge: GrantExternalCondition
+		Range: 0c256
+		Duration: 150
+		Condition: charged
+		ValidTargets: TeslaCharge
+	Warhead@Flash: FlashTargetsInRadius
+		Radius: 1065
+		ValidRelationships: Ally
+		ValidTargets: TeslaCharge
+
+TeslaZapBoost1:
+	Inherits: TeslaZap
+	Range: 7c512
+	Projectile: TeslaZap
+		Image: litningupg
+	Warhead@1Dam: SpreadDamage
+		Damage: 11000
+
+TeslaZapBoost2:
+	Inherits: TeslaZap
+	Range: 8c0
+	Projectile: TeslaZap
+		Image: litningupg
+	Warhead@1Dam: SpreadDamage
+		Damage: 12000
+
+TeslaZapBoost3:
+	Inherits: TeslaZap
+	Range: 8c512
+	Projectile: TeslaZap
+		Image: litningupg
+	Warhead@1Dam: SpreadDamage
+		Damage: 13000

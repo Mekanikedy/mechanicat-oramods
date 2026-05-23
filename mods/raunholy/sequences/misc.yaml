@@ -1130,3 +1130,14 @@ twinkle:
 empty:
 	idle:
 		Filename: empty.shp
+
+litningupg:
+	Defaults:
+		Filename: litningupg.shp
+	bright:
+		Length: 4
+		ZOffset: 1023
+	dim:
+		Start: 4
+		Length: 4
+		ZOffset: 1023
