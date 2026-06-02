@@ -1319,6 +1319,7 @@ TTRK:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 135
@@ -1386,7 +1387,7 @@ CBRA:
 	Health:
 		HP: 32000
 	Armor:
-		Type: Heavy
+		Type: Light
 	Mobile:
 		Speed: 128
 		Locomotor: heavywheeled

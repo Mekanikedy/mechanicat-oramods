@@ -354,15 +354,15 @@ SCUD:
 KatyushaRockets:
 	Inherits: ^AntiGroundMissile
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
-	ReloadDelay: 120
+	ReloadDelay: 125
 	Range: 8c768
 	MinRange: 3c0
 	Report: katyrocket1.aud, katyrocket2.aud, katyrocket3.aud
-	Burst: 3
+	Burst: 6
 	BurstDelays: 12
 	-Projectile:
 	Projectile: Bullet
-		Inaccuracy: 2c512
+		Inaccuracy: 1c384
 		InaccuracyType: Absolute
 		Image: dragon
 		Speed: 200
@@ -371,8 +371,15 @@ KatyushaRockets:
 		Shadow: true
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
-		Damage: 4000
+		Damage: 4500
 		Spread: 448
+		Versus:
+			None: 90
+			Wood: 50
+			Tree: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
 	Warhead@3Eff: CreateEffect
 		Explosions: napalm

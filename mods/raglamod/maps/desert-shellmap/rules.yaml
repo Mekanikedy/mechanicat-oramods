@@ -13,7 +13,7 @@ World:
 	-SpawnStartingUnits:
 	-MapStartingLocations:
 	MusicPlaylist:
-		BackgroundMusic: intro
+		BackgroundMusic: gla_11
 		AllowMuteBackgroundMusic: true
 		DisableWorldSounds: true
 	LuaScript:
