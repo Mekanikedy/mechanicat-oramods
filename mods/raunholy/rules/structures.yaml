@@ -848,6 +848,9 @@ DOME:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	ProvidesPrerequisite@RadarDomeUplink:
+		Prerequisite: dome-uplink
+		RequiresCondition: !jammed && !disabled
 
 PBOX:
 	Inherits: ^Defense

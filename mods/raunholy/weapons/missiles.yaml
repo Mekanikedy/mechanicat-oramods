@@ -366,3 +366,9 @@ Dragon.pbox:
 RedEye.pbox:
 	Inherits: RedEye
 	Range: 6c0
+
+MammothTusk2:
+	Inherits: MammothTusk
+	ReloadDelay: 80
+	Burst: 4
+	BurstDelays: 0, 7, 0

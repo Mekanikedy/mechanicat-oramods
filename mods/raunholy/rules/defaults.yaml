@@ -1091,6 +1091,12 @@
 	Chronoshiftable:
 	Tooltip:
 		GenericName: meta-husk-generic-name
+	Crushable:
+		CrushClasses: husk
+		WarnProbability: 0
+	GrantExternalConditionToCrusher:
+		OnCrushCondition: slowdown
+		OnCrushDuration: 50
 
 ^PlaneHusk:
 	Inherits: ^BasicHusk

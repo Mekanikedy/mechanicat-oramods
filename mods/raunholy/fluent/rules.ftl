@@ -357,6 +357,7 @@ actor-fcom-husk-name = Husk (Forward Command Post)
 actor-miss-husk-name = Husk (Observatory)
 actor-bio-husk-name = Husk (Biological Lab)
 actor-oilb-husk-name = Husk (Oil Derrick)
+actor-5tnk-husk-name = Husk (Super Tank)
 
 ## infantry.yaml
 notification-building-infiltrated = Building infiltrated.
@@ -951,7 +952,7 @@ actor-4tnk =
     .generic-name = Tank
     .description =
     Large, slow tank with anti-air capabilities.
-    Can crush concrete walls and most vehicles.
+    Can crush concrete walls, most vehicles and husks.
     Self-repairs slowly while out of combat.
     Can attack enemy aircraft.
       Strong vs Vehicles, Infantry and Aircraft
@@ -969,6 +970,7 @@ actor-harv =
     .generic-name = Harvester
     .description =
     Collects Ore and Gems for processing.
+    Can crush vehicle husks.
     Self-repairs slowly while out of combat.
       Unarmed
 
@@ -1074,6 +1076,23 @@ actor-stnk =
     Can attack enemy aircraft.
       Strong vs Vehicles, Aircraft
       Weak vs Infantry, Defenses
+
+actor-5tnk =
+    .name = Super Tank
+    .generic-name = Tank
+    .description =
+    Super-heavy robotic tank with anti-air capabilities.
+    Can crush concrete walls, most vehicles and husks.
+    Maximum of one can be built.
+
+    Requires active radar to operate. While active:
+    Self-repairs slowly while out of combat.
+    Can detect cloaked units.
+
+    Can attack enemy aircraft.
+      Strong vs Vehicles, Infantry and Aircraft
+      Weak vs Nothing
+      Special ability: Can self-destruct on command
 
 ## Civilian Tech
 actor-hosp =

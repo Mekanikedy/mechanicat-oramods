@@ -369,3 +369,35 @@ stnk:
 		UseClassicFacings: True
 	icon:
 		Filename: stnkicon.shp
+
+5tnk:
+	Inherits: 4tnk
+	Defaults:
+		Filename: 5tnk.shp
+	active:
+		Filename: thunder1.shp
+		Length: *
+		BlendMode: Additive
+		Tick: 130
+		Offset: 0,-1
+	active-2:
+		Filename: thunder2.shp
+		Length: *
+		BlendMode: Additive
+		Tick: 110
+		Offset: 0,-1
+	icon:
+		Filename: 5tnkicon.shp
+
+5tnk.destroyed:
+	idle:
+		Filename: 5tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: 5tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512

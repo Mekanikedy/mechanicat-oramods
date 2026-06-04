@@ -156,3 +156,10 @@ VolkovVoice:
 		Build: sv2ready
 		Kill: sv2noprob,sv2ugotit
 		Demolish: sv2ritaway,sv2ugotit
+
+CyborgVoice:
+	Voices:
+		Select: volksela,volkselb,volkselc
+		Move: volkmova,volkmovb,volkmovc
+		Action: volkata,volkatb,volkatc
+		Build: volkselb

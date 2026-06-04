@@ -116,19 +116,18 @@ PBOX:
 		Types: Infantry, Demitri
 
 5TNK:
-	Inherits: ^TrackedVehicle
-	Inherits@AUTOTARGET: ^AutoTargetAll
+	Buildable:
+		Prerequisites: ~disabled
 	Valued:
 		Cost: 10000
-	Tooltip:
-		Name: actor-5tnk.name
-		GenericName: actor-5tnk.generic-name
 	Health:
 		HP: 2000000
 	Armor:
 		Type: Concrete
 	Mobile:
 		Speed: 42
+		-RequiresCondition:
+		-PauseOnCondition:
 	RevealsShroud:
 		Range: 6c0
 		RequiresCondition: !friendly
@@ -140,12 +139,14 @@ PBOX:
 		Condition: friendly
 	Turreted:
 		TurnSpeed: 4
+		Offset: 0,0,0
 	Armament@PRIMARY:
 		Weapon: SuperTankPrimary
 		LocalOffset: 900,180,340, 900,-180,340
 		Recoil: 171
 		RecoilRecovery: 30
 		MuzzleSequence: muzzle
+		-PauseOnCondition:
 	Armament@SECONDARY:
 		Name: secondary
 		Weapon: MammothTusk
@@ -153,12 +154,15 @@ PBOX:
 		LocalYaw: -100,100
 		Recoil: 43
 		MuzzleSequence: muzzle
+		-PauseOnCondition:
 	AttackTurreted:
+		-PauseOnCondition:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	FireWarheadsOnDeath:
 		Weapon: MiniNuke
 		EmptyWeapon: MiniNuke
+		-RequiresCondition:
 	SpawnActorOnDeath:
 		Actor: 5TNK.Husk
 	ChangesHealth:
@@ -166,17 +170,32 @@ PBOX:
 		Delay: 1
 		StartIfBelow: 100
 		DamageCooldown: 150
+		-RequiresCondition:
 	Selectable:
 		Bounds: 1877, 1621, 0, -170
+	-GrantConditionOnPrerequisite@WIRELESS:
+	-GrantCondition@DISABLED:
+	-RevealsShroudMultiplier@Offline:
+	-RejectsOrders:
+	-DamageMultiplier@DISABLED:
+	-WithColoredOverlay@DISABLED:
+	-WithDecoration@DISABLED:
+	-DetectCloaked:
+	-RenderDetectionCircle:
+	-ExternalCondition@PRODUCED:
+	-VoiceAnnouncement:
+	-FireWarheadsOnDeath@OVERLOAD:
+	-GrantConditionOnDeploy@OVERLOAD:
+	-WithIdleOverlay@OVERLOAD:
+	-WithIdleOverlay@OVERLOAD2:
+	-KillsSelf@OVERLOAD:
+	-ToggleConditionOnOrder@InvulnerabilityDisable:
+	-WithColoredOverlay@IRONCURTAIN:
+	-DamageMultiplier@IRONCURTAIN:
 	RenderSprites:
 		Image: 4TNK
 
 5TNK.Husk:
-	Inherits: ^Husk
-	Tooltip:
-		Name: actor-5tnk-husk-name
-	ThrowsParticle@turret:
-		Anim: turret
 	Health:
 		HP: 200000
 	RenderSprites:

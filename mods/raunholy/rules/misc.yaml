@@ -182,6 +182,9 @@ CRATE:
 		Units: typh
 		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.high, stek
+	ExplodeCrateAction@nuke:
+		Weapon: CrateNuke
+		SelectionShares: 1
 
 MONEYCRATE:
 	Inherits: ^Crate

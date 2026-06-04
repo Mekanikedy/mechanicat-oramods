@@ -1141,3 +1141,10 @@ litningupg:
 		Start: 4
 		Length: 4
 		ZOffset: 1023
+
+nosignal:
+	offline:
+		Filename: nosig.shp
+		Length: *
+		Tick: 160
+		ZOffset: 2047

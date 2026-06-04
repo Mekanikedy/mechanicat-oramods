@@ -51,6 +51,25 @@
 		IntoActor: 4tnk
 	RenderSprites:
 		Image: 4tnk.destroyed
+	-Crushable:
+	-GrantExternalConditionToCrusher:
+
+5TNK.Husk:
+	Inherits: ^Husk
+	Husk:
+		Locomotor: heavytracked
+	Tooltip:
+		Name: actor-5tnk-husk-name
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 5tnk
+	InfiltrateForTransform:
+		IntoActor: 5tnk
+	RenderSprites:
+		Image: 5tnk.destroyed
+	-Crushable:
+	-GrantExternalConditionToCrusher:
 
 HARV.FullHusk:
 	Inherits: ^Husk
@@ -62,6 +81,8 @@ HARV.FullHusk:
 		IntoActor: harv
 	RenderSprites:
 		Image: hhusk
+	-Crushable:
+	-GrantExternalConditionToCrusher:
 
 HARV.EmptyHusk:
 	Inherits: ^Husk
@@ -73,6 +94,8 @@ HARV.EmptyHusk:
 		IntoActor: harv
 	RenderSprites:
 		Image: hhusk2
+	-Crushable:
+	-GrantExternalConditionToCrusher:
 
 MCV.Husk:
 	Inherits: ^Husk
@@ -84,6 +107,8 @@ MCV.Husk:
 		IntoActor: mcv
 	RenderSprites:
 		Image: mcvhusk
+	-Crushable:
+	-GrantExternalConditionToCrusher:
 
 MGG.Husk:
 	Inherits: ^Husk

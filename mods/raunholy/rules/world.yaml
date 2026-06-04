@@ -37,7 +37,7 @@
             WaterFord: 50
 	Locomotor@HEAVYWHEELED:
 		Name: heavywheeled
-		Crushes: wall, mine, crate, infantry
+		Crushes: wall, mine, crate, infantry, husk
         CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
@@ -75,7 +75,7 @@
             WaterFord: 88
 	Locomotor@HEAVYTRACKED:
 		Name: heavytracked
-		Crushes: wall, infantry, mine, crate, heavywall, vehicle
+		Crushes: wall, infantry, mine, crate, heavywall, vehicle, husk
         CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
