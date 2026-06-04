@@ -12,7 +12,7 @@ changes compared to the default mod:
 
 Economy
 - the amount of selectable starting credits set to 7500, 15000, 30000 with the default option being 7500
-- noob protection on Ore Refineries disabled, resources will go to wacte if not have enough storage
+- noob protection on Ore Refineries disabled, resources will go to waste if not have enough storage
 - added a lobby checkbox option for enabling ERCC Refinery (default: on)
 - increased the value of ore and gems to 30/60 from 25/50
 
@@ -44,6 +44,7 @@ Veterancy
 
 Miscellaneus
 - Units(or Defenses) that are capable of attacking air units will say so in their tooltip
+- enabled the unused crate nuke explosion with a chance of 1%
 
 Buildings
 - tech buildings leave behind a husk when destroyed, that can be restored to function with an engineer
@@ -247,15 +248,19 @@ new: Volkov
 Vehicle units
 - Vehicles will get slowed down when crushing Infantry, Vehicles or Walls
 - Vehicles changed to have a cargo weight of 3
+- Supply Truck has a cargo weight of 2
 - Harvester has a cargo weight of 4
-- The following has a cargo weight of 5: Mammoth Tank, MCV, M.A.D. Tank
+- The following has a cargo weight of 5: Mammoth Tank, MCV, M.A.D. Tank, Super Tank
+- Most vehicle husks can get crushed by Harvester, Mammoth Tank, MCV, M.A.D. Tank, Super Tank, Chrono Tank
 
 MCV
 - cost of MCV(and subsequently Construction Yard) increased to 2500$ from 2000$
+- MCV can crush vehicle husks
 
 Harvester
 - Harvester cost reduced to 1000$ from 1100$
 - the Harvester scan range from Ore Refinery for detecting new ore patches in range has been reduced to 10 from 15 
+- Harvester can crush vehicle husks
 
 Supply Truck
 - Supply Truck can deliver only to Construction Yards
@@ -285,11 +290,12 @@ Heavy Tank
 - fixed the turret offset on Heavy Tank sprite (by adjusting 1px upwards) 
 
 Mammoth Tank
-- Mammoth Tank can crush most Vehicles in addition
+- Mammoth Tank can crush most Vehicles, and vehicle husks in addition
 - Range of Mammoth Tank cannons increased by 0c512, from 4c768 to 5c256
 - Mammoth Tank cost reduced to 1800$ from 2000$
 - Mammoth Tank movespeed increased to 54 from 43
 - reduced the rate of Mammoth Tank self-repair to 5 from 3
+- the turning speed of Mammoth Tank increased to 12 from 8
 
 Artillery
 - Artillery cost reduced to 800$ from 850$
@@ -321,12 +327,14 @@ Chrono Tank
 - Chrono Tank teleport recharges in 15sec, down from 20sec
 - Chrono Tank can teleport over 15 cells distance, up from 12 cells
 - weaponry of Chrono Tank changed to can fire over Walls
+- Chrono Tank can crush vehicle husks
 
 Phase Transport
 - Phase Transport cost increased to 1100$ from 1000$
 - Phase Transport's weapon changed to rockets of the Destroyer ship, and can now attack air too
 - linked anti-ground and anti-air attacks to prevent double-firing
 - Carry capacity of Phase Transport reduced to 3 from 5
+- locomotor changed to tracked from heavywheeled
 
 Mobile Gap Generator
 - Mobile Gap Generator can be built by every Allies faction
@@ -339,6 +347,20 @@ M.A.D. Tank
 - a deployed M.A.D. Tank will lose any Invulnerability had on it
 - M.A.D. Tank movespeed increased to 54 from 46
 - M.A.D. Tank hitpoints reduced to 60000 from 90000
+
+new: Super Tank
+- Super Tank added for every Soviet at Tech Center level
+- robotic tank that requires active radar to operate
+- only one can be built
+- cannot be stolen because robotical
+- main guns have extended range and increased damage
+- rocket pods shoot double the amount
+- moves and turns slower than a Mammoth Tank
+- has double the health of a Mammoth Tank
+- can be deployed to explode like a crate nuke
+- while deployed or offline takes double damage
+- can detect cloaked units
+- Costs 2800$ to build
 
 Naval units
 - **Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
