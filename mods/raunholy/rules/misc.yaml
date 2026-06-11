@@ -2,17 +2,17 @@ MINV:
 	Inherits: ^Mine
 	Tooltip:
 		Name: meta-mine-name
-        RequiresCondition: !floating
+		RequiresCondition: !floating
 	Tooltip@SEA:
 		Name: meta-seamine-name
-        RequiresCondition: floating
-    WithSpriteBody:
-        Sequence: idle
-        PauseOnCondition: floating
-    WithSpriteBody@SEA: 
-        Name: body2
-        Sequence: idle2
-        RequiresCondition: floating
+ 		RequiresCondition: floating
+	WithSpriteBody:
+		Sequence: idle
+		PauseOnCondition: floating
+	WithSpriteBody@SEA:
+		Name: body2
+		Sequence: idle2
+		RequiresCondition: floating
 	GrantConditionOnTerrain@SEA:
 		TerrainTypes: Water
 		Condition: floating
@@ -22,15 +22,15 @@ MINV:
 		CloakStyle: None
 		DetectionTypes: Mine
 		InitialDelay: 0
-        RequiresCondition: !floating
-    Cloak@SEA:
+		RequiresCondition: !floating
+	Cloak@SEA:
 		CloakSound:
 		UncloakSound:
 		CloakStyle: None
 		DetectionTypes: Mine, Underwater
 		InitialDelay: 0
-        PauseOnCondition: pinged
-        RequiresCondition: floating
+		PauseOnCondition: pinged
+		RequiresCondition: floating
 	Targetable:
 		TargetTypes: GroundActor, Mine
 		RequiresCondition: !floating
@@ -39,13 +39,12 @@ MINV:
 		RequiresCondition: floating
 	ExternalCondition@SONARPING:
 		Condition: pinged
-        SourceCap: 1
-        TotalCap: 1
+		SourceCap: 1
+		TotalCap: 1
 	RenderSprites:
 		Image: minv
 	FireWarheadsOnDeath:
 		Weapon: ATMine
-
 
 # Only kept for backwards-compatibility with existing and imported maps, use MINV instead
 MINP:
@@ -182,6 +181,11 @@ CRATE:
 		Units: typh
 		ValidFactions: soviet, russia, ukraine, belarus, unholy
 		Prerequisites: techlevel.high, stek
+	GiveUnitCrateAction@seas:
+		SelectionShares: 6
+		Units: seas
+		ValidFactions: soviet, russia, ukraine, belarus, unholy
+		Prerequisites: techlevel.low
 	ExplodeCrateAction@nuke:
 		Weapon: CrateNuke
 		SelectionShares: 1
@@ -269,9 +273,9 @@ SONAR:
 	KillsSelf:
 	Immobile:
 		OccupiesSpace: false
-    FireWarheadsOnDeath:
-        Weapon: DetectionPing
-        EmptyWeapon: DetectionPing
+	FireWarheadsOnDeath:
+		Weapon: DetectionPing
+		EmptyWeapon: DetectionPing
 
 FLARE:
 	Immobile:
@@ -508,14 +512,14 @@ fact.colorpicker:
 	RenderSprites:
 		Image: fact
 		FactionImages:
-            allies: fact
-            england: fact
-            france: fact
-            germany: fact
-            soviet: fact
-            russia: fact
-            ukraine: fact
-            belarus: fact
+			allies: fact
+			england: fact
+			france: fact
+			germany: fact
+			soviet: fact
+			russia: fact
+			ukraine: fact
+			belarus: fact
 		Palette: colorpicker
 
 CTFLAG:
@@ -560,7 +564,7 @@ gpssactivator:
 	SpawnActorOnDeath:
 		Actor: gpss
 		SpawnAfterDefeat: False
-        RequiresCondition: !gpss-enabled
+		RequiresCondition: !gpss-enabled
 	GrantConditionOnPrerequisite@enabling:
 		Prerequisites: gpss
 		Condition: gpss-enabled
@@ -595,7 +599,7 @@ gpss:
 		StartIfBelow: 101
 		Delay: 1
 	ProduceActorPower@GPSSactivesign:
-        OrderName: GPSSatteliteTimer
+		OrderName: GPSSatteliteTimer
 		Name: actor-atek.gpspower-name
 		Description: actor-atek.gpspower-description
 		Icon: gps
@@ -605,8 +609,8 @@ gpss:
 		SupportPowerPaletteOrder: 120
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		RequiresCondition: gpss-activated
-        BeginChargeSpeechNotification: SatelliteLaunched
-        BeginChargeTextNotification: GPS Sattelite launched.
+		BeginChargeSpeechNotification: SatelliteLaunched
+		BeginChargeTextNotification: GPS Sattelite launched.
         #   EndChargeSpeechNotification: SatelliteTerminated
 	GrantConditionOnPrerequisite@gpssactivation:
 		Prerequisites: gpss
@@ -619,7 +623,7 @@ gpss:
 		RequiresCondition: !uplinkexists
 	ActorLostNotification:
 		Notification: SatelliteTerminated
-        TextNotification: notification-sattelite-lost
+		TextNotification: notification-sattelite-lost
 		#   NotifyAll: True
 
 #   this is required to prevent stacking duration issues from 
@@ -650,7 +654,7 @@ infveterancyactivator:
 	SpawnActorOnDeath:
 		Actor: infantry.upgraded2
 		SpawnAfterDefeat: False
-        RequiresCondition: !infveterancyenabled
+		RequiresCondition: !infveterancyenabled
 	GrantConditionOnPrerequisite@veterancyenabling:
 		Prerequisites: infantry.upgraded
 		Condition: infveterancyenabled
@@ -685,7 +689,7 @@ infantry.upgraded2:
 		StartIfBelow: 101
 		Delay: 1
 	ProduceActorPower@veterancyactivesign:
-        OrderName: InfantryVeterancy
+		OrderName: InfantryVeterancy
 		Name: actor-infantry-upgraded.produceactorpower-infantryveterancy-name
 		Description: actor-infantry-upgraded.produceactorpower-infantryveterancy-description
 		Icon: infvet
@@ -723,7 +727,7 @@ vehveterancyactivator:
 	SpawnActorOnDeath:
 		Actor: vehicles.upgraded2
 		SpawnAfterDefeat: False
-        RequiresCondition: !vehveterancyenabled
+		RequiresCondition: !vehveterancyenabled
 	GrantConditionOnPrerequisite@veterancyenabling2:
 		Prerequisites: vehicles.upgraded
 		Condition: vehveterancyenabled
@@ -758,7 +762,7 @@ vehicles.upgraded2:
 		StartIfBelow: 101
 		Delay: 1
 	ProduceActorPower@veterancyactivesign2:
-        OrderName: VehicleVeterancy
+		OrderName: VehicleVeterancy
 		Name: actor-vehicles-upgraded.produceactorpower-vehiclesveterancy-name
 		Description: actor-vehicles-upgraded.produceactorpower-vehiclesveterancy-description
 		Icon: vehvet
@@ -796,7 +800,7 @@ airveterancyactivator:
 	SpawnActorOnDeath:
 		Actor: aircraft.upgraded2
 		SpawnAfterDefeat: False
-        RequiresCondition: !airveterancyenabled
+		RequiresCondition: !airveterancyenabled
 	GrantConditionOnPrerequisite@veterancyenabling3:
 		Prerequisites: aircraft.upgraded
 		Condition: airveterancyenabled
@@ -831,7 +835,7 @@ aircraft.upgraded2:
 		StartIfBelow: 101
 		Delay: 1
 	ProduceActorPower@veterancyactivesign3:
-        OrderName: AircraftVeterancy
+		OrderName: AircraftVeterancy
 		Name: actor-aircraft-upgraded.produceactorpower-aircraftveterancy-name
 		Description: actor-aircraft-upgraded.produceactorpower-aircraftveterancy-description
 		Icon: airvet
@@ -844,3 +848,18 @@ aircraft.upgraded2:
 	GrantConditionOnPrerequisite@veterancyactivation3:
 		Prerequisites: aircraft.upgraded
 		Condition: airveterancyactivated
+	ProvidesPrerequisite@england:
+		Prerequisite: player.england
+		Factions: england
+	ProvidesPrerequisite@france:
+		Prerequisite: player.france
+		Factions: france
+	ProvidesPrerequisite@germany:
+		Prerequisite: player.germany
+		Factions: germany
+	ProvidesPrerequisite@russia:
+		Prerequisite: player.russia
+		Factions: russia
+	ProvidesPrerequisite@ukraine:
+		Prerequisite: player.ukraine
+		Factions: ukraine

@@ -82,6 +82,15 @@ MSLO:
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
 		ValidDamageStates: Critical
+	ProductionCostMultiplier@russia:
+		Multiplier: 80
+		Prerequisites: player.russia
+	GivesExperienceMultiplier@russia:
+		Modifier: 120
+		RequiresCondition: owner.russia
+	GrantConditionOnPrerequisite@russia:
+		Condition: owner.russia
+		Prerequisites: player.russia
 
 GAP:
 	Inherits: ^ScienceBuilding
@@ -147,7 +156,7 @@ GAP:
 			TopLeft: -512, -512
 			BottomRight: 512, 512
 	GrantChargedConditionOnToggle:
-        InitialCharge: 0
+		InitialCharge: 0
 		ActivatedCondition: charged
 		CanCancelCondition: false
 		ChargeDuration: 1500
@@ -320,7 +329,7 @@ SPEN:
 		DeploySound: sonpulse.aud
 		EffectImage: moveflsh
 		EffectPalette: moveflash
-		SupportPowerPaletteOrder: 80
+		SupportPowerPaletteOrder: 100
 		EffectSequence: idle
 		BlockedCursor: move-blocked
 	GrantConditionOnPowerState@LOWPOWER:
@@ -471,7 +480,7 @@ SYRD:
 		DeploySound: sonpulse.aud
 		EffectImage: moveflsh
 		EffectPalette: moveflash
-		SupportPowerPaletteOrder: 80
+		SupportPowerPaletteOrder: 100
 		EffectSequence: idle
 		BlockedCursor: move-blocked
 	GrantConditionOnPowerState@LOWPOWER:
@@ -519,7 +528,7 @@ IRON:
 		HasMinibib: true
 	GrantExternalConditionPower@IRONCURTAIN:
 		PauseOnCondition: disabled
-        OrderName: Invulnerability
+		OrderName: Invulnerability
 		Icon: invuln
 		ChargeInterval: 4500
 		Name: actor-iron.grantexternalconditionpower-ironcurtain-name
@@ -687,19 +696,19 @@ TSLA:
 	Armament:
 		Weapon: TeslaZap
 		LocalOffset: 0,0,896
-		RequiresCondition: (!lowpower && !charged) || (lowpower && charged == 1)
+		RequiresCondition: (!lowpower && !charged && !supercharged) || (lowpower && charged == 1 && !supercharged)
 	Armament@1:
 		Weapon: TeslaZapBoost1
 		LocalOffset: 0,0,896
-		RequiresCondition: (!lowpower && charged == 1) || (lowpower && charged == 2)
+		RequiresCondition: (!lowpower && charged == 1 && !supercharged) || (lowpower && charged == 2 && !supercharged)
 	Armament@2:
 		Weapon: TeslaZapBoost2
 		LocalOffset: 0,0,896
-		RequiresCondition: (!lowpower && charged == 2) || (lowpower && charged >= 3)
+		RequiresCondition: (!lowpower && charged == 2 && !supercharged) || (lowpower && charged >= 3 && !supercharged)
 	Armament@3:
 		Weapon: TeslaZapBoost3
 		LocalOffset: 0,0,896
-		RequiresCondition: !lowpower && charged >= 3
+		RequiresCondition: (!lowpower && charged >= 3) || (!lowpower && supercharged)
 	AttackTesla:
 		PauseOnCondition: disabled || build-incomplete
 		ChargeAudio: tslachg2.aud
@@ -717,9 +726,9 @@ TSLA:
 		TotalCap: 3
 	Targetable@CHARGED:
 		TargetTypes: TeslaCharge
-		RequiresCondition: !powerdown && !(charged == 3)
+		RequiresCondition: !powerdown && !(charged == 3) && !supercharged
 	GrantConditionOnPowerState@LOWPOWER:
-		RequiresCondition: !charged
+		RequiresCondition: !charged && !supercharged
 	TimedConditionBar@CHARGED:
 		Condition: charged
 		Color: f4f442
@@ -731,7 +740,7 @@ TSLA:
 		Offsets:
 			repairing: 10, 0
 		ValidRelationships: Ally
-		RequiresCondition: charged
+		RequiresCondition: charged || supercharged
 		BlinkInterval: 64
 		RequiresSelection: true
 	ToggleConditionOnOrder:
@@ -739,10 +748,28 @@ TSLA:
 		EnabledSound: DisablePower
 		Condition: powerdown
 		OrderName: PowerDown
-		PauseOnCondition: charged2
+		PauseOnCondition: charged2 || supercharged
 	GrantCondition@CHARGED:
 		Condition: charged2
 		RequiresCondition: charged
+	Targetable@SUPERCHARGED:
+		TargetTypes: SuperCharge
+		RequiresCondition: !powerdown
+	ExternalCondition@supercharged:
+		Condition: supercharged
+	TimedConditionBar@supercharged:
+		Condition: supercharged
+		Color: f4f442
+	GrantConditionOnDamageState@CRITICAL:
+		Condition: damaged-critical
+		ValidDamageStates: Critical
+	ChangesHealth@supercharged:
+		Delay: 24
+		StartIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: supercharged && !damaged-critical && !invulnerability
+		PercentageStep: -3
+		Step: -1
 
 AGUN:
 	Inherits: ^Defense
@@ -780,6 +807,8 @@ AGUN:
 	WithSpriteTurret:
 		RequiresCondition: !build-incomplete
 		Recoils: false
+	WithTurretAttackAnimation:
+		Sequence: recoil
 	Armament:
 		Weapon: ZSU-23
 		LocalOffset: 520,100,450, 520,-150,450
@@ -793,6 +822,15 @@ AGUN:
 		Amount: -50
 	-BodyOrientation:
 	ClassicFacingBodyOrientation:
+	ProductionCostMultiplier@germany:
+		Multiplier: 75
+		Prerequisites: player.germany
+	GivesExperienceMultiplier@germany:
+		Modifier: 125
+		RequiresCondition: owner.germany
+	GrantConditionOnPrerequisite@germany:
+		Condition: owner.germany
+		Prerequisites: player.germany
 
 DOME:
 	Inherits: ^Building
@@ -806,7 +844,7 @@ DOME:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 90
-		Prerequisites: anypower, proc, ~techlevel.medium
+		Prerequisites: anypower, proc, ~techlevel.medium, ~!structures.england
 		Description: actor-dome.description
 	Valued:
 		Cost: 1200
@@ -843,6 +881,7 @@ DOME:
 	Power:
 		Amount: -40
 	ProvidesPrerequisite@buildingname:
+		Prerequisite: dome
 	ExternalCondition@JAMMED:
 		Condition: jammed
 	WithDeathAnimation:
@@ -851,6 +890,38 @@ DOME:
 	ProvidesPrerequisite@RadarDomeUplink:
 		Prerequisite: dome-uplink
 		RequiresCondition: !jammed && !disabled
+	AirstrikePower@airstrike:
+		PauseOnCondition: disabled
+		OrderName: EnglandAirstrike
+		Prerequisites: structures.england
+		Icon: airstrike
+		ChargeInterval: 6750
+		Name: actor-dome.airstrikepower-name
+		Description: actor-dome.airstrikepower-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		UnitType: spit
+		QuantizedFacings: 8
+		DisplayBeacon: True
+		BeaconPoster: airsicon
+		SquadSize: 3
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 60
+	SupportPowerChargeBar:
+
+DOME.England:
+	Inherits: DOME
+	Buildable:
+		Prerequisites: anypower, proc, ~structures.england, ~techlevel.medium
+		Description: actor-dome-england-description
+	RenderSprites:
+		Image: dome
 
 PBOX:
 	Inherits: ^Defense
@@ -862,7 +933,7 @@ PBOX:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 40
-		Prerequisites: tent, ~structures.allies, ~techlevel.low
+		Prerequisites: tent, ~structures.allies, ~techlevel.low, ~!structures.england
 		Description: actor-pbox.description
 	Valued:
 		Cost: 600
@@ -939,12 +1010,12 @@ HBOX:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 50
-		Prerequisites: tent, ~structures.allies, ~techlevel.medium
+		Prerequisites: tent, ~structures.england, ~techlevel.low
 		Description: actor-hbox.description
 	Valued:
-		Cost: 750
+		Cost: 600
 	CustomSellValue:
-		Value: 650
+		Value: 500
 	Health:
 		HP: 40000
 	Armor:
@@ -1015,7 +1086,7 @@ HBOX:
 
 GUN:
 	Inherits: ^Defense
-	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@AUTOTARGET: ^AutoTargetGroundPrioritizeVehicles
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 70
@@ -1052,11 +1123,15 @@ GUN:
 		Weapon: TurretGun
 		LocalOffset: 512,0,112
 		MuzzleSequence: muzzle
+		PauseOnCondition: reload-as
+		ReloadingCondition: reload-ag
 	Armament@SECONDARY:
 		Name: secondary
 		Weapon: TurretDepthCharge
 		LocalOffset: 512,0,112
 		MuzzleSequence: muzzle
+		PauseOnCondition: reload-ag
+		ReloadingCondition: reload-as
 	AttackTurreted:
 		PauseOnCondition: build-incomplete
 	WithMuzzleOverlay:
@@ -1070,10 +1145,19 @@ GUN:
 		ValidPowerStates: Low, Critical
 	-BodyOrientation:
 	ClassicFacingBodyOrientation:
+	ProductionCostMultiplier@germany:
+		Multiplier: 75
+		Prerequisites: player.germany
+	GivesExperienceMultiplier@germany:
+		Modifier: 125
+		RequiresCondition: owner.germany
+	GrantConditionOnPrerequisite@germany:
+		Condition: owner.germany
+		Prerequisites: player.germany
 
 FTUR:
 	Inherits: ^Defense
-	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@AUTOTARGET: ^AutoTargetGroundPrioritizeInfantry
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 60
@@ -1221,9 +1305,9 @@ ATEK:
 	Production@SupportPower:
 		Produces: SupportPower
 	ProduceActorPower@gpssat:
-        PauseOnCondition: disabled
+		PauseOnCondition: disabled
 		OrderName: GPSSatteliteRedux
-        Name: actor-atek.gpspower-name
+		Name: actor-atek.gpspower-name
 		Description: actor-atek.gpspower-description
 		Icon: gps
 		Actors: gpssactivator
@@ -1234,13 +1318,13 @@ ATEK:
 		IncomingSpeechNotification:
 		DisplayTimerRelationships: None
 		EndChargeSpeechNotification: SatelliteReady
-        EndChargeTextNotification: GPS Sattelite ready.
+		EndChargeTextNotification: GPS Sattelite ready.
 		RequiresCondition: !gps-on
         #   Prerequisites: uplink
-    SupportPowerChargeBar:
+	SupportPowerChargeBar:
 	ProvidesPrerequisite@uplink:
 		Prerequisite: uplink
-        RequiresCondition: !disabled
+		RequiresCondition: !disabled
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
 		PlayerExperience: 10
@@ -1401,7 +1485,7 @@ FACT:
 		Factions: allies
 		Prerequisite: structures.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: england
+		Factions: allies, england, unholy
 		Prerequisite: structures.england
 	ProvidesPrerequisite@france:
 		Factions: allies, france, unholy
@@ -1416,7 +1500,7 @@ FACT:
 		Factions: soviet
 		Prerequisite: structures.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: russia
+		Factions: soviet, russia, unholy
 		Prerequisite: structures.russia
 	ProvidesPrerequisite@ukraine:
 		Factions: ukraine
@@ -1505,14 +1589,23 @@ FACT:
 	RenderSprites:
 		Image: fact
 		FactionImages:
-            allies: afact
-            england: afact
-            france: afact
-            germany: afact
-            soviet: sfact
-            russia: sfact
-            ukraine: sfact
-            belarus: sfact
+			allies: afact
+			england: afact
+			france: afact
+			germany: afact
+			soviet: sfact
+			russia: sfact
+			ukraine: sfact
+			belarus: sfact
+	ProductionCostMultiplier@france:
+		Multiplier: 80
+		Prerequisites: player.france
+	GivesExperienceMultiplier@france:
+		Modifier: 120
+		RequiresCondition: owner.france
+	GrantConditionOnPrerequisite@france:
+		Condition: owner.france
+		Prerequisites: player.france
 
 PROC:
 	Inherits: ^Building
@@ -1555,7 +1648,7 @@ PROC:
 	CustomSellValue:
 		Value: 400
 	Sellable:
-        RefundPercent: 100
+		RefundPercent: 100
 	FreeActor:
 		Actor: HARV
 		SpawnOffset: 1,2
@@ -1784,7 +1877,7 @@ AFLD:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 130
-		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.russia, ~!structures.ukraine, ~!structures.belarus
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~structures.russia, ~!structures.ukraine, ~!structures.belarus
 		Description: actor-afld.description
 	Valued:
 		Cost: 625
@@ -1969,7 +2062,7 @@ AFLD:
 AFLD.Russia:
 	Inherits: AFLD
 	Buildable:
-		Prerequisites: dome, ~techlevel.medium, ~structures.russia
+		Prerequisites: dome, ~techlevel.medium, ~structures.russia, ~!structures.soviet
 		Description: actor-afld-russia-description
 	RenderSprites:
 		Image: afld
@@ -2029,6 +2122,40 @@ POWR:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	GrantConditionOnDamageState@CRITICAL:
+		Condition: damaged-critical
+		ValidDamageStates: Critical
+	Targetable@SUPERCHARGED:
+		TargetTypes: SuperCharge
+		RequiresCondition: !power-outage && !damaged-critical
+	ExternalCondition@supercharged:
+		Condition: supercharged
+	TimedConditionBar@supercharged:
+		Condition: supercharged
+		Color: f4f442
+	PowerMultiplier@supercharged:
+		Modifier: 200
+		RequiresCondition: supercharged && !damaged-critical
+	ChangesHealth@supercharged:
+		Delay: 24
+		StartIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: supercharged && !damaged-critical && !invulnerability
+		PercentageStep: -3
+		Step: -1
+	WithDecoration@SUPERCHARGED:
+		Image: poweroff
+		Sequence: offline
+		Palette: chrome
+		Position: Center
+		Offsets:
+			repairing: 10, 0
+		ValidRelationships: Ally
+		RequiresCondition: supercharged
+		BlinkInterval: 64
+		RequiresSelection: true
+	RepairableBuilding:
+		RepairCondition: repairing
 
 APWR:
 	Inherits: ^Building
@@ -2068,9 +2195,44 @@ APWR:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	GrantConditionOnDamageState@CRITICAL:
+		Condition: damaged-critical
+		ValidDamageStates: Critical
+	Targetable@SUPERCHARGED:
+		TargetTypes: SuperCharge
+		RequiresCondition: !power-outage && !damaged-critical
+	ExternalCondition@supercharged:
+		Condition: supercharged
+	TimedConditionBar@supercharged:
+		Condition: supercharged
+		Color: f4f442
+	PowerMultiplier@supercharged:
+		Modifier: 200
+		RequiresCondition: supercharged && !damaged-critical
+	ChangesHealth@supercharged:
+		Delay: 24
+		StartIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: supercharged && !damaged-critical && !invulnerability
+		PercentageStep: -3
+		Step: -1
+	WithDecoration@SUPERCHARGED:
+		Image: poweroff
+		Sequence: offline
+		Palette: chrome
+		Position: Center
+		Offsets:
+			repairing: 10, 0
+		ValidRelationships: Ally
+		RequiresCondition: supercharged
+		BlinkInterval: 64
+		RequiresSelection: true
+	RepairableBuilding:
+		RepairCondition: repairing
 
 STEK:
 	Inherits: ^ScienceBuilding
+	Inherits@IDISABLE: ^DisableOnLowPower
 	Inherits@shape: ^3x2Shape
 	Selectable:
 		Bounds: 3072, 2048
@@ -2079,7 +2241,7 @@ STEK:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 150
-		Prerequisites: weap, dome, ~structures.soviet, ~techlevel.high
+		Prerequisites: weap, dome, ~structures.soviet, ~techlevel.high, ~!structures.russia
 		Description: actor-stek.description
 	Valued:
 		Cost: 2000
@@ -2105,9 +2267,44 @@ STEK:
 	Power:
 		Amount: -100
 	ProvidesPrerequisite@buildingname:
+		Prerequisite: stek
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	GrantExternalConditionPower@SUPERCHARGE:
+		PauseOnCondition: disabled
+		OrderName: supercharge
+		Prerequisites: structures.russia
+		Icon: scharge
+		ChargeInterval: 6000
+		Name: actor-stek.grantexternalconditionpower-supercharge-name
+		Description: actor-stek.grantexternalconditionpower-supercharge-description
+		Duration: 500
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		SelectTargetTextNotification: notification-select-target
+		InsufficientPowerTextNotification: notification-insufficient-power
+		Condition: supercharged
+		OnFireSound: overload.aud
+		SupportPowerPaletteOrder: 40
+		Dimensions: 5, 5
+		Footprint: __x__ _xxx_ xxxxx _xxx_ __x__
+		BlockedCursor: move-blocked
+	SupportPowerChargeBar:
+	GrantCondition@IDISABLE:
+		RequiresCondition: lowpower && owner.russia
+		Condition: disabled
+	GrantConditionOnPrerequisite@russia:
+		Condition: owner.russia
+		Prerequisites: structures.russia
+
+STEK.Russia:
+	Inherits: STEK
+	Buildable:
+		Prerequisites: weap, dome, ~techlevel.high, ~structures.russia
+		Description: actor-stek-russia-description
+	RenderSprites:
+		Image: stek
 
 BARR:
 	Inherits: ^Building
@@ -2393,7 +2590,7 @@ TENT:
 		Width: 1
 		BorderColor: ECECEC
 		BorderWidth: 3
-        RequiresCondition: !build-incomplete
+		RequiresCondition: !build-incomplete
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
@@ -2460,7 +2657,7 @@ SBAG:
 		Prerequisites: ~disabled
 		Description: actor-sbag.description
 	Valued:
-		Cost: 30
+		Cost: 50
 	CustomSellValue:
 		Value: 0
 	Tooltip:
@@ -2471,6 +2668,7 @@ SBAG:
 		Type: Wood
 	LineBuild:
 		NodeTypes: sandbag
+		Range: 8
 	LineBuildNode:
 		Types: sandbag
 	WithWallSpriteBody:
@@ -2484,7 +2682,7 @@ FENC:
 		Prerequisites: ~disabled
 		Description: actor-fenc.description
 	Valued:
-		Cost: 30
+		Cost: 50
 	CustomSellValue:
 		Value: 0
 	Tooltip:
@@ -2495,6 +2693,7 @@ FENC:
 		Type: Wood
 	LineBuild:
 		NodeTypes: fence
+		Range: 8
 	LineBuildNode:
 		Types: fence
 	WithWallSpriteBody:
@@ -2594,8 +2793,8 @@ HGAT:
 	HitShape:
 		UseTargetableCellsOffsets: true
 		Type: Rectangle
-            TopLeft: -1536, -512
-            BottomRight: 1536, 512
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
 	Building:
 		Footprint: xxx
 		Dimensions: 3,1
@@ -2616,9 +2815,9 @@ HGAT:
 	Tooltip:
 		Name: actor-gate.name
 	WithGateSpriteBody:
-        PauseOnCondition: lowpower
+		PauseOnCondition: lowpower
 		WallConnections: -1,0, 3,0
-        Type: concrete
+		Type: concrete
 	Gate:
 		PauseOnCondition: lowpower
 	LineBuildNode:
@@ -2630,16 +2829,16 @@ HGAT:
 	RenderSprites:
 		Image: hgat
 		FactionImages:
-            soviet: sgat
-            russia: sgat
-            ukraine: sgat
-            belarus: sgat
+			soviet: sgat
+			russia: sgat
+			ukraine: sgat
+			belarus: sgat
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
 	PlaceBuildingVariants:
-        Actors: vgat
-        Facings: 128
+		Actors: vgat
+		Facings: 128
 	Replacement:
 		ReplaceableTypes: Gate
 
@@ -2655,7 +2854,7 @@ VGAT:
 		Dimensions: 1,3
 	Buildable:
 		BuildDuration: 150
-        BuildDurationModifier: 100
+		BuildDurationModifier: 100
 		BuildPaletteOrder: 35
 		Prerequisites: ~disabled
 		Queue: Defense
@@ -2673,9 +2872,9 @@ VGAT:
 	Gate:
 		PauseOnCondition: lowpower
 	WithGateSpriteBody:
-        PauseOnCondition: lowpower
+		PauseOnCondition: lowpower
 		WallConnections: 0,-1, 0,3
-        Type: concrete
+		Type: concrete
 	LineBuildNode:
 		Connections: 0,-1, 0,1
 	Tooltip:
@@ -2830,7 +3029,7 @@ ERCC:
 	Tooltip:
 		Name: actor-proc.name
 	Building:
-		Footprint: =xx x=+ ===
+		Footprint: =xx x++ ===
 		Dimensions: 3,3
 		LocalCenterOffset: 0,-512,0
 	Selectable:
@@ -2859,7 +3058,7 @@ ERCC:
 	CustomSellValue:
 		Value: 400
 	Sellable:
-        RefundPercent: 100
+		RefundPercent: 100
 	FreeActor:
 		Actor: HARV
 		SpawnOffset: 1,1
@@ -2881,8 +3080,8 @@ ERCC:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
 	ProvidesPrerequisite@buildingname:
-    ProvidesPrerequisite@refinerycopy:
-        Prerequisite: proc
+	ProvidesPrerequisite@refinerycopy:
+		Prerequisite: proc
 	HitShape:
 		Type: Rectangle
 			TopLeft: -1536, -512

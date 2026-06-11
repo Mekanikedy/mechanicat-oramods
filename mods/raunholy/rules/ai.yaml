@@ -130,6 +130,27 @@ Player:
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 10c0
+			airstrike:
+				OrderName: EnglandAirstrike
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
 	HarvesterBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
 		HarvesterTypes: harv
@@ -157,9 +178,11 @@ Player:
 			abar: 3
 			kenn: 1
 			dome: 1
+			dome.england: 1
 			weap: 1
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			fix: 1
 		BuildingFractions:
 			proc: 30
@@ -178,11 +201,14 @@ Player:
 			sam: 5
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			fix: 1
 			dome: 10
+			dome.england: 10
 			mslo: 1
 		BuildingDelays:
 			dome: 4500
+			dome.england: 4500
 	BaseBuilderBotModule@normal:
 		RequiresCondition: enable-normal-ai
 		MinimumExcessPower: 60
@@ -206,6 +232,7 @@ Player:
 			tent: 1
 			abar: 1
 			dome: 1
+			dome.england: 1
 			weap: 3
 			spen: 1
 			syrd: 1
@@ -216,6 +243,7 @@ Player:
 			afld.belarus: 4
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			fix: 1
 			iron: 1
 		BuildingFractions:
@@ -226,6 +254,7 @@ Player:
 			abar: 1
 			kenn: 1
 			dome: 1
+			dome.england: 1
 			weap: 6
 			hpad: 4
 			spen: 1
@@ -244,10 +273,12 @@ Player:
 			sam: 1
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			mslo: 1
 			iron: 1
 		BuildingDelays:
 			dome: 3000
+			dome.england: 3000
 	BaseBuilderBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		MinimumExcessPower: 60
@@ -272,6 +303,7 @@ Player:
 			abar: 2
 			kenn: 1
 			dome: 1
+			dome.england: 1
 			weap: 2
 			spen: 1
 			syrd: 1
@@ -282,6 +314,7 @@ Player:
 			afld.belarus: 4
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			fix: 1
 			iron: 1
 		BuildingFractions:
@@ -306,14 +339,17 @@ Player:
 			gap: 3
 			fix: 1
 			dome: 10
+			dome.england: 10
 			agun: 5
 			sam: 5
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			mslo: 1
 			iron: 1
 		BuildingDelays:
 			dome: 3000
+			dome.england: 3000
 	BaseBuilderBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		MinimumExcessPower: 50
@@ -334,6 +370,7 @@ Player:
 			proc: 3
 			ercc: 3
 			dome: 1
+			dome.england: 1
 			barr: 1
 			tent: 1
 			abar: 1
@@ -347,11 +384,13 @@ Player:
 			weap: 1
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			fix: 1
 		BuildingFractions:
 			proc: 25
 			ercc: 25
 			dome: 1
+			dome.england: 1
 			weap: 1
 			hpad: 15
 			afld: 15
@@ -360,6 +399,7 @@ Player:
 			afld.belarus: 15
 			atek: 1
 			stek: 1
+			stek.russia: 1
 			spen: 1
 			syrd: 1
 			fix: 1
@@ -372,6 +412,7 @@ Player:
 			mslo: 1
 		BuildingDelays:
 			dome: 3000
+			dome.england: 3000
 			fix: 20000
 			tsla: 21000
 	BuildingRepairBotModule:
@@ -380,12 +421,12 @@ Player:
 		RequiresCondition: enable-rush-ai
 		SquadSize: 20
 		SquadSizeRandomBonus: 0
-		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		NavalUnitsTypes: ss, ss.ukraine, msub, msub.ukraine, typh, dd, dd.england, ca, ca.france, lst, pt, pt.england, seas
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		ConstructionYardTypes: fact
-		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AirUnitsTypes: mig, yak, heli, hind, hind.belarus, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, dome.england, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, stek.russia, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	McvManagerBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
@@ -407,14 +448,19 @@ Player:
 			apc: 30
 			jeep: 20
 			arty: 15
+			arty.france: 15
 			v2rl: 40
 			ftrk: 30
 			1tnk: 50
+			1tnk.germany: 50
 			2tnk: 50
+			2tnk.germany: 50
 			3tnk: 50
+			3tnk.russia: 50
 			4tnk: 25
 			ttnk: 25
 			stnk: 5
+			ftnk: 5
 		UnitLimits:
 			dog: 4
 			harv: 8
@@ -426,13 +472,13 @@ Player:
 		RequiresCondition: enable-normal-ai
 		SquadSize: 20
 		SquadSizeRandomBonus: 20
-		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		NavalUnitsTypes: ss, ss.ukraine, msub, msub.ukraine, typh, dd, dd.england, ca, ca.france, lst, pt, pt.england, seas
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
-		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AirUnitsTypes: mig, yak, heli, hind, hind.belarus, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, dome.england, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, stek.russia, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@normal:
 		RequiresCondition: enable-normal-ai
@@ -451,25 +497,37 @@ Player:
 			apc: 30
 			jeep: 20
 			arty: 15
+			arty.france: 15
 			v2rl: 40
 			ftrk: 30
 			1tnk: 40
+			1tnk.germany: 40
 			2tnk: 50
+			2tnk.germany: 50
 			3tnk: 50
+			3tnk.russia: 50
 			4tnk: 25
 			ttnk: 25
 			stnk: 5
+			ftnk: 5
 			mrj: 3
 			heli: 30
+			hind: 20
+			hind.belarus: 20
 			mh60: 30
 			mig: 30
 			yak: 30
 			ss: 10
+			ss.ukraine: 10
 			msub: 10
+			msub.ukraine: 10
 			typh: 10
 			dd: 10
+			dd.england: 10
 			ca: 10
+			ca.france: 10
 			pt: 10
+			pt.england: 10
 		UnitLimits:
 			e2: 5
 			e4: 5
@@ -485,13 +543,13 @@ Player:
 		RequiresCondition: enable-turtle-ai
 		SquadSize: 10
 		SquadSizeRandomBonus: 10
-		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		NavalUnitsTypes: ss, ss.ukraine, msub, msub.ukraine, typh, dd, dd.england, ca, ca.france, lst, pt, pt.england, seas
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly, e6, thf
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
-		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AirUnitsTypes: mig, yak, heli, hind, hind.belarus, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, dome.england, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, stek.russia, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
@@ -508,24 +566,36 @@ Player:
 			apc: 30
 			jeep: 20
 			arty: 15
+			arty.france: 15
 			v2rl: 40
 			ftrk: 50
 			1tnk: 50
+			1tnk.germany: 50
 			2tnk: 50
+			2tnk.germany: 50
 			3tnk: 50
+			3tnk.russia: 50
 			4tnk: 25
 			ttnk: 25
 			stnk: 10
+			ftnk: 10
 			heli: 30
+			hind: 20
+			hind.belarus: 20
 			mh60: 30
 			mig: 30
 			yak: 30
 			ss: 10
+			ss.ukraine: 10
 			msub: 10
+			msub.ukraine: 10
 			typh: 10
 			dd: 10
+			dd.england: 10
 			ca: 10
+			ca.france: 10
 			pt: 10
+			pt.england: 10
 			mnly: 2
 		UnitLimits:
 			dog: 4
@@ -547,12 +617,12 @@ Player:
 		SquadSize: 1
 		SquadSizeRandomBonus: 0
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, e6
-		NavalUnitsTypes: ss, msub, typh, dd, ca, lst, pt
+		NavalUnitsTypes: ss, ss.ukraine, msub, msub.ukraine, typh, dd, dd.england, ca, ca.france, lst, pt, pt.england, seas
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen, syrd
-		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AirUnitsTypes: mig, yak, heli, hind, hind.belarus, mh60
 		AircraftTargetType: AirborneActor
-		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, dome.england, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, ercc, silo, hpad, afld, afld.russia, afld.ukraine, afld.belarus, powr, apwr, stek, stek.russia, barr, kenn, tent, abar, fix, fpwr, tenf, barf, syrf, spef, weaf, domf, fixf, fapw, atef, stef, pdof, irof, mslf, facf
 		IgnoredEnemyTargetTypes: AirborneActor, IgnoreThis
 	UnitBuilderBotModule@naval:
 		RequiresCondition: enable-naval-ai
@@ -560,23 +630,33 @@ Player:
 			harv: 1
 			ftrk: 40
 			arty: 40
+			arty.france: 40
 			v2rl: 40
 			jeep: 40
 			heli: 30
+			hind: 20
+			hind.belarus: 20
 			mh60: 30
 			mig: 15
 			yak: 60
 			ss: 10
+			ss.ukraine: 10
 			msub: 30
-			typh: 20
+			msub.ukraine: 30
+			typh: 10
 			dd: 30
+			dd.england: 30
 			ca: 20
+			ca.france: 20
 			pt: 10
+			pt.england: 10
+			seas: 20
 			e6: 1
 		UnitLimits:
 			harv: 4
 			ftrk: 3
 			arty: 1
+			arty.france: 1
 			v2rl: 1
 			jeep: 1
 			e6: 1
@@ -589,4 +669,4 @@ Player:
 	CaptureManagerBotModule@thief:
 		RequiresCondition: enable-turtle-ai
 		CapturingActorTypes: thf
-		CapturableActorTypes: 2tnk, 3tnk, 4tnk, mrj
+		CapturableActorTypes: 2tnk, 2tnk.germany, 3tnk, 3tnk.russia, 4tnk, mrj

@@ -4,7 +4,7 @@ ss:
 		Facings: 16
 		InterpolatedFacings: 32
 	turret:
-        Filename: mgun.shp
+		Filename: mgun.shp
 		Facings: 32
 		UseClassicFacings: True
 	muzzle:
@@ -82,3 +82,20 @@ typh:
 		InterpolatedFacings: 32
 	icon:
 		Filename: typhicon.shp
+
+seas:
+	idle:
+		Filename: seas.shp
+		Facings: 32
+	turret:
+		Filename: seastur.shp
+		Start: 32
+		Facings: 32
+	turret-air:
+		Filename: seastur.shp
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: seasicon.shp

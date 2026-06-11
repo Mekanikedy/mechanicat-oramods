@@ -1,7 +1,7 @@
 In this branch of the mechanicat-oramods repository are the files for one of my OpenRA modifications, the Red Alert Unholy mod that is based on red-alert-release-20250330.
 
 this mod also has got a mod-map variant, that can be found here:
-https://resource.openra.net/maps/67423/
+https://resource.openra.net/maps/67617/
 
 Known Issues
 - Mechanic cannot flash the target when it uses ChangesHealth to repair from within a transport
@@ -31,20 +31,54 @@ Veterancy
 - self-healing rate reduced to 5sec from 4sec and gets activated on rank 2, it gets a healing rate increase of 5sec to 3sec on rank 3, the self-healing previously needed rank 4 to activate
 - reworked graphical overlay to better represent the different ranks
 
-**Factions
+Factions
 - **Can play as Allies, or as Soviet that uses combined arsenal from all nations of their side
 - **Random changed to give either Allies or Soviet
 - **Unholy Alliance faction added that combines Allies and Soviet
+- implemented multiple different Special Bonuses for factions
+- Special Bonuses include free unit veterancy or price reductions
+- those Special Bonuses are activated only for playing as that faction
+
+England
+- British Spy reworked to Armed Spy
+- added Air Strike support power that functions similar to the one in Tiberian Dawn
+- Camo Pillbox became England specific, and now replaced ordinary Pillbox for them
+- gets a price discount of -20% for the Longbow. (Longbow costs 1200$ instead of 1500$)
+- can build Gunboats and Destroyers at Veteran rank
+ 
+France
+- added Mirage Tank as a new special unit
+- gets a price discount of -20% for Engineers and MCVs. (Engineer costs 400$ instead of 500$) (MCV costs 2000$ instead of 2500$)
+- can build Artillery and Cruisers at Veteran rank
+
+Germany
+- added Mobile Rig as a new special unit
+- gets a price discount of -25% for Gun Turrets and AA Guns. (both get built at 600$ instead of 800$)
+- can build both Light and Medium Tanks at Veteran rank
+
+Russia
+- added Supercharge support power
+- gets a price discount of -20% for Missile Silo. (Missile Silo costs 2000$ instead of 2500$)
+- can build Heavy Tanks at Veteran rank
+
+Ukraine
+- added Flame Tank as a new special unit
+- gets a price discount of -20% for the V2 Rocket Launcher. (V2 Rocket Launcher costs 720$ instead of 900$)
+- can build Submarines and Missile Submarines at Veteran rank
 
 **new: Belarus 
 - **Belarus faction added to Soviet side
 - **M.A.D. Tank became specific to Belarus faction
 - **added Air Drop support power that delivers 2 Heavy Tanks for Belarus faction
 - **added a parachutable, veteran version of the Heavy Tank to be used by the Air Drop support power
+- **gets a price discount of -15% for Mammoth Tanks and -10% for the Super Tank. (Mammoth Tank costs 1530$ instead of 1800$) (Super Tank costs 2520$ instead of 2800$)
+- **can build Hinds at Veteran rank
 
 Miscellaneus
-- Units(or Defenses) that are capable of attacking air units will say so in their tooltip
+- Units(or Defenses) that are capable of attacking aircraft will say so in their tooltip
 - enabled the unused crate nuke explosion with a chance of 1%
+- edited auto-targeting priorities to preferr different types while attacking
+- corrected the chevron position in the veteran production icon overlay
 
 Buildings
 - tech buildings leave behind a husk when destroyed, that can be restored to function with an engineer
@@ -60,12 +94,17 @@ Construction Yard
 - added faction specific Construction Yard graphics
 - Construction Yards provide +30 Power
 - removed bib from Construction Yard
+- selling your Construction Yard still gives the original amount with France. IDK how to fix
 
 Power Plant
 - removed bib from Power Plant
+- can be targeted by the Supercharge support power
+- provides double power at the cost of suffering damage while supercharged
 
 Advanced Power Plant
 - removed bib from Advanced Power Plant
+- can be targeted by the Supercharge support power
+- provides double power at the cost of suffering damage while supercharged
 
 Allies Barracks
 - Allies Barracks enables self-heal on infantry within 2c512 radius
@@ -93,6 +132,8 @@ Service Depot
 Radar Dome
 - Radar Dome cost reduced to 1200$ from 1500$
 - removed bib from Radar Dome
+- for England it prepares and launches the Air Strike support power
+- added seperate variant for England with the proper tooltip
 
 Helipad
 - Helipad made available for both Allies and Soviet
@@ -109,6 +150,8 @@ Allies Tech Center
 Soviet Tech Center
 - cost of Soviet Tech Center increased to 2000$ from 1500$
 - removed bib from Soviet Tech Center
+- for Russia it prepares and launches the Supercharge support power
+- added seperate variant for Russia that gets affected by lowpower
 
 Chronosphere
 - Chronosphere power usage reduced to -150 from -200 for standard version
@@ -123,6 +166,7 @@ Missile Silo
 - Missile Silo power usage increased to -200 from -150
 - Missile Silo becomes hidden with initial delay of 5sec while not on low power
 - Missile Silo reveals itself whenever taking damage, and for 8sec when firing the a-bomb
+- can be built for cheap by Russia
 
 Fake structures
 - Fake structures follow the tech-tree and get built at 1/5 the cost of normal versions
@@ -134,6 +178,7 @@ Communications Center
 
 Forward Command
 - the name of Forward Command extended with the word Post
+- internal change: added a basic icon for Forward Command (unused)
 
 Defenses
 - the cloak detection gets paused while on low power of all defenses except the Pillboxes
@@ -146,18 +191,28 @@ Pillbox
 
 Camo Pillbox
 - needs to be loaded in order to detect cloaked units
-- Camo Pillbox refund value set to 650$ from 550$
-- gives experience worth 650$ when destroyed. discounted the initial passenger from unit xp value
+- Camo Pillbox price set to 600$ from 750$
+- Camo Pillbox refund value set to 500$ from 550$
+- gives experience worth 500$ when destroyed. discounted the initial passenger from unit xp value
 - reveals itself when loading/unloading infantry
+- became faction specific to England, replacing Pillboxes for them
 
 Gun Turret
 - added a secondary anti-submarine depthcharge attack on Gun Turrets
+- auto-targeting priority changed to prefer shooting at Vehicles on default
+- can be built for cheap by Germany
+
+AA Gun
+- enabled the missing recoil animation
+- can be built for cheap by Germany
 
 Flame Tower
 - Flame Tower tech requirement changed to War Factory from Barracks
 - Flame Tower can fire over walls now
 - added +1 range to Flame Tower weapon
 - the cloak detection range of Flame Towers increased to 6c0 from 5c0
+- auto-targeting priority changed to prefer shooting at Infantry on default
+- added weapon sound from the Schwerpunkt mod to ensure weapon is not silent
 
 Tesla Coil
 - Tesla Coil tech requirement changed to Radar Dome from War Factory
@@ -166,6 +221,8 @@ Tesla Coil
 - an empowered Tesla Coil is able to function normally while on low power
 - each Shock Trooper can apply only 1 charge at a time, multiple are required to reach maximum
 - empowered Tesla Coils shoot a different color lightning to better distinguish
+- can be targeted by the Supercharge support power
+- becomes fully empowered and immune to low power while supercharged
 
 Gap Generator
 - Gap Generator radius increased to 7c from 6c, same radius as the mobile version
@@ -194,22 +251,28 @@ Infantry units
 Rifle Infantry
 - Weapon range of Rifle Infantry reduced by -1c
 - ^LightMG damage multiplier versus Light Armor reduced to 30 from 40
+- auto-targeting priority changed to prefer shooting at Infantry on default
 
 Grenadier
 - Grenadier set to always explode on death, but only when killed by explosive, incendiary weapons, or due to crushing
+- auto-targeting priority changed to prefer shooting at Infantry on default
 
 Rocket Soldier 
 - Rocket Soldier reloads weapon slightly slocer, increased reload delay from 50 to 55
 - linked anti-ground and anti-air attacks to prevent double-firing
 - while in a pillbox range of both weapons are set to 6 (+1 for AT/-1 for AA)
+- auto-targeting priority changed to prefer shooting at Aircraft on default
 
 Flamethrower
 - Flamethrower tech requirement changed to Radar Dome from Flame Tower
+- auto-targeting priority changed to prefer shooting at Defenses on default
+- added weapon sound from the Schwerpunkt mod to ensure weapon is not silent
 
 Engineer
 - Engineer cost increased to 500$ from 450$
 - can restore destroyed tech-buildings
 - extended tooltip to mention restoring bridges and tech-building husks
+- added a sound from Tiberian Dawn to be used for Instant repairing
 
 Medic
 - Medic can always self-heal without the need of a hospital
@@ -227,6 +290,7 @@ Shock Trooper
 - Shock Trooper cost increased to 450$ from 350$
 - Shock Trooper always explodes on death when getting crushed
 - Shock Trooper can zap a friendly Tesla Coil to empower it for 6sec
+- auto-targeting priority changed to prefer shooting at Infantry on default
 
 Spy
 - the Spy no longer can attack
@@ -244,6 +308,9 @@ Tanya
 new: Volkov
 - Volkov added for Soviets as a commando unit
 - added unique voice variant for Volkov
+- Volkov cannot be healed by a Medic, but can get repaired by Mechanics
+- auto-targeting priority changed to prefer shooting at Infantry on default
+- can self-repair near a deployed Mobile Rig
 
 Vehicle units
 - Vehicles will get slowed down when crushing Infantry, Vehicles or Walls
@@ -256,6 +323,8 @@ Vehicle units
 MCV
 - cost of MCV(and subsequently Construction Yard) increased to 2500$ from 2000$
 - MCV can crush vehicle husks
+- MCV movespeed increased to 64 from 60
+- can be built for cheap by France
 
 Harvester
 - Harvester cost reduced to 1000$ from 1100$
@@ -270,9 +339,14 @@ Ranger Jeep
 - can detect cloaked units within 2c512 radius when loaded
 - comes with a Rifle Infantry passenger by default
 - gives experience worth 400$ when destroyed. discounted the passenger from unit xp value
+- auto-targeting priority changed to prefer shooting at Infantry on default
 
 Mobile Flak
 - linked anti-ground and anti-air attacks to prevent double-firing
+- can carry one Infantry unit
+- auto-targeting priority changed to prefer shooting at Aircraft on default
+- Damage of Mobile Flak's anti-ground attack against Structures increased to deal 20% of damage, up from 10%
+- Damage of Mobile Flak's anti-ground attack against Heavy armor increased to deal 20% of damage, up from 10%
 
 APC
 - APC made available for both Allies and Soviet
@@ -282,12 +356,22 @@ APC
 Light Tank
 - Light Tank requires a Service Depot
 - Light Tank leaves a husk when destroyed
+- added a secondary rocketlauncher weapon
+- the rocketlauncher can target air units
+- edited the unit sprite to feature a tiny box on the side of the tank turret
+- as a neat side-effect fixed teamcoloring pixels on the tank turret's barrel
+- auto-targeting priority changed to prefer shooting at Ground units on default
+- can be built at Veteran rank by Germany
 
 Medium Tank
 - Medium Tank cost reduced to 800$ from 850$
+- auto-targeting priority changed to prefer shooting at Vehicles on default
+- can be built at Veteran rank by Germany
 
 Heavy Tank
 - fixed the turret offset on Heavy Tank sprite (by adjusting 1px upwards) 
+- auto-targeting priority changed to prefer shooting at Vehicles on default
+- can be built at Veteran rank by Russia
 
 Mammoth Tank
 - Mammoth Tank can crush most Vehicles, and vehicle husks in addition
@@ -296,15 +380,19 @@ Mammoth Tank
 - Mammoth Tank movespeed increased to 54 from 43
 - reduced the rate of Mammoth Tank self-repair to 5 from 3
 - the turning speed of Mammoth Tank increased to 12 from 8
+- auto-targeting priority changed to prefer shooting at Ground units on default
+- Damage of Mammoth Tank missile against Heavy increased to deal 30% of damage, up from 24%
 
 Artillery
 - Artillery cost reduced to 800$ from 850$
 - Artillery range decreased to 10 from 12
 - Artillery gun damage multiplier versus Heavy Armor increased to 30 from 25
+- can be built at Veteran rank by France
 
 V2 Rocket Launcher
 - V2 Rocket Launcher range increased to 12 from 10
 - V2 Missile damage multiplier versus Heavy Armor increased to 45 from 40
+- can be built for cheap by Ukraine
 
 Tesla Tank
 - Tesla Tank does not require a Tesla Coil anymore
@@ -317,6 +405,7 @@ Minelayer
 - Sea Mines get detected by submarine detection, minelayers, or Sonar use
 - disabled the variation of the mine sprite among Allies and Soviet, both use minv now
 - the mine sprite fixed to have a blinking red light
+- the Sea Mine given a different sound for blowing up
 
 Mobile Radar Jammer
 - Mobile Radar Jammer tech requirement changed to Radar Dome from Allies Tech Center
@@ -328,6 +417,7 @@ Chrono Tank
 - Chrono Tank can teleport over 15 cells distance, up from 12 cells
 - weaponry of Chrono Tank changed to can fire over Walls
 - Chrono Tank can crush vehicle husks
+- auto-targeting priority changed to prefer shooting at Vehicles on default
 
 Phase Transport
 - Phase Transport cost increased to 1100$ from 1000$
@@ -347,6 +437,11 @@ M.A.D. Tank
 - a deployed M.A.D. Tank will lose any Invulnerability had on it
 - M.A.D. Tank movespeed increased to 54 from 46
 - M.A.D. Tank hitpoints reduced to 60000 from 90000
+- a exploding M.A.D. Tank will detonate all Mines within radius
+- M.A.D. Tank no longer does differentiate between friend and foe
+
+Demolition Truck
+- Demolition Truck movespeed increased by +1 to 68 from 67
 
 new: Super Tank
 - Super Tank added for every Soviet at Tech Center level
@@ -360,27 +455,57 @@ new: Super Tank
 - can be deployed to explode like a crate nuke
 - while deployed or offline takes double damage
 - can detect cloaked units
-- Costs 2800$ to build
+- costs 2800$ to build
+- auto-targeting priority changed to prefer shooting at Ground units on default
+
+new: Mirage Tank
+- Mirage Tank added for France as a special unit on Tech Center level
+- its NOT based on the unit in Red Alert 2 
+- the Mirage Tank is capable of disguising itself as any Vehicle
+- while disguised it will try to assume the speeds of the mimiced Vehicle
+- it can not accelerate while doing so, but can go slower to match
+- armament is a HEAT cannon that is good versus light armor
+- costs 1350$ to build
+
+new: Mobile Rig
+- Mobile Rig added for Germany as a special unit on Tech Center level
+- the Mobile Rig can be deployed to enable friendly Vehicles in range to self-repair
+- itself can self-repair while out of combat
+- leaves behind a husk when destroyed
+- unarmed
+- costs 800$ to build
+
+new: Flame Tank
+- Flame Tank added for Ukraine as a special unit on Tech Center level
+- armed with dual flamethrowers that fire in shorter bursts
+- explodes on death with Napalm
+- costs 950$ to build
 
 Naval units
 - **Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
-- Submarines will get surfaced while crossing shallow bridges
+- **Submarines will get surfaced while crossing shallow bridges
 - Submarines with Invulnerability will not submerge until the effect is over
 
 Naval Transport
-- cost of Naval Transport increased to 600$ from 500$
+- cost of Naval Transport increased to 700$ from 500$
 - Naval Transport carry capacity increased to 8 from 5
 
 Gunboat
 - Gunboat cost reduced to 450$ from 500$
 - Gunboat movespeed reduced to 128 from 142
+- auto-targeting priority changed to prefer shooting at Ships on default
+- can be built at Veteran rank by England
 
 Destroyer
 - Destroyer cost reduced to 900$ from 1000$
 - linked anti-ground and anti-air attacks to prevent double-firing
+- auto-targeting priority changed to prefer shooting at Aircraft on default
+- can be built at Veteran rank by England
 
 Cruiser
 - Cruiser cost reduced to 1800$ from 2400$
+- auto-targeting priority changed to prefer shooting at Defenses on default
+- can be built at Veteran rank by France
 
 Submarine
 - on Submarines added a secondary Grenadelauncher weapon for use against targets on land
@@ -388,6 +513,10 @@ Submarine
 - Speed of Torpedoes increased to 125 from 85
 - minimum range of 2 added to Torpedo weapon
 - Submarine cost reduced to 850$ from 950$
+- auto-targeting priority changed to prefer shooting at Ships on default
+- **the Torpedo armament pauses while crossing a ford, in order to prevent suicidal misfires
+- ported over from CA mod a fix for AI controlled Submarines getting stuck at shooting shoreline
+- can be built at Veteran rank by Ukraine
 
 Missile Submarine
 - Missile Submarine tech requirement changed to Radar Dome from Soviet Tech Center
@@ -395,26 +524,41 @@ Missile Submarine
 - the range of Missile Submarine weapon increased to 24c from 20c
 - Missile Submarine cost reduced to 1650$ from 2000$
 - the range of detecting other submarines increased to 5 from 4
+- auto-targeting priority changed to prefer shooting at Defenses on default
+- can be built at Veteran rank by Ukraine
 
 new: SAM Submarine 
 - SAM Submarine added at Soviet Tech Center level
 - has 52500 hitpoints and double the anti-air attacks
 - Costs 2100$ to build
 
+new: Sea Scorpion
+- Sea Scorpion added for every Soviet as basic naval unit
+- the Sea Scorpion acts like a Mobile Flak at sea
+- Its capable of detecting submarines, and shooting depthcharges at them
+- Sea Scorpion also can carry two infantry units
+
 Aircraft units
 - contrail effects of planes adjusted to not use player coloring
 - Blackhawk got disabled
+- default AA Missile against Heavy changed to deal 80% of damage, down from 100%
+- default AA Cannon against Heavy changed to deal 80% of damage, down from 100%
+
+Badger
+- internal change: enabled icon for the sequence. it was included in the .mix but unused
 
 Yak Attack Plane
 - cost of Yak Attack Plane decreased to 1150$ from 1350$
 - range of Yak Attack Plane's machineguns slightly increased to 6c830 from 6c0
 - given a secondary weapon so that it can attack enemy aircraft
+- auto-targeting priority changed to prefer shooting at Infantry on default
 
 MiG Attack Plane
 - cost of MiG Attack Plane decreased to 1800$ from 2000$
 - MiG Attack Plane obtained +2 ammo, in effect this means it fires one more time before returning
 - Increase hitpoints of MiG Attack Plane by +1000, from 8000 to 9000
 - Maverick missiles set to target submarines in addition
+- auto-targeting priority changed to prefer shooting at Vehicles on default
 
 Chinook
 - Chinook renamed to Air Transport
@@ -429,10 +573,20 @@ Longbow
 - linked anti-ground and anti-air attacks to prevent double-firing
 - the Longbow can be deployed to detect submarines when charged up
 - Hellfire missiles can shoot at detected submarines
+- auto-targeting priority changed to prefer shooting at Vehicles on default
+- can be built for cheap by England
 
 Hind
 - Hind enabled to be built for Soviets with a Soviet Tech Center from the Helipad
 - the Hind can throw depthcharges at detected submarines. this does not use ammo
+- auto-targeting priority changed to prefer shooting at Infantry on default
+- Hind cost reduced to 1350$ from 1500$
+- Hind armor type changed to Heavy from Light
+- Its the only flying unit with Heavy armor now
+- **can be built at Veteran rank by Belarus
+
+new: Spitfire
+- added as an attack bomber to be used by the new Air Strike support power
 
 Support Powers
 - made all Airfield support powers pause recharging while on low power
@@ -473,6 +627,18 @@ GPS Sattelite
 
 Atom Bomb
 - Atom Bomb recharge time decreased to 7.5min from 9min
+
+new: Air Strike
+- Air Strike ported from OpenRA - Tiberian Dawn mod
+- a trio of Spitfire Attack Bombers strafe your target with machineguns, then drop napalm bombs over it.
+- recharge time is 4.5min
+
+new: Supercharge
+- a support power that was added for Russia
+- it can be used on Power Plants or Tesla Coils when ready
+- affected Power Plants generate double power
+- affected Tesla Coil becomes fully empowered and immune to low power
+- structure that has been supercharged will take damage until its over
 
 AI
 - AI playing Allies will make use of Medics and Mechanics

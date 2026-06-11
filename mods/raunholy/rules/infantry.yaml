@@ -70,7 +70,7 @@ DOG:
 
 E1:
 	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -123,7 +123,7 @@ E1R1:
 
 E2:
 	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -162,8 +162,8 @@ E2:
 		Weapon: UnitExplodeSmall
 		EmptyWeapon: UnitExplodeSmall
 		DamageSource: Killer
-        Chance: 100
-        DeathTypes: CrushingDeath, FireDeath, ExplosionDeath
+		Chance: 100
+		DeathTypes: CrushingDeath, FireDeath, ExplosionDeath
 	ProducibleWithLevel:
 		Prerequisites: infantry.upgraded
 	WithProductionIconOverlay:
@@ -172,7 +172,7 @@ E2:
 
 E3:
 	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -244,7 +244,7 @@ E3R1:
 
 E4:
 	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeDefenses
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -311,6 +311,7 @@ E6:
 	Passenger:
 		CustomPipType: yellow
 	InstantlyRepairs:
+		RepairSound: build5.aud
 	RepairsBridges:
 	CaptureManager:
 	GrantConditionOnPrerequisite@GLOBALREUSABLEENGINEER:
@@ -347,6 +348,15 @@ E6:
 	Voiced:
 		VoiceSet: EngineerVoice
 	-AttackFrontal:
+	ProductionCostMultiplier@france:
+		Multiplier: 80
+		Prerequisites: player.france
+	GivesExperienceMultiplier@france:
+		Modifier: 120
+		RequiresCondition: owner.france
+	GrantConditionOnPrerequisite@france:
+		Condition: owner.france
+		Prerequisites: player.france
 
 SPY:
 	Inherits: ^Soldier
@@ -514,6 +524,7 @@ E7:
 
 E8:
 	Inherits: GNRL
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -552,7 +563,7 @@ E8:
 		Weapon: PortaCannon
 	Armament@GARRISONED:
 		Name: garrisoned
-        Weapon: PortaCannon
+		Weapon: PortaCannon
 		MuzzleSequence: garrison-muzzle
 	ProducibleWithLevel:
 		Prerequisites: infantry.upgraded
@@ -577,6 +588,22 @@ E8:
 		Palette: effect
 		Position: TopLeft
 		ValidRelationships: Ally, Enemy, Neutral
+	ChangesHealth@MACHINESHOP:
+		Step: 500
+		Delay: 100
+		StartIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: machineshop
+	ExternalCondition@MACHINESHOP:
+		Condition: machineshop
+	WithDecoration@MACHINESHOP:
+		Image: select
+		Palette: chrome
+		Sequence: repair-small
+		Position: Center
+		RequiresCondition: machineshop && damaged
+		BlinkInterval: 32
+		BlinkPattern: on, off
 	RenderSprites:
 		Image: E8
 
@@ -838,7 +865,7 @@ THF:
 	Crushable:
 		WarnProbability: 95
 	GrantChargedConditionOnToggle:
-        InitialCharge: 50
+		InitialCharge: 50
 		ActivatedCondition: cloaked
 		CanCancelCondition: true
 		ChargeDuration: 1250
@@ -861,7 +888,7 @@ THF:
 
 SHOK:
 	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -927,8 +954,8 @@ SHOK:
 		Weapon: SHOKExplode
 		EmptyWeapon: SHOKExplode
 		DamageSource: Killer
-        Chance: 100
-        DeathTypes: CrushingDeath
+		Chance: 100
+		DeathTypes: CrushingDeath
 
 Zombie:
 	Inherits: ^Soldier

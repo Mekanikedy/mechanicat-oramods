@@ -42,31 +42,60 @@ resource-minerals = Valuable Minerals
 faction-allies =
     .name = Allies
     .description = every Allies country in one
-     Special Ability: 
+     Special Abilities: 
+        - Air Strike
         - Can build fake structures
      Special Units:
         - Armed Spy
         - Mobile Radar Jammer
+        - Camo Pillbox
         - Chrono Tank
+        - Mobile Rig
         - Phase Transport
+        - Mirage Tank
+     No Special Boni
 
 faction-england =
     .name = England
     .description = England: Counterintelligence
-     Special Unit: Armed Spy
-     Special Unit: Mobile Radar Jammer
+     Special Ability: 
+        - Air Strike
+     Special Units:
+        - Armed Spy
+        - Mobile Radar Jammer
+        - Camo Pillbox
+     Special Boni:
+        - veteran Destroyer
+        - veteran Gunboat
+        - discount Longbow(-20%)
 
 faction-france =
     .name = France
     .description = France: Deception
-     Special Ability: Can build fake structures
-     Special Unit: Phase Transport
+     Special Ability: 
+        - Can build fake structures
+     Special Units:
+        - Phase Transport
+        - Mirage Tank
+     Special Boni:
+        - veteran Artillery
+        - veteran Cruiser
+        - discount Engineer(-20%)
+        - discount MCV(-20%)
 
 faction-germany =
     .name = Germany
-    .description = Germany: Chronoshift Technology
-     Special Ability: Advanced Chronoshift
-     Special Unit: Chrono Tank
+    .description = Germany: Advanced Technology
+     Special Ability: 
+        - Advanced Chronoshift
+     Special Units:
+        - Chrono Tank
+        - Mobile Rig
+     Special Boni:
+        - veteran Light Tank
+        - veteran Medium Tank
+        - discount Gun Turret(-25%)
+        - discount AA Gun(-25%)
 
 faction-soviet =
     .name = Soviet
@@ -74,46 +103,75 @@ faction-soviet =
      Special Abilities:
         - Parabombs
         - Air Drop
+        - Supercharge
      Special Units:
         - Shock Trooper
         - Tesla Tank
         - Demolition Truck
+        - Flame Tank
         - M.A.D. Tank
+     No Special Boni
 
 faction-russia =
     .name = Russia
     .description = Russia: Tesla Weapons
-     Special Unit: Tesla Tank
-     Special Unit: Shock Trooper
+     Special Ability: 
+        - Supercharge
+     Special Units:
+        - Tesla Tank
+        - Shock Trooper
+     Special Boni:
+        - veteran Heavy Tank
+        - discount Missile Silo(-20%)
 
 faction-ukraine =
     .name = Ukraine
     .description = Ukraine: Demolitions
-     Special Ability: Parabombs
-     Special Unit: Demolition Truck
+     Special Ability: 
+        - Parabombs
+     Special Units:
+        - Demolition Truck
+        - Flame Tank
+     Special Boni:
+        - veteran Submarine
+        - veteran Missile Submarine
+        - discount V2 Launcher(-20%)
 
 faction-belarus =
     .name = Belarus
     .description = Belarus: Heavy Armor
-     Special Ability: Air Drop
-     Special Unit: M.A.D. Tank
+     Special Ability: 
+        - Air Drop
+     Special Unit:
+        - M.A.D. Tank
+     Special Boni:
+        - veteran Hind
+        - discount Mammoth Tank(-15%)
+        - discount Super Tank(-10%)
 
 faction-unholy =
     .name = Unholy Alliance
     .description = Allies and Soviet both
-     Special Abilities: 
+     Special Abilities:
+        - Air Strike
         - Can build fake structures
         - Parabombs
         - Air Drop
+        - Supercharge
      Special Units:
         - Armed Spy
         - Mobile Radar Jammer
+        - Camo Pillbox
         - Chrono Tank
+        - Mobile Rig
         - Phase Transport
+        - Mirage Tank
         - Shock Trooper
         - Tesla Tank
         - Demolition Truck
+        - Flame Tank
         - M.A.D. Tank
+     No Special Boni
 
 faction-random =
     .name = Any Country
@@ -172,7 +230,7 @@ actor-heli =
 actor-hind =
     .name = Hind
     .description =
-    Helicopter gunship with dual chain guns.
+    Heavy armored helicopter with dual chain guns.
     Can use depthcharges against submarines.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
@@ -185,6 +243,8 @@ actor-mh60 =
     Helicopter gunship with dual chain guns.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
+
+actor-spit-name = Spitfire Attack Bomber
 
 ## civilian.yaml
 actor-c10-name = Scientist
@@ -358,6 +418,9 @@ actor-miss-husk-name = Husk (Observatory)
 actor-bio-husk-name = Husk (Biological Lab)
 actor-oilb-husk-name = Husk (Oil Derrick)
 actor-5tnk-husk-name = Husk (Super Tank)
+actor-spit-husk-name = Spitfire Attack Bomber
+actor-rig-husk-name = Husk (Mobile Rig)
+actor-mtnk-husk-name = Husk (Mirage Tank)
 
 ## infantry.yaml
 notification-building-infiltrated = Building infiltrated.
@@ -620,6 +683,16 @@ actor-typh =
       Weak vs Naval units
       Special Ability: Submerge
 
+actor-seas =
+    .name = Sea Scorpion
+    .description =
+    Fast ship with a Flak cannon.
+    Can carry two infantry units.
+    Can detect submarines.
+    Can attack enemy aircraft.
+      Strong vs Infantry, Aircraft
+      Weak vs Tanks
+
 ## structures.yaml
 notification-construction-complete = Construction complete.
 notification-unit-ready = Unit ready.
@@ -656,7 +729,7 @@ actor-gap =
     .name = Gap Generator
     .description =
     Obscures the enemy's view with shroud.
-    Can be supercharged to expand radius.
+    Can be overcharged to expand radius.
     Requires power to operate.
 
 actor-spen =
@@ -724,6 +797,15 @@ actor-dome =
     Provides an overview of
     the battlefield.
     Requires power to operate.
+    .airstrikepower-name = Air Strike
+    .airstrikepower-description = Deploy an aerial napalm strike.
+    Burns buildings and infantry along a line.
+
+actor-dome-england-description =
+    Provides an overview of
+    the battlefield.
+    Requires power to operate.
+      Special Ability: Air Strike
 
 actor-pbox =
     .name = Pillbox
@@ -858,6 +940,18 @@ actor-stek =
     .name = Soviet Tech Center
     .description =
     Provides advanced Soviet technology.
+    .grantexternalconditionpower-supercharge-name = Supercharge
+    .grantexternalconditionpower-supercharge-description = Grants to Power Plants doubled power output.
+    Grants to Tesla Coils full level of charge and
+    immunity to low-power.
+
+    Structure will suffer damage while under effect
+    automatically stops at reaching critical health.
+    Lasts for 20 seconds.
+
+actor-stek-russia-description =
+    Provides advanced Soviet technology.
+      Special Ability: Supercharge
 
 actor-barr =
     .name = Soviet Barracks
@@ -928,6 +1022,7 @@ actor-1tnk =
     .generic-name = Tank
     .description =
     Fast tank; good for scouting.
+    Can attack enemy aircraft.
       Strong vs Light armor
       Weak vs Infantry, Tanks and Aircraft
 
@@ -1039,6 +1134,7 @@ actor-ftrk =
     .name = Mobile Flak
     .description =
     Mobile unit with a Flak cannon.
+    Can carry just one infantry unit.
     Can attack enemy aircraft.
       Strong vs Infantry, Light armor and Aircraft
       Weak vs Tanks
@@ -1065,6 +1161,7 @@ actor-qtnk =
     .description =
     Deals seismic damage to nearby vehicles
     and structures. Slows affected vehicles.
+    Affects friends, neutral and enemies.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
 
@@ -1093,6 +1190,72 @@ actor-5tnk =
       Strong vs Vehicles, Infantry and Aircraft
       Weak vs Nothing
       Special ability: Can self-destruct on command
+
+actor-rig =
+    .name = Mobile Rig
+    .name-deployed = Mobile Rig (deployed)
+    .description =
+    Mobile repair vehicle. Can be deployed
+    to allow nearby damaged vehicles to repair.
+    Self-repairs slowly while out of combat.
+      Unarmed
+
+actor-ftnk =
+    .name = Flame Tank
+    .generic-name = Tank
+    .description =
+    Tank armed with dual flamethrowers.
+      Strong vs Infantry and Buildings
+      Weak vs Vehicles and Aircraft
+
+actor-mtnk =
+    .disguisetooltip-default-name = Mirage Tank
+    .disguisetooltip-default-generic-name = Tank
+    .disguisetooltip-mcv-name = Mobile Construction Vehicle
+    .disguisetooltip-mcv-generic-name = Vehicle
+    .disguisetooltip-harv-name = Ore Truck
+    .disguisetooltip-harv-generic-name = Harvester
+    .disguisetooltip-truk-name = Supply Truck
+    .disguisetooltip-truk-generic-name = Vehicle
+    .disguisetooltip-dtrk-name = Demolition Truck
+    .disguisetooltip-dtrk-generic-name = Vehicle
+    .disguisetooltip-jeep-name = Ranger
+    .disguisetooltip-jeep-generic-name = Vehicle
+    .disguisetooltip-ftrk-name = Mobile Flak
+    .disguisetooltip-ftrk-generic-name = Vehicle
+    .disguisetooltip-apc-name = Armored Personnel Carrier
+    .disguisetooltip-apc-generic-name = Vehicle
+    .disguisetooltip-1tnk-name = Light Tank
+    .disguisetooltip-1tnk-generic-name = Tank
+    .disguisetooltip-2tnk-name = Medium Tank
+    .disguisetooltip-2tnk-generic-name = Tank
+    .disguisetooltip-3tnk-name = Heavy Tank
+    .disguisetooltip-3tnk-generic-name = Tank
+    .disguisetooltip-4tnk-name = Mammoth Tank
+    .disguisetooltip-4tnk-generic-name = Tank
+    .disguisetooltip-5tnk-name = Super Tank
+    .disguisetooltip-5tnk-generic-name = Tank
+    .disguisetooltip-qtnk-name = M.A.D. Tank
+    .disguisetooltip-qtnk-generic-name = Tank
+    .disguisetooltip-ttnk-name = Tesla Tank
+    .disguisetooltip-ttnk-generic-name = Tank
+    .disguisetooltip-ctnk-name = Chrono Tank
+    .disguisetooltip-ctnk-generic-name = Tank
+    .disguisetooltip-stnk-name = Phase Transport
+    .disguisetooltip-stnk-generic-name = Vehicle
+    .disguisetooltip-ftnk-name = Flame Tank
+    .disguisetooltip-ftnk-generic-name = Tank
+    .disguisetooltip-mrj-name = Mobile Radar Jammer
+    .disguisetooltip-mrj-generic-name = Vehicle
+    .disguisetooltip-mgg-name = Mobile Gap Generator
+    .disguisetooltip-mgg-generic-name = Vehicle
+    .disguisetooltip-rig-name = Mobile Rig
+    .disguisetooltip-rig-generic-name = Vehicle
+    .description =
+    Advanced tank able to disguise
+    itself as other Vehicles.
+      Strong vs Light armor and Buildings
+      Weak vs Tanks and Aircraft
 
 ## Civilian Tech
 actor-hosp =

@@ -1,11 +1,11 @@
 SS:
 	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeShips
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 30
-		Prerequisites: ~spen, ~techlevel.low
+		Prerequisites: ~spen, ~techlevel.low, ~!player.ukraine
 		Description: actor-ss.description
 	Valued:
 		Cost: 850
@@ -32,18 +32,19 @@ SS:
 		FireDelay: 2
 	Armament@SECONDARY:
 		Name: secondary
-        Turret: secondary
+		Turret: secondary
 		Weapon: GrenadeLauncher
 		LocalOffset: 156,0,24
 		MuzzleSequence: muzzle
 	AttackFrontal:
-        Armaments: primary, secondary
+		Armaments: primary, secondary
 		FacingTolerance: 0
+		RequiresCondition: !crossing-ford
 	Turreted:
 		Turret: secondary
 		TurnSpeed: 20
 		Offset: 648,0,0
-    WithMuzzleOverlay:
+	WithMuzzleOverlay:
 	WithSpriteTurret:
 		Turret: secondary
 		RequiresCondition: !underwater
@@ -61,15 +62,51 @@ SS:
 		EmptyWeapon: UnitExplodeSubmarine
 	Selectable:
 		DecorationBounds: 1621, 1621
+	GrantConditionOnBotOwner@IAMBOT:
+		Condition: botowner
+		Bots: rush, normal, turtle, naval
+	GrantConditionOnAttack@STOPSHOOTINGROCKS:
+		Condition: im-dumb
+		RequiredShotsPerInstance: 2
+		MaximumInstances: 3
+		RevokeDelay: 110
+		RevokeOnNewTarget: true
+		RevokeAll: true
+		RequiresCondition: botowner
+	RangeMultiplier@STOPSHOOTINGROCKS1:
+		Modifier: 50
+		RequiresCondition: im-dumb == 1
+	RangeMultiplier@STOPSHOOTINGROCKS2:
+		Modifier: 35
+		RequiresCondition: im-dumb == 2
+	RangeMultiplier@STOPSHOOTINGROCKS3:
+		Modifier: 25
+		RequiresCondition: im-dumb == 3
+
+SS.Ukraine:
+	Inherits: SS
+	Buildable:
+		Prerequisites: ~spen, ~player.ukraine, ~techlevel.low
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: ss
+	RenderSprites:
+		Image: ss
+	-MapEditorData:
 
 MSUB:
 	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeDefenses
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 60
-		Prerequisites: ~spen, dome, ~techlevel.medium
+		Prerequisites: ~spen, dome, ~techlevel.medium, ~!player.ukraine
 		Description: actor-msub.description
 	Valued:
 		Cost: 1650
@@ -113,14 +150,30 @@ MSUB:
 	Selectable:
 		DecorationBounds: 1877, 1877
 
+MSUB.Ukraine:
+	Inherits: MSUB
+	Buildable:
+		Prerequisites: ~spen, dome, ~player.ukraine, ~techlevel.medium
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: msub
+	RenderSprites:
+		Image: msub
+	-MapEditorData:
+
 DD:
 	Inherits: ^Ship
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 40
-		Prerequisites: ~syrd, dome, ~techlevel.medium
+		Prerequisites: ~syrd, dome, ~techlevel.medium, ~!player.england
 		Description: actor-dd.description
 	Valued:
 		Cost: 900
@@ -169,14 +222,30 @@ DD:
 	Selectable:
 		DecorationBounds: 1621, 1621
 
+DD.England:
+	Inherits: DD
+	Buildable:
+		Prerequisites: ~syrd, dome, ~player.england, ~techlevel.medium
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: dd
+	RenderSprites:
+		Image: dd
+	-MapEditorData:
+
 CA:
 	Inherits: ^Ship
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeDefenses
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 50
-		Prerequisites: ~syrd, atek, ~techlevel.high
+		Prerequisites: ~syrd, atek, ~techlevel.high, ~!player.france
 		Description: actor-ca.description
 	Valued:
 		Cost: 1800
@@ -231,6 +300,22 @@ CA:
 		Turret: secondary
 	Selectable:
 		DecorationBounds: 1877, 1877
+
+CA.France:
+	Inherits: CA
+	Buildable:
+		Prerequisites: ~syrd, atek, ~player.france, ~techlevel.high
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: ca
+	RenderSprites:
+		Image: ca
+	-MapEditorData:
 
 LST:
 	Inherits: ^Ship
@@ -303,12 +388,12 @@ LST:
 
 PT:
 	Inherits: ^Ship
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeShips
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 20
-		Prerequisites: ~syrd, ~techlevel.low
+		Prerequisites: ~syrd, ~techlevel.low, ~!player.england
 		Description: actor-pt.description
 	Valued:
 		Cost: 450
@@ -349,6 +434,22 @@ PT:
 	RenderDetectionCircle:
 	Selectable:
 		DecorationBounds: 1536, 1536
+
+PT.England:
+	Inherits: PT
+	Buildable:
+		Prerequisites: ~syrd, ~player.england, ~techlevel.low
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: pt
+	RenderSprites:
+		Image: pt
+	-MapEditorData:
 
 TYPH:
 	Inherits: ^Submarine
@@ -413,3 +514,105 @@ TYPH:
 		EmptyWeapon: UnitExplodeSubmarine
 	Selectable:
 		DecorationBounds: 1877, 1877
+
+SEAS:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
+	Inherits@CARGOPIPS: ^CargoPips
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 20
+		Prerequisites: ~vehicles.soviet, ~techlevel.low
+		Description: actor-seas.description
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: actor-seas.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 28
+		Speed: 92
+		PauseOnCondition: notmobile
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+		Offset: -300,0,110
+	Armament@AA:
+		Weapon: FLAK-23-AA
+		Recoil: 48
+		LocalOffset: 512,0,192
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	Armament@AG:
+		Name: secondary
+		Weapon: FLAK-23-AG
+		Recoil: 48
+		LocalOffset: 512,0,192
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@AS:
+		Name: tertiary
+		Weapon: DepthCharge
+		LocalOffset: 512,0,192
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air || reload-ground
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: primary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	AttackTurreted:
+		Armaments: primary, secondary, tertiary
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	DetectCloaked:
+		DetectionTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
+	Selectable:
+		DecorationBounds: 1536, 1536
+	Cargo:
+		Types: Infantry
+		MaxWeight: 2
+		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+			e7: tanyainside
+			e8: volkovinside
+	ChangesHealth@MECHANIC:
+		RequiresCondition: selfrepair
+		Step: 2000
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside

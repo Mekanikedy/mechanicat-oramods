@@ -873,9 +873,9 @@ e7:
 		Filename: e7icon.shp
 
 e8:
-    Inherits: gnrl
-    Defaults: 
-        Filename: e8.shp
+	Inherits: gnrl
+	Defaults:
+		Filename: e8.shp
 	die-crushed:
 		Filename: botwreck1.tem
 		TilesetFilenames:

@@ -21,11 +21,11 @@ BADR:
 	Contrail@1:
 		Offset: -432,560,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Contrail@2:
 		Offset: -432,-560,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	SpawnActorOnDeath:
 		Actor: BADR.Husk
 	LeavesTrails@0:
@@ -65,7 +65,7 @@ BADR.Bomber:
 
 MIG:
 	Inherits: ^Plane
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane
@@ -115,11 +115,11 @@ MIG:
 	Contrail@1:
 		Offset: -598,-683,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Contrail@2:
 		Offset: -598,683,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	SpawnActorOnDeath:
 		Actor: MIG.Husk
 	LeavesTrails:
@@ -145,7 +145,7 @@ MIG:
 
 YAK:
 	Inherits: ^Plane
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane
@@ -201,7 +201,7 @@ YAK:
 	Contrail:
 		Offset: -853,0,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	SpawnActorOnDeath:
 		Actor: YAK.Husk
 	LeavesTrails:
@@ -407,24 +407,35 @@ HELI:
 		ChargeDuration: 1125
 		ChargeThreshhold: -1
 		ConditionDuration: 500
+	ProductionCostMultiplier@england:
+		Multiplier: 80
+		Prerequisites: player.england
+	GivesExperienceMultiplier@england:
+		Modifier: 120
+		RequiresCondition: owner.england
+	GrantConditionOnPrerequisite@england:
+		Condition: owner.england
+		Prerequisites: player.england
 
 HIND:
 	Inherits: ^Helicopter
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 30
-		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
+		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high, ~!player.belarus
 		Description: actor-hind.description
 	Valued:
-		Cost: 1500
+		Cost: 1350
 	Tooltip:
 		Name: actor-hind.name
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
 		HP: 10000
+	Armor:
+		Type: Heavy
 	RevealsShroud:
 		MinRange: 8c0
 		Range: 10c0
@@ -496,6 +507,22 @@ HIND:
 		Types: Veterancy
 		Prerequisites: aircraft.upgraded
 
+HIND.Belarus:
+	Inherits: HIND
+	Buildable:
+		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~player.belarus, ~techlevel.high
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: hind
+	RenderSprites:
+		Image: hind
+	-MapEditorData:
+
 U2:
 	Inherits: ^NeutralPlane
 	Health:
@@ -516,11 +543,11 @@ U2:
 	Contrail@1:
 		Offset: -725,683,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Contrail@2:
 		Offset: -725,-683,0
 		StartColorAlpha: 128
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	SpawnActorOnDeath:
 		Actor: U2.Husk
 	LeavesTrails:
@@ -615,3 +642,54 @@ MH60:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: aircraft.upgraded
+
+SPIT:
+	Inherits: ^NeutralPlane
+	Health:
+		HP: 9000
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 19
+		Speed: 160
+		Repulsable: False
+		MaximumPitch: 56
+	-Selectable:
+	Interactable:
+	-Voiced:
+	Tooltip:
+		Name: actor-spit-name
+	Contrail:
+		Offset: -853,0,0
+		StartColorAlpha: 128
+		StartColorUsePlayerColor: false
+	SpawnActorOnDeath:
+		Actor: SPIT.Husk
+	LeavesTrails@0:
+		Offsets: -853,0,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	-EjectOnDeath:
+	RejectsOrders:
+	GivesExperience:
+		Experience: 1000
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+	AttackBomber:
+		Armaments: primary, secondary
+		FacingTolerance: 8
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: Vulcan.TD
+		LocalOffset: 1024,0,-85
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Napalm.TD
+		LocalOffset: 0,-256,-43, 0,256,-43
+	WithMuzzleOverlay:
+	AmmoPool:
+		Armaments: secondary
+		Ammo: 6
+	-MapEditorData:

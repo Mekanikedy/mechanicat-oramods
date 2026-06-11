@@ -78,6 +78,7 @@ Rules:
 	raunholy|rules/world.yaml
 	raunholy|rules/defaults.yaml
 	raunholy|rules/vehicles.yaml
+	raunholy|rules/vehicles-mirage.yaml
 	raunholy|rules/husks.yaml
 	raunholy|rules/structures.yaml
 	raunholy|rules/infantry.yaml
@@ -90,6 +91,7 @@ Rules:
 Sequences:
 	raunholy|sequences/ships.yaml
 	raunholy|sequences/vehicles.yaml
+	raunholy|sequences/vehicles-mirage.yaml
 	raunholy|sequences/structures.yaml
 	raunholy|sequences/infantry.yaml
 	raunholy|sequences/aircraft.yaml
@@ -308,3 +310,7 @@ GameSpeeds:
 			Name: options-game-speed.fastest
 			Timestep: 20
 			OrderLatency: 6
+
+ModCredits:
+	ModCreditsFile: raunholy|CREDITS
+	ModTabTitle: Unholy Mod

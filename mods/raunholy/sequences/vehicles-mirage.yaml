@@ -1,0 +1,178 @@
+mtnk:
+	idle:
+		Filename: mnly.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-mcv:
+		Filename: mcv.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-harv:
+		Filename: harv.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-truk:
+		Filename: truk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-dtrk:
+		Filename: dtrk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-jeep:
+		Filename: jeep.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-ftrk:
+		Filename: ftrk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-apc:
+		Filename: apc.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-mnly:
+		Filename: mnly.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-1tnk:
+		Filename: 1tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-2tnk:
+		Filename: 2tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-3tnk:
+		Filename: 3tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-4tnk:
+		Filename: 4tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-5tnk:
+		Filename: 5tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-qtnk:
+		Filename: qtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-ttnk:
+		Filename: ttnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-ctnk:
+		Filename: ctnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-stnk:
+		Filename: stnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-ftnk:
+		Filename: ftnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-arty:
+		Filename: arty.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-v2rl:
+		Filename: v2rl.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-mrj:
+		Filename: mrj.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-mgg:
+		Filename: mgg.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-rig:
+		Filename: rig.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: 2tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: 2tnkl.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-jeep:
+		Filename: jeep.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-ftrk:
+		Filename: ftrk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-1tnk:
+		Filename: 1tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-2tnk:
+		Filename: 2tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-3tnk:
+		Filename: 3tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-4tnk:
+		Filename: 4tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-5tnk:
+		Filename: 5tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-stnk:
+		Filename: stnk.shp
+		Start: 38
+		Facings: 32
+		UseClassicFacings: True
+	spinner-ttnk:
+		Filename: ttnk.shp
+		Start: 32
+		Length: 32
+	spinner-mrj:
+		Filename: mrj.shp
+		Start: 32
+		Length: 32
+	spinner-mgg:
+		Filename: mgg.shp
+		Start: 32
+		Length: 8
+		Tick: 50
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: mtnkicon.shp
+
+mtnk.destroyed:
+	idle:
+		Filename: mnly.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: 2tnkl.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512

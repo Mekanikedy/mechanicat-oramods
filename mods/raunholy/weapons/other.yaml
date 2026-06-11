@@ -27,6 +27,7 @@ FireballLauncher:
 	Burst: 2
 	BurstDelays: 20
 	Range: 6c0
+	Report: flamethrower2.aud
 	Projectile: Bullet
 		Speed: 250
 		TrailImage: fb2
@@ -41,6 +42,7 @@ Flamer:
 	ReloadDelay: 50
 	Burst: 15
 	BurstDelays: 1
+	Report: flamer1.aud, flamer2.aud, flamer3.aud, flamer4.aud
 	Projectile: Bullet
 		Speed: 170
 		TrailImage: fb4
@@ -239,9 +241,10 @@ MADTankThump:
 	Warhead@1Dam: HealthPercentageDamage
 		Spread: 7c0
 		Damage: 1
-        DamageTypes: Prone50Percent, TriggerProne
+		DamageTypes: Prone50Percent, TriggerProne
 		ValidTargets: GroundActor, WaterActor
 		InvalidTargets: MADTank
+		ValidRelationships: Ally, Neutral, Enemy
 	Warhead@Shake: ShakeScreen
 		Duration: 10
 		Intensity: 3
@@ -251,7 +254,8 @@ MADTankThump:
 		Duration: 24
 		Condition: slowdown
 		ValidTargets: Vehicle, Ship
-        InvalidTargets: MADTank
+		InvalidTargets: MADTank
+		ValidRelationships: Ally, Neutral, Enemy
 
 MADTankDetonate:
 	ValidTargets: GroundActor, WaterActor
@@ -260,7 +264,8 @@ MADTankDetonate:
 		Spread: 7c0
 		Damage: 19
 		ValidTargets: GroundActor, WaterActor
-		InvalidTargets: MADTank, Infantry
+		InvalidTargets: MADTank, Infantry, Mine
+		ValidRelationships: Ally, Neutral, Enemy
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
 		Size: 7,6
@@ -268,15 +273,21 @@ MADTankDetonate:
 		Explosions: med_explosion
 		ImpactSounds: mineblo1.aud
 		ImpactActors: false
+	Warhead@minekill: GrantExternalCondition
+		Condition: minekill
+		Duration: 3
+		Range: 7c0
+		ValidTargets: Mine
+		ValidRelationships: Ally, Neutral, Enemy
 
 DetectionPing:
 	ValidTargets: Water
-    Warhead@ping: GrantExternalCondition
-        Condition: pinged
-        Duration: 250
-        Range: 10c0
-        ValidTargets: WaterActor, Underwater
-        ValidRelationships: Neutral, Enemy
+	Warhead@ping: GrantExternalCondition
+		Condition: pinged
+		Duration: 250
+		Range: 10c0
+		ValidTargets: WaterActor, Underwater
+		ValidRelationships: Neutral, Enemy
 
 SHOKExplode:
 	Inherits: PortaTesla
@@ -321,3 +332,26 @@ TeslaZapBoost3:
 		Image: litningupg
 	Warhead@1Dam: SpreadDamage
 		Damage: 13000
+
+Napalm.TD:
+	Inherits: ^FireWeapon
+	ReloadDelay: 9
+	Range: 2c256
+	Burst: 2
+	BurstDelays: 3
+	Report: bombdrop.aud
+	Projectile: GravityBomb
+		Image: BOMBLET
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 3000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			Wood: 35
+			Heavy: 80
+			Concrete: 80
+
+TankFlamer:
+	Inherits: Flamer
+	Burst: 7

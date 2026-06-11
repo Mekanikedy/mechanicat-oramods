@@ -1,0 +1,407 @@
+MTNK:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	-Tooltip:
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 430
+		Prerequisites: fix, atek, ~vehicles.france, ~techlevel.high
+		Description: actor-mtnk.description
+	Valued:
+		Cost: 1350
+	DisguiseTooltip@default:
+		Name: actor-mtnk.disguisetooltip-default-name
+		GenericName: actor-mtnk.disguisetooltip-default-generic-name
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+	DisguiseTooltip@mcv:
+		Name: actor-mtnk.disguisetooltip-mcv-name
+		GenericName: actor-mtnk.disguisetooltip-mcv-generic-name
+		RequiresCondition: mcv
+	DisguiseTooltip@harv:
+		Name: actor-mtnk.disguisetooltip-harv-name
+		GenericName: actor-mtnk.disguisetooltip-harv-generic-name
+		RequiresCondition: harv
+	DisguiseTooltip@truk:
+		Name: actor-mtnk.disguisetooltip-truk-name
+		GenericName: actor-mtnk.disguisetooltip-truk-generic-name
+		RequiresCondition: truk
+	DisguiseTooltip@dtrk:
+		Name: actor-mtnk.disguisetooltip-dtrk-name
+		GenericName: actor-mtnk.disguisetooltip-dtrk-generic-name
+		RequiresCondition: dtrk
+	DisguiseTooltip@jeep:
+		Name: actor-mtnk.disguisetooltip-jeep-name
+		GenericName: actor-mtnk.disguisetooltip-jeep-generic-name
+		RequiresCondition: jeep
+	DisguiseTooltip@ftrk:
+		Name: actor-mtnk.disguisetooltip-ftrk-name
+		GenericName: actor-mtnk.disguisetooltip-ftrk-generic-name
+		RequiresCondition: ftrk
+	DisguiseTooltip@apc:
+		Name: actor-mtnk.disguisetooltip-apc-name
+		GenericName: actor-mtnk.disguisetooltip-apc-generic-name
+		RequiresCondition: apc
+	DisguiseTooltip@mnly:
+		Name: actor-mtnk.disguisetooltip-mnly-name
+		GenericName: actor-mtnk.disguisetooltip-mnly-generic-name
+		RequiresCondition: mnly
+	DisguiseTooltip@tnk1:
+		Name: actor-mtnk.disguisetooltip-1tnk-name
+		GenericName: actor-mtnk.disguisetooltip-1tnk-generic-name
+		RequiresCondition: tnk1
+	DisguiseTooltip@tnk2:
+		Name: actor-mtnk.disguisetooltip-2tnk-name
+		GenericName: actor-mtnk.disguisetooltip-2tnk-generic-name
+		RequiresCondition: tnk2
+	DisguiseTooltip@tnk3:
+		Name: actor-mtnk.disguisetooltip-3tnk-name
+		GenericName: actor-mtnk.disguisetooltip-3tnk-generic-name
+		RequiresCondition: tnk3
+	DisguiseTooltip@tnk4:
+		Name: actor-mtnk.disguisetooltip-4tnk-name
+		GenericName: actor-mtnk.disguisetooltip-4tnk-generic-name
+		RequiresCondition: tnk4
+	DisguiseTooltip@tnk5:
+		Name: actor-mtnk.disguisetooltip-5tnk-name
+		GenericName: actor-mtnk.disguisetooltip-5tnk-generic-name
+		RequiresCondition: tnk5
+	DisguiseTooltip@qtnk:
+		Name: actor-mtnk.disguisetooltip-qtnk-name
+		GenericName: actor-mtnk.disguisetooltip-qtnk-generic-name
+		RequiresCondition: qtnk
+	DisguiseTooltip@ttnk:
+		Name: actor-mtnk.disguisetooltip-ttnk-name
+		GenericName: actor-mtnk.disguisetooltip-ttnk-generic-name
+		RequiresCondition: ttnk
+	DisguiseTooltip@ctnk:
+		Name: actor-mtnk.disguisetooltip-ctnk-name
+		GenericName: actor-mtnk.disguisetooltip-ctnk-generic-name
+		RequiresCondition: ctnk
+	DisguiseTooltip@stnk:
+		Name: actor-mtnk.disguisetooltip-stnk-name
+		GenericName: actor-mtnk.disguisetooltip-stnk-generic-name
+		RequiresCondition: stnk
+	DisguiseTooltip@ftnk:
+		Name: actor-mtnk.disguisetooltip-ftnk-name
+		GenericName: actor-mtnk.disguisetooltip-ftnk-generic-name
+		RequiresCondition: ftnk
+	DisguiseTooltip@arty:
+		Name: actor-mtnk.disguisetooltip-arty-name
+		GenericName: actor-mtnk.disguisetooltip-arty-generic-name
+		RequiresCondition: arty
+	DisguiseTooltip@v2rl:
+		Name: actor-mtnk.disguisetooltip-v2rl-name
+		GenericName: actor-mtnk.disguisetooltip-v2rl-generic-name
+		RequiresCondition: v2rl
+	DisguiseTooltip@mrj:
+		Name: actor-mtnk.disguisetooltip-mrj-name
+		GenericName: actor-mtnk.disguisetooltip-mrj-generic-name
+		RequiresCondition: mrj
+	DisguiseTooltip@mgg:
+		Name: actor-mtnk.disguisetooltip-mgg-name
+		GenericName: actor-mtnk.disguisetooltip-mgg-generic-name
+		RequiresCondition: mgg
+	DisguiseTooltip@rig:
+		Name: actor-mtnk.disguisetooltip-rig-name
+		GenericName: actor-mtnk.disguisetooltip-rig-generic-name
+		RequiresCondition: rig
+	Disguise:
+		DisguisedCondition: disguise
+		ValidRelationships: Ally, Neutral, Enemy
+		TargetTypes: VehicleDisguise
+		DisguisedAsConditions:
+			mcv: mcv
+			harv: harv
+			truk: truk
+			dtrk: dtrk
+			jeep: jeep
+			ftrk: ftrk
+			apc: apc
+			mnly: mnly
+			1tnk: tnk1
+			2tnk: tnk2
+			3tnk: tnk3
+			4tnk: tnk4
+			5tnk: tnk5
+			qtnk: qtnk
+			ttnk: ttnk
+			ctnk: ctnk
+			stnk: stnk
+			ftnk: ftnk
+			arty: arty
+			v2rl: v2rl
+			mrj: mrj
+			mgg: mgg
+			rig: rig
+			3tnkr1: tnk3
+			1tnk.germany: tnk1
+			2tnk.germany: tnk2
+			3tnk.russia: tnk3
+			arty.france: arty
+	WithDecoration@disguise:
+		Image: pips
+		Sequence: pip-disguise
+		Palette: effect
+		Position: Top
+		Margin: 0, 8
+		RequiresCondition: disguise
+	IgnoresDisguise:
+	WithFacingSpriteBody:
+		Name: body
+		PauseOnCondition: mcv && harv && truk && dtrk && jeep && ftrk && apc && mnly && tnk1 && tnk2 && tnk3 && tnk4 && tnk5 && qtnk && ttnk && ctnk && stnk && ftnk && arty && v2rl && mrj && mgg && rig
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+	WithFacingSpriteBody@mcv:
+		Name: body2
+		Sequence: idle-mcv
+		RequiresCondition: mcv
+	WithFacingSpriteBody@harv:
+		Name: body3
+		Sequence: idle-harv
+		RequiresCondition: harv
+	WithFacingSpriteBody@truk:
+		Name: body4
+		Sequence: idle-truk
+		RequiresCondition: truk
+	WithFacingSpriteBody@dtrk:
+		Name: body5
+		Sequence: idle-dtrk
+		RequiresCondition: dtrk
+	WithFacingSpriteBody@jeep:
+		Name: body6
+		Sequence: idle-jeep
+		RequiresCondition: jeep
+	WithFacingSpriteBody@ftrk:
+		Name: body7
+		Sequence: idle-ftrk
+		RequiresCondition: ftrk
+	WithFacingSpriteBody@apc:
+		Name: body8
+		Sequence: idle-apc
+		RequiresCondition: apc
+	WithFacingSpriteBody@mnly:
+		Name: body9
+		Sequence: idle-mnly
+		RequiresCondition: mnly
+	WithFacingSpriteBody@tnk1:
+		Name: body10
+		Sequence: idle-1tnk
+		RequiresCondition: tnk1
+	WithFacingSpriteBody@tnk2:
+		Name: body11
+		Sequence: idle-2tnk
+		RequiresCondition: tnk2
+	WithFacingSpriteBody@tnk3:
+		Name: body12
+		Sequence: idle-3tnk
+		RequiresCondition: tnk3
+	WithFacingSpriteBody@tnk4:
+		Name: body13
+		Sequence: idle-4tnk
+		RequiresCondition: tnk4
+	WithFacingSpriteBody@tnk5:
+		Name: body14
+		Sequence: idle-5tnk
+		RequiresCondition: tnk5
+	WithFacingSpriteBody@qtnk:
+		Name: body15
+		Sequence: idle-qtnk
+		RequiresCondition: qtnk
+	WithFacingSpriteBody@ttnk:
+		Name: body16
+		Sequence: idle-ttnk
+		RequiresCondition: ttnk
+	WithFacingSpriteBody@ctnk:
+		Name: body17
+		Sequence: idle-ctnk
+		RequiresCondition: ctnk
+	WithFacingSpriteBody@stnk:
+		Name: body18
+		Sequence: idle-stnk
+		RequiresCondition: stnk
+	WithFacingSpriteBody@ftnk:
+		Name: body19
+		Sequence: idle-ftnk
+		RequiresCondition: ftnk
+	WithFacingSpriteBody@arty:
+		Name: body20
+		Sequence: idle-arty
+		RequiresCondition: arty
+	WithFacingSpriteBody@v2rl:
+		Name: body21
+		Sequence: idle-v2rl
+		RequiresCondition: v2rl
+	WithFacingSpriteBody@mrj:
+		Name: body22
+		Sequence: idle-mrj
+		RequiresCondition: mrj
+	WithFacingSpriteBody@mgg:
+		Name: body23
+		Sequence: idle-mgg
+		RequiresCondition: mgg
+	WithFacingSpriteBody@rig:
+		Name: body24
+		Sequence: idle-rig
+		RequiresCondition: rig
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 38000
+	Armor:
+		Type: Heavy
+	-Guard:
+	Mobile:
+		Speed: 92
+	SpeedMultiplier@speed86:
+		Modifier: 93
+		RequiresCondition: ctnk
+	SpeedMultiplier@speed72:
+		Modifier: 78
+		RequiresCondition: v2rl || tnk2 || arty || harv || mgg || ftnk
+	SpeedMultiplier@speed68:
+		Modifier: 73
+		RequiresCondition: mrj || rig 
+	SpeedMultiplier@speed64:
+		Modifier: 69
+		RequiresCondition: tnk3 || mcv
+	SpeedMultiplier@speed54:
+		Modifier: 58
+		RequiresCondition: tnk4 || qtnk
+	SpeedMultiplier@speed46:
+		Modifier: 50
+		RequiresCondition: tnk5
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		Turret: default-turret
+		TurnSpeed: 40
+		Offset: 0,0,128
+	Turreted@disguise:
+		Turret: disguise-turret
+		TurnSpeed: 40
+		Offset: 0,0,128
+	Turreted@jeep:
+		Turret: jeep-turret
+		TurnSpeed: 40
+		Offset: 0,0,128
+	Turreted@ftrk:
+		Turret: ftrk-turret
+		TurnSpeed: 40
+		Offset: -298,0,298
+	Turreted@tnk1:
+		Turret: 1tnk-turret
+		TurnSpeed: 28
+	Turreted@tnk2:
+		Turret: 2tnk-turret
+		TurnSpeed: 20
+	Turreted@tnk3:
+		Turret: 3tnk-turret
+		TurnSpeed: 20
+	Turreted@tnk4:
+		Turret: 4tnk-turret
+		TurnSpeed: 12
+	Turreted@tnk5:
+		Turret: 5tnk-turret
+		TurnSpeed: 8
+	Turreted@stnk:
+		Turret: stnk-turret
+		TurnSpeed: 20
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: HEAT
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 768,0,80
+		MuzzleSequence: muzzle
+		Turret: default-turret
+		ReloadingCondition: reload-pri
+		RequiresCondition: !disguise
+		PauseOnCondition: reload-sec
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HEAT
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 768,0,80
+		MuzzleSequence: muzzle
+		Turret: disguise-turret
+		ReloadingCondition: reload-sec
+		RequiresCondition: disguise
+		PauseOnCondition: reload-pri
+	AttackTurreted:
+		Armaments: primary, secondary
+		Turrets: default-turret, disguise-turret, jeep-turret, ftrk-turret, 1tnk-turret, 2tnk-turret, 3tnk-turret, 4tnk-turret, 5tnk-turret
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		Sequence: turret
+		Turret: default-turret
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+	WithSpriteTurret@jeep:
+		Sequence: turret-jeep
+		Turret: jeep-turret
+		RequiresCondition: jeep
+	WithSpriteTurret@ftrk:
+		Sequence: turret-ftrk
+		Turret: ftrk-turret
+		RequiresCondition: ftrk
+	WithSpriteTurret@tnk1:
+		Sequence: turret-1tnk
+		Turret: 1tnk-turret
+		RequiresCondition: tnk1
+	WithSpriteTurret@tnk2:
+		Sequence: turret-2tnk
+		Turret: 2tnk-turret
+		RequiresCondition: tnk2
+	WithSpriteTurret@tnk3:
+		Sequence: turret-3tnk
+		Turret: 3tnk-turret
+		RequiresCondition: tnk3
+	WithSpriteTurret@tnk4:
+		Sequence: turret-4tnk
+		Turret: 4tnk-turret
+		RequiresCondition: tnk4
+	WithSpriteTurret@tnk5:
+		Sequence: turret-5tnk
+		Turret: 5tnk-turret
+		RequiresCondition: tnk5
+	WithSpriteTurret@stnk:
+		Sequence: turret-stnk
+		Turret: stnk-turret
+		RequiresCondition: stnk
+	WithIdleOverlay@TTNKSPINNER:
+		Sequence: spinner-ttnk
+		RequiresCondition: ttnk
+	WithIdleOverlay@MRJSPINNER:
+		Sequence: spinner-mrj
+		Offset: -256,0,256
+		RequiresCondition: mrj
+	WithIdleOverlay@MGGSPINNER:
+		Sequence: spinner-mgg
+		Offset: -299,0,171
+		RequiresCondition: mgg
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	SpawnActorOnDeath:
+		Actor: MTNK.Husk
+
+MTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: actor-mtnk-husk-name
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: mtnk
+	InfiltrateForTransform:
+		IntoActor: mtnk
+	RenderSprites:
+		Image: mtnk.destroyed

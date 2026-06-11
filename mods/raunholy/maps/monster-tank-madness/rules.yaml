@@ -190,8 +190,10 @@ PBOX:
 	-WithIdleOverlay@OVERLOAD2:
 	-KillsSelf@OVERLOAD:
 	-ToggleConditionOnOrder@InvulnerabilityDisable:
-	-WithColoredOverlay@IRONCURTAIN:
-	-DamageMultiplier@IRONCURTAIN:
+	WithColoredOverlay@IRONCURTAIN:
+		RequiresCondition: invulnerability
+	DamageMultiplier@IRONCURTAIN:
+		RequiresCondition: invulnerability
 	RenderSprites:
 		Image: 4TNK
 

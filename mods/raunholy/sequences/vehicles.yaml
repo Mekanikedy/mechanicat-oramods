@@ -275,7 +275,7 @@ mgg:
 	spinner:
 		Start: 32
 		Length: 8
-        Tick: 50
+		Tick: 50
 	spinner-idle:
 		Start: 32
 		Length: 1
@@ -401,3 +401,32 @@ stnk:
 		Facings: 32
 		UseClassicFacings: True
 		ZOffset: -512
+
+rig:
+	Defaults:
+		Filename: rig.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	make:
+		Start: 32
+		Length: *
+	idle-deployed:
+		Start: 55
+	icon:
+		Filename: rigicon.shp
+
+rig.destroyed:
+	idle:
+		Filename: rig.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+ftnk:
+	idle:
+		Filename: ftnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: ftnkicon.shp

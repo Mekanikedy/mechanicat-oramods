@@ -199,10 +199,10 @@ MIG.Husk:
 		Name: actor-mig-husk-name
 	Contrail@1:
 		Offset: -598,-683,0
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Contrail@2:
 		Offset: -598,683,0
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Aircraft:
 		TurnSpeed: 20
 		Speed: 186
@@ -229,7 +229,7 @@ YAK.Husk:
 		Name: actor-yak-husk-name
 	Contrail:
 		Offset: -853,0,0
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Aircraft:
 		TurnSpeed: 20
 		Speed: 149
@@ -316,10 +316,10 @@ U2.Husk:
 		Speed: 373
 	Contrail@1:
 		Offset: -725,683,0
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	Contrail@2:
 		Offset: -725,-683,0
-        StartColorUsePlayerColor: false
+		StartColorUsePlayerColor: false
 	LeavesTrails:
 		Offsets: -1c43,0,0
 		MovingInterval: 2
@@ -527,3 +527,41 @@ MH60.Husk:
 		Type: GroundPosition
 	RenderSprites:
 		Image: MH60
+
+SPIT.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: actor-spit-husk-name
+	Contrail:
+		Offset: -853,0,0
+		StartColorUsePlayerColor: false
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 149
+	LeavesTrails:
+		Offsets: -853,0,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+	RevealsShroud:
+		MinRange: 9c0
+		Range: 11c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 9c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: spit
+
+RIG.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: actor-rig-husk-name
+	TransformOnCapture:
+		IntoActor: rig
+	InfiltrateForTransform:
+		IntoActor: rig
+	RenderSprites:
+		Image: rig.destroyed

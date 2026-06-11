@@ -424,14 +424,14 @@ FACF:
 	RenderSprites:
 		Image: fact
 		FactionImages:
-            allies: afact
-            england: afact
-            france: afact
-            germany: afact
-            soviet: sfact
-            russia: sfact
-            ukraine: sfact
-            belarus: sfact
+			allies: afact
+			england: afact
+			france: afact
+			germany: afact
+			soviet: sfact
+			russia: sfact
+			ukraine: sfact
+			belarus: sfact
 	Valued:
 		Cost: 500
 	Health:
@@ -443,6 +443,15 @@ FACF:
 		Type: Rectangle
 			TopLeft: -1536, -1536
 			BottomRight: 1536, 1536
+	ProductionCostMultiplier@france:
+		Multiplier: 80
+		Prerequisites: player.france
+	GivesExperienceMultiplier@france:
+		Modifier: 120
+		RequiresCondition: owner.france
+	GrantConditionOnPrerequisite@france:
+		Condition: owner.france
+		Prerequisites: player.france
 
 BARF:
 	Inherits: ^FakeBuilding

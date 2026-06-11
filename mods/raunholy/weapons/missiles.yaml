@@ -45,6 +45,7 @@
 		ValidTargets: AirborneActor
 		Versus:
 			Light: 100
+			Heavy: 80
 	Warhead@3Eff: CreateEffect
 		ImpactActors: false
 
@@ -133,7 +134,7 @@ MammothTusk:
 		Versus:
 			None: 100
 			Light: 60
-			Heavy: 24
+			Heavy: 30
 			Concrete: 50
 		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
 	Warhead@3Eff: CreateEffect
@@ -143,6 +144,7 @@ MammothTusk:
 		Explosions: med_explosion_air
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Air, AirborneActor
+		ImpactActors: false
 
 Nike:
 	Inherits: ^AntiAirMissile
@@ -372,3 +374,23 @@ MammothTusk2:
 	ReloadDelay: 80
 	Burst: 4
 	BurstDelays: 0, 7, 0
+
+Dragon.TD:
+	Inherits: Dragon
+	ReloadDelay: 65
+	Report: bazook1.aud
+	ValidTargets: Ground, Water, GroundActor, WaterActor, AirborneActor
+	Projectile: Missile
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Damage: 3000
+		ValidTargets: GroundActor, WaterActor, AirborneActor
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+	Warhead@5EffAir: CreateEffect
+		Explosions: med_explosion_air
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Air, AirborneActor
+		ImpactActors: false

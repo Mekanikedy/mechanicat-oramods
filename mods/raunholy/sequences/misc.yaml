@@ -14,6 +14,11 @@ powerdown:
 		Filename: 120mm.shp
 		ZOffset: 1023
 
+120mmheat:
+	idle:
+		Filename: 120mmheat.shp
+		ZOffset: 1023
+
 50cal:
 	idle:
 		Filename: 50cal.shp
@@ -226,6 +231,10 @@ beacon:
 		Offset: 0,-42
 	adrpicon:
 		Filename: ptnkbcon.shp
+		Length: *
+		Offset: 0,-42
+	airsicon:
+		Filename: bombbcon.shp
 		Length: *
 		Offset: 0,-42
 
@@ -519,6 +528,9 @@ select:
 	repair:
 		Filename: select.shp
 		Start: 2
+	repair-small:
+		Filename: select.shp
+		Start: 3
 
 poweroff:
 	offline:
@@ -792,7 +804,7 @@ rank:
 iconchevrons:
 	veteran:
 		Filename: iconchevrons.shp
-		Offset: 2, 2
+		Offset: 1, 5
 
 atomic:
 	up:
@@ -879,6 +891,10 @@ icon:
 		Filename: weaprankicon.shp
 	airvet:
 		Filename: hpadrankicon.shp
+	airstrike:
+		Filename: bombicon.shp
+	scharge:
+		Filename: schargeicon.shp
 
 quee:
 	Defaults:

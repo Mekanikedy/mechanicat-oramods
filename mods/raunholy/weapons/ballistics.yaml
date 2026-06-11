@@ -229,11 +229,11 @@ TurretDepthCharge:
 		Speed: 250
 
 GrenadeLauncher:
-    Inherits: ^Artillery
+	Inherits: ^Artillery
 	ReloadDelay: 45
 	Range: 5c512
 	ValidTargets: Ground, GroundActor
-    InvalidTargets: Water, WaterActor
+	InvalidTargets: Water, WaterActor
 	Report: gun20.aud
 	Projectile: Bullet
 		Speed: 136
@@ -241,9 +241,9 @@ GrenadeLauncher:
 		LaunchAngle: 62
 		Inaccuracy: 554
 		Image: BOMB
-        Shadow: true
+		Shadow: true
 		ContrailStartWidth: 40
-        ContrailEndWidth: 20
+		ContrailEndWidth: 20
 		ContrailLength: 30
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
@@ -278,7 +278,8 @@ DepthCharge2:
 	Inherits: 120mm
 	ReloadDelay: 110
 	Range: 6c512
-	Report: turret1.aud
+	-Report:
+	StartBurstReport: tank6.aud
 	Projectile: Bullet
 		Inaccuracy: 128
 		InaccuracyType: Absolute
@@ -288,3 +289,25 @@ DepthCharge2:
 		Damage: 9000
 	Warhead@3Eff: CreateEffect
 		Explosions: artillery_explosion
+
+HEAT:
+	Inherits: ^Cannon
+	ReloadDelay: 35
+	Range: 5c256
+	Report: tnkfire6.aud
+	Projectile: Bullet
+		Speed: 426
+		Image: 120MMHEAT
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Versus:
+			None: 30
+			Wood: 60
+			Light: 75
+			Heavy: 52
+			Concrete: 10
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	-Warhead@2Smu:
+	Warhead@3Eff: CreateEffect
+		Explosions: small_napalm
+		ImpactSounds: firebl3.aud

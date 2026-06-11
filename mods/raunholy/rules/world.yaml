@@ -22,7 +22,7 @@
 			Ore: 89
 			Gems: 89
 			Beach: 89
-            WaterFord: 89
+			WaterFord: 89
 	Locomotor@WHEELED:
 		Name: wheeled
 		Crushes: mine, crate
@@ -34,11 +34,11 @@
 			Ore: 88
 			Gems: 88
 			Beach: 50
-            WaterFord: 50
+			WaterFord: 50
 	Locomotor@HEAVYWHEELED:
 		Name: heavywheeled
 		Crushes: wall, mine, crate, infantry, husk
-        CrushDamageTypes: CrushingDeath
+		CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
 			Rough: 50
@@ -47,7 +47,7 @@
 			Ore: 88
 			Gems: 88
 			Beach: 50
-            WaterFord: 50
+			WaterFord: 50
 	Locomotor@LIGHTTRACKED:
 		Name: lighttracked
 		Crushes: wall, mine, crate
@@ -59,11 +59,11 @@
 			Ore: 88
 			Gems: 88
 			Beach: 88
-            WaterFord: 88
+			WaterFord: 88
 	Locomotor@TRACKED:
 		Name: tracked
 		Crushes: wall, infantry, mine, crate
-        CrushDamageTypes: CrushingDeath
+		CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
 			Rough: 88
@@ -72,11 +72,11 @@
 			Ore: 88
 			Gems: 88
 			Beach: 88
-            WaterFord: 88
+			WaterFord: 88
 	Locomotor@HEAVYTRACKED:
 		Name: heavytracked
 		Crushes: wall, infantry, mine, crate, heavywall, vehicle, husk
-        CrushDamageTypes: CrushingDeath
+		CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
 			Rough: 88
@@ -85,11 +85,11 @@
 			Ore: 88
 			Gems: 88
 			Beach: 88
-            WaterFord: 88
+			WaterFord: 88
 	Locomotor@TRACKED-AMPHIBIOUS:
 		Name: tracked-amphibious
 		Crushes: wall, infantry, mine, crate
-        CrushDamageTypes: CrushingDeath
+		CrushDamageTypes: CrushingDeath
 		TerrainSpeeds:
 			Clear: 100
 			Rough: 88
@@ -98,21 +98,21 @@
 			Ore: 88
 			Gems: 88
 			Beach: 88
-            Water: 50
-            WaterFord: 88
+			Water: 50
+			WaterFord: 88
 	Locomotor@NAVAL:
 		Name: naval
 		Crushes: mine, crate
 		TerrainSpeeds:
 			Water: 100
-            WaterFord: 70
+			WaterFord: 70
 	Locomotor@LANDINGCRAFT:
 		Name: lcraft
 		Crushes: mine, crate
 		TerrainSpeeds:
 			Water: 100
 			Beach: 70
-            WaterFord: 70
+			WaterFord: 70
 	TerrainRenderer:
 	ChronoVortexRenderer:
 	ShroudRenderer:

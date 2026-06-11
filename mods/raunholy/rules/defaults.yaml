@@ -227,7 +227,7 @@
 		Bounds: 1024, 1024
 	Targetable:
 		RequiresCondition: !parachute
-		TargetTypes: GroundActor, Vehicle
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise
 	Targetable@REPAIR:
 		RequiresCondition: !parachute && damaged
 		TargetTypes: Repair
@@ -238,7 +238,7 @@
 		RepairActors: fix
 	Chronoshiftable:
 	Passenger:
-        Weight: 3
+		Weight: 3
 		CargoType: Vehicle
 	AttackMove:
 	HiddenUnderFog:
@@ -287,7 +287,7 @@
 		Categories: Vehicle
 	ExternalCondition@CRUSH:
 		Condition: slowdown
-        TotalCap: 1
+		TotalCap: 1
 	SpeedMultiplier@CRUSH:
 		RequiresCondition: slowdown
 		Modifier: 80
@@ -298,6 +298,22 @@
 	GrantExternalConditionToCrusher:
 		OnCrushCondition: slowdown
 		OnCrushDuration: 50
+	ChangesHealth@MACHINESHOP:
+		Step: 500
+		Delay: 100
+		StartIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: machineshop
+	ExternalCondition@MACHINESHOP:
+		Condition: machineshop
+	WithDecoration@MACHINESHOP:
+		Image: select
+		Palette: chrome
+		Sequence: repair-small
+		Position: Center
+		RequiresCondition: machineshop && damaged
+		BlinkInterval: 32
+		BlinkPattern: on, off
 
 ^TrackedVehicle:
 	Inherits: ^Vehicle
@@ -575,11 +591,11 @@
 		TerrainTypes: WaterFord
 	ExternalCondition@SONARPING:
 		Condition: pinged
-        SourceCap: 1
-        TotalCap: 1
-    TimedConditionBar@SONARPING:
-        Condition: pinged
-        Color: ADFF2F
+		SourceCap: 1
+		TotalCap: 1
+	TimedConditionBar@SONARPING:
+		Condition: pinged
+		Color: ADFF2F
 
 ^NeutralPlane:
 	Inherits@1: ^ExistsInWorld
@@ -655,6 +671,22 @@
 		TextNotification: notification-unit-stolen
 		LoseNotification: UnitLost
 		LoseTextNotification: notification-unit-lost
+	ChangesHealth@MACHINESHOP:
+		Step: 500
+		Delay: 100
+		StartIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: machineshop && !airborne
+	ExternalCondition@MACHINESHOP:
+		Condition: machineshop
+	WithDecoration@MACHINESHOP:
+		Image: select
+		Palette: chrome
+		Sequence: repair-small
+		Position: Center
+		RequiresCondition: machineshop && damaged
+		BlinkInterval: 32
+		BlinkPattern: on, off
 
 ^Plane:
 	Inherits: ^NeutralPlane
@@ -1261,6 +1293,10 @@
 	HitShape:
 	MapEditorData:
 		Categories: System
+	ExternalCondition@MADBOOM:
+		Condition: minekill
+	KillsSelf@MADBOOM:
+		RequiresCondition: minekill
 
 ^DisableOnLowPower:
 	WithColoredOverlay@IDISABLE:
@@ -1390,7 +1426,7 @@
 	Tooltip:
 		Name: Gate
 	Building:
-        RequiresBaseProvider: false
+		RequiresBaseProvider: false
 		BuildSounds: place2.aud
 		TerrainTypes: Clear, Road
 	RequiresBuildableArea:
@@ -1403,14 +1439,14 @@
 		OpeningSound: hydrod1.aud
 		ClosingSound: hvydoor1.aud
 		#   BlocksProjectilesHeight: 768
-        BlocksProjectilesHeight: 1
+		BlocksProjectilesHeight: 1
 	RepairableBuilding:
 		RepairPercent: 20
 		RepairStep: 400
 		PlayerExperience: 0
 		RepairingNotification: Repairing
 	RenderSprites:
-        PlayerPalette: player
+		PlayerPalette: player
 	WithBuildingRepairDecoration:
 		Image: allyrepair
 		Sequence: repair
@@ -1450,3 +1486,75 @@
 	CapturableProgressBlink:
 	Targetable@AIFixer:
 		TargetTypes: IgnoreThis
+
+^AutoTargetGroundAssaultMovePrioritizeVehicles:
+	Inherits: ^AutoTargetGroundAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTVEH:
+		ValidTargets: Vehicle
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetGroundAssaultMovePrioritizeInfantry:
+	Inherits: ^AutoTargetGroundAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTINF:
+		ValidTargets: Infantry
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetGroundAssaultMovePrioritizeShips:
+	Inherits: ^AutoTargetGroundAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Vehicle, Defense, Mine
+	AutoTargetPriority@DEFAULTSEA:
+		ValidTargets: Ship, Underwater
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetGroundAssaultMovePrioritizeDefenses:
+	Inherits: ^AutoTargetGroundAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Vehicle, Ship, Underwater, Mine
+	AutoTargetPriority@DEFAULTDEF:
+		ValidTargets: Defense
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetAllAssaultMovePrioritizeGround:
+	Inherits: ^AutoTargetAllAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTAA:
+		ValidTargets: AirborneActor
+		InvalidTargets: NoAutoTarget
+		Priority: 0
+
+^AutoTargetAllAssaultMovePrioritizeAir:
+	Inherits: ^AutoTargetAllAssaultMove
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTAA:
+		ValidTargets: AirborneActor
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetGroundPrioritizeInfantry:
+	Inherits: ^AutoTargetGround
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTINF:
+		ValidTargets: Infantry
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+
+^AutoTargetGroundPrioritizeVehicles:
+	Inherits: ^AutoTargetGround
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTVEH:
+		ValidTargets: Vehicle
+		InvalidTargets: NoAutoTarget
+		Priority: 10

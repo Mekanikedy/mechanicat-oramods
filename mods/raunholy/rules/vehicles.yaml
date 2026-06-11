@@ -50,15 +50,24 @@ V2RL:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+	ProductionCostMultiplier@ukraine:
+		Multiplier: 80
+		Prerequisites: player.ukraine
+	GivesExperienceMultiplier@ukraine:
+		Modifier: 120
+		RequiresCondition: owner.ukraine
+	GrantConditionOnPrerequisite@ukraine:
+		Condition: owner.ukraine
+		Prerequisites: player.ukraine
 
 1TNK:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeGround
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 130
-		Prerequisites: fix, ~vehicles.allies, ~techlevel.low
+		Prerequisites: fix, ~vehicles.allies, ~techlevel.low, ~!player.germany
 		Description: actor-1tnk.description
 	Valued:
 		Cost: 700
@@ -87,6 +96,11 @@ V2RL:
 		RecoilRecovery: 25
 		LocalOffset: 768,0,90
 		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Dragon.TD
+		LocalOffset: -85,192,120
+		LocalYaw: -64
 	AttackTurreted:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
@@ -98,14 +112,30 @@ V2RL:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
+1TNK.Germany:
+	Inherits: 1TNK
+	Buildable:
+		Prerequisites: fix, ~vehicles.allies, ~player.germany, ~techlevel.low
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: 1tnk
+	RenderSprites:
+		Image: 1tnk
+	-MapEditorData:
+
 2TNK:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 210
-		Prerequisites: fix, ~vehicles.allies, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.allies, ~techlevel.medium, ~!player.germany
 		Description: actor-2tnk.description
 	Valued:
 		Cost: 800
@@ -147,14 +177,30 @@ V2RL:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
+2TNK.Germany:
+	Inherits: 2TNK
+	Buildable:
+		Prerequisites: fix, ~vehicles.allies, ~player.germany, ~techlevel.medium
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: 2tnk
+	RenderSprites:
+		Image: 2tnk
+	-MapEditorData:
+
 3TNK:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 220
-		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium, ~!player.russia
 		Description: actor-3tnk.description
 	Valued:
 		Cost: 1150
@@ -209,19 +255,19 @@ V2RL:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: techlevel.infonly
-    AmmoPool:
-        Armaments: dummy
-        Ammo: 1
-        InitialAmmo: 0
-        AmmoCondition: stahp
-    ChangesHealth:
-        PercentageStep: -50
-        StartIfBelow: 101
-        Delay: 4
-        RequiresCondition: !stahp
-    ReloadAmmoPool:
-        Delay: 3
-        Count: 1
+	AmmoPool:
+		Armaments: dummy
+		Ammo: 1
+		InitialAmmo: 0
+		AmmoCondition: stahp
+	ChangesHealth:
+		PercentageStep: -50
+		StartIfBelow: 101
+		Delay: 4
+		RequiresCondition: !stahp
+	ReloadAmmoPool:
+		Delay: 3
+		Count: 1
 	Parachutable:
 		FallRate: 26
 		KilledOnImpassableTerrain: true
@@ -235,17 +281,34 @@ V2RL:
 		Offset: 0,0,200
 		RequiresCondition: parachute
 	Turreted:
-        RequiresCondition: !parachute
+		RequiresCondition: !parachute
 	AttackTurreted:
-        PauseOnCondition: parachute
+		PauseOnCondition: parachute
 	SpeedMultiplier@CRUSH:
 		RequiresCondition: slowdown && !parachute
 		Modifier: 80
+	-MapEditorData:
+
+3TNK.Russia:
+	Inherits: 3TNK
+	Buildable:
+		Prerequisites: fix, ~vehicles.soviet, ~player.russia, ~techlevel.medium
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: 3tnk
+	RenderSprites:
+		Image: 3tnk
+	-MapEditorData:
 
 4TNK:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeGround
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 220
@@ -306,7 +369,16 @@ V2RL:
 		Prerequisites: vehicles.upgraded
 	Passenger:
 		Weight: 5
-    -Crushable:
+	-Crushable:
+	ProductionCostMultiplier@belarus:
+		Multiplier: 85
+		Prerequisites: player.belarus
+	GivesExperienceMultiplier@belarus:
+		Modifier: 115
+		RequiresCondition: owner.belarus
+	GrantConditionOnPrerequisite@belarus:
+		Condition: owner.belarus
+		Prerequisites: player.belarus
 
 5TNK:
 	Inherits: 4TNK
@@ -325,7 +397,7 @@ V2RL:
 		HP: 180000
 	Mobile:
 		TurnSpeed: 8
-		Speed: 42
+		Speed: 46
 		RequiresCondition: !overload
 		PauseOnCondition: disabled
 		Voice: Move
@@ -417,6 +489,10 @@ V2RL:
 		RequiresCondition: invulnerability && !overload
 	DamageMultiplier@IRONCURTAIN:
 		RequiresCondition: invulnerability && !overload
+	ProductionCostMultiplier@belarus:
+		Multiplier: 90
+	GivesExperienceMultiplier@belarus:
+		Modifier: 110
 	RenderSprites:
 		Image: 5tnk
 
@@ -427,7 +503,7 @@ ARTY:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 230
-		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
+		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium, ~!player.france
 		Description: actor-arty.description
 	Valued:
 		Cost: 800
@@ -467,6 +543,22 @@ ARTY:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+
+ARTY.France:
+	Inherits: ARTY
+	Buildable:
+		Prerequisites: dome, ~vehicles.allies, ~player.france, ~techlevel.medium
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: arty
+	RenderSprites:
+		Image: arty
+	-MapEditorData:
 
 HARV:
 	Inherits: ^Vehicle
@@ -533,7 +625,7 @@ HARV:
 			Gems: pip-red
 	Passenger:
 		Weight: 4
-    -Crushable:
+	-Crushable:
 
 MCV:
 	Inherits: ^Vehicle
@@ -555,7 +647,7 @@ MCV:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 60
+		Speed: 64
 		Locomotor: heavywheeled
 	RevealsShroud:
 		Range: 4c0
@@ -575,12 +667,21 @@ MCV:
 		Condition: invulnerability
 	Passenger:
 		Weight: 5
-    -Crushable:
+	-Crushable:
+	ProductionCostMultiplier@france:
+		Multiplier: 80
+		Prerequisites: player.france
+	GivesExperienceMultiplier@france:
+		Modifier: 120
+		RequiresCondition: owner.france
+	GrantConditionOnPrerequisite@france:
+		Condition: owner.france
+		Prerequisites: player.france
 
 JEEP:
 	Inherits: ^Vehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
@@ -663,7 +764,7 @@ JEEP:
 APC:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
 	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
@@ -755,7 +856,7 @@ MNLY:
 	Armor:
 		Type: Heavy
 	Mobile:
-        Locomotor: tracked-amphibious
+		Locomotor: tracked-amphibious
 		Speed: 113
 	RevealsShroud:
 		MinRange: 4c0
@@ -785,12 +886,12 @@ MNLY:
 		TerrainTypes: Water
 		Condition: floating
 	Targetable:
-		TargetTypes: GroundActor, Vehicle, Mine
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise, Mine
 		RequiresCondition: !floating
 	Targetable@SEA:
-		TargetTypes: GroundActor, WaterActor, Ship, Mine
+		TargetTypes: GroundActor, WaterActor, Ship, VehicleDisguise, Mine
 		RequiresCondition: floating
-    WithFacingSpriteBody:
+	WithFacingSpriteBody:
 		RequiresCondition: !floating
 	WithFacingSpriteBody@SEA:
 		Name: floating
@@ -820,7 +921,7 @@ TRUK:
 	Mobile:
 		Speed: 113
 	Passenger:
-        Weight: 2
+		Weight: 2
 	RevealsShroud:
 		Range: 4c0
 	DeliversCash:
@@ -963,7 +1064,8 @@ TTNK:
 FTRK:
 	Inherits: ^Vehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
+	Inherits@CARGOPIPS: ^CargoPips
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 120
@@ -982,6 +1084,7 @@ FTRK:
 	Mobile:
 		TurnSpeed: 40
 		Speed: 113
+		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -1015,6 +1118,34 @@ FTRK:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+	Cargo:
+		Types: Infantry
+		MaxWeight: 1
+		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+			e7: tanyainside
+			e8: volkovinside
+	ChangesHealth@MECHANIC:
+		RequiresCondition: selfrepair
+		Step: 2000
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
 
 DTRK:
 	Inherits: ^Vehicle
@@ -1034,7 +1165,7 @@ DTRK:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 67
+		Speed: 68
 	RevealsShroud:
 		Range: 4c0
 	FireWarheadsOnDeath:
@@ -1058,7 +1189,7 @@ DTRK:
 CTNK:
 	Inherits: ^Vehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 340
@@ -1092,7 +1223,7 @@ CTNK:
 		FacingTolerance: 0
 	PortableChrono:
 		ChargeDelay: 375
-        MaxDistance: 15
+		MaxDistance: 15
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
@@ -1137,12 +1268,12 @@ QTNK:
 		Color: FFFF0080
 		Range: 7c0
 	Targetable:
-		TargetTypes: GroundActor, MADTank, Vehicle
+		TargetTypes: GroundActor, MADTank, Vehicle, VehicleDisguise
 	Selectable:
 		DecorationBounds: 1877, 1621, 0, -170
 	Passenger:
 		Weight: 5
-    -Crushable:
+	-Crushable:
 	ToggleConditionOnOrder@InvulnerabilityDisable:
 		Condition: invulnerability
 		OrderName: deploy
@@ -1251,3 +1382,127 @@ STNK:
 		BlinkInterval: 32
 		BlinkPatterns:
 			tanyainside: On, Off
+
+RIG:
+	Inherits: ^TrackedVehicle
+	-WithFacingSpriteBody:
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 430
+		Prerequisites: fix, atek, ~vehicles.germany, ~techlevel.high
+		Description: actor-rig.description
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-rig.name
+		RequiresCondition: !deployed
+	Tooltip@deployed:
+		Name: actor-rig.name-deployed
+		RequiresCondition: deployed
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 32000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 68
+		PauseOnCondition: being-captured || deployed
+		Locomotor: lighttracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	ChangesHealth:
+		Step: 100
+		Delay: 25
+		StartIfBelow: 50
+		DamageCooldown: 500
+	GrantConditionOnDeploy:
+		PauseOnCondition: being-captured
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		Facing: 384
+		AllowedTerrainTypes: Clear, Road
+		DeploySounds: placbldg.aud
+		UndeploySounds: hydrod1.aud
+		Voice: Action
+	Repairable:
+		RequireForceMoveCondition: !undeployed
+	Passenger:
+		RequireForceMoveCondition: !undeployed
+	WithSpriteBody:
+		Name: body2
+		Sequence: idle-deployed
+		RequiresCondition: deployed
+	WithMakeAnimation:
+	WithFacingSpriteBody:
+		RequiresCondition: !deployed
+	RepairsUnits:
+		HpPerStep: 1000
+		StartRepairingNotification: Repairing
+		StartRepairingTextNotification: notification-repairing
+		FinishRepairingNotification: UnitRepaired
+		FinishRepairingTextNotification: notification-unit-repaired
+		PlayerExperience: 0
+		RequiresCondition: deployed
+	ProximityExternalCondition@repair:
+		Condition: machineshop
+		Range: 3c0
+		RequiresCondition: deployed
+	WithRangeCircle:
+		Color: FFFF0080
+		Range: 3c0
+		RequiresCondition: deployed
+	SpawnActorOnDeath:
+		Actor: RIG.Husk
+
+FTNK:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeDefenses
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 340
+		Prerequisites: fix, stek, ~vehicles.ukraine, ~techlevel.high
+		Description: actor-ftnk.description
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: actor-ftnk.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 32000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 72
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament@PRIMARY:
+		Weapon: TankFlamer
+		LocalOffset: 800,200,130
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: TankFlamer
+		LocalOffset: 800,-200,130
+	AttackFrontal:
+		Armaments: primary, secondary
+		FacingTolerance: 0
+	FireWarheadsOnDeath:
+		Weapon: Napalm
+		EmptyWeapon: Napalm
+		Chance: 100
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded

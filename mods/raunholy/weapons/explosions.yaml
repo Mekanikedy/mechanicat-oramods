@@ -197,6 +197,14 @@ ATMine:
 		Explosions: large_explosion
 		ImpactSounds: mineblo1.aud
 		ImpactActors: false
+		ValidTargets: Ground, GroundActor
+		InvalidTargets: Water, WaterActor
+	Warhead@3EffWater: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: h2obomb2.aud
+		ImpactActors: false
+		ValidTargets: Water, WaterActor
+		InvalidTargets: Ground, GroundActor
 	Warhead@Smu: LeaveSmudge
 		SmudgeType: Crater
 		ValidTargets: Ground, GroundActor

@@ -113,7 +113,7 @@ Player:
 		CannotPlaceNotification: BuildingCannotPlaceAudio
 		NewOptionsTextNotification: notification-new-construction-options
 		CannotPlaceTextNotification: notification-cannot-deploy-here
-        ToggleVariantKey: ToggleVariant
+		ToggleVariantKey: ToggleVariant
 	SupportPowerManager:
 	ScriptTriggers:
 	MissionObjectives:
@@ -202,3 +202,21 @@ Player:
 	PlayerExperience:
 	GameSaveViewportManager:
 	PlayerRadarTerrain:
+	ProvidesPrerequisite@england:
+		Prerequisite: player.england
+		Factions: england
+	ProvidesPrerequisite@france:
+		Prerequisite: player.france
+		Factions: france
+	ProvidesPrerequisite@germany:
+		Prerequisite: player.germany
+		Factions: germany
+	ProvidesPrerequisite@russia:
+		Prerequisite: player.russia
+		Factions: russia
+	ProvidesPrerequisite@ukraine:
+		Prerequisite: player.ukraine
+		Factions: ukraine
+	ProvidesPrerequisite@belarus:
+		Prerequisite: player.belarus
+		Factions: belarus
