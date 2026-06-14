@@ -759,7 +759,10 @@ MECH:
 		VoiceSet: MechanicVoice
 	AutoTarget:
 	AutoTargetPriority@DEFAULT:
-		ValidTargets: Vehicle, Ship
+		ValidTargets: Repair
+	AutoTargetPriority@DEFAULTPRIOREP:
+		ValidTargets: PriorityRepair
+		Priority: 10
 
 EINSTEIN:
 	Inherits: ^CivInfantry

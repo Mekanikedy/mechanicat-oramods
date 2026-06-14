@@ -392,6 +392,8 @@ MTNK:
 		Prerequisites: vehicles.upgraded
 	SpawnActorOnDeath:
 		Actor: MTNK.Husk
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise
 
 MTNK.Husk:
 	Inherits: ^Husk

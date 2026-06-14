@@ -543,6 +543,8 @@ ARTY:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise
 
 ARTY.France:
 	Inherits: ARTY
@@ -760,6 +762,8 @@ JEEP:
 		Position: TopLeft
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, WheeledVehicle, VehicleDisguise
 
 APC:
 	Inherits: ^TrackedVehicle
@@ -1146,6 +1150,8 @@ FTRK:
 		Position: TopLeft
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, WheeledVehicle, VehicleDisguise
 
 DTRK:
 	Inherits: ^Vehicle
@@ -1459,6 +1465,8 @@ RIG:
 		RequiresCondition: deployed
 	SpawnActorOnDeath:
 		Actor: RIG.Husk
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise
 
 FTNK:
 	Inherits: ^TrackedVehicle

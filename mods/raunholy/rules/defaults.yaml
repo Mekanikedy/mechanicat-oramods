@@ -231,9 +231,15 @@
 	Targetable@REPAIR:
 		RequiresCondition: !parachute && damaged
 		TargetTypes: Repair
+	Targetable@PRIORITYREPAIR:
+		RequiresCondition: !parachute && heavydamaged
+		TargetTypes: PriorityRepair
 	GrantConditionOnDamageState@DAMAGED:
 		Condition: damaged
 		ValidDamageStates: Light, Medium, Heavy, Critical
+	GrantConditionOnDamageState@HEAVYDAMAGED:
+		Condition: heavydamaged
+		ValidDamageStates: Heavy, Critical
 	Repairable:
 		RepairActors: fix
 	Chronoshiftable:
@@ -317,6 +323,8 @@
 
 ^TrackedVehicle:
 	Inherits: ^Vehicle
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, TrackedVehicle, VehicleDisguise
 	Mobile:
 		Locomotor: tracked
 
@@ -530,6 +538,12 @@
 	GrantConditionOnDamageState@DAMAGED:
 		Condition: damaged
 		ValidDamageStates: Light, Medium, Heavy, Critical
+	Targetable@PRIORITYREPAIR:
+		RequiresCondition: heavydamaged
+		TargetTypes: PriorityRepair
+	GrantConditionOnDamageState@HEAVYDAMAGED:
+		Condition: heavydamaged
+		ValidDamageStates: Heavy, Critical
 	HiddenUnderFog:
 	AttackMove:
 	ActorLostNotification:
@@ -570,6 +584,9 @@
 	Targetable@REPAIR:
 		RequiresCondition: damaged && !underwater
 		TargetTypes: Repair
+	Targetable@PRIORITYREPAIR:
+		RequiresCondition: heavydamaged && !underwater
+		TargetTypes: PriorityRepair
 	Cloak:
 		DetectionTypes: Underwater
 		InitialDelay: 0
@@ -1494,12 +1511,20 @@
 	AutoTargetPriority@DEFAULTVEH:
 		ValidTargets: Vehicle
 		InvalidTargets: NoAutoTarget
+		Priority: 7
+	AutoTargetPriority@DEFAULTTANK:
+		ValidTargets: TrackedVehicle
+		InvalidTargets: NoAutoTarget
 		Priority: 10
 
 ^AutoTargetGroundAssaultMovePrioritizeInfantry:
 	Inherits: ^AutoTargetGroundAssaultMove
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTLVEH:
+		ValidTargets: WheeledVehicle
+		InvalidTargets: NoAutoTarget
+		Priority: 7
 	AutoTargetPriority@DEFAULTINF:
 		ValidTargets: Infantry
 		InvalidTargets: NoAutoTarget
@@ -1545,6 +1570,10 @@
 	Inherits: ^AutoTargetGround
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: Vehicle, Ship, Underwater, Defense, Mine
+	AutoTargetPriority@DEFAULTLVEH:
+		ValidTargets: WheeledVehicle
+		InvalidTargets: NoAutoTarget
+		Priority: 7
 	AutoTargetPriority@DEFAULTINF:
 		ValidTargets: Infantry
 		InvalidTargets: NoAutoTarget
@@ -1556,5 +1585,9 @@
 		ValidTargets: Infantry, Ship, Underwater, Defense, Mine
 	AutoTargetPriority@DEFAULTVEH:
 		ValidTargets: Vehicle
+		InvalidTargets: NoAutoTarget
+		Priority: 7
+	AutoTargetPriority@DEFAULTTANK:
+		ValidTargets: TrackedVehicle
 		InvalidTargets: NoAutoTarget
 		Priority: 10

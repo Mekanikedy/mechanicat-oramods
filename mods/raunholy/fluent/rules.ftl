@@ -180,8 +180,8 @@ faction-random =
 
 faction-randomallies =
     .name = Allies Country
-    .description = Random Allied Country
-     A random Allied country is chosen when the game starts
+    .description = Random Allies Country
+     A random Allies country is chosen when the game starts
 
 faction-randomsoviet =
     .name = Soviet Country

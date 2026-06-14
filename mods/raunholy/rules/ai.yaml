@@ -193,6 +193,7 @@ Player:
 			abar: 1
 			weap: 1
 			pbox: 7
+			hbox: 7
 			gun: 7
 			tsla: 5
 			gap: 2
@@ -264,6 +265,7 @@ Player:
 			afld.ukraine: 4
 			afld.belarus: 4
 			pbox: 7
+			hbox: 7
 			gun: 7
 			ftur: 10
 			tsla: 5
@@ -333,6 +335,7 @@ Player:
 			spen: 1
 			syrd: 1
 			pbox: 10
+			hbox: 10
 			gun: 10
 			ftur: 10
 			tsla: 7
@@ -404,6 +407,7 @@ Player:
 			syrd: 1
 			fix: 1
 			pbox: 2
+			hbox: 2
 			gun: 2
 			ftur: 2
 			tsla: 1

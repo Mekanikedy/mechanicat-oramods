@@ -1,7 +1,10 @@
 In this branch of the mechanicat-oramods repository are the files for one of my OpenRA modifications, the Red Alert Unholy mod that is based on red-alert-release-20250330.
 
-this mod also has got a mod-map variant, that can be found here:
-https://resource.openra.net/maps/67617/
+this mod also has got a variant that is a series of mod-maps playable in the OpenRA Red Alert mod
+that can be found on the OpenRA resource center by searching for Unholy Mod, or filtering by the category Unholy
+
+here be one exemplar of those mod-maps:
+https://resource.openra.net/maps/67729/
 
 Known Issues
 - Mechanic cannot flash the target when it uses ChangesHealth to repair from within a transport
@@ -199,7 +202,7 @@ Camo Pillbox
 
 Gun Turret
 - added a secondary anti-submarine depthcharge attack on Gun Turrets
-- auto-targeting priority changed to prefer shooting at Vehicles on default
+- auto-targeting priority changed to prefer shooting at Tanks first, then other Vehicles on default
 - can be built for cheap by Germany
 
 AA Gun
@@ -211,7 +214,7 @@ Flame Tower
 - Flame Tower can fire over walls now
 - added +1 range to Flame Tower weapon
 - the cloak detection range of Flame Towers increased to 6c0 from 5c0
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 - added weapon sound from the Schwerpunkt mod to ensure weapon is not silent
 
 Tesla Coil
@@ -251,11 +254,11 @@ Infantry units
 Rifle Infantry
 - Weapon range of Rifle Infantry reduced by -1c
 - ^LightMG damage multiplier versus Light Armor reduced to 30 from 40
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 
 Grenadier
 - Grenadier set to always explode on death, but only when killed by explosive, incendiary weapons, or due to crushing
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 
 Rocket Soldier 
 - Rocket Soldier reloads weapon slightly slocer, increased reload delay from 50 to 55
@@ -284,13 +287,14 @@ Mechanic
 - Mechanic can repair transports from within, but only while out of combat. this does not stack with multiple Mechanics inside
 - slightly reduced the range of Mechanic repair from 4c0 to 3c682
 - +1 Sight radius for Mechanic, from 3c to 4c
+- the Mechanic will prioritize repairing heavily damaged vehicles first
 
 Shock Trooper
 - Shock Trooper does not require a Tesla Coil anymore
 - Shock Trooper cost increased to 450$ from 350$
 - Shock Trooper always explodes on death when getting crushed
 - Shock Trooper can zap a friendly Tesla Coil to empower it for 6sec
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 
 Spy
 - the Spy no longer can attack
@@ -309,7 +313,7 @@ new: Volkov
 - Volkov added for Soviets as a commando unit
 - added unique voice variant for Volkov
 - Volkov cannot be healed by a Medic, but can get repaired by Mechanics
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 - can self-repair near a deployed Mobile Rig
 
 Vehicle units
@@ -339,7 +343,7 @@ Ranger Jeep
 - can detect cloaked units within 2c512 radius when loaded
 - comes with a Rifle Infantry passenger by default
 - gives experience worth 400$ when destroyed. discounted the passenger from unit xp value
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 
 Mobile Flak
 - linked anti-ground and anti-air attacks to prevent double-firing
@@ -365,12 +369,12 @@ Light Tank
 
 Medium Tank
 - Medium Tank cost reduced to 800$ from 850$
-- auto-targeting priority changed to prefer shooting at Vehicles on default
+- auto-targeting priority changed to prefer shooting at Tanks first, then other Vehicles on default
 - can be built at Veteran rank by Germany
 
 Heavy Tank
 - fixed the turret offset on Heavy Tank sprite (by adjusting 1px upwards) 
-- auto-targeting priority changed to prefer shooting at Vehicles on default
+- auto-targeting priority changed to prefer shooting at Tanks first, then other Vehicles on default
 - can be built at Veteran rank by Russia
 
 Mammoth Tank
@@ -417,7 +421,7 @@ Chrono Tank
 - Chrono Tank can teleport over 15 cells distance, up from 12 cells
 - weaponry of Chrono Tank changed to can fire over Walls
 - Chrono Tank can crush vehicle husks
-- auto-targeting priority changed to prefer shooting at Vehicles on default
+- auto-targeting priority changed to prefer shooting at Tanks first, then other Vehicles on default
 
 Phase Transport
 - Phase Transport cost increased to 1100$ from 1000$
@@ -551,14 +555,14 @@ Yak Attack Plane
 - cost of Yak Attack Plane decreased to 1150$ from 1350$
 - range of Yak Attack Plane's machineguns slightly increased to 6c830 from 6c0
 - given a secondary weapon so that it can attack enemy aircraft
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 
 MiG Attack Plane
 - cost of MiG Attack Plane decreased to 1800$ from 2000$
 - MiG Attack Plane obtained +2 ammo, in effect this means it fires one more time before returning
 - Increase hitpoints of MiG Attack Plane by +1000, from 8000 to 9000
 - Maverick missiles set to target submarines in addition
-- auto-targeting priority changed to prefer shooting at Vehicles on default
+- auto-targeting priority changed to prefer shooting at Tanks first, then other Vehicles on default
 
 Chinook
 - Chinook renamed to Air Transport
@@ -579,7 +583,7 @@ Longbow
 Hind
 - Hind enabled to be built for Soviets with a Soviet Tech Center from the Helipad
 - the Hind can throw depthcharges at detected submarines. this does not use ammo
-- auto-targeting priority changed to prefer shooting at Infantry on default
+- auto-targeting priority changed to prefer shooting at Infantry first, then Light Vehicles on default
 - Hind cost reduced to 1350$ from 1500$
 - Hind armor type changed to Heavy from Light
 - Its the only flying unit with Heavy armor now
