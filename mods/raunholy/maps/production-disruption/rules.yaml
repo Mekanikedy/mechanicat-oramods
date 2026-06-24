@@ -64,12 +64,14 @@ MSUB:
 	-GrantConditionOnDamageState@UNCLOAK:
 	-Targetable@UNDERWATER:
 	-GrantConditionOnDamageState@DAMAGED:
+	-GrantConditionOnDamageState@HEAVYDAMAGED:
 	-Targetable@REPAIR:
+	-Targetable@PRIORITYREPAIR:
 	Targetable:
 		-RequiresCondition:
-    -GrantConditionOnTerrain@CROSSINGFORD:
-    -ExternalCondition@SONARPING:
-    -TimedConditionBar@SONARPING:
+	-GrantConditionOnTerrain@CROSSINGFORD:
+	-ExternalCondition@SONARPING:
+	-TimedConditionBar@SONARPING:
 
 TSLA:
 	ExternalCondition@NOACTORSONSELL:

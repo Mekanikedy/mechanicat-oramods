@@ -186,6 +186,10 @@ TENT:
 		Color: 8A8A8A
 	BaseBuilding:
 
+TENT.Spain:
+	Transforms:
+		PauseOnCondition: being-captured || build-incomplete
+
 FTUR:
 	Buildable:
 		Prerequisites: barracks

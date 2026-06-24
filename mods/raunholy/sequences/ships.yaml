@@ -3,10 +3,6 @@ ss:
 		Filename: ss.shp
 		Facings: 16
 		InterpolatedFacings: 32
-	turret:
-		Filename: mgun.shp
-		Facings: 32
-		UseClassicFacings: True
 	muzzle:
 		Filename: gunfire2.shp
 		Length: 2
@@ -21,8 +17,9 @@ ca:
 		Filename: turr.shp
 		Facings: 32
 	muzzle:
-		Filename: gunfire2.shp
-		Length: 5
+		Filename: smokeygun.shp
+		Length: 12
+		Tick: 45
 	icon:
 		Filename: caicon.shp
 
@@ -99,3 +96,21 @@ seas:
 		Length: 2
 	icon:
 		Filename: seasicon.shp
+
+dred:
+	idle:
+		Filename: dred.shp
+		Facings: 32
+	turret:
+		Filename: dredtur.shp
+		Facings: 32
+	turret1:
+		Filename: dredtur.shp
+		Start: 32
+		Facings: 32
+	turret0:
+		Filename: dredtur.shp
+		Start: 64
+		Facings: 32
+	icon:
+		Filename: dredicon.shp

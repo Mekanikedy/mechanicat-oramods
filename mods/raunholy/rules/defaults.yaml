@@ -2,7 +2,7 @@
 	AppearsOnRadar:
 	CombatDebugOverlay:
 	GivesExperience:
-		PlayerExperienceModifier: 1
+		PlayerExperienceModifier: 0
 	ScriptTriggers:
 	RenderDebugState:
 
@@ -112,6 +112,7 @@
 		Margin: 5, 6
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: rank-veteran == 3
+	Inherits@EarnedXPBonus: ^AffectedByGreece
 
 ^GainsExperienceAircraft:
 	Inherits: ^GainsExperience
@@ -215,6 +216,8 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableCombatUnit
 	Inherits@handicaps: ^PlayerHandicaps
+	Inherits@productionboost: ^ProductionPlayerBoost
+	Inherits@secondaryGAPeffect: ^AffectedbyGAP
 	Huntable:
 	OwnerLostAction:
 		Action: Kill
@@ -281,9 +284,9 @@
 		EmptyWeapon: UnitExplodeSmall
 	WithFacingSpriteBody:
 	WithParachute:
-		ShadowImage: parach-shadow
+		ShadowImage: parachl-shadow
 		ShadowSequence: idle
-		Image: parach
+		Image: parachl
 		Sequence: idle
 		OpeningSequence: open
 		Offset: 0,0,200
@@ -295,7 +298,7 @@
 		Condition: slowdown
 		TotalCap: 1
 	SpeedMultiplier@CRUSH:
-		RequiresCondition: slowdown
+		RequiresCondition: slowdown && !parachute
 		Modifier: 80
 	Crushable:
 		CrushClasses: vehicle
@@ -336,6 +339,7 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableCombatUnit
 	Inherits@handicaps: ^PlayerHandicaps
+	Inherits@secondaryGAPeffect: ^AffectedbyGAP
 	Huntable:
 	OwnerLostAction:
 		Action: Kill
@@ -522,6 +526,8 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableCombatUnit
 	Inherits@handicaps: ^PlayerHandicaps
+	Inherits@productionboost: ^ProductionPlayerBoost
+	Inherits@secondaryGAPeffect: ^AffectedbyGAP
 	Huntable:
 	OwnerLostAction:
 		Action: Kill
@@ -620,6 +626,8 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableCombatUnit
 	Inherits@handicaps: ^PlayerHandicaps
+	Inherits@productionboost: ^ProductionPlayerBoost
+	Inherits@secondaryGAPeffect: ^AffectedbyGAP
 	OwnerLostAction:
 		Action: Kill
 	Armor:
@@ -660,6 +668,15 @@
 		EjectInAir: true
 		AllowUnsuitableCell: true
 		ChuteSound: chute1.aud
+		RequiresCondition: !owner.spain
+	EjectOnDeath@spain:
+		PilotActor: E1.SPAIN
+		SuccessRate: 50
+		EjectOnGround: false
+		EjectInAir: true
+		AllowUnsuitableCell: true
+		ChuteSound: chute1.aud
+		RequiresCondition: owner.spain
 	GpsDot:
 		String: Plane
 	Tooltip:
@@ -693,7 +710,7 @@
 		Delay: 100
 		StartIfBelow: 100
 		DamageCooldown: 125
-		RequiresCondition: machineshop && !airborne
+		RequiresCondition: ( machineshop || airrepair ) && !airborne
 	ExternalCondition@MACHINESHOP:
 		Condition: machineshop
 	WithDecoration@MACHINESHOP:
@@ -701,9 +718,14 @@
 		Palette: chrome
 		Sequence: repair-small
 		Position: Center
-		RequiresCondition: machineshop && damaged
+		RequiresCondition: ( machineshop || airrepair ) && damaged && !airborne
 		BlinkInterval: 32
 		BlinkPattern: on, off
+	ExternalCondition@AIRREPAIR:
+		Condition: airrepair
+	GrantConditionOnPrerequisite@spain:
+		Condition: owner.spain
+		Prerequisites: player.spain
 
 ^Plane:
 	Inherits: ^NeutralPlane
@@ -740,6 +762,7 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableBuilding
 	Inherits@handicaps: ^PlayerHandicaps
+	Inherits@secondaryGAPeffect: ^AffectedbyGAP
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure
 	Building:
@@ -789,7 +812,7 @@
 		AreaTypes: building, fake
 	RepairableBuilding:
 		RepairStep: 700
-		PlayerExperience: 5
+		PlayerExperience: 0
 		RepairingNotification: Repairing
 	InstantlyRepairable:
 	WithMakeAnimation:
@@ -798,12 +821,17 @@
 		BeingCapturedCondition: being-captured
 	Capturable:
 		RequiresCondition: !build-incomplete
-		Types: building
+		Types: building, sabotage
 	CapturableProgressBar:
 	CapturableProgressBlink:
 	SpawnActorsOnSell:
 		ActorTypes: e1,e1,e1,tecn,tecn2
 		GuaranteedActorTypes: e1
+		RequiresCondition: !owner.spain
+	SpawnActorsOnSell@spain:
+		ActorTypes: e1.spain,e1.spain,e1.spain,tecn,tecn2
+		GuaranteedActorTypes: e1.spain
+		RequiresCondition: owner.spain
 	MustBeDestroyed:
 		RequiredForShortGame: true
 	GpsDot:
@@ -820,11 +848,16 @@
 		Position: Center
 		Palette: player
 		IsPlayerPalette: True
+	GrantConditionOnPrerequisite@spain:
+		Condition: owner.spain
+		Prerequisites: player.spain
 
 ^ScienceBuilding:
 	Inherits: ^Building
 	SpawnActorsOnSell:
 		ActorTypes: e1,e1,e1,e1,tecn,tecn2,tecn,tecn2,tecn,tecn2,tecn,tecn2,tecn,tecn2,e6,e6,e6,e6,e6,c10,c10,c10,c10
+	SpawnActorsOnSell@spain:
+		ActorTypes: e1.spain,e1.spain,e1.spain,e1.spain,tecn,tecn2,tecn,tecn2,tecn,tecn2,tecn,tecn2,tecn,tecn2,e6,e6,e6,e6,e6,c10,c10,c10,c10
 
 ^Defense:
 	Inherits: ^Building
@@ -921,7 +954,7 @@
 		HP: 10000
 	FireWarheadsOnDeath:
 		Weapon: Demolish
-		DamageThreshold: 70
+		DamageThreshold: 50
 	RevealsShroud:
 		Range: 1c0
 	WithDecoration@fake:
@@ -931,6 +964,8 @@
 		Image: pips
 		Sequence: tag-fake
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	-MustBeDestroyed:
 	MapEditorData:
 		Categories: Fake
@@ -945,6 +980,7 @@
 		RequiresSelection: true
 		Image: pips
 		Sequence: tag-fake
+		PlayerExperience: 0
 
 ^AmmoBox:
 	Inherits: ^TechBuilding
@@ -1591,3 +1627,48 @@
 		ValidTargets: TrackedVehicle
 		InvalidTargets: NoAutoTarget
 		Priority: 10
+
+^AffectedByGreece:
+	GainsExperienceMultiplier@Greece:
+		Modifier: 200
+		RequiresCondition: owner.greece
+	GrantConditionOnFaction@Greece:
+		Condition: owner.greece
+		Factions: greece
+		ResetOnOwnerChange: True
+
+^ProductionPlayerBoost:
+	ProductionCostMultiplier@IndustrialPlant:
+		Multiplier: 90
+		Prerequisites: indp, !indplowpower
+	ProductionTimeMultiplier@IndustrialPlant:
+		Multiplier: 95
+		Prerequisites: indp, !indplowpower
+
+^AffectedbyGAP:
+	RangeMultiplier@WEAPONVEILED:
+		Modifier: 50
+		RequiresCondition: gapdebuff
+	ExternalCondition@WEAPONVEILED:
+		Condition: gapdebuff
+
+^WeaponJammable:
+	RevealsShroudMultiplier@WEAPONJAMMED:
+		RequiresCondition: jamdebuff
+		Modifier: -100
+	ReloadDelayMultiplier@WEAPONJAMMED:
+		RequiresCondition: jamdebuff
+		Modifier: 300
+	ExternalCondition@WEAPONJAMMED:
+		Condition: jamdebuff
+	Targetable@WEAPONJAMMABLE:
+		TargetTypes: WeaponJammable
+		RequiresCondition: !jamdebuff && !invulnerability
+	WithDecoration@WEAPONJAMMED:
+		Position: Top
+		Margin: 0, -6
+		Image: pips
+		Sequence: tag-jammed
+		Palette: effect
+		RequiresCondition: jamdebuff
+		ValidRelationships: Ally, Neutral, Enemy

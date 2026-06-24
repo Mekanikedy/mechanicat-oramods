@@ -13,7 +13,7 @@ MTNK:
 	DisguiseTooltip@default:
 		Name: actor-mtnk.disguisetooltip-default-name
 		GenericName: actor-mtnk.disguisetooltip-default-generic-name
-		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig && !ttrk && !ahtk && !tnkd && !hapc && !tnk6 && !armc && !zsu && !batf
 	DisguiseTooltip@mcv:
 		Name: actor-mtnk.disguisetooltip-mcv-name
 		GenericName: actor-mtnk.disguisetooltip-mcv-generic-name
@@ -106,6 +106,42 @@ MTNK:
 		Name: actor-mtnk.disguisetooltip-rig-name
 		GenericName: actor-mtnk.disguisetooltip-rig-generic-name
 		RequiresCondition: rig
+	DisguiseTooltip@ttrk:
+		Name: actor-mtnk.disguisetooltip-ttrk-name
+		GenericName: actor-mtnk.disguisetooltip-ttrk-generic-name
+		RequiresCondition: ttrk
+	DisguiseTooltip@ahtk:
+		Name: actor-mtnk.disguisetooltip-ahtk-name
+		GenericName: actor-mtnk.disguisetooltip-ahtk-generic-name
+		RequiresCondition: ahtk
+	DisguiseTooltip@tnkd:
+		Name: actor-mtnk.disguisetooltip-tnkd-name
+		GenericName: actor-mtnk.disguisetooltip-tnkd-generic-name
+		RequiresCondition: tnkd
+	DisguiseTooltip@howi:
+		Name: actor-mtnk.disguisetooltip-howi-name
+		GenericName: actor-mtnk.disguisetooltip-howi-generic-name
+		RequiresCondition: howi
+	DisguiseTooltip@hapc:
+		Name: actor-mtnk.disguisetooltip-hapc-name
+		GenericName: actor-mtnk.disguisetooltip-hapc-generic-name
+		RequiresCondition: hapc
+	DisguiseTooltip@3t1b:
+		Name: actor-mtnk.disguisetooltip-3t1b-name
+		GenericName: actor-mtnk.disguisetooltip-3t1b-generic-name
+		RequiresCondition: tnk6
+	DisguiseTooltip@armc:
+		Name: actor-mtnk.disguisetooltip-armc-name
+		GenericName: actor-mtnk.disguisetooltip-armc-generic-name
+		RequiresCondition: armc
+	DisguiseTooltip@zsu:
+		Name: actor-mtnk.disguisetooltip-zsu-name
+		GenericName: actor-mtnk.disguisetooltip-zsu-generic-name
+		RequiresCondition: zsu
+	DisguiseTooltip@batf:
+		Name: actor-mtnk.disguisetooltip-batf-name
+		GenericName: actor-mtnk.disguisetooltip-batf-generic-name
+		RequiresCondition: batf
 	Disguise:
 		DisguisedCondition: disguise
 		ValidRelationships: Ally, Neutral, Enemy
@@ -134,11 +170,22 @@ MTNK:
 			mrj: mrj
 			mgg: mgg
 			rig: rig
+			ttrk: ttrk
+			ahtk: ahtk
+			tnkd: tnkd
+			howi: howi
+			hapc: hapc
+			3t1b: tnk6
+			armc: armc
+			zsu: zsu
+			batf: batf
 			3tnkr1: tnk3
-			1tnk.germany: tnk1
+			1tnk.italy: tnk1
 			2tnk.germany: tnk2
 			3tnk.russia: tnk3
 			arty.france: arty
+			jeep.spain: jeep
+			ftrk.china: ftrk
 	WithDecoration@disguise:
 		Image: pips
 		Sequence: pip-disguise
@@ -149,8 +196,8 @@ MTNK:
 	IgnoresDisguise:
 	WithFacingSpriteBody:
 		Name: body
-		PauseOnCondition: mcv && harv && truk && dtrk && jeep && ftrk && apc && mnly && tnk1 && tnk2 && tnk3 && tnk4 && tnk5 && qtnk && ttnk && ctnk && stnk && ftnk && arty && v2rl && mrj && mgg && rig
-		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+		PauseOnCondition: mcv && harv && truk && dtrk && jeep && ftrk && apc && mnly && tnk1 && tnk2 && tnk3 && tnk4 && tnk5 && qtnk && ttnk && ctnk && stnk && ftnk && arty && v2rl && mrj && mgg && rig && ttrk && ahtk && tnkd && howi && hapc && tnk6 && armc && zsu && batf
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig && ! ttrk && !ahtk && !tnkd && !howi && !hapc && !tnk6 && !armc && !zsu && !batf
 	WithFacingSpriteBody@mcv:
 		Name: body2
 		Sequence: idle-mcv
@@ -243,6 +290,42 @@ MTNK:
 		Name: body24
 		Sequence: idle-rig
 		RequiresCondition: rig
+	WithFacingSpriteBody@ttrk:
+		Name: body25
+		Sequence: idle-ttrk
+		RequiresCondition: ttrk
+	WithFacingSpriteBody@ahtk:
+		Name: body26
+		Sequence: idle-ahtk
+		RequiresCondition: ahtk
+	WithFacingSpriteBody@tnkd:
+		Name: body27
+		Sequence: idle-tnkd
+		RequiresCondition: tnkd
+	WithFacingSpriteBody@howi:
+		Name: body28
+		Sequence: idle-howi
+		RequiresCondition: howi
+	WithFacingSpriteBody@hapc:
+		Name: body29
+		Sequence: idle-hapc
+		RequiresCondition: hapc
+	WithFacingSpriteBody@3t1b:
+		Name: body30
+		Sequence: idle-3t1b
+		RequiresCondition: tnk6
+	WithFacingSpriteBody@armc:
+		Name: body31
+		Sequence: idle-armc
+		RequiresCondition: armc
+	WithFacingSpriteBody@zsu:
+		Name: body32
+		Sequence: idle-zsu
+		RequiresCondition: zsu
+	WithFacingSpriteBody@batf:
+		Name: body33
+		Sequence: idle-batf
+		RequiresCondition: batf
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
@@ -257,19 +340,19 @@ MTNK:
 		RequiresCondition: ctnk
 	SpeedMultiplier@speed72:
 		Modifier: 78
-		RequiresCondition: v2rl || tnk2 || arty || harv || mgg || ftnk
+		RequiresCondition: v2rl || tnk2 || arty || harv || mgg || ftnk || tnk6 || zsu
 	SpeedMultiplier@speed68:
 		Modifier: 73
-		RequiresCondition: mrj || rig 
+		RequiresCondition: mrj || rig || dtrk || howi
 	SpeedMultiplier@speed64:
 		Modifier: 69
-		RequiresCondition: tnk3 || mcv
+		RequiresCondition: tnk3 || mcv || ttrk || tnkd
 	SpeedMultiplier@speed54:
 		Modifier: 58
 		RequiresCondition: tnk4 || qtnk
 	SpeedMultiplier@speed46:
 		Modifier: 50
-		RequiresCondition: tnk5
+		RequiresCondition: tnk5 || batf
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -280,36 +363,68 @@ MTNK:
 		Turret: default-turret
 		TurnSpeed: 40
 		Offset: 0,0,128
+		RequiresCondition: !parachute
 	Turreted@disguise:
 		Turret: disguise-turret
 		TurnSpeed: 40
 		Offset: 0,0,128
+		RequiresCondition: !parachute
 	Turreted@jeep:
 		Turret: jeep-turret
 		TurnSpeed: 40
 		Offset: 0,0,128
+		RequiresCondition: !parachute
 	Turreted@ftrk:
 		Turret: ftrk-turret
 		TurnSpeed: 40
 		Offset: -298,0,298
+		RequiresCondition: !parachute
 	Turreted@tnk1:
 		Turret: 1tnk-turret
 		TurnSpeed: 28
+		RequiresCondition: !parachute
 	Turreted@tnk2:
 		Turret: 2tnk-turret
 		TurnSpeed: 20
+		RequiresCondition: !parachute
 	Turreted@tnk3:
 		Turret: 3tnk-turret
 		TurnSpeed: 20
+		RequiresCondition: !parachute
 	Turreted@tnk4:
 		Turret: 4tnk-turret
 		TurnSpeed: 12
+		RequiresCondition: !parachute
 	Turreted@tnk5:
 		Turret: 5tnk-turret
 		TurnSpeed: 8
+		RequiresCondition: !parachute
 	Turreted@stnk:
 		Turret: stnk-turret
 		TurnSpeed: 20
+		RequiresCondition: !parachute
+	Turreted@ahtk:
+		Turret: ahtk-turret
+		TurnSpeed: 28
+		Offset: -280,0,0
+		RequiresCondition: !parachute
+	Turreted@tnk6:
+		Turret: 3t1b-turret
+		TurnSpeed: 20
+		RequiresCondition: !parachute
+	Turreted@armc:
+		Turret: armc-turret
+		TurnSpeed: 40
+		Offset: -120,0,210
+		RequiresCondition: !parachute
+	Turreted@zsu:
+		Turret: zsu-turret
+		TurnSpeed: 28
+		RequiresCondition: !parachute
+	Turreted@batf:
+		Turret: batf-turret
+		TurnSpeed: 8
+		RequiresCondition: !parachute
 	Armament@PRIMARY:
 		Name: primary
 		Weapon: HEAT
@@ -334,12 +449,13 @@ MTNK:
 		PauseOnCondition: reload-pri
 	AttackTurreted:
 		Armaments: primary, secondary
-		Turrets: default-turret, disguise-turret, jeep-turret, ftrk-turret, 1tnk-turret, 2tnk-turret, 3tnk-turret, 4tnk-turret, 5tnk-turret
+		Turrets: default-turret, disguise-turret, jeep-turret, ftrk-turret, 1tnk-turret, 2tnk-turret, 3tnk-turret, 4tnk-turret, 5tnk-turret, ahtk-turret, 3t1b-turret, armc-turret, zsu-turret, batf-turret
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 		Sequence: turret
 		Turret: default-turret
-		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig
+		RequiresCondition: !mcv && !harv && !truk && !dtrk && !jeep && !ftrk && !apc && !mnly && !tnk1 && !tnk2 && !tnk3 && !tnk4 && !tnk5 && !qtnk && !ttnk && !ctnk && !stnk && !ftnk && !arty && !v2rl && !mrj && !mgg && !rig && !ttrk && !ahtk && !tnkd && !howi && !hapc && !tnk6 && !armc && !zsu && !batf
 	WithSpriteTurret@jeep:
 		Sequence: turret-jeep
 		Turret: jeep-turret
@@ -372,6 +488,26 @@ MTNK:
 		Sequence: turret-stnk
 		Turret: stnk-turret
 		RequiresCondition: stnk
+	WithSpriteTurret@ahtk:
+		Sequence: turret-ahtk
+		Turret: ahtk-turret
+		RequiresCondition: ahtk
+	WithSpriteTurret@3t1b:
+		Sequence: turret-3t1b
+		Turret: 3t1b-turret
+		RequiresCondition: tnk6
+	WithSpriteTurret@armc:
+		Sequence: turret-armc
+		Turret: armc-turret
+		RequiresCondition: armc
+	WithSpriteTurret@zsu:
+		Sequence: turret-zsu
+		Turret: zsu-turret
+		RequiresCondition: zsu
+	WithSpriteTurret@batf:
+		Sequence: turret-batf
+		Turret: batf-turret
+		RequiresCondition: batf
 	WithIdleOverlay@TTNKSPINNER:
 		Sequence: spinner-ttnk
 		RequiresCondition: ttnk

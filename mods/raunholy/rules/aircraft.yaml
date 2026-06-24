@@ -43,6 +43,8 @@ BADR:
 		Type: CenterPosition
 		RequiresCondition: enable-smoke
 	-EjectOnDeath:
+	-EjectOnDeath@spain:
+	-GrantConditionOnPrerequisite@spain:
 	RejectsOrders:
 	GivesExperience:
 		Experience: 1000
@@ -73,13 +75,13 @@ MIG:
 		Prerequisites: ~afld, stek, ~techlevel.high
 		Description: actor-mig.description
 	Valued:
-		Cost: 1800
+		Cost: 1600
 	Tooltip:
 		Name: actor-mig.name
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 9000
+		HP: 12000
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 13c0
@@ -103,6 +105,7 @@ MIG:
 		Speed: 223
 		RepulsionSpeed: 40
 		MaximumPitch: 56
+		TakeoffSounds: migtoff1.aud, cjetbanb.aud, cjetbanc.aud
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
@@ -132,7 +135,7 @@ MIG:
 	ProducibleWithLevel:
 		Prerequisites: aircraft.upgraded
 	Rearmable:
-		RearmActors: afld, afld.russia, afld.ukraine, afld.belarus
+		RearmActors: afld, afld.russia, afld.ukraine, afld.belarus, afld.kazakh, afld.china
 	WithAmmoPipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3
@@ -142,6 +145,15 @@ MIG:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: aircraft.upgraded
+	ProductionCostMultiplier@kazakh:
+		Multiplier: 75
+		Prerequisites: player.kazakh
+	GivesExperienceMultiplier@kazakh:
+		Modifier: 125
+		RequiresCondition: owner.kazakh
+	GrantConditionOnPrerequisite@kazakh:
+		Condition: owner.kazakh
+		Prerequisites: player.kazakh
 
 YAK:
 	Inherits: ^Plane
@@ -216,7 +228,7 @@ YAK:
 	Selectable:
 		DecorationBounds: 1280, 1194, 0, 85
 	Rearmable:
-		RearmActors: afld, afld.russia, afld.ukraine, afld.belarus
+		RearmActors: afld, afld.russia, afld.ukraine, afld.belarus, afld.kazakh, afld.china
 	WithAmmoPipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3
@@ -238,7 +250,7 @@ TRAN:
 		Prerequisites: ~hpad, ~techlevel.medium
 		Description: actor-tran.description
 	Valued:
-		Cost: 900
+		Cost: 800
 	Tooltip:
 		Name: actor-tran.name
 	UpdatesPlayerStatistics:
@@ -257,6 +269,8 @@ TRAN:
 		TurnSpeed: 20
 		Speed: 128
 		AltitudeVelocity: 0c58
+		TakeoffSounds: vospstaa.aud
+		LandingSounds: vosplana.aud
 	WithIdleOverlay@ROTOR1AIR:
 		Offset: 597,0,85
 		Sequence: rotor
@@ -319,7 +333,7 @@ HELI:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 20
-		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
+		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high, ~!aircraft.turkey
 		Description: actor-heli.description
 	Valued:
 		Cost: 1500
@@ -355,6 +369,8 @@ HELI:
 	Aircraft:
 		TurnSpeed: 16
 		Speed: 149
+		TakeoffSounds: vhelistaa.aud
+		LandingSounds: vhelilana.aud
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
@@ -367,7 +383,7 @@ HELI:
 		Sequence: slow-rotor
 		RequiresCondition: !airborne
 	AmmoPool:
-		Ammo: 8
+		Ammo: 10
 		AmmoCondition: ammo
 	SpawnActorOnDeath:
 		Actor: HELI.Husk
@@ -464,6 +480,8 @@ HIND:
 	Aircraft:
 		TurnSpeed: 16
 		Speed: 112
+		TakeoffSounds: vhelistaa.aud
+		LandingSounds: vhelilana.aud
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
@@ -570,11 +588,10 @@ MH60:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 20
-		# Prerequisites: ~hpad, ~techlevel.medium
-		Prerequisites: ~disabled
+		Prerequisites: ~hpad, ~aircraft.greece, ~techlevel.medium
 		Description: actor-mh60.description
 	Valued:
-		Cost: 1500
+		Cost: 1200
 	Tooltip:
 		Name: actor-mh60.name
 	UpdatesPlayerStatistics:
@@ -601,6 +618,8 @@ MH60:
 	Aircraft:
 		TurnSpeed: 16
 		Speed: 112
+		TakeoffSounds: vhelistaa.aud
+		LandingSounds: vhelilana.aud
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
@@ -642,6 +661,9 @@ MH60:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: aircraft.upgraded
+	AppearsOnRadar:
+		ValidRelationships: Ally
+	-GpsDot:
 
 SPIT:
 	Inherits: ^NeutralPlane
@@ -672,6 +694,7 @@ SPIT:
 		Type: CenterPosition
 		RequiresCondition: enable-smoke
 	-EjectOnDeath:
+	-EjectOnDeath@spain:
 	RejectsOrders:
 	GivesExperience:
 		Experience: 1000
@@ -692,4 +715,227 @@ SPIT:
 	AmmoPool:
 		Armaments: secondary
 		Ammo: 6
+	-GrantConditionOnPrerequisite@spain:
 	-MapEditorData:
+
+ANTO:
+	Inherits: ^Plane
+	Inherits@CARGOPIPS: ^CargoPips
+	Selectable:
+		Bounds: 1024, 1024
+		DecorationBounds: 2133, 1706, 0, 85
+	SelectionDecorations:
+	WithSpriteControlGroupDecoration:
+		Margin: -2, 0
+	Health:
+		HP: 40000
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-anto.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 60
+		Prerequisites: ~afld, stek, ~aircraft.kazakh, ~techlevel.high
+		Description: actor-anto.description
+		BuildLimit: 1
+	AmmoPool:
+		Ammo: 1
+	ReloadAmmoPool:
+		Delay: 60
+		Count: 1
+	AttackAircraft:
+		FacingTolerance: 20
+		PersistentTargeting: false
+		OpportunityFire: False
+		TargetTerrainWithoutForceFire: true
+	Aircraft:
+		IdleBehavior: ReturnToBase
+		CruiseAltitude: 2560
+		InitialFacing: 768
+		TurnSpeed: 20
+		Speed: 180
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		AirborneCondition: airborne
+		WaitDistanceFromResupplyBase: 4c0
+		Crushes: crate, mine, infantry
+		TakeOffOnCreation: false
+		TakeOffOnResupply: false
+	Armament:
+		Weapon: DropDummy
+		Cursor: ability
+		OutsideRangeCursor: ability
+	ParaDrop:
+		DropRange: 4c0
+		ChuteSound: chute1.aud
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 12
+	Contrail@1:
+		Offset: -261,-650,0
+		TrailLength: 15
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	Contrail@2:
+		Offset: -85,-384,0
+		TrailLength: 16
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	Contrail@3:
+		Offset: -85,384,0
+		TrailLength: 16
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	Contrail@4:
+		Offset: -261,650,0
+		TrailLength: 15
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	Contrail@5:
+		Offset: -400,-925,0
+		TrailLength: 16
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	Contrail@6:
+		Offset: -400,925,0
+		TrailLength: 15
+		StartColorUsePlayerColor: false
+		StartColor: FFFFFF80
+		StartColorAlpha: 96
+	LeavesTrails@0:
+		Offsets: -432,560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	LeavesTrails@1:
+		Offsets: -432,-560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+	RenderSprites:
+		Image: anto
+	Rearmable:
+		RearmActors: afld, afld.russia, afld.ukraine, afld.belarus, afld.kazakh, afld.china
+	CommandBarBlacklist:
+		DisableStop: false
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	SpawnActorOnDeath:
+		Actor: ANTO.Husk
+	-EjectOnDeath:
+	GivesExperience:
+		Experience: 1000
+
+NEBR:
+	Inherits: MIG
+	Buildable:
+		Prerequisites: ~afld, stek, ~aircraft.kazakh, ~techlevel.high
+		Description: actor-nebr.description
+		BuildLimit: 1
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-nebr.name
+	Health:
+		HP: 9000
+	Armament:
+		Weapon: ParaNuke
+		LocalOffset: 0,0,0
+		LocalYaw: 0
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		AttackType: Strafe
+		StrafeRunLength: 6c0
+		FacingTolerance: 20
+		ForceFireIgnoresActors: True
+	AmmoPool:
+		Ammo: 1
+		ReloadDelay: 515
+	WithAmmoPipsDecoration:
+		FullSequence: pip-yellow
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@DEFAULTVEH:
+	-AutoTargetPriority@DEFAULTTANK:
+	-AutoTargetPriority@ATTACKANYTHING:
+	-AttackMove:
+	CommandBarBlacklist:
+		DisableStop: false
+	SpawnActorOnDeath:
+		Actor: NEBR.Husk
+	-ProductionCostMultiplier@kazakh:
+	-GivesExperienceMultiplier@kazakh:
+	-GrantConditionOnPrerequisite@kazakh:
+	RenderSprites:
+		Image: nebr
+
+CBRA:
+	Inherits: HELI
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 20
+		Prerequisites: ~hpad, atek, ~aircraft.turkey, ~techlevel.high
+		Description: actor-cbra.description
+	Tooltip:
+		Name: actor-cbra.name
+	Valued:
+		Cost: 1200
+	Health:
+		HP: 10000
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	AttackAircraft:
+		Armaments: secondary, tertiary
+	-Armament@PRIMARY:
+	Armament@SECONDARY:
+		Name: secondary
+		PauseOnCondition: !ammo
+		-ReloadingCondition:
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: ChainGun.Cobra
+		LocalOffset: 624,0,-150
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Armaments: secondary
+		Ammo: 8
+	WithMuzzleOverlay:
+	WithIdleOverlay@ROTORAIR:
+		Offset: 26,0,85
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 26,0,85
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	SpawnActorOnDeath:
+		Actor: CBRA.Husk
+	-ProductionCostMultiplier@england:
+	-GivesExperienceMultiplier@england:
+	-GrantConditionOnPrerequisite@england:

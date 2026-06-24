@@ -1,8 +1,7 @@
 The Unholy mod is an alternate balance-gameplay
 type of modification based on the OpenRA - Red Alert
+the mod's sole developer is Mechanicat.
 
-
-The Unholy mod is developed by Mechanicat.
 Below is a list of all people's works have been used
 it may be incomplete and i apologize in advance for that.
 Contributors:
@@ -11,6 +10,16 @@ Inq
 body sprite used for Super Tank unit
 pip sprites for commando units
 red recolor projectile used for HEAT gun
+sprite, icon and sound used for Chitzkoi
+new muzzle sprite for Artillery, Cruiser
+icon of Howitzer unit
+sprite and icon of:
+Antonov Cargo Plane
+Heavy Turret defense
+Battle Fortress body sprite and icon
+
+NoozeArts
+sprite and icon of Tank Destroyer unit
 
 MustaphaTR
 icon of Air Drop ability
@@ -19,7 +28,10 @@ Widow & FRenzy
 sprite for the ERCC Refinery
 
 Harisson
-fix for Destroyer cameo
+fixed cameos for:
+Sandbags
+Concrete Wall
+Destroyer ship
 
 Pinkthoth
 sprite and icon of:
@@ -27,18 +39,34 @@ Unholy faction Barracks structure
 Flame Tank unit
 Mobile Rig unit
 Sea Scorpion unit
-Spitfire Attack Bomber
+Spitfire Attack Bomber aircraft
+Flak Half-track unit
+Tank Hunter unit
+Industry Plant structure
+Dreadnought ship
 icon of Supercharge ability, and sound used for it
 robotic voice used for Super Tank unit
+vehicle sprite used for Mobile Barracks
+sprite of Howitzer unit
 
 [THF]
 sprites used for faction specific Construction Yards
 
 Allen508
-sprite and icon of AA Submarine unit
+sprite and icon of Nuke Submarine unit
 
 MlemandPurrs
 sprites of floating Minelayer and Sea Mine
+
+SirCake
+original of the .lua script used for Antonov
+
+MissKylie
+turret sprite of Battle Fortress
+sprite of Cobra helicopter
+
+sgtmyers88
+cameo icon of Cobra helicopter
 
 
 In the making of Unholy mod was very inspired 

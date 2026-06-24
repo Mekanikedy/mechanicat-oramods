@@ -139,6 +139,26 @@
 		InternalName: germany
 		Side: Allies
 		Description: faction-germany.description
+	Faction@spain:
+		Name: faction-spain.name
+		InternalName: spain
+		Side: Allies
+		Description: faction-spain.description
+	Faction@italy:
+		Name: faction-italy.name
+		InternalName: italy
+		Side: Allies
+		Description: faction-italy.description
+	Faction@greece:
+		Name: faction-greece.name
+		InternalName: greece
+		Side: Allies
+		Description: faction-greece.description
+	Faction@turkey:
+		Name: faction-turkey.name
+		InternalName: turkey
+		Side: Allies
+		Description: faction-turkey.description
 	Faction@soviet:
 		Name: faction-soviet.name
 		InternalName: soviet
@@ -159,6 +179,16 @@
 		InternalName: belarus
 		Side: Soviet
 		Description: faction-belarus.description
+	Faction@kazakhstan:
+		Name: faction-kazakh.name
+		InternalName: kazakh
+		Side: Soviet
+		Description: faction-kazakh.description
+	Faction@china:
+		Name: faction-china.name
+		InternalName: china
+		Side: Soviet
+		Description: faction-china.description
 	Faction@unholy:
 		Name: faction-unholy.name
 		InternalName: unholy
@@ -173,20 +203,20 @@
 	Faction@randomallies:
 		Name: faction-randomallies.name
 		InternalName: RandomAllies
-		RandomFactionMembers: england, france, germany
+		RandomFactionMembers: england, france, germany, spain, italy, greece, turkey
 		Side: Allies
 		Description: faction-randomallies.description
 	Faction@randomsoviet:
 		Name: faction-randomsoviet.name
 		InternalName: RandomSoviet
-		RandomFactionMembers: russia, ukraine, belarus
+		RandomFactionMembers: russia, ukraine, belarus, kazakh, china
 		Side: Soviet
 		Description: faction-randomsoviet.description
 	Faction@random:
 		Name: faction-random.name
 		InternalName: Random
 		RandomFactionMembers: RandomAllies, RandomSoviet
-		Side: Random
+		Side: Red Alert
 		Description: faction-random.description
 	ResourceRenderer:
 		ResourceTypes:
@@ -270,22 +300,54 @@ World:
 	StartingUnits@mcvonly:
 		Class: none
 		ClassName: options-starting-units.mcv-only
-		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, soviet, russia, ukraine, belarus, kazakh, china, unholy
 		BaseActor: mcv
 	StartingUnits@lightallies:
 		Class: light
 		ClassName: options-starting-units.light-support
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, germany, greece, turkey
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightspain:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: spain
+		BaseActor: mcv
+		SupportActors: e1.spain,e1.spain,e1.spain,e3,e3,jeep.spain,1tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightitaly:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: italy
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk.italy
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@lightsoviet:
 		Class: light
 		ClassName: options-starting-units.light-support
-		Factions: soviet, russia, ukraine, belarus
+		Factions: soviet, russia, ukraine, kazakh
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightbelarus:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: belarus
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,hapc,ftrk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightchina:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: china
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,apc,ftrk.china
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@lightunholy:
@@ -299,17 +361,65 @@ World:
 	StartingUnits@heavyallies:
 		Class: heavy
 		ClassName: options-starting-units.heavy-support
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, greece, turkey
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,2tnk,2tnk,2tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavygermany:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: germany
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,2tnk.germany,2tnk.germany,2tnk.germany
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyspain:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: spain
+		BaseActor: mcv
+		SupportActors: e1.spain,e1.spain,e1.spain,e3,e3,jeep.spain,1tnk,2tnk,2tnk,2tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyitaly:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: italy
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk.italy,2tnk,2tnk,2tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@heavysoviet:
 		Class: heavy
 		ClassName: options-starting-units.heavy-support
-		Factions: soviet, russia, ukraine, belarus
+		Factions: soviet, ukraine, belarus, kazakh
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk,3tnk,3tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyrussia:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: russia
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,apc,ftrk,3tnk.russia,3tnk.russia
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavybelarus:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: belarus
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,hapc,ftrk,3tnk,3tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavychina:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: china
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,apc,ftrk.china,3t1b,3t1b
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@heavyunholy:
@@ -352,6 +462,8 @@ World:
 		TerrainFlashImage: moveflsh
 		TerrainFlashSequence: idle
 		TerrainFlashPalette: moveflash
+	LuaScript:
+		Scripts: antonov_script.lua
 
 EditorWorld:
 	Inherits: ^BaseWorld

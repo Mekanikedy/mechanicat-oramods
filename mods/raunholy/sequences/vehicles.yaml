@@ -202,8 +202,9 @@ arty:
 		Facings: 32
 		UseClassicFacings: True
 	muzzle:
-		Filename: gunfire2.shp
-		Length: 5
+		Filename: smokeygun.shp
+		Length: 12
+		Tick: 30
 	icon:
 		Filename: artyicon.shp
 
@@ -430,3 +431,189 @@ ftnk:
 		UseClassicFacings: True
 	icon:
 		Filename: ftnkicon.shp
+
+ttrk:
+	idle:
+		Filename: ttrk.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: tenticon.shp
+
+ahtk:
+	Defaults:
+		Filename: ahtk.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret-ground:
+		Filename: ahtk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: ahtk.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	muzzle-air:
+		Filename: apcmuz.shp
+		Length: 3
+		Stride: 6
+		Facings: 8
+	icon:
+		Filename: ahtkicon.shp
+
+tnkd:
+	idle:
+		Filename: tnkd.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: tnkdicon.shp
+
+tnkd.destroyed:
+	idle:
+		Filename: tnkd.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+howi:
+	idle:
+		Filename: howi.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon:
+		Filename: howiicon.shp
+
+hapc:
+	Defaults:
+		Filename: hapc.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	open:
+		Start: 32
+		Length: 3
+	unload:
+		Start: 32
+		Length: 3
+	icon:
+		Filename: hapcicon.shp
+
+3t1b:
+	Defaults:
+		Filename: 3t1b.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: 3t1bicon.shp
+
+3t1b.destroyed:
+	idle:
+		Filename: 3t1b.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: 3t1b.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+armc:
+	Defaults:
+		Filename: armc.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: armcicon.shp
+
+zsu:
+	Defaults:
+		Filename: zsu.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret-ground:
+		Filename: zsu.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: zsu.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	muzzle-air:
+		Filename: apcmuz.shp
+		Length: 3
+		Stride: 6
+		Facings: 8
+	icon:
+		Filename: zsuicon.shp
+
+zsu.destroyed:
+	idle:
+		Filename: zsu.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: zsu.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+batf:
+	Defaults:
+		Filename: batf.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	turret:
+		Filename: batf.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: batficon.shp

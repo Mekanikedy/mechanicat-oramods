@@ -162,3 +162,39 @@ spit:
 		Facings: 8
 	icon:
 		Filename: spiticon.shp
+
+anto:
+	idle:
+		Filename: anto.shp
+		Facings: 32
+		InterpolatedFacings: 64
+	icon:
+		Filename: antoicon.shp
+
+nebr:
+	idle:
+		Filename: nebr.shp
+		Facings: 16
+		InterpolatedFacings: 64
+	icon:
+		Filename: nebricon.shp
+
+cbra:
+	idle:
+		Filename: cbra.shp
+		Facings: 32
+		UseClassicFacings: True
+	rotor:
+		Filename: lrotor2.shp
+		Length: 8
+	slow-rotor:
+		Filename: lrotor2.shp
+		Start: 8
+		Length: 8
+	muzzle:
+		Filename: minigun.shp
+		Length: 3
+		Stride: 6
+		Facings: 8
+	icon:
+		Filename: cbraicon.shp

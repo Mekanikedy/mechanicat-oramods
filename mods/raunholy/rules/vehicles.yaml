@@ -34,6 +34,7 @@ V2RL:
 		TargetFrozenActors: True
 		ForceFireIgnoresActors: True
 		FacingTolerance: 0
+		PauseOnCondition: parachute
 	WithFacingSpriteBody:
 		RequiresCondition: !reloading
 		Name: loaded
@@ -67,7 +68,7 @@ V2RL:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 130
-		Prerequisites: fix, ~vehicles.allies, ~techlevel.low, ~!player.germany
+		Prerequisites: fix, ~vehicles.allies, ~techlevel.medium, ~!player.italy
 		Description: actor-1tnk.description
 	Valued:
 		Cost: 700
@@ -90,6 +91,7 @@ V2RL:
 		Range: 4c0
 	Turreted:
 		TurnSpeed: 28
+		RequiresCondition: !parachute
 	Armament:
 		Weapon: 25mm
 		Recoil: 85
@@ -102,6 +104,7 @@ V2RL:
 		LocalOffset: -85,192,120
 		LocalYaw: -64
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	SpawnActorOnDeath:
@@ -112,10 +115,10 @@ V2RL:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
-1TNK.Germany:
+1TNK.Italy:
 	Inherits: 1TNK
 	Buildable:
-		Prerequisites: fix, ~vehicles.allies, ~player.germany, ~techlevel.low
+		Prerequisites: fix, ~vehicles.allies, ~player.italy, ~techlevel.medium
 	ProducibleWithLevel:
 		Prerequisites: techlevel.infonly
 		InitialLevels: 1
@@ -158,6 +161,7 @@ V2RL:
 		Range: 4c0
 	Turreted:
 		TurnSpeed: 20
+		RequiresCondition: !parachute
 	Armament:
 		Weapon: 90mm
 		Recoil: 128
@@ -165,6 +169,7 @@ V2RL:
 		LocalOffset: 720,0,80
 		MuzzleSequence: muzzle
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	SpawnActorOnDeath:
@@ -200,7 +205,7 @@ V2RL:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 220
-		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium, ~!player.russia
+		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium, ~!vehicles.china, ~!player.russia
 		Description: actor-3tnk.description
 	Valued:
 		Cost: 1150
@@ -223,6 +228,7 @@ V2RL:
 		Range: 4c0
 	Turreted:
 		TurnSpeed: 20
+		RequiresCondition: !parachute
 	Armament:
 		Weapon: 105mm
 		Recoil: 128
@@ -230,6 +236,7 @@ V2RL:
 		LocalOffset: 768,85,90, 768,-85,90
 		MuzzleSequence: muzzle
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	SpawnActorOnDeath:
@@ -268,25 +275,10 @@ V2RL:
 	ReloadAmmoPool:
 		Delay: 3
 		Count: 1
-	Parachutable:
-		FallRate: 26
-		KilledOnImpassableTerrain: true
-		ParachutingCondition: parachute
-	WithParachute:
-		ShadowImage: parachl-shadow
-		ShadowSequence: idle
-		Image: parachl
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,200
-		RequiresCondition: parachute
 	Turreted:
 		RequiresCondition: !parachute
 	AttackTurreted:
 		PauseOnCondition: parachute
-	SpeedMultiplier@CRUSH:
-		RequiresCondition: slowdown && !parachute
-		Modifier: 80
 	-MapEditorData:
 
 3TNK.Russia:
@@ -304,6 +296,28 @@ V2RL:
 	RenderSprites:
 		Image: 3tnk
 	-MapEditorData:
+
+3T1B:
+	Inherits: 3TNK
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 220
+		Prerequisites: fix, ~vehicles.china, ~techlevel.medium
+		Description: actor-3t1b.description
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: actor-3t1b.name
+		GenericName: actor-3t1b.generic-name
+	Mobile:
+		Speed: 72
+	Armament:
+		Weapon: 105mm1
+		LocalOffset: 768,0,90
+	SpawnActorOnDeath:
+		Actor: 3T1B.Husk
+	RenderSprites:
+		Image: 3t1b
 
 4TNK:
 	Inherits: ^TrackedVehicle
@@ -337,6 +351,7 @@ V2RL:
 		Range: 4c0
 	Turreted:
 		TurnSpeed: 12
+		RequiresCondition: !parachute
 	Armament@PRIMARY:
 		Weapon: 120mm
 		LocalOffset: 900,180,340, 900,-180,340
@@ -351,6 +366,7 @@ V2RL:
 		Recoil: 43
 		MuzzleSequence: muzzle
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	SpawnActorOnDeath:
@@ -369,6 +385,7 @@ V2RL:
 		Prerequisites: vehicles.upgraded
 	Passenger:
 		Weight: 5
+		CargoType: LargeVehicle
 	-Crushable:
 	ProductionCostMultiplier@belarus:
 		Multiplier: 85
@@ -415,6 +432,7 @@ V2RL:
 	Turreted:
 		TurnSpeed: 8
 		Offset: 26,0,0
+		RequiresCondition: !parachute
 	GrantConditionOnPrerequisite@WIRELESS:
 		Condition: wireless
 		Prerequisites: dome-uplink
@@ -427,7 +445,7 @@ V2RL:
 	RejectsOrders:
 		RequiresCondition: disabled && overload
 	AttackTurreted:
-		PauseOnCondition: disabled || overload
+		PauseOnCondition: disabled || overload || parachute
 	ChangesHealth:
 		RequiresCondition: !disabled && !overload
 	DamageMultiplier@DISABLED:
@@ -533,6 +551,7 @@ ARTY:
 		TargetFrozenActors: True
 		ForceFireIgnoresActors: True
 		FacingTolerance: 0
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	FireWarheadsOnDeath:
 		Weapon: ArtilleryExplode
@@ -545,6 +564,15 @@ ARTY:
 		Prerequisites: vehicles.upgraded
 	Targetable:
 		TargetTypes: GroundActor, Vehicle, VehicleDisguise
+	ProductionCostMultiplier@italy:
+		Multiplier: 75
+		Prerequisites: player.italy
+	GivesExperienceMultiplier@italy:
+		Modifier: 125
+		RequiresCondition: owner.italy
+	GrantConditionOnPrerequisite@italy:
+		Condition: owner.italy
+		Prerequisites: player.italy
 
 ARTY.France:
 	Inherits: ARTY
@@ -579,6 +607,7 @@ HARV:
 		DecorationBounds: 1792, 1792
 	Harvester:
 		Resources: Ore,Gems
+		BaleLoadDelay: 6
 		BaleUnloadDelay: 1
 		SearchFromProcRadius: 10
 		SearchFromHarvesterRadius: 8
@@ -627,6 +656,7 @@ HARV:
 			Gems: pip-red
 	Passenger:
 		Weight: 4
+		CargoType: LargeVehicle
 	-Crushable:
 
 MCV:
@@ -669,6 +699,7 @@ MCV:
 		Condition: invulnerability
 	Passenger:
 		Weight: 5
+		CargoType: LargeVehicle
 	-Crushable:
 	ProductionCostMultiplier@france:
 		Multiplier: 80
@@ -688,7 +719,7 @@ JEEP:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 110
-		Prerequisites: ~vehicles.allies, ~techlevel.low
+		Prerequisites: ~vehicles.allies, ~techlevel.low, ~!player.spain
 		Description: actor-jeep.description
 	Valued:
 		Cost: 500
@@ -713,11 +744,13 @@ JEEP:
 	Turreted:
 		TurnSpeed: 40
 		Offset: 0,0,128
+		RequiresCondition: !parachute
 	Armament:
 		Weapon: M60mg
 		MuzzleSequence: muzzle
 		LocalOffset: 128,0,43
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	Cargo:
@@ -765,6 +798,24 @@ JEEP:
 	Targetable:
 		TargetTypes: GroundActor, Vehicle, WheeledVehicle, VehicleDisguise
 
+JEEP.Spain:
+	Inherits: JEEP
+	Buildable:
+		Prerequisites: ~vehicles.allies, ~techlevel.low, ~player.spain
+	Cargo:
+		InitialUnits: e1.spain
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: jeep
+	RenderSprites:
+		Image: jeep
+	-MapEditorData:
+
 APC:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
@@ -773,7 +824,7 @@ APC:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 120
-		Prerequisites: barracks, ~techlevel.low
+		Prerequisites: barracks, ~techlevel.low, ~!vehicles.belarus
 		Description: actor-apc.description
 	Valued:
 		Cost: 800
@@ -800,10 +851,11 @@ APC:
 		MuzzleSequence: muzzle
 	AttackFrontal:
 		FacingTolerance: 0
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	Cargo:
 		Types: Infantry
-		MaxWeight: 6
+		MaxWeight: 5
 		LoadingCondition: notmobile
 		PassengerConditions:
 			mech: selfrepair
@@ -840,6 +892,26 @@ APC:
 		BlinkInterval: 32
 		BlinkPatterns:
 			tanyainside: On, Off
+	Passenger:
+		Weight: 4
+
+HAPC:
+	Inherits: APC
+	Buildable:
+		Prerequisites: barracks, ~vehicles.belarus, ~techlevel.low
+		Description: actor-hapc.description
+	Tooltip:
+		Name: actor-hapc.name
+	Health:
+		HP: 40000
+	Valued:
+		Cost: 950
+	Mobile:
+		Speed: 96
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, VehicleDisguise, Mine
+	RenderSprites:
+		Image: hapc
 
 MNLY:
 	Inherits: ^TrackedVehicle
@@ -874,7 +946,7 @@ MNLY:
 		TerrainTypes: Clear, Road, Beach, Ore, Gems, Rough, Bridge, Water, WaterFord
 	MineImmune:
 	AmmoPool:
-		Ammo: 6
+		Ammo: 5
 		RearmSound: minelay1.aud
 	DetectCloaked:
 		Range: 5c0
@@ -905,6 +977,8 @@ MNLY:
 		Position: BottomLeft
 		Margin: 4, 3
 		RequiresSelection: true
+	Passenger:
+		Weight: 4
 
 TRUK:
 	Inherits: ^Vehicle
@@ -930,16 +1004,21 @@ TRUK:
 		Range: 4c0
 	DeliversCash:
 		Payload: 500
-		PlayerExperience: 5
+		PlayerExperience: 0
 	SpawnActorOnDeath:
 		Actor: moneycrate
+	-ProductionCostMultiplier@IndustrialPlant:
+	ProductionTimeMultiplier@IndustrialPlant:
+		Multiplier: 85
+	Chronoshiftable:
+		ExplodeInstead: true
 
 MGG:
 	Inherits: ^Vehicle
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 360
-		Prerequisites: atek, ~vehicles.allies, ~techlevel.high
+		Prerequisites: atek, ~vehicles.spain, ~techlevel.high
 		Description: actor-mgg.description
 	Valued:
 		Cost: 800
@@ -968,13 +1047,18 @@ MGG:
 		RequiresCondition: !disabled
 	RenderShroudCircle:
 		RequiresCondition: !disabled
+	ProximityExternalCondition@normal:
+		Condition: gapdebuff
+		Range: 7c0
+		ValidRelationships: Neutral, Enemy
+		RequiresCondition: !disabled
 	SpawnActorOnDeath:
 		Actor: MGG.Husk
 	GrantConditionOnDeploy:
 		DeployedCondition: disabled
 		SkipMakeAnimation: true
 	SpeedMultiplier:
-		Modifier: 110
+		Modifier: 120
 		RequiresCondition: disabled
 
 MRJ:
@@ -1012,15 +1096,29 @@ MRJ:
 	JamsMissiles:
 		Range: 5c0
 		DeflectionRelationships: Neutral, Enemy
-		RequiresCondition: !mrj-jammed
+		RequiresCondition: !mrj-jammed && !is-jamming
 	RenderJammerCircle:
-		RequiresCondition: !mrj-jammed
+		RequiresCondition: !mrj-jammed && !is-jamming
 	ProximityExternalCondition@NOMISSILEJAM:
 		Range: 5c0
 		ValidRelationships: Enemy, Neutral
 		Condition: mrj-jammed
 	ExternalCondition@NOMISSILEJAM:
 		Condition: mrj-jammed
+	Armament:
+		Weapon: JammerBeam
+		LocalOffset: -256,0,213
+		TargetRelationships: Enemy, Neutral
+	AttackFrontal:
+		FacingTolerance: 512
+		TargetFrozenActors: true
+		PauseOnCondition: parachute
+	GrantConditionOnAttack@WeaponJamming:
+		Condition: is-jamming
+		RevokeDelay: 9
+	AppearsOnRadar:
+		ValidRelationships: Ally
+	-GpsDot:
 
 TTNK:
 	Inherits: ^TrackedVehicle
@@ -1054,7 +1152,9 @@ TTNK:
 		Weapon: TTankZap
 		LocalOffset: 0,0,213
 	AttackTurreted:
+		PauseOnCondition: parachute
 	Turreted:
+		RequiresCondition: !parachute
 	WithIdleOverlay@SPINNER:
 		Sequence: spinner
 	ProducibleWithLevel:
@@ -1073,7 +1173,7 @@ FTRK:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 120
-		Prerequisites: ~vehicles.soviet, ~techlevel.low
+		Prerequisites: ~vehicles.soviet, ~techlevel.low, ~!player.china
 		Description: actor-ftrk.description
 	Valued:
 		Cost: 600
@@ -1098,6 +1198,7 @@ FTRK:
 	Turreted:
 		TurnSpeed: 40
 		Offset: -298,0,298
+		RequiresCondition: !parachute
 	Armament@AA:
 		Weapon: FLAK-23-AA
 		Recoil: 85
@@ -1113,6 +1214,7 @@ FTRK:
 		PauseOnCondition: reload-air
 		ReloadingCondition: reload-ground
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	ProducibleWithLevel:
@@ -1153,6 +1255,22 @@ FTRK:
 	Targetable:
 		TargetTypes: GroundActor, Vehicle, WheeledVehicle, VehicleDisguise
 
+FTRK.china:
+	Inherits: FTRK
+	Buildable:
+		Prerequisites: ~vehicles.soviet, ~techlevel.low, ~player.china
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: ftrk
+	RenderSprites:
+		Image: ftrk
+	-MapEditorData:
+
 DTRK:
 	Inherits: ^Vehicle
 	Buildable:
@@ -1180,6 +1298,7 @@ DTRK:
 		DamageSource: Killer
 	AttackFrontal:
 		FacingTolerance: 512
+		PauseOnCondition: parachute
 	Armament:
 		Weapon: DemoTruckTargeting
 	GrantConditionOnAttack:
@@ -1227,6 +1346,7 @@ CTNK:
 		LocalYaw: 60, -60
 	AttackFrontal:
 		FacingTolerance: 0
+		PauseOnCondition: parachute
 	PortableChrono:
 		ChargeDelay: 375
 		MaxDistance: 15
@@ -1279,6 +1399,7 @@ QTNK:
 		DecorationBounds: 1877, 1621, 0, -170
 	Passenger:
 		Weight: 5
+		CargoType: LargeVehicle
 	-Crushable:
 	ToggleConditionOnOrder@InvulnerabilityDisable:
 		Condition: invulnerability
@@ -1300,7 +1421,7 @@ STNK:
 		Prerequisites: atek, ~vehicles.france, ~techlevel.high
 		Description: actor-stnk.description
 	Valued:
-		Cost: 1100
+		Cost: 950
 	Tooltip:
 		Name: actor-stnk.name
 	UpdatesPlayerStatistics:
@@ -1336,7 +1457,9 @@ STNK:
 		ReloadingCondition: reload-air
 	Turreted:
 		TurnSpeed: 20
+		RequiresCondition: !parachute
 	AttackTurreted:
+		PauseOnCondition: parachute
 	WithSpriteTurret:
 	Cargo:
 		Types: Infantry
@@ -1505,6 +1628,7 @@ FTNK:
 	AttackFrontal:
 		Armaments: primary, secondary
 		FacingTolerance: 0
+		PauseOnCondition: parachute
 	FireWarheadsOnDeath:
 		Weapon: Napalm
 		EmptyWeapon: Napalm
@@ -1514,3 +1638,443 @@ FTNK:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: vehicles.upgraded
+
+TTRK:
+	Inherits: ^Vehicle
+	Inherits@selection: ^SelectableSupportUnit
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 500
+		Prerequisites: ~disabled
+		Description: actor-ttrk.description
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: actor-ttrk.name
+	Health:
+		HP: 30000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 64
+	Passenger:
+		Weight: 3
+	RevealsShroud:
+		Range: 4c0
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	BaseBuilding:
+	Transforms:
+		IntoActor: tent.spain
+		Offset: 0,-1
+		Facing: 384
+		TransformSounds: placbldg.aud, build5.aud
+		NoTransformNotification: BuildingCannotPlaceAudio
+		NoTransformTextNotification: notification-cannot-deploy-here
+
+AHTK:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
+	Inherits@CARGOPIPS: ^CargoPips
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 340
+		Prerequisites: dome, ~vehicles.spain, ~techlevel.medium
+		Description: actor-ahtk.description
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-ahtk.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 18500
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 28
+		Speed: 92
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	AttackTurreted:
+		PauseOnCondition: parachute
+	Turreted:
+		TurnSpeed: 28
+		Offset: -280,0,0
+		RequiresCondition: !parachute
+	Armament@AA:
+		Weapon: TwinCannon-AA
+		LocalOffset: 250,130,232, 250,-130,232
+		MuzzleSequence: muzzle-air
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	Armament@AG:
+		Name: secondary
+		Weapon: TwinCannon-AG
+		LocalOffset: 342,130,122, 342,-130,122
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	WithMuzzleOverlay:
+	GrantConditionOnAttack@ag:
+		RevokeDelay: 13
+		Condition: ag_attacking
+		ArmamentNames: secondary
+	WithSpriteTurret:
+		RequiresCondition: !ag_attacking
+	WithSpriteTurret@ag:
+		RequiresCondition: ag_attacking
+		Sequence: turret-ground
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1289, 1289, 0, -121
+	Cargo:
+		Types: Infantry
+		MaxWeight: 2
+		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+			e7: tanyainside
+			e8: volkovinside
+	ChangesHealth@MECHANIC:
+		RequiresCondition: selfrepair
+		Step: 2000
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
+
+TNKD:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 340
+		Prerequisites: atek, ~vehicles.italy, ~techlevel.high
+		Description: actor-tnkd.description
+	Valued:
+		Cost: 1350
+	Tooltip:
+		Name: actor-tnkd.name
+		GenericName: actor-tnkd.generic-name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 64
+		TurnSpeed: 12
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: SABOT
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+	AttackFrontal:
+		FacingTolerance: 0
+		PauseOnCondition: parachute
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: TNKD.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+HOWI:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 330
+		Prerequisites: atek, dome, ~vehicles.turkey, ~techlevel.high
+		Description: actor-howi.description
+	Valued:
+		Cost: 1350
+	Tooltip:
+		Name: actor-howi.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 22000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 8
+		Speed: 68
+		Locomotor: lighttracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: 6Inch
+		LocalOffset: 824,0,408
+		MuzzleSequence: muzzle
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		FacingTolerance: 0
+		PauseOnCondition: parachute
+	WithMuzzleOverlay:
+	FireWarheadsOnDeath:
+		Weapon: ArtilleryExplode
+		EmptyWeapon: UnitExplodeSmall
+		LoadedChance: 75
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+ARMC:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeVehicles
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 340
+		Prerequisites: dome, ~vehicles.china, ~techlevel.medium
+		Description: actor-armc.description
+	Valued:
+		Cost: 650
+	Tooltip:
+		Name: actor-armc.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 40
+		Speed: 113
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: -120,0,210
+		RequiresCondition: !parachute
+	Armament:
+		Weapon: APTusk
+		LocalOffset: 50,-75,100, 50,75,100
+		LocalYaw: 40, -40
+	AttackFrontal:
+		FacingTolerance: 32
+		PauseOnCondition: parachute
+	WithSpriteTurret:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, WheeledVehicle, VehicleDisguise
+
+ZSU:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMovePrioritizeAir
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 340
+		Prerequisites: dome, stek, ~vehicles.kazakh, ~techlevel.high
+		Description: actor-zsu.description
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-zsu.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 21000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 28
+		Speed: 72
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	AttackTurreted:
+		PauseOnCondition: parachute
+	Turreted:
+		TurnSpeed: 28
+		RequiresCondition: !parachute
+	Armament@AA:
+		Weapon: QuadCannon-AA
+		LocalOffset: 250,85,232, 250,-85,232
+		MuzzleSequence: muzzle-air
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	Armament@AG:
+		Name: secondary
+		Weapon: QuadCannon-AG
+		LocalOffset: 342,85,122, 342,-85,122
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	WithMuzzleOverlay:
+	GrantConditionOnAttack@ag:
+		RevokeDelay: 21
+		Condition: ag_attacking
+		ArmamentNames: secondary
+	WithSpriteTurret:
+		RequiresCondition: !ag_attacking
+	WithSpriteTurret@ag:
+		RequiresCondition: ag_attacking
+		Sequence: turret-ground
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	SpawnActorOnDeath:
+		Actor: ZSU.Husk
+
+BATF:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CARGOPIPS: ^CargoPips
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 450
+		Prerequisites: tent, atek, ~vehicles.greece, ~techlevel.high
+		Description: actor-batf.description
+		BuildLimit: 1
+	Valued:
+		Cost: 2400
+	Tooltip:
+		Name: actor-batf.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 46000
+	Armor:
+		Type: Concrete
+	Mobile:
+		Speed: 46
+		TurnSpeed: 8
+		Locomotor: heavytracked
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		Turret: rocketlauncher
+		TurnSpeed: 8
+		RequiresCondition: !parachute
+	Armament:
+		Weapon: M60mg
+		LocalOffset: 825,0,271
+		MuzzleSequence: muzzle
+		Turret:
+		PauseOnCondition: feuerfrei
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: APTusk
+		LocalOffset: 85,64,171, 85,-64,171
+		Turret: rocketlauncher
+		RequiresCondition: feuerfrei
+	AttackFrontal:
+		Armaments: primary, secondary
+		FacingTolerance: 24
+		PauseOnCondition: parachute
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		Sequence: turret
+		Turret: rocketlauncher
+	GrantChargedConditionOnToggle:
+		InitialCharge: 0
+		ActivatedCondition: feuerfrei
+		CanCancelCondition: false
+		ChargeDuration: 1500
+		ChargeThreshhold: -1
+		ConditionDuration: 500
+		ChargedCondition: feuerbereit
+	Cargo:
+		Types: Infantry
+		MaxWeight: 10
+		LoadingCondition: notmobile
+		PassengerConditions:
+			mech: selfrepair
+			e7: tanyainside
+			e8: volkovinside
+		RequiresCondition: !feuerbereit
+	ChangesHealth@MECHANIC:
+		RequiresCondition: selfrepair
+		Step: 2000
+		Delay: 81
+		StartIfBelow: 100
+		DamageCooldown: 150
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	WithDecoration@COMMANDO:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: tanyainside
+		BlinkInterval: 32
+		BlinkPatterns:
+			volkovinside: Off, On
+	WithDecoration@COMMANDO2:
+		Image: pips
+		Sequence: pip-redstar
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+		RequiresCondition: volkovinside
+		BlinkInterval: 32
+		BlinkPatterns:
+			tanyainside: On, Off
+	Passenger:
+		Weight: 5
+		CargoType: LargeVehicle
+	Selectable:
+		DecorationBounds: 1877, 1621, 0, -170

@@ -211,6 +211,18 @@ Player:
 	ProvidesPrerequisite@germany:
 		Prerequisite: player.germany
 		Factions: germany
+	ProvidesPrerequisite@spain:
+		Prerequisite: player.spain
+		Factions: spain
+	ProvidesPrerequisite@italy:
+		Prerequisite: player.italy
+		Factions: italy
+	ProvidesPrerequisite@greece:
+		Prerequisite: player.greece
+		Factions: greece
+	ProvidesPrerequisite@turkey:
+		Prerequisite: player.turkey
+		Factions: turkey
 	ProvidesPrerequisite@russia:
 		Prerequisite: player.russia
 		Factions: russia
@@ -220,3 +232,9 @@ Player:
 	ProvidesPrerequisite@belarus:
 		Prerequisite: player.belarus
 		Factions: belarus
+	ProvidesPrerequisite@kazakh:
+		Prerequisite: player.kazakh
+		Factions: kazakh
+	ProvidesPrerequisite@china:
+		Prerequisite: player.china
+		Factions: china

@@ -95,9 +95,40 @@ mtnk:
 		Filename: rig.shp
 		Facings: 32
 		UseClassicFacings: True
-	turret:
-		Filename: 2tnk.shp
-		Start: 32
+	idle-ttrk:
+		Filename: ttrk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-ahtk:
+		Filename: ahtk.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-tnkd:
+		Filename: tnkd.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-howi:
+		Filename: howi.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-hapc:
+		Filename: hapc.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-3t1b:
+		Filename: 3t1b.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-armc:
+		Filename: armc.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-zsu:
+		Filename: zsu.shp
+		Facings: 32
+		UseClassicFacings: True
+	idle-batf:
+		Filename: batf.shp
 		Facings: 32
 		UseClassicFacings: True
 	turret:
@@ -143,6 +174,31 @@ mtnk:
 	turret-stnk:
 		Filename: stnk.shp
 		Start: 38
+		Facings: 32
+		UseClassicFacings: True
+	turret-ahtk:
+		Filename: ahtk.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	turret-3t1b:
+		Filename: 3t1b.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-armc:
+		Filename: armc.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-zsu:
+		Filename: zsu.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-batf:
+		Filename: batf.shp
+		Start: 32
 		Facings: 32
 		UseClassicFacings: True
 	spinner-ttnk:

@@ -68,6 +68,56 @@ DOG:
 		VoiceSet: DogVoice
 	-TakeCover:
 
+CDOG:
+	Inherits: DOG
+	Buildable:
+		BuildPaletteOrder: 130
+		Prerequisites: ~kenn, ~stek, ~techlevel.high
+		Description: actor-cdog.description
+		BuildLimit: 1
+	Tooltip:
+		Name: actor-cdog.name
+		GenericName: actor-cdog.generic-name
+	Valued:
+		Cost: 800
+	Health:
+		HP: 7200
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 7c0
+	Armament:
+		Weapon: CyberdogJaw
+	Targetable@HEAL:
+		TargetTypes: Repair
+	Crushable:
+		CrushSound: crunchy2.aud
+	Voiced:
+		VoiceSet: CyberdogVoice
+	FireWarheadsOnDeath:
+		Weapon: UnitExplodeHeli
+		EmptyWeapon: UnitExplodeHeli
+		DamageSource: Killer
+		Chance: 100
+	ChangesHealth@MACHINESHOP:
+		Step: 500
+		Delay: 100
+		StartIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: machineshop
+	ExternalCondition@MACHINESHOP:
+		Condition: machineshop
+	WithDecoration@MACHINESHOP:
+		Image: select
+		Palette: chrome
+		Sequence: repair-small
+		Position: Center
+		RequiresCondition: machineshop && damaged
+		BlinkInterval: 32
+		BlinkPattern: on, off
+	RenderSprites:
+		Image: CDOG
+
 E1:
 	Inherits: ^Soldier
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMovePrioritizeInfantry
@@ -75,7 +125,7 @@ E1:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 10
-		Prerequisites: ~barracks, ~techlevel.infonly
+		Prerequisites: ~barracks, ~techlevel.infonly, ~!player.spain
 		Description: actor-e1.description
 	Selectable:
 		Class: E1
@@ -106,6 +156,15 @@ E1:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: infantry.upgraded
+	ProductionCostMultiplier@china:
+		Multiplier: 80
+		Prerequisites: player.china
+	GivesExperienceMultiplier@china:
+		Modifier: 120
+		RequiresCondition: owner.china
+	GrantConditionOnPrerequisite@china:
+		Condition: owner.china
+		Prerequisites: player.china
 
 E1R1:
 	Inherits: E1
@@ -120,6 +179,31 @@ E1R1:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: techlevel.infonly
+	ProductionCostMultiplier@china:
+		Multiplier: 80
+		Prerequisites: player.china
+	GivesExperienceMultiplier@china:
+		Modifier: 120
+		RequiresCondition: owner.china
+	GrantConditionOnPrerequisite@china:
+		Condition: owner.china
+		Prerequisites: player.china
+
+E1.spain:
+	Inherits: E1
+	Buildable:
+		Prerequisites: ~barracks, ~techlevel.infonly, ~player.spain
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: e1
+	RenderSprites:
+		Image: e1
+	-MapEditorData:
 
 E2:
 	Inherits: ^Soldier
@@ -169,6 +253,15 @@ E2:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: infantry.upgraded
+	ProductionCostMultiplier@china:
+		Multiplier: 80
+		Prerequisites: player.china
+	GivesExperienceMultiplier@china:
+		Modifier: 120
+		RequiresCondition: owner.china
+	GrantConditionOnPrerequisite@china:
+		Condition: owner.china
+		Prerequisites: player.china
 
 E3:
 	Inherits: ^Soldier
@@ -227,6 +320,15 @@ E3:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: infantry.upgraded
+	ProductionCostMultiplier@china:
+		Multiplier: 80
+		Prerequisites: player.china
+	GivesExperienceMultiplier@china:
+		Modifier: 120
+		RequiresCondition: owner.china
+	GrantConditionOnPrerequisite@china:
+		Condition: owner.china
+		Prerequisites: player.china
 
 E3R1:
 	Inherits: E3
@@ -285,6 +387,15 @@ E4:
 	WithProductionIconOverlay:
 		Types: Veterancy
 		Prerequisites: infantry.upgraded
+	ProductionCostMultiplier@china:
+		Multiplier: 80
+		Prerequisites: player.china
+	GivesExperienceMultiplier@china:
+		Modifier: 120
+		RequiresCondition: owner.china
+	GrantConditionOnPrerequisite@china:
+		Condition: owner.china
+		Prerequisites: player.china
 
 E6:
 	Inherits: ^Soldier
@@ -320,12 +431,12 @@ E6:
 	Captures:
 		RequiresCondition: !global-reusable-engineers
 		CaptureTypes: building
-		PlayerExperience: 10
+		PlayerExperience: 0
 		CaptureDelay: 200
 	Captures@REUSABLE:
 		RequiresCondition: global-reusable-engineers
 		CaptureTypes: building
-		PlayerExperience: 10
+		PlayerExperience: 0
 		CaptureDelay: 375
 		ConsumedByCapture: False
 		EnterCursor: ability
@@ -333,14 +444,14 @@ E6:
 	Captures@RESTORETECH:
 		RequiresCondition: !global-reusable-engineers
 		CaptureTypes: restore-tech
-		PlayerExperience: 10
+		PlayerExperience: 0
 		EnterCursor: goldwrench
 		EnterBlockedCursor: goldwrench-blocked
 		CaptureDelay: 200
 	Captures@REUSABLE-RESTORETECH:
 		RequiresCondition: global-reusable-engineers
 		CaptureTypes: restore-tech
-		PlayerExperience: 10
+		PlayerExperience: 0
 		CaptureDelay: 375
 		ConsumedByCapture: False
 		EnterCursor: goldwrench
@@ -381,7 +492,7 @@ SPY:
 		Prerequisites: ~!infantry.england, dome, ~tent, ~techlevel.medium
 		Description: actor-spy.description
 	Valued:
-		Cost: 500
+		Cost: 600
 	-Tooltip:
 	DisguiseTooltip:
 		Name: actor-spy.disguisetooltip-name
@@ -425,6 +536,15 @@ SPY:
 	IgnoresDisguise:
 	Voiced:
 		VoiceSet: SpyVoice
+	ProductionCostMultiplier@greece:
+		Multiplier: 75
+		Prerequisites: player.greece
+	GivesExperienceMultiplier@greece:
+		Modifier: 125
+		RequiresCondition: owner.greece
+	GrantConditionOnPrerequisite@greece:
+		Condition: owner.greece
+		Prerequisites: player.greece
 
 SPY.England:
 	Inherits: SPY
@@ -604,6 +724,7 @@ E8:
 		RequiresCondition: machineshop && damaged
 		BlinkInterval: 32
 		BlinkPattern: on, off
+	-EdibleByLeap:
 	RenderSprites:
 		Image: E8
 
@@ -741,7 +862,7 @@ MECH:
 	CaptureManager:
 	Captures:
 		CaptureTypes: husk
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Infiltrates:
 		Types: Husk
 		ValidRelationships: Ally
@@ -841,7 +962,7 @@ THF:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 8000
+		HP: 6500
 	RevealsShroud:
 		Range: 5c0
 	Passenger:
@@ -849,14 +970,21 @@ THF:
 	CaptureManager:
 	Captures:
 		CaptureTypes: vehicle, aircraft
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Infiltrates:
 		Types: ThiefInfiltrate
 		Notification: BuildingInfiltrated
 		TextNotification: notification-building-infiltrated
 	Voiced:
 		VoiceSet: ThiefVoice
-	-TakeCover:
+	TakeCover:
+		DamageModifiers:
+			Prone50Percent: 100
+		DamageTriggers: TriggerProne
+		SpeedModifier: 133
+		ProneOffset: 0,0,0
+		Duration: 50
+		ProneSequencePrefix:
 	WithInfantryBody:
 		IdleSequences: idle
 		StandSequences: stand
@@ -867,18 +995,10 @@ THF:
 		IsPlayerPalette: true
 	Crushable:
 		WarnProbability: 95
-	GrantChargedConditionOnToggle:
-		InitialCharge: 50
-		ActivatedCondition: cloaked
-		CanCancelCondition: true
-		ChargeDuration: 1250
-		ChargeThreshhold: 100
-		ConditionDuration: 375
 	Cloak:
-		RequiresCondition: cloaked
-		InitialDelay: 0
-		CloakDelay: 25
-		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Damage
+		InitialDelay: 250
+		CloakDelay: 120
+		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Move
 		DetectionTypes: Cloak
 		PauseOnCondition: cloak-force-disabled
 	GrantConditionOnDamageState@UNCLOAK:
@@ -1086,3 +1206,119 @@ WarriorAnt:
 		Prerequisites: ~disabled
 	RenderSprites:
 		Image: Ant
+
+SNIP:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: actor-snip.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 130
+		Prerequisites: ~tent, atek, ~infantry.greece, ~techlevel.high
+		Description: actor-snip.description
+	Health:
+		HP: 12000
+	Mobile:
+		Voice: Move
+	Guard:
+		Voice: Move
+	Passenger:
+		CustomPipType: red
+		Voice: Move
+	RevealsShroud:
+		Range: 6c0
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: ReturnFire
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry
+	AttackMove:
+		Voice: Move
+	AttackFrontal:
+		Voice: Attack
+	Armament@PRIMARY:
+		Weapon: SniperRifle
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: SniperRifle
+		MuzzleSequence: garrison-muzzle
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	Cloak:
+		InitialDelay: 250
+		CloakDelay: 120
+		CloakSound:
+		UncloakSound:
+		DetectionTypes: Cloak
+		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Move
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	-MustBeDestroyed:
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+	Voiced:
+		VoiceSet: StavrosVoice
+
+SAB:
+	Inherits: THF
+	Buildable:
+		BuildPaletteOrder: 135
+		Prerequisites: ~tent, atek, ~infantry.france, ~techlevel.high
+		Description: actor-sab.description
+		Icon: alt-icon
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-sab.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 4000
+	Mobile:
+		Speed: 54
+	RevealsShroud:
+		Range: 4c0
+	Passenger:
+		CustomPipType: red
+	CaptureManager:
+	Captures:
+		CaptureTypes: sabotage
+		PlayerExperience: 0
+		CaptureDelay: 200
+		SabotageThreshold: 1
+		SabotageHPRemoval: 50
+		SabotageDamageTypes: Incendiary
+	-Infiltrates:
+	-TakeCover:
+	GrantChargedConditionOnToggle:
+		InitialCharge: 0
+		ActivatedCondition: cloaked
+		CanCancelCondition: false
+		ChargeDuration: 1125
+		ChargeThreshhold: -1
+		ConditionDuration: 375
+	Cloak:
+		RequiresCondition: cloaked
+		InitialDelay: 0
+		CloakDelay: 25
+		UncloakOn: Attack, Load, Unload, Demolish, Damage
+		DetectionTypes: Cloak
+		PauseOnCondition: cloak-force-disabled
+	RenderSprites:
+		Image: thf

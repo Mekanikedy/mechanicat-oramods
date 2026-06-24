@@ -62,10 +62,11 @@ MSLO:
 		ClockSequence: clock
 		CircleSequence: circles
 		SupportPowerPaletteOrder: 10
+		LaunchSound: nukemisl.aud
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
@@ -141,6 +142,16 @@ GAP:
 		BorderWidth: 3
 		Range: 10c0
 		RequiresCondition: charged
+	ProximityExternalCondition@normal:
+		Condition: gapdebuff
+		Range: 7c0
+		ValidRelationships: Neutral, Enemy
+		RequiresCondition: !charged
+	ProximityExternalCondition@charged:
+		Condition: gapdebuff
+		Range: 10c0
+		ValidRelationships: Neutral, Enemy
+		RequiresCondition: charged
 	Power:
 		Amount: -60
 	PowerMultiplier:
@@ -163,6 +174,15 @@ GAP:
 		ChargeThreshhold: -1
 		ConditionDuration: 1500
 		PauseOnCondition: disabled
+	ProductionCostMultiplier@italy:
+		Multiplier: 80
+		Prerequisites: player.italy
+	GivesExperienceMultiplier@italy:
+		Modifier: 120
+		RequiresCondition: owner.italy
+	GrantConditionOnPrerequisite@italy:
+		Condition: owner.italy
+		Prerequisites: player.italy
 
 SPEN:
 	Inherits: ^Building
@@ -250,13 +270,15 @@ SPEN:
 		Produces: Ship, Submarine
 		PauseOnCondition: build-incomplete
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	RepairsUnits:
 		HpPerStep: 1000
 		StartRepairingNotification: Repairing
 		StartRepairingTextNotification: notification-repairing
 		FinishRepairingNotification: UnitRepaired
 		FinishRepairingTextNotification: notification-unit-repaired
-		PlayerExperience: 5
+		PlayerExperience: 0
 	RallyPoint:
 		ForceSetType: Ship
 	CommandBarBlacklist:
@@ -270,7 +292,7 @@ SPEN:
 		Range: 10c0
 	RenderDetectionCircle:
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: ships.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
@@ -284,6 +306,12 @@ SPEN:
 	ProvidesPrerequisite@belarus:
 		Factions: belarus
 		Prerequisite: ships.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: ships.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: ships.china
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: ships.soviet
@@ -299,6 +327,12 @@ SPEN:
 	ProvidesPrerequisite@belarussianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: ships.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: ships.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: ships.china
 	ProvidesPrerequisite@buildingname:
 	MapEditorData:
 		ExcludeTilesets: INTERIOR
@@ -400,13 +434,14 @@ SYRD:
 		Produces: Ship, Boat
 		PauseOnCondition: build-incomplete
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
 	RepairsUnits:
 		HpPerStep: 1000
 		StartRepairingNotification: Repairing
 		StartRepairingTextNotification: notification-repairing
 		FinishRepairingNotification: UnitRepaired
 		FinishRepairingTextNotification: notification-unit-repaired
-		PlayerExperience: 5
+		PlayerExperience: 0
 	RallyPoint:
 		ForceSetType: Ship
 	CommandBarBlacklist:
@@ -420,7 +455,7 @@ SYRD:
 		Range: 10c0
 	RenderDetectionCircle:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: ships.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
@@ -434,6 +469,18 @@ SYRD:
 	ProvidesPrerequisite@germany:
 		Factions: germany
 		Prerequisite: ships.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: ships.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: ships.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: ships.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: ships.turkey
 	ProvidesPrerequisite@alliedstructure:
 		RequiresPrerequisites: structures.allies
 		Prerequisite: ships.allies
@@ -449,6 +496,18 @@ SYRD:
 	ProvidesPrerequisite@germanstructure:
 		RequiresPrerequisites: structures.germany
 		Prerequisite: ships.germany
+	ProvidesPrerequisite@spanishstructure:
+		RequiresPrerequisites: structures.spain
+		Prerequisite: ships.spain
+	ProvidesPrerequisite@italianstructure:
+		RequiresPrerequisites: structures.italy
+		Prerequisite: ships.italy
+	ProvidesPrerequisite@greekstructure:
+		RequiresPrerequisites: structures.greece
+		Prerequisite: ships.greece
+	ProvidesPrerequisite@turkishstructure:
+		RequiresPrerequisites: structures.turkey
+		Prerequisite: ships.turkey
 	ProvidesPrerequisite@buildingname:
 	MapEditorData:
 		ExcludeTilesets: INTERIOR
@@ -489,6 +548,12 @@ SYRD:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	ProductionCostMultiplier@spain:
+		Multiplier: 60
+		Prerequisites: player.spain
+	GivesExperienceMultiplier@spain:
+		Modifier: 140
+		RequiresCondition: owner.spain
 
 IRON:
 	Inherits: ^ScienceBuilding
@@ -552,7 +617,7 @@ IRON:
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
@@ -649,7 +714,7 @@ PDOX:
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
@@ -668,6 +733,7 @@ TSLA:
 	Inherits: ^Defense
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 80
@@ -710,7 +776,7 @@ TSLA:
 		LocalOffset: 0,0,896
 		RequiresCondition: (!lowpower && charged >= 3) || (!lowpower && supercharged)
 	AttackTesla:
-		PauseOnCondition: disabled || build-incomplete
+		PauseOnCondition: disabled || build-incomplete || jamdebuff
 		ChargeAudio: tslachg2.aud
 		MaxCharges: 3
 		ReloadDelay: 120
@@ -718,7 +784,7 @@ TSLA:
 		Amount: -80
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: !disabled
+		RequiresCondition: !disabled && !jamdebuff
 	ProvidesPrerequisite@buildingname:
 	ExternalCondition@CHARGED:
 		Condition: charged
@@ -775,6 +841,7 @@ AGUN:
 	Inherits: ^Defense
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@AUTOTARGET: ^AutoTargetAir
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 90
@@ -814,7 +881,7 @@ AGUN:
 		LocalOffset: 520,100,450, 520,-150,450
 		MuzzleSequence: muzzle
 	AttackTurreted:
-		PauseOnCondition: disabled || build-incomplete
+		PauseOnCondition: disabled || build-incomplete || jamdebuff
 	WithMuzzleOverlay:
 	RenderRangeCircle:
 		RangeCircleType: aa
@@ -843,8 +910,8 @@ DOME:
 		TargetableOffsets: 0,0,0, 630,-384,0, 630,384,0, -700,-512,0, -700,512,0
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 90
-		Prerequisites: anypower, proc, ~techlevel.medium, ~!structures.england
+		BuildPaletteOrder: 80
+		Prerequisites: anypower, proc, ~techlevel.medium, ~!structures.england, ~!structures.greece
 		Description: actor-dome.description
 	Valued:
 		Cost: 1200
@@ -853,7 +920,7 @@ DOME:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	Targetable:
 		TargetTypes: GroundActor, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
@@ -877,7 +944,7 @@ DOME:
 		RequiresCondition: !jammed && !disabled
 	InfiltrateForExploration:
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Power:
 		Amount: -40
 	ProvidesPrerequisite@buildingname:
@@ -913,6 +980,23 @@ DOME:
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 60
+	SpawnActorPower@radarscan:
+		PauseOnCondition: disabled
+		OrderName: GreeceRadarscan
+		Prerequisites: structures.greece
+		Actor: RADARSCAN
+		LifeTime: 255
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		ChargeInterval: 6750
+		Icon: radarscan
+		Name: actor-dome.spawnactorpower-name
+		Description: actor-dome.spawnactorpower-description
+		Cursor: ability
+		LaunchSound: xradar.aud
+		EffectImage: empty
+		EffectSequence: idle
+		EffectPalette: effect
 	SupportPowerChargeBar:
 
 DOME.England:
@@ -922,18 +1006,29 @@ DOME.England:
 		Description: actor-dome-england-description
 	RenderSprites:
 		Image: dome
+	-MapEditorData:
+
+DOME.Greece:
+	Inherits: DOME
+	Buildable:
+		Prerequisites: anypower, proc, ~structures.greece, ~techlevel.medium
+		Description: actor-dome-greece-description
+	RenderSprites:
+		Image: dome
+	-MapEditorData:
 
 PBOX:
 	Inherits: ^Defense
 	Inherits@AUTOTARGET: ^AutoTargetAll
 	Inherits@CARGOPIPS: ^CargoPips
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Tooltip:
 		Name: actor-pbox.name
 	Building:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 40
-		Prerequisites: tent, ~structures.allies, ~techlevel.low, ~!structures.england
+		Prerequisites: tent, ~structures.allies, ~techlevel.low, ~!structures.england, ~!player.spain
 		Description: actor-pbox.description
 	Valued:
 		Cost: 600
@@ -970,8 +1065,10 @@ PBOX:
 			e7: tanyainside
 			e8: volkovinside
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	AttackGarrisoned:
-		PauseOnCondition: build-incomplete
+		PauseOnCondition: build-incomplete || jamdebuff
 		Armaments: garrisoned
 		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
 		PortYaws: 0, 176, 341, 512, 682, 853
@@ -982,7 +1079,7 @@ PBOX:
 		Amount: -20
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: loaded
+		RequiresCondition: loaded && !jamdebuff
 	GivesExperience:
 		Experience: 500
 	WithDecoration@COMMANDO:
@@ -1000,17 +1097,30 @@ PBOX:
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
 
+PBOX.spain:
+	Inherits: PBOX
+	Buildable:
+		Prerequisites: tent, ~structures.allies, ~techlevel.low, ~player.spain
+	Cargo:
+		InitialUnits: e1.spain
+	UpdatesPlayerStatistics:
+		OverrideActor: pbox
+	RenderSprites:
+		Image: pbox
+	-MapEditorData:
+
 HBOX:
 	Inherits: ^Defense
 	Inherits@AUTOTARGET: ^AutoTargetAll
 	Inherits@CARGOPIPS: ^CargoPips
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Tooltip:
 		Name: actor-hbox.name
 	Building:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 50
-		Prerequisites: tent, ~structures.england, ~techlevel.low
+		Prerequisites: tent, ~structures.england, ~techlevel.low, ~!player.spain
 		Description: actor-hbox.description
 	Valued:
 		Cost: 600
@@ -1030,7 +1140,7 @@ HBOX:
 		InitialDelay: 125
 		CloakDelay: 60
 		UncloakOn: Attack, Load, Unload, Infiltrate, Demolish, Dock
-		PauseOnCondition: cloak-force-disabled
+		PauseOnCondition: cloak-force-disabled || build-incomplete
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
 		ValidDamageStates: Critical
@@ -1053,13 +1163,15 @@ HBOX:
 			e7: tanyainside
 			e8: volkovinside
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: loaded
+		RequiresCondition: loaded && !jamdebuff
 	RenderRangeCircle:
 		FallbackRange: 6c0
 	AttackGarrisoned:
-		PauseOnCondition: build-incomplete
+		PauseOnCondition: build-incomplete || jamdebuff
 		Armaments: garrisoned
 		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
 		PortYaws: 0, 176, 341, 512, 682, 853
@@ -1068,7 +1180,7 @@ HBOX:
 		Amount: -20
 	-MustBeDestroyed:
 	GivesExperience:
-		Experience: 650
+		Experience: 600
 	WithDecoration@COMMANDO:
 		Image: pips
 		Sequence: pip-skull
@@ -1084,9 +1196,22 @@ HBOX:
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
 
+HBOX.spain:
+	Inherits: HBOX
+	Buildable:
+		Prerequisites: tent, ~structures.england, ~techlevel.low, ~player.spain
+	Cargo:
+		InitialUnits: e1.spain
+	UpdatesPlayerStatistics:
+		OverrideActor: hbox
+	RenderSprites:
+		Image: hbox
+	-MapEditorData:
+
 GUN:
 	Inherits: ^Defense
 	Inherits@AUTOTARGET: ^AutoTargetGroundPrioritizeVehicles
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 70
@@ -1133,13 +1258,13 @@ GUN:
 		PauseOnCondition: reload-ag
 		ReloadingCondition: reload-as
 	AttackTurreted:
-		PauseOnCondition: build-incomplete
+		PauseOnCondition: build-incomplete || jamdebuff
 	WithMuzzleOverlay:
 	Power:
 		Amount: -40
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: !lowpower
+		RequiresCondition: !lowpower && !jamdebuff
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
@@ -1158,6 +1283,7 @@ GUN:
 FTUR:
 	Inherits: ^Defense
 	Inherits@AUTOTARGET: ^AutoTargetGroundPrioritizeInfantry
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 60
@@ -1187,7 +1313,7 @@ FTUR:
 		Weapon: FireballLauncher
 		LocalOffset: 512,0,0
 	AttackTurreted:
-		PauseOnCondition: build-incomplete
+		PauseOnCondition: build-incomplete || jamdebuff
 	-QuantizeFacingsFromSequence:
 	BodyOrientation:
 		QuantizedFacings: 8
@@ -1195,7 +1321,7 @@ FTUR:
 		Amount: -20
 	DetectCloaked:
 		Range: 6c0
-		RequiresCondition: !lowpower
+		RequiresCondition: !lowpower && !jamdebuff
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
@@ -1209,6 +1335,7 @@ SAM:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@AUTOTARGET: ^AutoTargetAir
 	Inherits@shape: ^2x1Shape
+	Inherits@MRJDISABLE: ^WeaponJammable
 	Selectable:
 		Bounds: 2048, 1024
 	HitShape:
@@ -1252,7 +1379,7 @@ SAM:
 		LocalOffset: 0,0,320
 		MuzzleSequence: muzzle
 	AttackTurreted:
-		PauseOnCondition: disabled || build-incomplete
+		PauseOnCondition: disabled || build-incomplete || jamdebuff
 	WithMuzzleOverlay:
 	RenderRangeCircle:
 		RangeCircleType: aa
@@ -1281,7 +1408,7 @@ ATEK:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 60000
 	Armor:
@@ -1321,13 +1448,28 @@ ATEK:
 		EndChargeTextNotification: GPS Sattelite ready.
 		RequiresCondition: !gps-on
         #   Prerequisites: uplink
+	GpsPower:
+		PauseOnCondition: disabled
+		Icon: gps
+		OneShot: true
+		ChargeInterval: 7
+		Name: actor-atek.gpspower-name
+		Description: actor-atek.gpspower-description
+		RevealDelay: 55
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: notification-satellite-launched
+		DisplayTimerRelationships: None
+		SupportPowerPaletteOrder: 50
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+		RequiresCondition: !build-incomplete
 	SupportPowerChargeBar:
 	ProvidesPrerequisite@uplink:
 		Prerequisite: uplink
 		RequiresCondition: !disabled
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	Power:
@@ -1347,7 +1489,7 @@ WEAP:
 		Bounds: 3072, 2048
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 80
+		BuildPaletteOrder: 70
 		Prerequisites: anypower, proc, ~techlevel.low
 		Description: actor-weap.description
 	Valued:
@@ -1388,35 +1530,53 @@ WEAP:
 		Produces: Vehicle
 		PauseOnCondition: build-incomplete
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: vehicles.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
 		Prerequisite: vehicles.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: allies, england, unholy
+		Factions: england
 		Prerequisite: vehicles.england
 	ProvidesPrerequisite@france:
-		Factions: allies, france, unholy
+		Factions: france
 		Prerequisite: vehicles.france
 	ProvidesPrerequisite@germany:
-		Factions: allies, germany, unholy
+		Factions: germany
 		Prerequisite: vehicles.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: vehicles.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: vehicles.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: vehicles.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: vehicles.turkey
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: vehicles.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
 		Prerequisite: vehicles.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: soviet, russia, unholy
+		Factions: russia
 		Prerequisite: vehicles.russia
 	ProvidesPrerequisite@ukraine:
-		Factions: soviet, ukraine, unholy
+		Factions: ukraine
 		Prerequisite: vehicles.ukraine
 	ProvidesPrerequisite@belarus:
-		Factions: soviet, belarus, unholy
+		Factions: belarus
 		Prerequisite: vehicles.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: vehicles.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: vehicles.china
 	ProvidesPrerequisite@alliedstructure:
 		RequiresPrerequisites: structures.allies
 		Prerequisite: vehicles.allies
@@ -1432,6 +1592,18 @@ WEAP:
 	ProvidesPrerequisite@germanstructure:
 		RequiresPrerequisites: structures.germany
 		Prerequisite: vehicles.germany
+	ProvidesPrerequisite@spanishstructure:
+		RequiresPrerequisites: structures.spain
+		Prerequisite: vehicles.spain
+	ProvidesPrerequisite@italianstructure:
+		RequiresPrerequisites: structures.italy
+		Prerequisite: vehicles.italy
+	ProvidesPrerequisite@greekstructure:
+		RequiresPrerequisites: structures.greece
+		Prerequisite: vehicles.greece
+	ProvidesPrerequisite@turkishstructure:
+		RequiresPrerequisites: structures.turkey
+		Prerequisite: vehicles.turkey
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: vehicles.soviet
@@ -1447,6 +1619,12 @@ WEAP:
 	ProvidesPrerequisite@belarussianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: vehicles.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: vehicles.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: vehicles.china
 	ProductionBar:
 		ProductionType: Vehicle
 	Power:
@@ -1457,7 +1635,7 @@ WEAP:
 	InfiltrateForSupportPower:
 		Proxy: vehveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
@@ -1479,28 +1657,40 @@ FACT:
 		Prerequisites: ~disabled
 		Description: actor-fact.description
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: structures.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
 		Prerequisite: structures.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: allies, england, unholy
+		Factions: england
 		Prerequisite: structures.england
 	ProvidesPrerequisite@france:
-		Factions: allies, france, unholy
+		Factions: france
 		Prerequisite: structures.france
 	ProvidesPrerequisite@germany:
 		Factions: germany
 		Prerequisite: structures.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: structures.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: structures.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: structures.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: structures.turkey
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: structures.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
 		Prerequisite: structures.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: soviet, russia, unholy
+		Factions: russia
 		Prerequisite: structures.russia
 	ProvidesPrerequisite@ukraine:
 		Factions: ukraine
@@ -1508,6 +1698,12 @@ FACT:
 	ProvidesPrerequisite@belarus:
 		Factions: belarus
 		Prerequisite: structures.belarus
+	ProvidesPrerequisite@kazakh:
+		Factions: kazakh
+		Prerequisite: structures.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: structures.china
 	ProvidesPrerequisite@unholy:
 		Factions: unholy
 		Prerequisite: structures.unholy
@@ -1531,6 +1727,9 @@ FACT:
 	SpawnActorsOnSell:
 		ActorTypes: e1,e1,e1,tecn,tecn2
 		GuaranteedActorTypes: e1, e6
+	SpawnActorsOnSell@spain:
+		ActorTypes: e1.spain,e1.spain,e1.spain,tecn,tecn2
+		GuaranteedActorTypes: e1.spain, e6
 	BaseBuilding:
 	Transforms:
 		RequiresCondition: factundeploy
@@ -1593,10 +1792,16 @@ FACT:
 			england: afact
 			france: afact
 			germany: afact
+			spain: afact
+			italy: afact
+			greece: afact
+			turkey: afact
 			soviet: sfact
 			russia: sfact
 			ukraine: sfact
 			belarus: sfact
+			kazakh: sfact
+			china: sfact
 	ProductionCostMultiplier@france:
 		Multiplier: 80
 		Prerequisites: player.france
@@ -1606,6 +1811,30 @@ FACT:
 	GrantConditionOnPrerequisite@france:
 		Condition: owner.france
 		Prerequisites: player.france
+	SpawnActorPower@InstantPillbox:
+		PauseOnCondition: lowpower
+		OrderName: InstantPillbox
+		Prerequisites: structures.italy, dome
+		Icon: instabox
+		Name: actor-fact.spawnactorpower-instantpillbox-name
+		Description: actor-fact.spawnactorpower-instantpillbox-description
+		ChargeInterval: 4500
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		Actor: ibox
+		Terrain: Clear, Road
+		AllowUnderShroud: false
+		LifeTime: -1
+		DeploySound: placbldg.aud
+		SupportPowerPaletteOrder: 300
+		BlockedCursor: move-blocked
+		EffectImage: empty
+		EffectSequence: idle
+		EffectPalette: effect
+	SupportPowerChargeBar:
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 
 PROC:
 	Inherits: ^Building
@@ -1615,7 +1844,7 @@ PROC:
 		Prerequisites: ~techlevel.infonly, ~!global-ercc-refinery
 		Description: actor-proc.description
 	Valued:
-		Cost: 1400
+		Cost: 1500
 	Tooltip:
 		Name: actor-proc.name
 	Building:
@@ -1646,7 +1875,7 @@ PROC:
 	StoresPlayerResources:
 		Capacity: 2000
 	CustomSellValue:
-		Value: 400
+		Value: 500
 	Sellable:
 		RefundPercent: 100
 	FreeActor:
@@ -1655,8 +1884,8 @@ PROC:
 		Facing: 256
 	InfiltrateForCash:
 		Percentage: 50
-		PlayerExperience: 5
-		PlayerExperiencePercentage: 1
+		PlayerExperience: 0
+		PlayerExperiencePercentage: 0
 		Types: SpyInfiltrate, ThiefInfiltrate
 		InfiltratedNotification: CreditsStolen
 		InfiltratedTextNotification: notification-credits-stolen
@@ -1700,8 +1929,8 @@ SILO:
 	Selectable:
 		Bounds: 1024, 1024
 	Buildable:
-		Queue: Defense
-		BuildPaletteOrder: 35
+		Queue: Building
+		BuildPaletteOrder: 100
 		Prerequisites: proc, ~techlevel.infonly
 		Description: actor-silo.description
 	Valued:
@@ -1718,13 +1947,6 @@ SILO:
 		Type: Wood
 	RevealsShroud:
 		Range: 4c0
-	InfiltrateForCash:
-		Percentage: 50
-		PlayerExperience: 5
-		PlayerExperiencePercentage: 1
-		Types: ThiefInfiltrate
-		InfiltratedNotification: CreditsStolen
-		InfiltratedTextNotification: notification-credits-stolen
 	WithBuildingBib:
 		HasMinibib: true
 	-WithSpriteBody:
@@ -1733,6 +1955,8 @@ SILO:
 	StoresPlayerResources:
 		Capacity: 3000
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	Power:
 		Amount: -10
 	FireWarheadsOnDeath:
@@ -1756,7 +1980,7 @@ HPAD:
 		TargetableOffsets: 0,0,0, 768,-512,0, 768,512,0, -281,-512,0, -630,512,0
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 120
+		BuildPaletteOrder: 110
 		Prerequisites: dome, ~techlevel.medium
 		Description: actor-hpad.description
 	Valued:
@@ -1797,7 +2021,7 @@ HPAD:
 	Power:
 		Amount: -10
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: aircraft.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
@@ -1811,6 +2035,18 @@ HPAD:
 	ProvidesPrerequisite@germany:
 		Factions: germany
 		Prerequisite: aircraft.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: aircraft.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: aircraft.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: aircraft.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: aircraft.turkey
 	ProvidesPrerequisite@alliedstructure:
 		RequiresPrerequisites: structures.allies
 		Prerequisite: aircraft.allies
@@ -1826,8 +2062,20 @@ HPAD:
 	ProvidesPrerequisite@germanstructure:
 		RequiresPrerequisites: structures.germany
 		Prerequisite: aircraft.germany
+	ProvidesPrerequisite@spanishstructure:
+		RequiresPrerequisites: structures.spain
+		Prerequisite: aircraft.spain
+	ProvidesPrerequisite@italianstructure:
+		RequiresPrerequisites: structures.italy
+		Prerequisite: aircraft.italy
+	ProvidesPrerequisite@greekstructure:
+		RequiresPrerequisites: structures.greece
+		Prerequisite: aircraft.greece
+	ProvidesPrerequisite@turkishstructure:
+		RequiresPrerequisites: structures.turkey
+		Prerequisite: aircraft.turkey
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: aircraft.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
@@ -1841,6 +2089,12 @@ HPAD:
 	ProvidesPrerequisite@belarus:
 		Factions: belarus
 		Prerequisite: aircraft.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: aircraft.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: aircraft.china
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: aircraft.soviet
@@ -1856,13 +2110,19 @@ HPAD:
 	ProvidesPrerequisite@belarussianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: aircraft.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: aircraft.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: aircraft.china
 	ProvidesPrerequisite@buildingname:
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	InfiltrateForSupportPower:
 		Proxy: airveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
@@ -1876,8 +2136,8 @@ AFLD:
 		TargetableOffsets: 0,0,0, 420,0,0, 420,-1024,0, 420,1024,0, -777,0,0, -777,-1024,0, -777,1024,0
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 130
-		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~structures.russia, ~!structures.ukraine, ~!structures.belarus
+		BuildPaletteOrder: 120
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.russia, ~!structures.ukraine, ~!structures.belarus, ~!structures.kazakh, ~!structures.china
 		Description: actor-afld.description
 	Valued:
 		Cost: 625
@@ -1887,7 +2147,7 @@ AFLD:
 		Class: afld
 		Bounds: 3072, 2048
 	Building:
-		Footprint: xxx xxx
+		Footprint: xx+ x=x
 		Dimensions: 3,2
 	Health:
 		HP: 100000
@@ -1912,7 +2172,7 @@ AFLD:
 		PauseOnCondition: build-incomplete
 	Reservable:
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: aircraft.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
@@ -1921,11 +2181,17 @@ AFLD:
 		Factions: russia
 		Prerequisite: aircraft.russia
 	ProvidesPrerequisite@ukraine:
-		Factions: soviet, ukraine, unholy
+		Factions: ukraine
 		Prerequisite: aircraft.ukraine
 	ProvidesPrerequisite@belarus:
-		Factions: soviet, belarus, unholy
+		Factions: belarus
 		Prerequisite: aircraft.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: aircraft.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: aircraft.china
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: aircraft.soviet
@@ -1941,6 +2207,12 @@ AFLD:
 	ProvidesPrerequisite@belarussianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: aircraft.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: aircraft.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: aircraft.china
 	AirstrikePower@spyplane:
 		PauseOnCondition: lowpower
 		OrderName: SovietSpyPlane
@@ -2037,6 +2309,54 @@ AFLD:
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 70
+	ParatroopersPower@extraparatroopers:
+		PauseOnCondition: lowpower
+		OrderName: ChinaParatroopers
+		Prerequisites: aircraft.china
+		Icon: paratroopers
+		ChargeInterval: 4500
+		Name: actor-afld.paratrooperspower-paratroopers-name
+		Description: actor-afld.paratrooperspower-paratroopers-description
+		DropItems: E1R1,E3R1,E1R1,E3R1,E1R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 85
+	AirstrikePower@extraspyplane:
+		PauseOnCondition: lowpower
+		OrderName: KazakhSpyPlane
+		Prerequisites: aircraft.kazakh, ~stek
+		Icon: spyplane
+		ChargeInterval: 2250
+		Name: actor-afld.airstrikepower-spyplane-name
+		Description: actor-afld.airstrikepower-spyplane-description
+		SelectTargetSpeechNotification: SelectTarget
+		EndChargeSpeechNotification: SpyPlaneReady
+		SelectTargetTextNotification: notification-select-target
+		EndChargeTextNotification: notification-spy-plane-ready
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 150
+		UnitType: u2
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: camicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 90
 	ProductionBar:
 		ProductionType: Aircraft
 	SupportPowerChargeBar:
@@ -2049,7 +2369,7 @@ AFLD:
 	InfiltrateForSupportPower:
 		Proxy: airveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	WithResupplyAnimation:
 		RequiresCondition: !build-incomplete
 	GrantConditionOnPowerState@LOWPOWER:
@@ -2062,10 +2382,11 @@ AFLD:
 AFLD.Russia:
 	Inherits: AFLD
 	Buildable:
-		Prerequisites: dome, ~techlevel.medium, ~structures.russia, ~!structures.soviet
+		Prerequisites: dome, ~techlevel.medium, ~structures.russia
 		Description: actor-afld-russia-description
 	RenderSprites:
 		Image: afld
+	-MapEditorData:
 
 AFLD.Ukraine:
 	Inherits: AFLD
@@ -2074,6 +2395,7 @@ AFLD.Ukraine:
 		Description: actor-afld-ukraine-description
 	RenderSprites:
 		Image: afld
+	-MapEditorData:
 
 AFLD.Belarus:
 	Inherits: AFLD
@@ -2082,6 +2404,25 @@ AFLD.Belarus:
 		Description: actor-afld-belarus-description
 	RenderSprites:
 		Image: afld
+	-MapEditorData:
+
+AFLD.Kazakh:
+	Inherits: AFLD
+	Buildable:
+		Prerequisites: dome, ~techlevel.medium, ~structures.kazakh
+		Description: actor-afld-kazakh-description
+	RenderSprites:
+		Image: afld
+	-MapEditorData:
+
+AFLD.China:
+	Inherits: AFLD
+	Buildable:
+		Prerequisites: dome, ~techlevel.medium, ~structures.china
+		Description: actor-afld-china-description
+	RenderSprites:
+		Image: afld
+	-MapEditorData:
 
 POWR:
 	Inherits: ^Building
@@ -2106,7 +2447,7 @@ POWR:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 40000
 	Armor:
@@ -2116,6 +2457,10 @@ POWR:
 	WithBuildingBib:
 	Power:
 		Amount: 100
+		RequiresCondition: !owner.turkey
+	Power@upgrade:
+		Amount: 125
+		RequiresCondition: owner.turkey
 	Targetable:
 		TargetTypes: GroundActor, Structure, C4, DetonateAttack, SpyInfiltrate
 	ScalePowerWithHealth:
@@ -2156,6 +2501,9 @@ POWR:
 		RequiresSelection: true
 	RepairableBuilding:
 		RepairCondition: repairing
+	GrantConditionOnPrerequisite@turkey:
+		Condition: owner.turkey
+		Prerequisites: player.turkey
 
 APWR:
 	Inherits: ^Building
@@ -2165,7 +2513,7 @@ APWR:
 		TargetableOffsets: -355,-1024,0
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 100
+		BuildPaletteOrder: 130
 		Prerequisites: dome, ~techlevel.medium
 		Description: actor-apwr.description
 	Valued:
@@ -2177,6 +2525,7 @@ APWR:
 	Building:
 		Footprint: xxx Xxx
 		Dimensions: 3,2
+		LocalCenterOffset: 0,0,0
 	Selectable:
 		Bounds: 3072, 2048
 		DecorationBounds: 3072, 2901, 0, -426
@@ -2189,6 +2538,10 @@ APWR:
 	WithBuildingBib:
 	Power:
 		Amount: 200
+		RequiresCondition: !owner.turkey
+	Power@upgrade:
+		Amount: 250
+		RequiresCondition: owner.turkey
 	Targetable:
 		TargetTypes: GroundActor, Structure, C4, DetonateAttack, SpyInfiltrate
 	ScalePowerWithHealth:
@@ -2229,6 +2582,9 @@ APWR:
 		RequiresSelection: true
 	RepairableBuilding:
 		RepairCondition: repairing
+	GrantConditionOnPrerequisite@turkey:
+		Condition: owner.turkey
+		Prerequisites: player.turkey
 
 STEK:
 	Inherits: ^ScienceBuilding
@@ -2240,7 +2596,7 @@ STEK:
 		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 150
+		BuildPaletteOrder: 140
 		Prerequisites: weap, dome, ~structures.soviet, ~techlevel.high, ~!structures.russia
 		Description: actor-stek.description
 	Valued:
@@ -2252,7 +2608,7 @@ STEK:
 	Building:
 		Footprint: XxX XxX
 		Dimensions: 3,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 80000
 	Armor:
@@ -2296,7 +2652,13 @@ STEK:
 		Condition: disabled
 	GrantConditionOnPrerequisite@russia:
 		Condition: owner.russia
-		Prerequisites: structures.russia
+		Prerequisites: player.russia
+	InfiltrateForSupportPowerReset:
+		Types: SpyInfiltrate
+		PlayerExperience: 0
+	WithSupportPowerActivationOverlay:
+		RequiresCondition: !build-incomplete
+		Sequence: active2
 
 STEK.Russia:
 	Inherits: STEK
@@ -2305,6 +2667,7 @@ STEK.Russia:
 		Description: actor-stek-russia-description
 	RenderSprites:
 		Image: stek
+	-MapEditorData:
 
 BARR:
 	Inherits: ^Building
@@ -2363,13 +2726,13 @@ BARR:
 	ProvidesPrerequisite:
 		Prerequisite: barracks
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: infantry.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
 		Prerequisite: infantry.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: soviet, russia, unholy
+		Factions: russia
 		Prerequisite: infantry.russia
 	ProvidesPrerequisite@ukraine:
 		Factions: ukraine
@@ -2377,6 +2740,12 @@ BARR:
 	ProvidesPrerequisite@belarus:
 		Factions: belarus
 		Prerequisite: infantry.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: infantry.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: infantry.china
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: infantry.soviet
@@ -2392,13 +2761,19 @@ BARR:
 	ProvidesPrerequisite@belarusianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: infantry.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: infantry.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: infantry.china
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
 		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	WithDeathAnimation:
@@ -2481,9 +2856,13 @@ KENN:
 	ProductionBar:
 		ProductionType: Infantry
 	-SpawnActorsOnSell:
+	-SpawnActorsOnSell@spain:
+	-GrantConditionOnPrerequisite@spain:
 	Power:
 		Amount: -10
 	ProvidesPrerequisite@buildingname:
+	MustBeDestroyed:
+		RequiredForShortGame: false
 
 TENT:
 	Inherits: ^Building
@@ -2497,7 +2876,7 @@ TENT:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 20
-		Prerequisites: ~structures.allies, ~!structures.unholy, ~techlevel.infonly
+		Prerequisites: ~structures.allies, ~!structures.spain, ~!structures.unholy, ~techlevel.infonly
 		Description: actor-tent.description
 	Valued:
 		Cost: 500
@@ -2542,13 +2921,13 @@ TENT:
 	ProvidesPrerequisite@barracks:
 		Prerequisite: barracks
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: infantry.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
 		Prerequisite: infantry.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: allies, england, unholy
+		Factions: england
 		Prerequisite: infantry.england
 	ProvidesPrerequisite@france:
 		Factions: france
@@ -2556,6 +2935,18 @@ TENT:
 	ProvidesPrerequisite@germany:
 		Factions: germany
 		Prerequisite: infantry.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: infantry.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: infantry.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: infantry.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: infantry.turkey
 	ProvidesPrerequisite@alliedstructure:
 		RequiresPrerequisites: structures.allies
 		Prerequisite: infantry.allies
@@ -2571,13 +2962,26 @@ TENT:
 	ProvidesPrerequisite@germanstructure:
 		RequiresPrerequisites: structures.germany
 		Prerequisite: infantry.germany
+	ProvidesPrerequisite@spanishstructure:
+		RequiresPrerequisites: structures.spain
+		Prerequisite: infantry.spain
+	ProvidesPrerequisite@italianstructure:
+		RequiresPrerequisites: structures.italy
+		Prerequisite: infantry.italy
+	ProvidesPrerequisite@greekstructure:
+		RequiresPrerequisites: structures.greece
+		Prerequisite: infantry.greece
+	ProvidesPrerequisite@turkishstructure:
+		RequiresPrerequisites: structures.turkey
+		Prerequisite: infantry.turkey
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
+		Prerequisite: tent
 	InfiltrateForSupportPower:
 		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 	ProximityExternalCondition@barracksheal:
@@ -2595,11 +2999,25 @@ TENT:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
 
+TENT.Spain:
+	Inherits: TENT
+	Buildable:
+		Prerequisites: ~techlevel.infonly, ~structures.spain
+		Description: actor-tent-spain-description
+	Transforms:
+		PauseOnCondition: being-captured || being-demolished || build-incomplete
+		IntoActor: ttrk
+		Offset: 0,1
+		Facing: 384
+	RenderSprites:
+		Image: tent
+	-MapEditorData:
+
 FIX:
 	Inherits: ^Building
 	Buildable:
 		Queue: Building
-		BuildPaletteOrder: 110
+		BuildPaletteOrder: 100
 		Prerequisites: weap, ~techlevel.medium
 		Description: actor-fix.description
 	Valued:
@@ -2633,7 +3051,7 @@ FIX:
 		StartRepairingTextNotification: notification-repairing
 		FinishRepairingNotification: UnitRepaired
 		FinishRepairingTextNotification: notification-unit-repaired
-		PlayerExperience: 5
+		PlayerExperience: 0
 	WithBuildingBib:
 		HasMinibib: true
 	WithResupplyAnimation:
@@ -2648,13 +3066,23 @@ FIX:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	ProximityExternalCondition@AIRCRAFTREPAIR:
+		Condition: airrepair
+		Range: 6c512
+	WithRangeCircle@AIRCRAFTREPAIR:
+		Type: Repair
+		Color: FFD000AA
+		Range: 6c512
+	ProductionCostMultiplier@turkey:
+		Multiplier: 80
+		Prerequisites: player.turkey
 
 SBAG:
 	Inherits: ^Wall
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 10
-		Prerequisites: ~disabled
+		Prerequisites: ~structures.allies, ~techlevel.low
 		Description: actor-sbag.description
 	Valued:
 		Cost: 50
@@ -2679,7 +3107,7 @@ FENC:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 20
-		Prerequisites: ~disabled
+		Prerequisites: ~structures.soviet, ~techlevel.low
 		Description: actor-fenc.description
 	Valued:
 		Cost: 50
@@ -2703,8 +3131,8 @@ BRIK:
 	Inherits: ^Wall
 	Buildable:
 		Queue: Defense
-		BuildPaletteOrder: 20
-		Prerequisites: barracks, ~techlevel.low
+		BuildPaletteOrder: 30
+		Prerequisites: weap, ~techlevel.medium
 		Description: actor-brik.description
 	Valued:
 		Cost: 200
@@ -2800,9 +3228,9 @@ HGAT:
 		Dimensions: 3,1
 	Buildable:
 		Queue: Defense
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 35
 		BuildDuration: 150
-		Prerequisites: barracks, ~techlevel.low
+		Prerequisites: weap, ~techlevel.medium
 		Description: actor-gate.description
 	Valued:
 		Cost: 150
@@ -2833,6 +3261,8 @@ HGAT:
 			russia: sgat
 			ukraine: sgat
 			belarus: sgat
+			kazakh: sgat
+			china: sgat
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
@@ -2948,13 +3378,13 @@ ABAR:
 	ProvidesPrerequisite@barr:
 		Prerequisite: barr
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, unholy
+		Factions: allies, england, france, germany, spain, italy, greece, turkey, unholy
 		Prerequisite: infantry.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
 		Prerequisite: infantry.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: allies, england, unholy
+		Factions: england
 		Prerequisite: infantry.england
 	ProvidesPrerequisite@france:
 		Factions: france
@@ -2962,6 +3392,18 @@ ABAR:
 	ProvidesPrerequisite@germany:
 		Factions: germany
 		Prerequisite: infantry.germany
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: infantry.spain
+	ProvidesPrerequisite@italy:
+		Factions: italy
+		Prerequisite: infantry.italy
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: infantry.greece
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: infantry.turkey
 	ProvidesPrerequisite@alliedstructure:
 		RequiresPrerequisites: structures.allies
 		Prerequisite: infantry.allies
@@ -2977,14 +3419,26 @@ ABAR:
 	ProvidesPrerequisite@germanstructure:
 		RequiresPrerequisites: structures.germany
 		Prerequisite: infantry.germany
+	ProvidesPrerequisite@spanishstructure:
+		RequiresPrerequisites: structures.spain
+		Prerequisite: infantry.spain
+	ProvidesPrerequisite@italianstructure:
+		RequiresPrerequisites: structures.italy
+		Prerequisite: infantry.italy
+	ProvidesPrerequisite@greekstructure:
+		RequiresPrerequisites: structures.greece
+		Prerequisite: infantry.greece
+	ProvidesPrerequisite@turkishstructure:
+		RequiresPrerequisites: structures.turkey
+		Prerequisite: infantry.turkey
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus, unholy
+		Factions: soviet, russia, ukraine, belarus, kazakh, china, unholy
 		Prerequisite: infantry.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
 		Prerequisite: infantry.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: soviet, russia, unholy
+		Factions: russia
 		Prerequisite: infantry.russia
 	ProvidesPrerequisite@ukraine:
 		Factions: ukraine
@@ -2992,6 +3446,12 @@ ABAR:
 	ProvidesPrerequisite@belarus:
 		Factions: belarus
 		Prerequisite: infantry.belarus
+	ProvidesPrerequisite@kazakhstan:
+		Factions: kazakh
+		Prerequisite: infantry.kazakh
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: infantry.china
 	ProvidesPrerequisite@sovietstructure:
 		RequiresPrerequisites: structures.soviet
 		Prerequisite: infantry.soviet
@@ -3007,13 +3467,19 @@ ABAR:
 	ProvidesPrerequisite@belarusianstructure:
 		RequiresPrerequisites: structures.belarus
 		Prerequisite: infantry.belarus
+	ProvidesPrerequisite@kazakhstructure:
+		RequiresPrerequisites: structures.kazakh
+		Prerequisite: infantry.kazakh
+	ProvidesPrerequisite@chinesestructure:
+		RequiresPrerequisites: structures.china
+		Prerequisite: infantry.china
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
 		Proxy: infveterancyactivator
 		Types: SpyInfiltrate
-		PlayerExperience: 10
+		PlayerExperience: 0
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
 
@@ -3025,7 +3491,7 @@ ERCC:
 		Prerequisites: ~techlevel.infonly, ~global-ercc-refinery
 		Description: actor-proc.description
 	Valued:
-		Cost: 1400
+		Cost: 1500
 	Tooltip:
 		Name: actor-proc.name
 	Building:
@@ -3056,7 +3522,7 @@ ERCC:
 	StoresPlayerResources:
 		Capacity: 2000
 	CustomSellValue:
-		Value: 400
+		Value: 500
 	Sellable:
 		RefundPercent: 100
 	FreeActor:
@@ -3065,8 +3531,8 @@ ERCC:
 		Facing: 256
 	InfiltrateForCash:
 		Percentage: 50
-		PlayerExperience: 5
-		PlayerExperiencePercentage: 1
+		PlayerExperience: 0
+		PlayerExperiencePercentage: 0
 		Types: SpyInfiltrate, ThiefInfiltrate
 		InfiltratedNotification: CreditsStolen
 		InfiltratedTextNotification: notification-credits-stolen
@@ -3106,3 +3572,148 @@ ERCC:
 		RequiresSelection: true
 		PipCount: 17
 		FullSequence: pip-yellow
+
+HTUR:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^2x1Shape
+	Inherits@MRJDISABLE: ^WeaponJammable
+	Selectable:
+		Bounds: 2048, 1024
+	HitShape:
+		Type: Rectangle
+			TopLeft: -768,-512
+			BottomRight: 768,512
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 80
+		Prerequisites: atek, ~structures.italy, ~techlevel.high
+		Description: actor-htur.description
+	Valued:
+		Cost: 1650
+	Tooltip:
+		Name: actor-htur.name
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	Health:
+		HP: 80000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	WithBuildingBib:
+		HasMinibib: true
+	Turreted:
+		TurnSpeed: 8
+		InitialFacing: 0
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: !build-incomplete
+		Recoils: false
+	Armament@1:
+		Weapon: 203mm
+		MuzzleSequence: muzzle
+		LocalOffset: 1000,0,60
+	Armament@2:
+		Weapon: 203mm
+		MuzzleSequence: muzzle
+		LocalOffset: 1000,200,60
+		FireDelay: 10
+	Armament@3:
+		Weapon: 203mm
+		MuzzleSequence: muzzle
+		LocalOffset: 1000,-200,60
+		FireDelay: 20
+	AttackTurreted:
+		PauseOnCondition: disabled || build-incomplete || jamdebuff
+	WithMuzzleOverlay:
+	Power:
+		Amount: -80
+	DetectCloaked:
+		Range: 6c0
+		RequiresCondition: !disabled && !jamdebuff
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+
+IBOX:
+	Inherits: PBOX
+	Tooltip:
+		Name: actor-ibox.name
+	Buildable:
+		Prerequisites: ~disabled
+		Description: actor-ibox.description
+	Health:
+		HP: 25000
+	-CustomSellValue:
+	-WithBuildingBib:
+	Cargo:
+		-InitialUnits:
+		-LoadedCondition:
+	GivesExperience:
+		Experience: 600
+	CaptureManager:
+		-BeingCapturedCondition:
+	Demolishable:
+		-Condition:
+	-RepairableBuilding:
+	-Sellable:
+	-WithBuildingRepairDecoration:
+	Power:
+		Amount: 0
+	-DetectCloaked:
+	RenderSprites:
+		Image: ibox
+
+INDP:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisableOnLowPower
+	Inherits@shape: ^3x2Shape
+	Selectable:
+		Bounds: 3072, 2560
+		DecorationBounds: 3072, 2901, 0, 128
+	HitShape:
+		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 1536
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 170
+		Prerequisites: atek, ~structures.turkey, ~techlevel.high
+		Description: actor-indp.description
+		BuildLimit: 1
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-indp.name
+	ProvidesPrerequisite:
+		Prerequisite: indp
+	ProvidesPrerequisite@disabled:
+		Prerequisite: indplowpower
+		RequiresCondition: disabled
+	Building:
+		Footprint: XxX XxX
+		Dimensions: 3,2
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 130000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	WithBuildingBib:
+	Power:
+		Amount: -250
+	WithSpriteBody:
+		PauseOnCondition: lowpower

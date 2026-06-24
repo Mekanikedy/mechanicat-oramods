@@ -95,6 +95,9 @@ C10:
 	WithDeathAnimation:
 		DeathSequencePalette: civilian10
 		DeathPaletteIsPlayerPalette: false
+	DeliversCash:
+		Payload: 10
+		PlayerExperience: 0
 
 C11:
 	Inherits: ^CivInfantry
@@ -106,6 +109,9 @@ TECN:
 		Name: actor-tecn-name
 	Selectable:
 		Class: Technician
+	DeliversCash:
+		Payload: 10
+		PlayerExperience: 0
 	RenderSprites:
 		Image: C1
 
@@ -116,6 +122,9 @@ TECN2:
 		Name: actor-tecn2-name
 	Selectable:
 		Class: Technician
+	DeliversCash:
+		Payload: 10
+		PlayerExperience: 0
 	RenderSprites:
 		Image: C1
 	WithInfantryBody:

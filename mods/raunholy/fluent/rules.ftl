@@ -41,33 +41,24 @@ resource-minerals = Valuable Minerals
 ## Faction
 faction-allies =
     .name = Allies
-    .description = every Allies country in one
-     Special Abilities: 
-        - Air Strike
-        - Can build fake structures
-     Special Units:
-        - Armed Spy
-        - Mobile Radar Jammer
-        - Camo Pillbox
-        - Chrono Tank
-        - Mobile Rig
-        - Phase Transport
-        - Mirage Tank
+    .description = standard Allies force
+     No Special Abilities
+     No Special Units
      No Special Boni
 
 faction-england =
-    .name = England
-    .description = England: Counterintelligence
+    .name = Britain
+    .description = Britain: Counterintelligence
      Special Ability: 
         - Air Strike
      Special Units:
-        - Armed Spy
+        - Armed Spy (replaces Spy)
         - Mobile Radar Jammer
-        - Camo Pillbox
+        - Camo Pillbox (replaces Pillbox)
      Special Boni:
         - veteran Destroyer
         - veteran Gunboat
-        - discount Longbow(-20%)
+        - discount Longbow (-20%)
 
 faction-france =
     .name = France
@@ -77,11 +68,12 @@ faction-france =
      Special Units:
         - Phase Transport
         - Mirage Tank
+        - Saboteur
      Special Boni:
         - veteran Artillery
         - veteran Cruiser
-        - discount Engineer(-20%)
-        - discount MCV(-20%)
+        - discount Engineer (-20%)
+        - discount MCV (-20%)
 
 faction-germany =
     .name = Germany
@@ -92,24 +84,66 @@ faction-germany =
         - Chrono Tank
         - Mobile Rig
      Special Boni:
-        - veteran Light Tank
         - veteran Medium Tank
-        - discount Gun Turret(-25%)
-        - discount AA Gun(-25%)
+        - discount Gun Turret (-25%)
+        - discount AA Gun (-25%)
+
+faction-spain =
+    .name = Spain
+    .description = Spain: Mobility
+     Special Ability: 
+        - Can mobilize Barracks
+     Special Units:
+        - Mobile Gap Generator
+        - Flak Half-track
+     Special Boni:
+        - veteran Rifle Infantry
+        - veteran Jeep
+        - discount Naval Yard (-40%)
+
+faction-italy =
+    .name = Italy
+    .description = Italy: Fortifications
+     Special Ability: 
+        - Instant Pillbox
+     Special Units:
+        - Tank Destroyer
+        - Heavy Turret
+     Special Boni:
+        - veteran Light Tank
+        - discount Artillery (-25%)
+        - discount Gap Generator (-20%)
+
+faction-greece =
+    .name = Greece
+    .description = Greece: Special Ops
+     Special Ability: 
+        - Radar Scan
+     Special Units:
+        - Sniper
+        - Blackhawk
+        - Battle Fortress
+     Special Boni:
+        - 2x experience boost
+        - discount Spy (-25%)
+
+faction-turkey =
+    .name = Turkey
+    .description = Turkey: Mass Production
+     Special Ability: 
+        - Can build Industry Plant
+     Special Units:
+        - Howitzer
+        - Cobra (replaces Longbow)
+     Special Boni:
+        - 1.25x power generation
+        - discount Service Depot (-20%)
 
 faction-soviet =
     .name = Soviet
-    .description = every Soviet country in one
-     Special Abilities:
-        - Parabombs
-        - Air Drop
-        - Supercharge
-     Special Units:
-        - Shock Trooper
-        - Tesla Tank
-        - Demolition Truck
-        - Flame Tank
-        - M.A.D. Tank
+    .description = standard Soviet force
+     No Special Abilities
+     No Special Units
      No Special Boni
 
 faction-russia =
@@ -122,7 +156,7 @@ faction-russia =
         - Shock Trooper
      Special Boni:
         - veteran Heavy Tank
-        - discount Missile Silo(-20%)
+        - discount Missile Silo (-20%)
 
 faction-ukraine =
     .name = Ukraine
@@ -135,42 +169,51 @@ faction-ukraine =
      Special Boni:
         - veteran Submarine
         - veteran Missile Submarine
-        - discount V2 Launcher(-20%)
+        - discount V2 Launcher (-20%)
 
 faction-belarus =
     .name = Belarus
     .description = Belarus: Heavy Armor
-     Special Ability: 
+     Special Ability:
         - Air Drop
-     Special Unit:
+     Special Units:
         - M.A.D. Tank
+        - Heavy APC (replaces APC)
      Special Boni:
         - veteran Hind
-        - discount Mammoth Tank(-15%)
-        - discount Super Tank(-10%)
+        - discount Mammoth Tank (-15%)
+        - discount Super Tank (-10%)
+
+faction-kazakh =
+    .name = Kazakhs
+    .description = Kazakhs: Air Power
+     Special Ability:
+        - extra Spy Plane (with tech center)
+     Special Units:
+        - Antonov Cargo Plane
+        - Nuke Bomber Plane
+        - Anti-Air Tank
+     Special Boni:
+        - discount MiG Attack Plane (-25%)
+
+faction-china =
+    .name = Chinese
+    .description = Chinese: Infantry
+     Special Ability:
+        - extra Paratroopers
+     Special Units:
+        - Tank Hunter
+        - Heavy-Mid Tank (replaces Heavy Tank)
+     Special Boni:
+        - veteran Mobile Flak
+        - veteran Sea Scorpion
+        - discount all combat Infantry(-20%)
 
 faction-unholy =
     .name = Unholy Alliance
     .description = Allies and Soviet both
-     Special Abilities:
-        - Air Strike
-        - Can build fake structures
-        - Parabombs
-        - Air Drop
-        - Supercharge
-     Special Units:
-        - Armed Spy
-        - Mobile Radar Jammer
-        - Camo Pillbox
-        - Chrono Tank
-        - Mobile Rig
-        - Phase Transport
-        - Mirage Tank
-        - Shock Trooper
-        - Tesla Tank
-        - Demolition Truck
-        - Flame Tank
-        - M.A.D. Tank
+     No Special Abilities
+     No Special Units
      No Special Boni
 
 faction-random =
@@ -200,7 +243,7 @@ actor-mig =
     .name = MiG Attack Plane
     .description =
     Fast Ground-Attack Plane.
-    Can attack detected submarines.
+    Can attack enemy submarines.
       Strong vs Buildings and Vehicles
       Weak vs Infantry and Aircraft
 
@@ -222,7 +265,7 @@ actor-heli =
     .name = Longbow
     .description =
     Helicopter gunship with multi-purpose missiles.
-    Can attack enemy aircraft.
+    Can attack enemy aircraft and submarines.
     Can detect submarines for a limited time.
       Strong vs Buildings, Vehicles and Aircraft
       Weak vs Infantry
@@ -230,8 +273,9 @@ actor-heli =
 actor-hind =
     .name = Hind
     .description =
-    Heavy armored helicopter with dual chain guns.
-    Can use depthcharges against submarines.
+    Heavy armored helicopter gunship
+    with dual chain guns.
+    Can attack enemy submarines.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
@@ -241,10 +285,37 @@ actor-mh60 =
     .name = Black Hawk
     .description =
     Helicopter gunship with dual chain guns.
+    Does not appear on enemy radar.
       Strong vs Infantry and Light armor
       Weak vs Tanks and Aircraft
 
 actor-spit-name = Spitfire Attack Bomber
+
+actor-anto =
+    .name = Antonov Cargo Plane
+    .description =
+    Super-heavy cargo lifter plane.
+    Can transport most vehicles
+    or up to twelve Infantry units.
+    Maximum of one can be built.
+      Unarmed
+      Special Ability: Force fire to unload
+
+actor-nebr =
+    .name = Nuke Bomber Plane
+    .description =
+    Fast Bomber Plane
+    armed with a nuclear parabomb.
+    Maximum of one can be built.
+
+actor-cbra =
+    .name = Cobra
+    .description =
+    Fast helicopter gunship with 
+    AG missiles and chaingun.
+      Strong vs Buildings, Vehicles
+      Weak vs Infantry, Aircraft
+      Special Ability: Can detect submarines
 
 ## civilian.yaml
 actor-c10-name = Scientist
@@ -421,6 +492,11 @@ actor-5tnk-husk-name = Husk (Super Tank)
 actor-spit-husk-name = Spitfire Attack Bomber
 actor-rig-husk-name = Husk (Mobile Rig)
 actor-mtnk-husk-name = Husk (Mirage Tank)
+actor-tnkd-husk-name = Husk (Tank Destroyer)
+actor-3t1b-husk-name = Husk (Heavy-Mid Tank)
+actor-anto-husk-name = Antonov
+actor-zsu-husk-name = Husk (Anti-Air Tank)
+actor-cbra-husk-name = Cobra
 
 ## infantry.yaml
 notification-building-infiltrated = Building infiltrated.
@@ -430,6 +506,16 @@ actor-dog =
     .generic-name = Dog
     .description =
     Anti-infantry unit.
+    Can detect spies.
+      Strong vs Infantry
+      Weak vs Vehicles and Aircraft
+
+actor-cdog =
+    .name = Chitzkoi
+    .generic-name = Cyborg Dog
+    .description =
+    Elite anti-infantry unit.
+    Maximum of one can be built.
     Can detect spies.
       Strong vs Infantry
       Weak vs Vehicles and Aircraft
@@ -540,7 +626,8 @@ actor-thf =
     .description =
     Steals enemy credits.
     Hijacks enemy vehicles.
-    Turns invisible for a limited time.
+    Hides when standing still.
+    Runs faster while under fire.
       Unarmed
 
 actor-shok =
@@ -550,6 +637,21 @@ actor-shok =
     Can empower Tesla coils with charge.
       Strong vs Infantry and Vehicles
       Weak vs Aircraft
+
+actor-snip =
+    .name = Sniper
+    .description = Elite sniper infantry unit.
+    Can cloak while stationary.
+      Strong vs Infantry
+      Weak vs Vehicles, Aircraft
+
+actor-sab =
+    .name = Saboteur
+    .description =
+    Infiltrates and damages
+    enemy structures.
+      Unarmed
+      Special Ability: Turns invisible
 
 actor-zombie =
     .name = Zombie
@@ -674,10 +776,11 @@ actor-pt =
       Weak vs Ground units and Aircraft
 
 actor-typh =
-    .name = SAM Submarine
+    .name = Nuke Submarine
     .description =
-    Submerged anti-air unit.
-    Can attack enemy aircraft.
+    Submerged unit armed with 
+    nuclear weapons.
+    Maximum of one can be built.
     Can detect other submarines.
       Strong vs Aircraft
       Weak vs Naval units
@@ -692,6 +795,15 @@ actor-seas =
     Can attack enemy aircraft.
       Strong vs Infantry, Aircraft
       Weak vs Tanks
+
+actor-dred =
+    .name = Dreadnought
+    .description =
+    Slow ship armed with anti-air rockets.
+    Self-repairs slowly while out of combat.
+    Can attack enemy aircraft.
+      Strong vs Aircraft
+      Weak vs everything else
 
 ## structures.yaml
 notification-construction-complete = Construction complete.
@@ -800,12 +912,24 @@ actor-dome =
     .airstrikepower-name = Air Strike
     .airstrikepower-description = Deploy an aerial napalm strike.
     Burns buildings and infantry along a line.
+    .spawnactorpower-name = Radar Scan
+    .spawnactorpower-description = Reveals the selected area
+    for a short time.
+
+    Can detect cloaked units
+    and land mines.
 
 actor-dome-england-description =
     Provides an overview of
     the battlefield.
     Requires power to operate.
       Special Ability: Air Strike
+
+actor-dome-greece-description =
+    Provides an overview of
+    the battlefield.
+    Requires power to operate.
+      Special Ability: Radar Scan
 
 actor-pbox =
     .name = Pillbox
@@ -869,6 +993,14 @@ actor-fact =
     .name = Construction Yard
     .description =
     Produces structures.
+    .spawnactorpower-instantpillbox-name = Instant Pillbox
+    .spawnactorpower-instantpillbox-description = Summons a Lower Pillbox at the
+    selected location of clear terrain.
+
+    The Lower Pillbox has lesser durability
+    is not manned, and cannot detect stealth.
+    Also it doesnt use power, cannot be sold 
+    or repaired except by Engineers.
 
 actor-proc =
     .name = Ore Refinery
@@ -893,10 +1025,11 @@ actor-afld =
     Produces and reloads aircraft.
       Special Ability: Spy Plane
       Special Ability: Paratroopers
-      Special Ability: Parabombs
-      Special Ability: Air Drop
     .airstrikepower-spyplane-name = Spy Plane
     .airstrikepower-spyplane-description = Reveals an area of the map.
+
+    Can detect cloaked units
+    and land mines.
     .paratrooperspower-paratroopers-name = Paratroopers
     .paratrooperspower-paratroopers-description = A Badger drops a squad of infantry
     at the selected location.
@@ -923,6 +1056,16 @@ actor-afld-belarus-description =
       Special Ability: Spy Plane
       Special Ability: Paratroopers
       Special Ability: Air Drop
+
+actor-afld-kazakh-description =
+    Produces and reloads aircraft.
+      Special Ability: Spy Plane (x2)
+      Special Ability: Paratroopers
+
+actor-afld-china-description =
+    Produces and reloads aircraft.
+      Special Ability: Spy Plane
+      Special Ability: Paratroopers (x2)
 
 actor-powr =
     .name = Power Plant
@@ -971,7 +1114,11 @@ actor-tent =
 actor-fix =
     .name = Service Depot
     .description =
-    Repairs vehicles for credits.
+    Repairs vehicles and aircraft
+    for credits.
+
+    Enables self-repairs on landed
+    aircraft nearby within range.
 
 actor-sbag =
     .name = Sandbag Wall
@@ -1001,6 +1148,35 @@ actor-abar =
     .name = Unholy Barracks
     .description =
     Trains infantry units.
+
+actor-tent-spain-description =
+    Trains and heals infantry.
+    Can be packed up and moved.
+
+actor-htur =
+    .name = Heavy Turret
+    .description =
+    Artillery base defense.
+    Requires power to operate.
+      Strong vs Ground units
+      Weak vs Aircraft
+
+actor-ibox =
+    .name = Lower Pillbox
+    .description =
+    Static defense with a fireport for
+    a garrisoned soldier.
+    Cannot detect cloaked units.
+      Unarmed
+
+actor-indp =
+    .name = Industry Plant
+    .description =
+    Vehicles, Aircraft and Ships
+    are produced:
+    15% faster and cost 10% less.
+    Maximum of one can be built.
+    Requires power to operate.
 
 actor-cycl-name = Chain-Link Barrier
 actor-barb-name = Barbed-Wire Fence
@@ -1119,8 +1295,15 @@ actor-mrj =
     .name = Mobile Radar Jammer
     .description =
     Jams nearby enemy Radar Domes
-    and deflects incoming missiles.
+    and deflects incoming missiles
+    while not using a jammer beam.
+
+    Can use a beam against Defenses
+    reducing the sight, rate of fire
+    and prevents them using detection.
+    Does not appear on enemy radar.
       Unarmed
+      Special Ability: Jammer Beam
 
 actor-ttnk =
     .name = Tesla Tank
@@ -1161,7 +1344,7 @@ actor-qtnk =
     .description =
     Deals seismic damage to nearby vehicles
     and structures. Slows affected vehicles.
-    Affects friends, neutral and enemies.
+    Affects friendly, neutral and enemies.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
 
@@ -1208,6 +1391,30 @@ actor-ftnk =
       Strong vs Infantry and Buildings
       Weak vs Vehicles and Aircraft
 
+actor-ahtk =
+    .name = Flak Half-track
+    .description =
+    Half-tracked vehicle
+    armed with anti-air cannons.
+    Can carry two infantry units.
+      Strong vs Infantry and Aircraft
+      Weak vs Vehicles
+
+actor-tnkd =
+    .name = Tank Destroyer
+    .generic-name = Tank
+    .description =
+    Slow tank; good for tank hunting.
+      Strong vs Heavy armor
+      Weak vs Infantry and Aircraft
+
+actor-howi =
+    .name = Howitzer
+    .description =
+    Extreme long-range artillery, with cruiser shells.
+      Strong vs Buildings and Ground units
+      Weak vs Naval units and Aircraft
+
 actor-mtnk =
     .disguisetooltip-default-name = Mirage Tank
     .disguisetooltip-default-generic-name = Tank
@@ -1251,11 +1458,78 @@ actor-mtnk =
     .disguisetooltip-mgg-generic-name = Vehicle
     .disguisetooltip-rig-name = Mobile Rig
     .disguisetooltip-rig-generic-name = Vehicle
+    .disguisetooltip-ttrk-name = Mobile Barracks
+    .disguisetooltip-ttrk-generic-name = Vehicle
+    .disguisetooltip-ahtk-name = Flak Half-track
+    .disguisetooltip-ahtk-generic-name = Vehicle
+    .disguisetooltip-tnkd-name = Tank Destroyer
+    .disguisetooltip-tnkd-generic-name = Tank
+    .disguisetooltip-hapc-name = Heavy APC
+    .disguisetooltip-hapc-generic-name = Vehicle
+    .disguisetooltip-3t1b-name = Heavy-Mid Tank
+    .disguisetooltip-3t1b-generic-name = Tank
+    .disguisetooltip-armc-name = Tank Hunter
+    .disguisetooltip-armc-generic-name = Vehicle
+    .disguisetooltip-zsu-name = Anti-Air Tank
+    .disguisetooltip-zsu-generic-name = Tank
+    .disguisetooltip-bfrt-name = Battle Fortress
+    .disguisetooltip-bfrt-generic-name = Vehicle
     .description =
     Advanced tank able to disguise
     itself as other Vehicles.
       Strong vs Light armor and Buildings
       Weak vs Tanks and Aircraft
+
+actor-ttrk =
+    .name = Mobile Barracks
+    .description =
+    Deploys into a Allies Barracks.
+      Unarmed
+
+actor-hapc =
+    .name = Heavy APC
+    .description =
+    Very tough infantry transport.
+    Can move through mines safely.
+      Strong vs Infantry and Light armor
+      Weak vs Tanks and Aircraft
+
+actor-3t1b =
+    .name = Heavy-Mid Tank
+    .generic-name = Tank
+    .description =
+    Soviet Main Battle Tank, older model.
+      Strong vs Vehicles
+      Weak vs Infantry and Aircraft
+
+actor-armc =
+    .name = Tank Hunter
+    .generic-name = Vehicle
+    .description =
+    Fast moving armored car 
+    with anti-tank rockets.
+      Strong vs Vehicles
+      Weak vs Infantry and Aircraft
+
+actor-zsu =
+    .name = Anti-Air Tank
+    .generic-name = Tank
+    .description =
+    Heavy anti-air vehicle
+    armed with quad cannon.
+      Strong vs Infantry and Aircraft
+      Weak vs Vehicles
+
+actor-batf =
+    .name = Battle Fortress
+    .description =
+    Super-heavy infantry transport with machinegun
+    and concrete armor. Can carry up to ten Infantry.
+    Can crush concrete walls, most vehicles and husks.
+    Maximum of one can be built.
+      Strong vs Infantry and Light armor
+      Weak vs Tanks and Aircraft
+      Special Ability: turn on Rocket battery
 
 ## Civilian Tech
 actor-hosp =
@@ -1295,6 +1569,7 @@ actor-powerproxy-sonarpulse =
     .description =
     Reveals all submarines in the vicinity for a
     short time.
+
     Can detect sea mines.
 
 actor-powerproxy-paratroopers =

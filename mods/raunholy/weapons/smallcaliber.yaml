@@ -15,6 +15,10 @@
 	Warhead@2Eff: CreateEffect
 		Explosions: small_explosion_air
 		ValidTargets: Air, Ground, Water, Trees
+		ImpactActors: false
+		ImpactSounds: flakhit1.aud, flakhit2.aud, flakhit3.aud
+		ImpactSoundChance: 100
+		Inaccuracy: 171
 
 ZSU-23:
 	Inherits: ^AACannon
@@ -395,3 +399,100 @@ Vulcan.TD:
 			Light: 35
 			Heavy: 35
 			Concrete: 35
+
+TwinCannon-AG:
+	ReloadDelay: 10
+	Range: 5c0
+	Report: gun20.aud
+	Burst: 2
+	BurstDelays: 0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: InstantHit
+		Blockable: true
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor, GroundActor, WaterActor
+		Spread: 128
+		Damage: 1000
+		Versus:
+			None: 30
+			Wood: 25
+			Light: 75
+			Heavy: 25
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: flak_explosion_ground
+		ValidTargets: Ground, GroundActor, Air, AirborneActor, WaterActor, Trees
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_splash
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge
+
+TwinCannon-AA:
+	Inherits: TwinCannon-AG
+	Range: 7c0
+	ValidTargets: AirborneActor
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor
+		Damage: 1250
+		Versus:
+			Light: 100
+			Heavy: 50
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ValidTargets: Air, Ground, Water, Trees
+		ImpactActors: false
+		ImpactSounds: flakhit1.aud, flakhit2.aud, flakhit3.aud
+		ImpactSoundChance: 100
+		Inaccuracy: 171
+	-Warhead@3EffWater:
+
+SniperRifle:
+	Inherits: ^SnipeWeapon
+	ReloadDelay: 70
+	Range: 10c0
+	Report: snipe.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 14000
+
+QuadCannon-AG:
+	Inherits: TwinCannon-AG
+	ReloadDelay: 18
+	Burst: 4
+	BurstDelays: 3
+	Report: shilka.aud
+
+QuadCannon-AA:
+	Inherits: QuadCannon-AG
+	Range: 7c0
+	ValidTargets: AirborneActor
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor
+		Damage: 1250
+		Versus:
+			Light: 100
+			Heavy: 50
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ValidTargets: Air, Ground, Water, Trees
+		ImpactActors: false
+		ImpactSounds: flakhit1.aud, flakhit2.aud, flakhit3.aud
+		ImpactSoundChance: 100
+		Inaccuracy: 171
+	-Warhead@3EffWater:
+
+ChainGun.Cobra:
+	Inherits: ^HeavyMG
+	ReloadDelay: 7
+	Range: 5c0
+	MinRange: 1c256
+	Report: gun5.aud
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			None: 144

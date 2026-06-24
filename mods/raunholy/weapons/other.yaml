@@ -27,7 +27,7 @@ FireballLauncher:
 	Burst: 2
 	BurstDelays: 20
 	Range: 6c0
-	Report: flamethrower2.aud
+	Report: firetrt1.aud
 	Projectile: Bullet
 		Speed: 250
 		TrailImage: fb2
@@ -355,3 +355,49 @@ Napalm.TD:
 TankFlamer:
 	Inherits: Flamer
 	Burst: 7
+
+CyberdogJaw:
+	Inherits: DogJaw
+	Range: 5c512
+	Report: cdog-attack1.aud
+
+JammerBeam:
+	Range: 5c0
+	ReloadDelay: 6
+	ValidTargets: Defense
+	TargetActorCenter: true
+	Report: gaploop1.aud, gaploop2.aud, gaploop3.aud
+	Projectile: LaserZap
+		Width: 86
+		Color: 00FF0070
+		SecondaryBeam: true
+		SecondaryBeamWidth: 98
+		SecondaryBeamColor: FF000035
+	Warhead@Jamdebuff: GrantExternalCondition
+		Range: 0c511
+		Duration: 11
+		Condition: jamdebuff
+		ValidTargets: WeaponJammable
+		ValidRelationships: Neutral, Enemy
+	Warhead@Flash: FlashTargetsInRadius
+		Radius: 1065
+		ActorFlashOverlayColor: 333333
+		ValidRelationships: Neutral, Enemy
+		ValidTargets: Defense
+
+DropDummy:
+	ValidTargets: Ground
+	InvalidTargets: Infantry, Ship, Tank, Structure, WaterStructure, Air, Wall, Husk, Tree, Creep, Water, Underwater, GroundActor, WaterActor
+	ReloadDelay: 8
+	Range: 4c938
+	Projectile: Bullet
+		Speed: 200
+	Warhead: SpreadDamage
+		Spread: 56
+		Damage: 1
+		Versus:
+			None: 0
+			Light: 0
+			Heavy: 0
+			Wood: 0
+			Concrete: 0

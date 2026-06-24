@@ -21,7 +21,7 @@ FPWR:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 40000
 	Armor:
@@ -71,7 +71,7 @@ SYRF:
 	Selectable:
 		Bounds: 3072, 2048
 	Buildable:
-		BuildPaletteOrder: 890
+		BuildPaletteOrder: 900
 		Queue: Defense
 		Prerequisites: anypower, proc, ~structures.france, ~techlevel.low
 		Description: actor-syrf.description
@@ -117,7 +117,7 @@ SPEF:
 	Targetable:
 		TargetTypes: WaterActor, Structure, WaterStructure
 	Buildable:
-		BuildPaletteOrder: 890
+		BuildPaletteOrder: 910
 		Queue: Defense
 		Prerequisites: anypower, proc, ~structures.unholy, ~techlevel.low
 		Description: actor-spef.description
@@ -160,7 +160,7 @@ WEAF:
 	Selectable:
 		Bounds: 3072, 2048
 	Buildable:
-		BuildPaletteOrder: 920
+		BuildPaletteOrder: 930
 		Prerequisites: anypower, proc, ~structures.france, ~techlevel.medium
 		Queue: Defense
 		Description: actor-weaf.description
@@ -207,7 +207,7 @@ DOMF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Buildable:
-		BuildPaletteOrder: 930
+		BuildPaletteOrder: 940
 		Queue: Defense
 		Prerequisites: anypower, proc, ~structures.france, ~techlevel.medium
 		Description: actor-domf.description
@@ -215,7 +215,7 @@ DOMF:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	WithBuildingBib:
 		HasMinibib: true
 	RenderSprites:
@@ -233,7 +233,7 @@ FIXF:
 		Bounds: 2901, 1450, 0, 128
 		DecorationBounds: 3072, 2048
 	Buildable:
-		BuildPaletteOrder: 940
+		BuildPaletteOrder: 960
 		Queue: Defense
 		Prerequisites: weap, ~structures.france, ~techlevel.medium
 		Description: actor-fixf.description
@@ -281,6 +281,7 @@ FAPW:
 	Building:
 		Footprint: xxx Xxx
 		Dimensions: 3,2
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 70000
 	Armor:
@@ -307,7 +308,7 @@ ATEF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Buildable:
-		BuildPaletteOrder: 970
+		BuildPaletteOrder: 960
 		Queue: Defense
 		Prerequisites: weap, dome, ~structures.france, ~techlevel.high
 		Description: actor-atef.description
@@ -315,7 +316,7 @@ ATEF:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-256,0
+		LocalCenterOffset: 0,0,0
 	WithBuildingBib:
 	RenderSprites:
 		Image: ATEK
@@ -358,8 +359,6 @@ PDOF:
 		HP: 100000
 	Armor:
 		Type: Wood
-	FireWarheadsOnDeath:
-		DamageThreshold: 50
 
 MSLF:
 	Inherits: ^FakeBuilding
@@ -374,7 +373,7 @@ MSLF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Buildable:
-		BuildPaletteOrder: 990
+		BuildPaletteOrder: 1000
 		Queue: Defense
 		Prerequisites: techcenter, ~structures.france, ~techlevel.unrestricted
 		BuildLimit: 1
@@ -391,8 +390,6 @@ MSLF:
 		HP: 100000
 	Armor:
 		Type: Wood
-	FireWarheadsOnDeath:
-		DamageThreshold: 50
 	Cloak:
 		InitialDelay: 125
 		CloakDelay: 200
@@ -428,10 +425,16 @@ FACF:
 			england: afact
 			france: afact
 			germany: afact
+			spain: afact
+			italy: afact
+			greece: afact
+			turkey: afact
 			soviet: sfact
 			russia: sfact
 			ukraine: sfact
 			belarus: sfact
+			kazakh: sfact
+			china: sfact
 	Valued:
 		Cost: 500
 	Health:
@@ -460,7 +463,7 @@ BARF:
 	Selectable:
 		Bounds: 2048, 2048
 	Buildable:
-		BuildPaletteOrder: 885
+		BuildPaletteOrder: 890
 		Queue: Defense
 		Prerequisites: ~structures.unholy, ~techlevel.infonly
 		Description: actor-barf.description
@@ -493,7 +496,7 @@ STEF:
 	HitShape:
 		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
 	Buildable:
-		BuildPaletteOrder: 975
+		BuildPaletteOrder: 970
 		Queue: Defense
 		Prerequisites: weap, dome, ~structures.unholy, ~techlevel.high
 		Description: actor-stef.description
@@ -532,7 +535,7 @@ IROF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Buildable:
-		BuildPaletteOrder: 985
+		BuildPaletteOrder: 990
 		Queue: Defense
 		Prerequisites: stek, ~structures.unholy, ~techlevel.unrestricted
 		BuildLimit: 1
@@ -551,5 +554,132 @@ IROF:
 		HP: 100000
 	Armor:
 		Type: Wood
-	FireWarheadsOnDeath:
-		DamageThreshold: 50
+
+PROF:
+	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
+	Selectable:
+		Bounds: 3072, 2133, 0, 170
+		DecorationBounds: 3072, 2986, 0, -85
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 598
+	HitShape@TOP:
+		TargetableOffsets: 1680,0,0
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, -512
+	HitShape@BOTTOMLEFT:
+		TargetableOffsets: -1260,-1024,0
+		Type: Rectangle
+			TopLeft: -1536, 598
+			BottomRight: -512, 1280
+	Buildable:
+		BuildPaletteOrder: 920
+		Queue: Defense
+		Prerequisites: ~structures.france, ~techlevel.infonly, ~!global-ercc-refinery
+		Description: Looks like a Ore Refinery.
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Ore Refinery
+		GenericName: Ore Refinery
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Building:
+		Footprint: _X_ xxx X== ===
+		Dimensions: 3,4
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 90000
+	Armor:
+		Type: Wood
+	WithBuildingBib:
+	WithIdleOverlay@TOP:
+		RequiresCondition: !build-incomplete
+		Sequence: idle-top
+	RenderSprites:
+		Image: PROC
+	Valued:
+		Cost: 300
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ThiefInfiltrate, SpyInfiltrate
+	InfiltrateForDecoration:
+		Types: SpyInfiltrate, ThiefInfiltrate
+		Position: Top
+		Margin: 0, 4
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 17
+	AmmoPool:
+		Ammo: 0
+
+FRCC:
+	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
+	Selectable:
+		Bounds: 3072, 1920, 0, -170
+		DecorationBounds: 3072, 3200, 42, -170
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 598
+	HitShape@TOP:
+		TargetableOffsets: 1680,0,0
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, -512
+	HitShape@BOTTOMLEFT:
+		TargetableOffsets: -1260,-1024,0
+		Type: Rectangle
+			TopLeft: -1536, 598
+			BottomRight: -512, 1280
+	Buildable:
+		BuildPaletteOrder: 920
+		Queue: Defense
+		Prerequisites: ~structures.france, ~techlevel.infonly, ~global-ercc-refinery
+		Description: Looks like a Ore Refinery.
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Ore Refinery
+		GenericName: Ore Refinery
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Building:
+		Footprint: =xx x++ ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 90000
+	Armor:
+		Type: Wood
+	WithBuildingBib:
+	WithIdleOverlay@TOP:
+		RequiresCondition: !build-incomplete
+		Sequence: idle-top
+	RenderSprites:
+		Image: ERCC
+	Valued:
+		Cost: 300
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ThiefInfiltrate, SpyInfiltrate
+	InfiltrateForDecoration:
+		Types: SpyInfiltrate, ThiefInfiltrate
+		Position: Top
+		Margin: 0, 4
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 17
+		FullSequence: pip-yellow
+	AmmoPool:
+		Ammo: 0

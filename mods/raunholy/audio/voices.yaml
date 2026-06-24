@@ -4,11 +4,17 @@ GenericVoice:
 		england: .v01,.v03
 		france: .v01,.v03
 		germany: .v01,.v03
+		spain: .v01,.v03
+		italy: .v01,.v03
+		greece: .v01,.v03
+		turkey: .v01,.v03
 		soviet: .r01,.r03
 		russia: .r01,.r03
 		ukraine: .r01,.r03
 		belarus: .r01,.r03
-		unholy: .v01,.r01
+		kazakh: .r01,.r03
+		china: .r01,.r03
+		unholy: .v01,.v03,.r01,.r03
 	Voices:
 		Select: await1,ready,report1,yessir1
 		Action: ackno,affirm1,noprob,overout,ritaway,roger,ugotit
@@ -23,11 +29,17 @@ VehicleVoice:
 		england: .v00,.v02
 		france: .v00,.v02
 		germany: .v00,.v02
+		spain: .v00,.v02
+		italy: .v00,.v02
+		greece: .v00,.v02
+		turkey: .v00,.v02
 		soviet: .r00,.r02
 		russia: .r00,.r02
 		ukraine: .r00,.r02
 		belarus: .r00,.r02
-		unholy: .v00,.r00
+		kazakh: .r00,.r02
+		china: .r00,.r02
+		unholy: .v00,.v02,.r00,.r02
 	Voices:
 		Select: vehic1,yessir1,report1,await1
 		Action: ackno,affirm1
@@ -163,3 +175,14 @@ CyborgVoice:
 		Move: volkmova,volkmovb,volkmovc
 		Action: volkata,volkatb,volkatc
 		Build: volkselb
+
+CyberdogVoice:
+	Voices:
+		Select: cdog-select1
+		Move: cdog-action1
+		Attack: cdog-attack1
+		Action: cdog-action1
+		Die: cdog-die2,cdog-die1
+		Burned: cdog-die3
+		Zapped: cdog-die3
+		Poisoned: cdog-die2

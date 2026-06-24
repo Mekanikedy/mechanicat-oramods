@@ -233,7 +233,7 @@ GrenadeLauncher:
 	ReloadDelay: 45
 	Range: 5c512
 	ValidTargets: Ground, GroundActor
-	InvalidTargets: Water, WaterActor
+	InvalidTargets: Water, WaterActor, WaterStructure
 	Report: gun20.aud
 	Projectile: Bullet
 		Speed: 136
@@ -311,3 +311,66 @@ HEAT:
 	Warhead@3Eff: CreateEffect
 		Explosions: small_napalm
 		ImpactSounds: firebl3.aud
+
+SABOT:
+	Inherits: ^Cannon
+	ReloadDelay: 95
+	Range: 8c256
+	Report: tnkdfire.aud
+	Projectile: Bullet
+		Speed: 853
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 9000
+		Versus:
+			Heavy: 115
+
+203mm:
+	Inherits: ^Artillery
+	ReloadDelay: 120
+	Range: 12c0
+	MinRange: 2c512
+	Report: hvygun10.aud
+	Projectile: Bullet
+		Speed: 244
+		Blockable: false
+		LaunchAngle: 50
+		Inaccuracy: 1c382
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 626
+		Damage: 18000
+		Versus:
+			None: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+
+6Inch:
+	Inherits: ^Artillery
+	MinRange: 3c0
+	ReloadDelay: 125
+	Range: 20c0
+	Report: turret1.aud
+	TargetActorCenter: true
+	Projectile: Bullet
+		Inaccuracy: 1c938
+		ContrailLength: 30
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 2500
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			None: 60
+			Wood: 35
+			Light: 60
+			Heavy: 25
+			Concrete: 100
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+
+105mm1:
+	Inherits: 105mm
+	ReloadDelay: 50
+	-Burst:

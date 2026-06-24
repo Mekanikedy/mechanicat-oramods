@@ -84,6 +84,8 @@ explosion:
 			SNOW: corpse1.sno
 		ZOffset: -512
 		Tick: 1600
+	mini_nuke:
+		Filename: miniatomsfx.shp
 
 burn-l:
 	Defaults:
@@ -180,6 +182,8 @@ pips:
 	pip-redstar:
 		Filename: pip-redstar.shp
 		Offset: -2, 0
+	tag-jammed:
+		Filename: tag-jammed.shp
 
 v2:
 	idle:
@@ -611,8 +615,8 @@ wcrate:
 	land:
 		Start: 1
 	water:
-		Filename: wwcrate.shp
-		Length: *
+		Start: 2
+		Length: 4
 		Tick: 500
 
 xcratea:
@@ -895,6 +899,10 @@ icon:
 		Filename: bombicon.shp
 	scharge:
 		Filename: schargeicon.shp
+	instabox:
+		Filename: iboxicon.shp
+	radarscan:
+		Filename: scanicon.shp
 
 quee:
 	Defaults:
@@ -1164,3 +1172,26 @@ nosignal:
 		Length: *
 		Tick: 160
 		ZOffset: 2047
+
+parabombl:
+	Defaults:
+		Filename: parabombl.shp
+	open:
+		Length: 8
+		ZOffset: 1023
+	idle:
+		Start: 8
+		Length: 5
+		ZOffset: 1023
+
+dredmis:
+	idle:
+		Filename: dredmis.shp
+		Facings: 32
+		ZOffset: 1023
+
+patriot:
+	idle:
+		Filename: patriot.shp
+		Facings: 32
+		ZOffset: 1023

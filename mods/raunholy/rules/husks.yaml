@@ -37,6 +37,19 @@
 	RenderSprites:
 		Image: 3tnk.destroyed
 
+3T1B.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: actor-3t1b-husk-name
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3t1b
+	InfiltrateForTransform:
+		IntoActor: 3t1b
+	RenderSprites:
+		Image: 3t1b.destroyed
+
 4TNK.Husk:
 	Inherits: ^Husk
 	Husk:
@@ -565,3 +578,112 @@ RIG.Husk:
 		IntoActor: rig
 	RenderSprites:
 		Image: rig.destroyed
+
+TNKD.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: actor-tnkd-husk-name
+	TransformOnCapture:
+		IntoActor: tnkd
+	InfiltrateForTransform:
+		IntoActor: tnkd
+	RenderSprites:
+		Image: tnkd.destroyed
+
+ANTO.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: actor-anto-husk-name
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 149
+	LeavesTrails@0:
+		Offsets: -432,560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	LeavesTrails@1:
+		Offsets: -432,-560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	RenderSprites:
+		Image: anto
+
+NEBR.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: actor-nebr-husk-name
+	Contrail@1:
+		Offset: -598,-683,0
+		StartColorUsePlayerColor: false
+	Contrail@2:
+		Offset: -598,683,0
+		StartColorUsePlayerColor: false
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	LeavesTrails:
+		Offsets: -853,0,171
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: nebr
+
+ZSU.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: actor-zsu-husk-name
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: zsu
+	InfiltrateForTransform:
+		IntoActor: zsu
+	RenderSprites:
+		Image: zsu.destroyed
+
+CBRA.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: actor-cbra-husk-name
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 186
+	WithIdleOverlay:
+		Offset: 26,0,85
+		Sequence: rotor
+	LeavesTrails:
+		Offsets: -427,0,0
+		Image: smokey
+		MovingInterval: 3
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		TrailWhileStationary: True
+		StationaryInterval: 3
+	RevealsShroud:
+		MinRange: 10c0
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: cbra

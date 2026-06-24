@@ -400,9 +400,12 @@ flags:
 		RandomAllies: 226, 225, 30, 15
 		RandomCountry: 226, 241, 30, 15
 		spectator: 226, 241, 30, 15
+		italy: 195, 129, 30, 15
 		belarus: 195, 145, 30, 15
+		kazakh: 195, 161, 30, 15
 		unholy: 195, 177, 30, 15
 		Random: 195, 193, 30, 15
+		china: 164, 177, 30, 15
 
 music:
 	Inherits: ^Glyphs

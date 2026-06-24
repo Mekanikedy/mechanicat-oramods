@@ -30,6 +30,7 @@ SS:
 		Weapon: TorpTube
 		LocalOffset: 0,-171,0, 0,171,0
 		FireDelay: 2
+		Turret:
 	Armament@SECONDARY:
 		Name: secondary
 		Turret: secondary
@@ -45,9 +46,6 @@ SS:
 		TurnSpeed: 20
 		Offset: 648,0,0
 	WithMuzzleOverlay:
-	WithSpriteTurret:
-		Turret: secondary
-		RequiresCondition: !underwater
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: WaterActor, Underwater
 		InvalidTargets: NoAutoTarget, Structure
@@ -105,7 +103,7 @@ MSUB:
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
-		BuildPaletteOrder: 60
+		BuildPaletteOrder: 50
 		Prerequisites: ~spen, dome, ~techlevel.medium, ~!player.ukraine
 		Description: actor-msub.description
 	Valued:
@@ -120,7 +118,7 @@ MSUB:
 		Type: Light
 	Mobile:
 		TurnSpeed: 12
-		Speed: 44
+		Speed: 48
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 8c0
@@ -326,7 +324,7 @@ LST:
 		Prerequisites: ~techlevel.low
 		Description: actor-lst.description
 	Valued:
-		Cost: 600
+		Cost: 800
 	Tooltip:
 		Name: actor-lst.name
 	UpdatesPlayerStatistics:
@@ -348,7 +346,7 @@ LST:
 	WithLandingCraftAnimation:
 		OpenTerrainTypes: Clear, Rough, Road, Ore, Gems, Beach, WaterFord
 	Cargo:
-		Types: Infantry, Vehicle
+		Types: Infantry, Vehicle, LargeVehicle
 		MaxWeight: 8
 		PassengerFacing: 0
 		LoadingCondition: notmobile
@@ -453,15 +451,16 @@ PT.England:
 
 TYPH:
 	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 70
 		Prerequisites: ~spen, stek, ~techlevel.high
 		Description: actor-typh.description
+		BuildLimit: 1
 	Valued:
-		Cost: 2100
+		Cost: 2350
 	Tooltip:
 		Name: actor-typh.name
 	UpdatesPlayerStatistics:
@@ -471,7 +470,7 @@ TYPH:
 	Armor:
 		Type: Light
 	Mobile:
-		TurnSpeed: 12
+		TurnSpeed: 8
 		Speed: 56
 	RevealsShroud:
 		MinRange: 5c0
@@ -480,28 +479,26 @@ TYPH:
 	RevealsShroud@GAPGEN:
 		Range: 5c0
 	Cloak:
-		CloakDelay: 100
+		CloakDelay: 102
 	Armament@PRIMARY:
-		Turret: primary
-		Weapon: SubMissileAA
-		LocalOffset: 0,-171,0, 0,171,0
+		Turret:
+		Weapon: TorpTubeNuke
+		LocalOffset: 768,-171,0, 768,171,0
 		FireDelay: 2
+		PauseOnCondition: !ammo
 	Armament@SECONDARY:
 		Name: secondary
 		Turret: secondary
-		Weapon: SubMissileAA
+		Weapon: SubMissileNuke
 		LocalOffset: 0,-171,0, 0,171,0
 		FireDelay: 2
-	Turreted@1:
-		Turret: primary
-		TurnSpeed: 28
-		Offset: 469,0,0
-	Turreted@2:
+		PauseOnCondition: !ammo
+	Turreted:
 		Turret: secondary
 		TurnSpeed: 28
-		Offset: 768,0,0
-	AttackTurreted:
-		Turrets: primary, secondary
+		Offset: 469,0,0
+	AttackFrontal:
+		FacingTolerance: 0
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: Defend
@@ -514,6 +511,21 @@ TYPH:
 		EmptyWeapon: UnitExplodeSubmarine
 	Selectable:
 		DecorationBounds: 1877, 1877
+	AmmoPool:
+		Ammo: 4
+		InitialAmmo: 2
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 515
+		Count: 1
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		FullSequence: pip-yellow
+	FireWarheadsOnDeath:
+		Weapon: TorpTubeNuke
+		EmptyWeapon: UnitExplodeShip
 
 SEAS:
 	Inherits: ^Ship
@@ -522,7 +534,7 @@ SEAS:
 	Buildable:
 		Queue: Ship
 		BuildPaletteOrder: 20
-		Prerequisites: ~vehicles.soviet, ~techlevel.low
+		Prerequisites: ~spen, ~techlevel.low, ~!player.china
 		Description: actor-seas.description
 	Valued:
 		Cost: 600
@@ -616,3 +628,76 @@ SEAS:
 		Position: TopLeft
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
+
+SEAS.China:
+	Inherits: SEAS
+	Buildable:
+		Prerequisites: ~spen, ~player.china, ~techlevel.low
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
+	UpdatesPlayerStatistics:
+		OverrideActor: seas
+	RenderSprites:
+		Image: seas
+	-MapEditorData:
+
+DRED:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 60
+		Prerequisites: ~spen, stek, ~techlevel.high
+		Description: actor-dred.description
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: actor-dred.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 80000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 12
+		Speed: 44
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+		Offset: 780,0,120
+	Armament@PRIMARY:
+		Weapon: SubMissileAA
+		LocalOffset: 0,-171,0, 0,171,0
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 2
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 215
+		Count: 2
+	AttackTurreted:
+	WithSpriteTurret:
+		RequiresCondition: ammo > 1
+	WithSpriteTurret@OneMissile:
+		RequiresCondition: ammo == 1
+		Sequence: turret1
+	WithSpriteTurret@NoMissiles:
+		RequiresCondition: !ammo
+		Sequence: turret0
+	Selectable:
+		DecorationBounds: 1877, 1877
+	ChangesHealth:
+		Step: 100
+		Delay: 5
+		StartIfBelow: 50
+		DamageCooldown: 150
