@@ -4,7 +4,7 @@ this mod also has got a variant that is a series of mod-maps playable in the Ope
 that can be found on the OpenRA resource center by searching for Unholy Mod, or filtering by the category Unholy
 
 here be one exemplar of those mod-maps:
-https://resource.openra.net/maps/67729/
+https://resource.openra.net/maps/67941/
 
 Known Issues
 i do know of those issues, did not yet figure out a solution for them:
