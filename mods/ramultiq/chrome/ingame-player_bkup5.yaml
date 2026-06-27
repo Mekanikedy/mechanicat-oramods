@@ -443,7 +443,7 @@ Container@PLAYER_WIDGETS:
 					Children:
 						Background@ICON_TEMPLATE:
 							Logic: AddFactionSuffixLogic
-							Width: 112
+							Width: 68
 							Height: 21
 							Background: sidebar-button
 				Container@PALETTE_BACKGROUND:
@@ -631,9 +631,9 @@ Container@PLAYER_WIDGETS:
 			BackgroundContainer: PRODUCTION_BACKGROUND
 			PreviousProductionTabKey: PreviousProductionTab
 			NextProductionTabKey: NextProductionTab
-			X: WINDOW_WIDTH - 5 - 18 - 208
-			Y: 300
-			Width: 212
+			X: WINDOW_WIDTH - 5 - 18 - 209
+			Y: 299
+			Width: 214
 			Height: 20
 		Image@SIDEBAR_MONEYBIN:
 			Logic: AddFactionSuffixLogic

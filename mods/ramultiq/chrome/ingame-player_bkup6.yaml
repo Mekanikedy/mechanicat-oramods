@@ -443,7 +443,7 @@ Container@PLAYER_WIDGETS:
 					Children:
 						Background@ICON_TEMPLATE:
 							Logic: AddFactionSuffixLogic
-							Width: 112
+							Width: 68
 							Height: 21
 							Background: sidebar-button
 				Container@PALETTE_BACKGROUND:

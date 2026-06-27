@@ -425,22 +425,26 @@ Container@PLAYER_WIDGETS:
 		Container@SIDEBAR_PRODUCTION:
 			Logic: ClassicProductionLogic
 			X: WINDOW_WIDTH - 250
-			Y: 322
+			Y: 300
 			Width: 238
-			Height: 250
+			Height: 273
 			Children:
-				Image@TABS_BACKGROUND:
-					Logic: AddFactionSuffixLogic
-					#   Y: 0 - 20
-					#   Width: 235
-					#   Height: 20
-					Y: 0 - 23
-					Width: 238
-					Height: 10
-					ClickThrough: false
-					ImageCollection: sidebar
-					ImageName: background-tabs
+				Container@PRODUCTION_BACKGROUND:
+					Children:
+						Image@TOP_CAP:
+							Logic: AddFactionSuffixLogic
+							Width: 238
+							Height: 8
+							ClickThrough: false
+							ImageCollection: sidebar
+							ImageName: background-prodscroller
+						Background@ICON_TEMPLATE:
+							Logic: AddFactionSuffixLogic
+							Width: 68
+							Height: 21
+							Background: sidebar-button
 				Container@PALETTE_BACKGROUND:
+					Y: 23
 					Children:
 						Container@ROW_TEMPLATE:
 							Width: 238
@@ -462,28 +466,22 @@ Container@PLAYER_WIDGETS:
 							ImageCollection: sidebar
 							ImageName: background-bottom
 				LogicTicker@PRODUCTION_TICKER:
-				Container@PRODUCTION_BACKGROUND:
-					X: WINDOW_WIDTH - 5 - 18 - 209
-					Y: 299
-					Children:
-						Background@ICON_TEMPLATE:
-							Logic: AddFactionSuffixLogic
-							Width: 215
-							Height: 21
-							Background: sidebar-button
 				ProductionPalette@PRODUCTION_PALETTE:
 					X: 42
-					Y: 1
+					Y: 24
 					TooltipContainer: TOOLTIP_CONTAINER
 					ReadyText: productionpalette-sidebar-production-palette.ready
 					HoldText: productionpalette-sidebar-production-palette.hold
 					IconSize: 62, 46
 					IconMargin: 1, 1
 					IconSpriteOffset: -1, -1
+					MinimumRows: 5
+					MaximumRows: 5
 					HotkeyPrefix: Production
 					HotkeyCount: 24
 					SelectProductionBuildingHotkey: SelectProductionBuilding
 				Container@PALETTE_FOREGROUND:
+					Y: 23
 					Children:
 						Image@ROW_TEMPLATE:
 							Logic: AddFactionSuffixLogic
@@ -494,7 +492,7 @@ Container@PLAYER_WIDGETS:
 							ImageName: background-iconrow
 				Container@PRODUCTION_TYPES:
 					X: 7
-					Y: 2
+					Y: 25
 					Width: 29
 					Height: 240
 					Children:
