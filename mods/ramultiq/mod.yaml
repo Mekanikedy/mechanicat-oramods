@@ -264,7 +264,7 @@ MapGrid:
 
 DefaultOrderGenerator: UnitOrderGenerator
 
-SupportsMapsFrom: ra
+SupportsMapsFrom: ramultiq, ra
 
 SoundFormats: Aud, Wav
 
