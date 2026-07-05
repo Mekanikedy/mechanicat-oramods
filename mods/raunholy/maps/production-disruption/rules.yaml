@@ -72,6 +72,11 @@ MSUB:
 	-GrantConditionOnTerrain@CROSSINGFORD:
 	-ExternalCondition@SONARPING:
 	-TimedConditionBar@SONARPING:
+	-CaptureManager:
+	-Capturable:
+	-CaptureNotification:
+	Mobile:
+		-PauseOnCondition:
 
 TSLA:
 	ExternalCondition@NOACTORSONSELL:

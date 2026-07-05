@@ -401,7 +401,7 @@ HELI:
 	Selectable:
 		DecorationBounds: 1536, 1194
 	Rearmable:
-		RearmActors: hpad
+		RearmActors: hpad, carr.deployed
 	WithAmmoPipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3
@@ -422,7 +422,7 @@ HELI:
 		CanCancelCondition: false
 		ChargeDuration: 1125
 		ChargeThreshhold: -1
-		ConditionDuration: 500
+		ConditionDuration: 300
 	ProductionCostMultiplier@england:
 		Multiplier: 80
 		Prerequisites: player.england
@@ -513,7 +513,7 @@ HIND:
 	Selectable:
 		DecorationBounds: 1621, 1365
 	Rearmable:
-		RearmActors: hpad
+		RearmActors: hpad, carr.deployed
 	WithAmmoPipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3
@@ -650,7 +650,7 @@ MH60:
 	Selectable:
 		DecorationBounds: 1621, 1365
 	Rearmable:
-		RearmActors: hpad
+		RearmActors: hpad, carr.deployed
 	WithAmmoPipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3

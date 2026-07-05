@@ -1,5 +1,5 @@
 The Unholy mod is an alternate balance-gameplay
-type of modification based on the OpenRA - Red Alert
+type of modification based on OpenRA - Red Alert
 the mod's sole developer is Mechanicat.
 
 Below is a list of all people's works have been used
@@ -46,6 +46,7 @@ Industry Plant structure
 Dreadnought ship
 icon of Supercharge ability, and sound used for it
 robotic voice used for Super Tank unit
+sprite for the Rib Boat used by amphibian infantry
 vehicle sprite used for Mobile Barracks
 sprite of Howitzer unit
 
@@ -57,6 +58,17 @@ sprite and icon of Nuke Submarine unit
 
 MlemandPurrs
 sprites of floating Minelayer and Sea Mine
+
+InsertName
+sprites for dead state of most buildings
+animation used for supercharge activation
+
+AchromicWhite
+cameo icon used for Machine Gunner infantry
+
+Kiraye
+original sprites of the:
+Machine Gunner and Grenadelauncher infantry
 
 SirCake
 original of the .lua script used for Antonov

@@ -36,20 +36,20 @@ hosp:
 		Filename: hosp.shp
 	idle:
 		Length: 4
-		Offset: 0,-2
+		Offset: 0,-3
 	damaged-idle:
 		Start: 4
 		Length: 4
-		Offset: 0,-2
+		Offset: 0,-3
 	dead:
 		Start: 8
-		Offset: 0,-2
+		Offset: 0,-3
 		Tick: 800
 	make:
 		Filename: hospmake.shp
 		Length: *
 		Tick: 80
-		Offset: 0,-2
+		Offset: 0,-3
 	bib:
 		TilesetFilenames:
 			SNOW: mbHOSP.sno
@@ -66,7 +66,7 @@ hosp.destroyed:
 		Filename: hosp.shp
 		Start: 8
 		Length: 1
-		Offset: 0,-2
+		Offset: 0,-3
 	bib:
 		TilesetFilenames:
 			SNOW: mbHOSP.sno
@@ -95,16 +95,14 @@ bio.destroyed:
 		Filename: bio.shp
 	idle:
 		Start: 2
-		Offset: 0,-2
 	dead:
 		Start: 2
 		Tick: 800
-		Offset: 0,-2
 
 oilb:
 	Defaults:
 		Filename: oilb.shp
-		Offset: 0,-6
+		Offset: 1,-6
 	idle:
 	damaged-idle:
 		Start: 1
@@ -121,7 +119,7 @@ oilb:
 oilb.destroyed:
 	Defaults:
 		Filename: oilb.shp
-		Offset: 0,-6
+		Offset: 1,-6
 	idle:
 		Start: 1
 	dead: 
@@ -1164,36 +1162,36 @@ ercc:
 	Defaults:
 		Filename: ercc.shp
 	idle:
-		Offset: 2, 3
+		Offset: 0, 3
 		ZOffset: -1c511
 	damaged-idle:
-		Offset: 2, 3
+		Offset: 0, 3
 		ZOffset: -1c511
 		Start: 1
 	idle-top:
 		Filename: ercc-top.shp
-		Offset: 2, 3
+		Offset: 0, 3
 		ZOffset: 0c912
 		Start: 0
 	damaged-idle-top:
 		Filename: ercc-top.shp
-		Offset: 2, 3
+		Offset: 0, 3
 		ZOffset: 0c912
 		Start: 1
 	make:
 		Filename: erccmake.shp
-		Offset: 5, -1
+		Offset: 3, -1
 		Length: *
 	dead:
 		Filename: erccdead.shp
-		Offset: 2, 3
+		Offset: 0, 3
 		Tick: 800
 	bib:
 		Filename: bib2.tem
 		TilesetFilenames:
 			SNOW: bib2.sno
 			DESERT: bib2.des
-		Offset: 2, 8
+		Offset: 0, 4
 		ZOffset: -1c612
 		Length: *
 	icon:
@@ -1275,3 +1273,36 @@ indp:
 		Length: *
 	icon:
 		Filename: indpicon.shp
+
+acom:
+	Defaults:
+		Filename: acom.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Filename: acommake.shp
+		Length: *
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: fcomicon.shp
+
+acom.destroyed:
+	Defaults:
+		Filename: acom.shp
+	idle:
+		Start: 1
+	dead:
+		Start: 1
+		Tick: 800
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *

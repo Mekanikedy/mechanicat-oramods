@@ -83,6 +83,7 @@ faction-germany =
      Special Units:
         - Chrono Tank
         - Mobile Rig
+        - Machine Gunner
      Special Boni:
         - veteran Medium Tank
         - discount Gun Turret (-25%)
@@ -166,6 +167,7 @@ faction-ukraine =
      Special Units:
         - Demolition Truck
         - Flame Tank
+        - Grenadelauncher (replaces Grenadier)
      Special Boni:
         - veteran Submarine
         - veteran Missile Submarine
@@ -625,7 +627,8 @@ actor-thf =
     .name = Thief
     .description =
     Steals enemy credits.
-    Hijacks enemy vehicles.
+    Hijacks enemy vehicles
+    landed aircraft and ships.
     Hides when standing still.
     Runs faster while under fire.
       Unarmed
@@ -652,6 +655,22 @@ actor-sab =
     enemy structures.
       Unarmed
       Special Ability: Turns invisible
+
+actor-mgi =
+    .name = Machine Gunner
+    .description =
+    Infantry equipped with a
+    rapid firing Machine Gun.
+      Strong vs Infantry, Light armor
+      Weak vs Vehicles, Aircraft
+
+actor-gli =
+    .name = Grenadelauncher
+    .description =
+    Infantry with long-range
+    grenade launcher.
+      Strong vs Infantry, Buildings
+      Weak vs Vehicles, Aircraft
 
 actor-zombie =
     .name = Zombie
@@ -724,6 +743,16 @@ actor-aircraft-upgraded =
     .produceactorpower-aircraftveterancy-description =
     Displays the amount of time the
     Aircraft Veterancy is still active.
+actor-seaveterancyactivator =
+    .name = (Timed Naval Veterancy Activator)
+    .description =
+    Dummy Actor to activate Timed Naval Veterancy.
+actor-ships-upgraded =
+    .name = (Timed Naval Veterancy)
+    .produceactorpower-shipsveterancy-name = Naval Veterancy
+    .produceactorpower-shipsveterancy-description =
+    Displays the amount of time the
+    Naval Veterancy is still active.
 
 ## ships.yaml
 actor-ss =
@@ -804,6 +833,24 @@ actor-dred =
     Can attack enemy aircraft.
       Strong vs Aircraft
       Weak vs everything else
+
+actor-carr =
+    .name = Helicarrier
+    .description =
+    Mobile naval helipad.
+    Can resupply and repair
+    helicopters when deployed.
+      Unarmed
+
+actor-engb =
+    .name = Engineer Boat
+    .description =
+    Can instant repair friendly
+    naval and tech structures.
+    Externally captures enemy
+    naval and tech structures.
+    Can also restore bridges.
+      Unarmed
 
 ## structures.yaml
 notification-construction-complete = Construction complete.

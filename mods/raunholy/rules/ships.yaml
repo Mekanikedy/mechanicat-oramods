@@ -80,6 +80,11 @@ SS:
 	RangeMultiplier@STOPSHOOTINGROCKS3:
 		Modifier: 25
 		RequiresCondition: im-dumb == 3
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 SS.Ukraine:
 	Inherits: SS
@@ -147,6 +152,11 @@ MSUB:
 		EmptyWeapon: UnitExplodeSubmarine
 	Selectable:
 		DecorationBounds: 1877, 1877
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 MSUB.Ukraine:
 	Inherits: MSUB
@@ -219,6 +229,11 @@ DD:
 	RenderDetectionCircle:
 	Selectable:
 		DecorationBounds: 1621, 1621
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 DD.England:
 	Inherits: DD
@@ -298,6 +313,11 @@ CA:
 		Turret: secondary
 	Selectable:
 		DecorationBounds: 1877, 1877
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 CA.France:
 	Inherits: CA
@@ -336,7 +356,7 @@ LST:
 	Mobile:
 		Locomotor: lcraft
 		Speed: 115
-		PauseOnCondition: notmobile
+		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 6c0
@@ -394,7 +414,7 @@ PT:
 		Prerequisites: ~syrd, ~techlevel.low, ~!player.england
 		Description: actor-pt.description
 	Valued:
-		Cost: 450
+		Cost: 500
 	Tooltip:
 		Name: actor-pt.name
 	UpdatesPlayerStatistics:
@@ -412,26 +432,48 @@ PT:
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 6c0
-	Turreted:
-		TurnSpeed: 28
+	Turreted@PRIMARY:
+		Turret: primary
 		Offset: 512,0,0
+		TurnSpeed: 28
+	Turreted@SECONDARY:
+		Turret: secondary
+		Offset: -512,0,0
+		TurnSpeed: 28
 	Armament@PRIMARY:
+		Turret: primary
 		Weapon: 2Inch
 		LocalOffset: 208,0,48
 		MuzzleSequence: muzzle
 	Armament@SECONDARY:
+		Turret: primary
 		Name: secondary
 		Weapon: DepthCharge
 		MuzzleSequence: muzzle
+	Armament@TERTIARY:
+		Turret: secondary
+		Weapon: M24mg
+		LocalOffset: 128,0,43
+		MuzzleSequence: muzzle2
 	AttackTurreted:
+		Turrets: primary, secondary
 	WithMuzzleOverlay:
-	WithSpriteTurret:
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+		Sequence: turret2
+	WithSpriteTurret@SECONDARY:
+		Turret: secondary
 	DetectCloaked:
 		DetectionTypes: Underwater
 		Range: 4c0
 	RenderDetectionCircle:
 	Selectable:
 		DecorationBounds: 1536, 1536
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 PT.England:
 	Inherits: PT
@@ -526,6 +568,11 @@ TYPH:
 	FireWarheadsOnDeath:
 		Weapon: TorpTubeNuke
 		EmptyWeapon: UnitExplodeShip
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 SEAS:
 	Inherits: ^Ship
@@ -549,7 +596,7 @@ SEAS:
 	Mobile:
 		TurnSpeed: 28
 		Speed: 92
-		PauseOnCondition: notmobile
+		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -628,6 +675,11 @@ SEAS:
 		Position: TopLeft
 		ValidRelationships: Ally, Enemy, Neutral
 		RequiresCondition: volkovinside
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
 
 SEAS.China:
 	Inherits: SEAS
@@ -701,3 +753,132 @@ DRED:
 		Delay: 5
 		StartIfBelow: 50
 		DamageCooldown: 150
+	ProducibleWithLevel:
+		Prerequisites: ships.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: ships.upgraded
+
+CARR.Mobile:
+	Inherits: ^Ship
+	Inherits@selection: ^SelectableSupportUnit
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		Prerequisites: techcenter, ~techlevel.high
+		Description: actor-carr.description
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-carr.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Locomotor: lcraft
+		Speed: 78
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	-Chronoshiftable:
+	Selectable:
+		DecorationBounds: 1536, 1536
+	Transforms:
+		IntoActor: carr.deployed
+		Offset: 0,0
+		Facing: 0
+	CommandBarBlacklist:
+		DisableStop: false
+	-Targetable@REPAIR:
+	-GrantConditionOnDamageState@DAMAGED:
+	-Guard:
+	-MustBeDestroyed:
+	-AttackMove:
+	RenderSprites:
+		Image: carr
+
+CARR.Deployed:
+	Inherits: CARR.Mobile
+	-Buildable:
+	-Mobile:
+	-RepairableNear:
+	-WithFacingSpriteBody:
+	Building:
+		Dimensions: 1,1
+		Footprint: x
+		TerrainTypes: Water
+		RequiresBaseProvider: false
+		BuildSounds:
+		UndeploySounds:
+	WithSpriteBody:
+	Reservable:
+	WithResupplyAnimation:
+	RallyPoint:
+		ForceSetType: Helicopter
+	Transforms:
+		IntoActor: carr.mobile
+		Offset: 0,0
+		Facing: 0
+		PauseOnCondition: being-captured
+	TransformsIntoMobile:
+		Locomotor: lcraft
+		RequiresForceMove: true
+	ProximityExternalCondition@AIRCRAFTREPAIR:
+		Condition: airrepair
+		Range: 1c0
+	WithDecoration@deployed:
+		Position: Top
+		Margin: 0, -6
+		Image: pips
+		Sequence: tag-deployed
+		Palette: effect
+	RenderSprites:
+		Image: carr
+
+ENGB:
+	Inherits: ^Ship
+	Inherits@selection: ^SelectableSupportUnit
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 90
+		Prerequisites: fix, ~techlevel.medium
+		Description: actor-engb.description
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: actor-engb.name
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 12
+		Speed: 48
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Selectable:
+		DecorationBounds: 1194, 1194
+	CaptureManager:
+	Captures:
+		CaptureTypes: naval-building
+		PlayerExperience: 0
+		CaptureDelay: 375
+		ConsumedByCapture: False
+		EnterCursor: ability
+		EnterBlockedCursor: move-blocked
+	InstantlyRepairs:
+		Types: naval-building
+		RepairSound: build5.aud
+	RepairsBridges:

@@ -100,6 +100,19 @@
 			Beach: 88
 			Water: 50
 			WaterFord: 88
+	Locomotor@FOOT-AMPHIBIOUS:
+		Name: foot-amphibious
+		Crushes: mine, crate
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 89
+			Road: 111
+			Bridge: 111
+			Ore: 89
+			Gems: 89
+			Beach: 89
+			Water: 76
 	Locomotor@NAVAL:
 		Name: naval
 		Crushes: mine, crate

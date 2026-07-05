@@ -374,3 +374,7 @@ SABOT:
 	Inherits: 105mm
 	ReloadDelay: 50
 	-Burst:
+
+GrenadeLauncher.infantry:
+	Inherits: GrenadeLauncher
+	ReloadDelay: 60

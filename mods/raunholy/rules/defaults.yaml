@@ -71,6 +71,15 @@
 	FirepowerMultiplier@RANK-3:
 		RequiresCondition: rank-veteran == 3
 		Modifier: 120
+	SpeedMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 105
+	SpeedMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 110
+	SpeedMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 115
 	ReloadDelayMultiplier@RANK-3:
 		RequiresCondition: rank-veteran == 3
 		Modifier: 50
@@ -534,6 +543,7 @@
 	UpdatesPlayerStatistics:
 	Mobile:
 		Locomotor: naval
+		PauseOnCondition: being-captured
 	Selectable:
 		Bounds: 1024, 1024
 	Targetable:
@@ -578,6 +588,16 @@
 		VoiceSet: VehicleVoice
 	WithFacingSpriteBody:
 	HitShape:
+	CaptureManager:
+		BeingCapturedCondition: being-captured
+	Capturable:
+		Types: ship
+		CancelActivity: True
+	CaptureNotification:
+		Notification: UnitStolen
+		TextNotification: notification-unit-stolen
+		LoseNotification: UnitLost
+		LoseTextNotification: notification-unit-lost
 
 ^Submarine:
 	Inherits: ^Ship
@@ -619,6 +639,8 @@
 	TimedConditionBar@SONARPING:
 		Condition: pinged
 		Color: ADFF2F
+	Capturable:
+		RequiresCondition: !underwater
 
 ^NeutralPlane:
 	Inherits@1: ^ExistsInWorld
@@ -753,6 +775,8 @@
 		RequiresCondition: cruising
 	-BodyOrientation:
 	ClassicFacingBodyOrientation:
+	Repairable:
+		RepairActors: fix, carr.deployed
 
 ^BasicBuilding:
 	Inherits@1: ^ExistsInWorld
@@ -815,6 +839,7 @@
 		PlayerExperience: 0
 		RepairingNotification: Repairing
 	InstantlyRepairable:
+		Types: building
 	WithMakeAnimation:
 		Condition: build-incomplete
 	CaptureManager:

@@ -427,6 +427,7 @@ GMINE:
 		Terrain: Gems
 	SeedsResource:
 		ResourceType: Gems
+		Interval: 150
 	MapEditorData:
 		Categories: Resource spawn
 	RequiresSpecificOwners:
@@ -941,6 +942,79 @@ aircraft.upgraded2:
 	GrantConditionOnPrerequisite@veterancyactivation3:
 		Prerequisites: aircraft.upgraded
 		Condition: airveterancyactivated
+
+seaveterancyactivator:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-seaveterancyactivator.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	Health:
+		HP: 1
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	SpawnActorOnDeath:
+		Actor: ships.upgraded
+		SpawnAfterDefeat: False
+		RequiresCondition: !seaveterancyenabled
+	GrantConditionOnPrerequisite@veterancyenabling4:
+		Prerequisites: ships.upgraded
+		Condition: seaveterancyenabled
+	KillsSelf:
+	Buildable:
+		Queue: Ship
+		Prerequisites: ~disabled
+	Tooltip:
+		Name: actor-seaveterancyactivator.description
+
+ships.upgraded:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: actor-ships-upgraded.name
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite:
+		Prerequisite: ships.upgraded
+	Health:
+		HP: 4500
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	ProduceActorPower@veterancyactivesign4:
+		OrderName: NavyVeterancy
+		Name: actor-ships-upgraded.produceactorpower-shipsveterancy-name
+		Description: actor-ships-upgraded.produceactorpower-shipsveterancy-description
+		Icon: seavet
+		Actors: lst
+		Type: Ship
+		ChargeInterval: 4501
+		SupportPowerPaletteOrder: 340
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: seaveterancyactivated
+	GrantConditionOnPrerequisite@veterancyactivation4:
+		Prerequisites: ships.upgraded
+		Condition: seaveterancyactivated
 
 RADARSCAN:
 	Interactable:

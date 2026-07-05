@@ -39,6 +39,14 @@ harv:
 		Filename: harv.shp
 		Start: 104
 		Length: 7
+	dock-flip:
+		Filename: harv-flipped.shp
+		Start: 0
+		Length: 8
+	dock-flip-loop:
+		Filename: harv-flipped.shp
+		Start: 8
+		Length: 7
 	icon:
 		Filename: harvicon.shp
 		Start: 0

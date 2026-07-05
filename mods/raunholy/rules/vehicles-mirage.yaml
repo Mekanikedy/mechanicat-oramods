@@ -186,6 +186,7 @@ MTNK:
 			arty.france: arty
 			jeep.spain: jeep
 			ftrk.china: ftrk
+			harv.flip: harv
 	WithDecoration@disguise:
 		Image: pips
 		Sequence: pip-disguise

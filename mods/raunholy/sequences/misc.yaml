@@ -184,6 +184,8 @@ pips:
 		Offset: -2, 0
 	tag-jammed:
 		Filename: tag-jammed.shp
+	tag-deployed:
+		Filename: tag-deployed.shp
 
 v2:
 	idle:
@@ -895,6 +897,8 @@ icon:
 		Filename: weaprankicon.shp
 	airvet:
 		Filename: hpadrankicon.shp
+	seavet:
+		Filename: syrdrankicon.shp
 	airstrike:
 		Filename: bombicon.shp
 	scharge:

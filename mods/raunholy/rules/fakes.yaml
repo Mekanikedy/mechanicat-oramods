@@ -68,6 +68,7 @@ TENF:
 
 SYRF:
 	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
 	Selectable:
 		Bounds: 3072, 2048
 	Buildable:
@@ -82,7 +83,7 @@ SYRF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Targetable:
-		TargetTypes: WaterActor, Structure, WaterStructure
+		TargetTypes: WaterActor, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
@@ -112,10 +113,11 @@ SYRF:
 
 SPEF:
 	Inherits: ^FakeBuilding
+	Inherits@infiltrate: ^InfiltratableFake
 	Selectable:
 		Bounds: 3072, 2048
 	Targetable:
-		TargetTypes: WaterActor, Structure, WaterStructure
+		TargetTypes: WaterActor, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
 	Buildable:
 		BuildPaletteOrder: 910
 		Queue: Defense
@@ -624,21 +626,20 @@ FRCC:
 	Inherits@infiltrate: ^InfiltratableFake
 	Selectable:
 		Bounds: 3072, 1920, 0, -170
-		DecorationBounds: 3072, 3200, 42, -170
+		DecorationBounds: 3072, 3072, 42, -42
 	HitShape:
 		Type: Rectangle
 			TopLeft: -1536, -512
 			BottomRight: 1536, 598
 	HitShape@TOP:
-		TargetableOffsets: 1680,0,0
+		TargetableOffsets: 1680,0,0, 0,-1024,0
 		Type: Rectangle
 			TopLeft: -512, -1536
 			BottomRight: 512, -512
 	HitShape@BOTTOMLEFT:
-		TargetableOffsets: -1260,-1024,0
 		Type: Rectangle
 			TopLeft: -1536, 598
-			BottomRight: -512, 1280
+			BottomRight: -512, 1536
 	Buildable:
 		BuildPaletteOrder: 920
 		Queue: Defense
@@ -651,9 +652,8 @@ FRCC:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Building:
-		Footprint: =xx x++ ===
+		Footprint: _X_ ++x x++
 		Dimensions: 3,3
-		LocalCenterOffset: 0,-512,0
 	Health:
 		HP: 90000
 	Armor:

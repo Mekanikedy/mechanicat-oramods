@@ -199,7 +199,7 @@ SPEN:
 		Prerequisites: anypower, proc, ~structures.soviet, ~techlevel.low
 		Description: actor-spen.description
 	Targetable:
-		TargetTypes: WaterActor, Structure, C4, DetonateAttack, WaterStructure
+		TargetTypes: WaterActor, Structure, C4, DetonateAttack, SpyInfiltrate, WaterStructure
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
@@ -372,6 +372,14 @@ SPEN:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
+	Capturable:
+		Types: building, naval-building, sabotage
+	InstantlyRepairable:
+		Types: building, naval-building
+	InfiltrateForSupportPower:
+		Proxy: seaveterancyactivator
+		Types: SpyInfiltrate
+		PlayerExperience: 0
 
 SYRD:
 	Inherits: ^Building
@@ -388,7 +396,7 @@ SYRD:
 	Tooltip:
 		Name: actor-syrd.name
 	Targetable:
-		TargetTypes: WaterActor, Structure, C4, DetonateAttack, WaterStructure
+		TargetTypes: WaterActor, Structure, C4, DetonateAttack, SpyInfiltrate, WaterStructure
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
@@ -554,6 +562,14 @@ SYRD:
 	GivesExperienceMultiplier@spain:
 		Modifier: 140
 		RequiresCondition: owner.spain
+	Capturable:
+		Types: building, naval-building, sabotage
+	InstantlyRepairable:
+		Types: building, naval-building
+	InfiltrateForSupportPower:
+		Proxy: seaveterancyactivator
+		Types: SpyInfiltrate
+		PlayerExperience: 0
 
 IRON:
 	Inherits: ^ScienceBuilding
@@ -2253,6 +2269,7 @@ AFLD:
 		AllowImpassableCells: false
 		QuantizedFacings: 8
 		CameraActor: camera.paradrop
+		CameraRemoveDelay: 150
 		DisplayBeacon: true
 		BeaconPoster: pinficon
 		ArrowSequence: arrow
@@ -2301,6 +2318,7 @@ AFLD:
 		AllowImpassableCells: false
 		QuantizedFacings: 8
 		CameraActor: camera.paradrop
+		CameraRemoveDelay: 150
 		DisplayBeacon: true
 		BeaconPoster: adrpicon
 		ArrowSequence: arrow
@@ -2325,6 +2343,7 @@ AFLD:
 		AllowImpassableCells: false
 		QuantizedFacings: 8
 		CameraActor: camera.paradrop
+		CameraRemoveDelay: 150
 		DisplayBeacon: true
 		BeaconPoster: pinficon
 		ArrowSequence: arrow
@@ -3495,12 +3514,11 @@ ERCC:
 	Tooltip:
 		Name: actor-proc.name
 	Building:
-		Footprint: =xx x++ ===
+		Footprint: _X_ ++x x++
 		Dimensions: 3,3
-		LocalCenterOffset: 0,-512,0
 	Selectable:
 		Bounds: 3072, 1920, 0, -170
-		DecorationBounds: 3072, 3200, 42, -170
+		DecorationBounds: 3072, 3072, 42, -42
 	Targetable:
 		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ThiefInfiltrate, SpyInfiltrate
 	Health:
@@ -3517,8 +3535,8 @@ ERCC:
 		DiscardExcessResources: true
 	DockHost:
 		Type: Unload
-		DockAngle: 256
-		DockOffset: 0,512,0
+		DockAngle: 768
+		DockOffset: 0, 1c0, 0
 	StoresPlayerResources:
 		Capacity: 2000
 	CustomSellValue:
@@ -3526,13 +3544,13 @@ ERCC:
 	Sellable:
 		RefundPercent: 100
 	FreeActor:
-		Actor: HARV
-		SpawnOffset: 1,1
-		Facing: 256
+		Actor: HARV.flip
+		SpawnOffset: 1,2
+		Facing: 768
+		RequiresCondition: !build-incomplete
 	InfiltrateForCash:
 		Percentage: 50
 		PlayerExperience: 0
-		PlayerExperiencePercentage: 0
 		Types: SpyInfiltrate, ThiefInfiltrate
 		InfiltratedNotification: CreditsStolen
 		InfiltratedTextNotification: notification-credits-stolen
@@ -3553,15 +3571,14 @@ ERCC:
 			TopLeft: -1536, -512
 			BottomRight: 1536, 598
 	HitShape@TOP:
-		TargetableOffsets: 1680,0,0
+		TargetableOffsets: 1680,0,0, 0,-1024,0
 		Type: Rectangle
 			TopLeft: -512, -1536
 			BottomRight: 512, -512
 	HitShape@BOTTOMLEFT:
-		TargetableOffsets: -1260,-1024,0
 		Type: Rectangle
 			TopLeft: -1536, 598
-			BottomRight: -512, 1280
+			BottomRight: -512, 1536
 	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: idle

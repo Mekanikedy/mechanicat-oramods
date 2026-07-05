@@ -596,7 +596,7 @@ HARV:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 110
-		Prerequisites: proc, ~techlevel.infonly
+		Prerequisites: proc, ~techlevel.infonly, ~!global-ercc-refinery
 		Description: actor-harv.description
 	Valued:
 		Cost: 1000
@@ -2078,3 +2078,13 @@ BATF:
 		CargoType: LargeVehicle
 	Selectable:
 		DecorationBounds: 1877, 1621, 0, -170
+
+HARV.flip:
+	Inherits: HARV
+	Buildable:
+		Prerequisites: proc, ~techlevel.infonly, ~global-ercc-refinery
+	WithDockingAnimation:
+		DockSequence: dock-flip
+		DockLoopSequence: dock-flip-loop
+	RenderSprites:
+		Image: harv

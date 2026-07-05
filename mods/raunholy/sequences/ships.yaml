@@ -42,7 +42,15 @@ pt:
 		Facings: 32
 	muzzle:
 		Filename: gunfire2.shp
-		Length: 5
+		Length: 2
+	turret2:
+		Filename: turr2.shp
+		Facings: 32
+	muzzle2:
+		Filename: minigun.shp
+		Length: 3
+		Stride: 6
+		Facings: 8
 	icon:
 		Filename: pticon.shp
 
@@ -114,3 +122,32 @@ dred:
 		Facings: 32
 	icon:
 		Filename: dredicon.shp
+
+carr:
+	Defaults:
+		Filename: carr.shp
+	idle:
+		Length: 1
+		ZOffset: -1023
+	damaged-idle:
+		Start: 7
+		ZOffset: -1023
+	active:
+		Start: 1
+		Length: 6
+		Tick: 100
+		ZOffset: -1023
+	damaged-active:
+		Start: 8
+		Length: 6
+		Tick: 100
+		ZOffset: -1023
+	icon:
+		Filename: carricon.shp
+
+engb:
+	idle:
+		Filename: engb.shp
+		Facings: 16
+	icon:
+		Filename: engbicon.shp

@@ -496,3 +496,35 @@ ChainGun.Cobra:
 	Warhead@1Dam: SpreadDamage
 		Versus:
 			None: 144
+
+M24mg:
+	Inherits: M60mg
+	ReloadDelay: 30
+	Range: 5c0
+	-Report:
+	StartBurstReport: mgun2.aud
+	Burst: 2
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			Light: 30
+	Warhead@2Eff: CreateEffect
+		Inaccuracy: 213
+	Warhead@3EffWater: CreateEffect
+		Inaccuracy: 213
+
+M60mg.infantry:
+	Inherits: M60mg
+	ReloadDelay: 35
+	Range: 5c0
+	Burst: 5
+	BurstDelays: 3
+	FirstBurstTargetOffset: -64,0,0
+	FollowingBurstTargetOffset: 96,0,0
+	-Report:
+	StartBurstReport: mguninf1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1200
+	Warhead@2Eff: CreateEffect
+		Inaccuracy: 256
+	Warhead@3EffWater: CreateEffect
+		Inaccuracy: 256

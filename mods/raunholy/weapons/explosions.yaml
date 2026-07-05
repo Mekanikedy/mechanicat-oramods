@@ -356,3 +356,10 @@ MiniNuke:
 	Warhead@14FlashEffect: FlashEffect
 		Duration: 20
 		FlashType: Nuke
+
+VisualWaterExplode:
+	Inherits: ^Explosion
+	-Warhead@1Dam:
+	Warhead@2Eff: CreateEffect
+		Explosions: water_piffs
+		ImpactSounds: splash9.aud

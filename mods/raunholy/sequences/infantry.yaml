@@ -674,6 +674,12 @@ spy:
 				Filename: minigun.shp
 				Length: 12
 				Frames: 42,43,44,45,46,47,42,43,44,45,46,47
+	boat:
+		Filename: boat.shp
+		Facings: 16
+		ZOffset: -511
+	quantizer:
+		Facings: 8
 	icon:
 		Filename: spyicon.shp
 	spy-england-icon:
@@ -736,6 +742,12 @@ thf:
 		Length: 4
 		Facings: 8
 		Tick: 80
+	boat:
+		Filename: boat.shp
+		Facings: 16
+		ZOffset: -511
+	quantizer:
+		Facings: 8
 	icon:
 		Filename: thficon.shp
 	alt-icon:
@@ -1745,3 +1757,48 @@ snip:
 		TilesetFilenames:
 			SNOW: snipicon.shp
 			DESERT: snipicon.shp
+
+mgi:
+	Inherits: e1
+	Defaults:
+		Filename: mgi.shp
+	die6:
+		Filename: electro.tem
+		TilesetFilenames:
+			SNOW: electro.sno
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		Tick: 80
+	die-crushed:
+		Filename: corpse1.tem
+		TilesetFilenames:
+			SNOW: corpse1.sno
+		Length: *
+		Tick: 1600
+		ZOffset: -511
+	icon:
+		Filename: mgiicon.shp
+
+gli:
+	Inherits: e4
+	Defaults:
+		Filename: gli.shp
+	die6:
+		Filename: electro.tem
+		TilesetFilenames:
+			SNOW: electro.sno
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		Tick: 80
+	die-crushed:
+		Filename: corpse1.tem
+		TilesetFilenames:
+			SNOW: corpse1.sno
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: gliicon.shp

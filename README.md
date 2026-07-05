@@ -4,7 +4,7 @@ this mod also has got a variant that is a series of mod-maps playable in the Ope
 that can be found on the OpenRA resource center by searching for Unholy Mod, or filtering by the category Unholy
 
 here be one exemplar of those mod-maps:
-https://resource.openra.net/maps/67941/
+https://resource.openra.net/maps/68229/
 
 Known Issues
 i do know of those issues, did not yet figure out a solution for them:
@@ -23,6 +23,7 @@ Economy
 - noob protection on Ore Refineries disabled, resources will go to waste if not have enough storage
 - added a lobby checkbox option for enabling ERCC Refinery (default: on)
 - increased the value of ore and gems to 30/60 from 25/50
+- decreased the generation rate of gem mines to 1/2 of ore mines (seeds one gem every 6sec increased from 3sec)
 
 Production
 - the BuildTimeSpeedReduction steps modified to "100, 90, 75, 67, 50" from "100, 86, 75, 67, 60, 55, 50" for all production queues
@@ -35,7 +36,8 @@ Veterancy
 - percentage damage bonuses per rank changed to 10,15,25 from 5,10,20,30
 - percentage rate of fire bonuses per rank changed to a 50 increase only on rank 3 from 5,10,15,25
 - on combat Aircraft the rate of fire bonus on rank 3 is replaced with ammo reload speed increase when resupplying
-- removed percentage speed bonuses per rank
+- [s]removed percentage speed bonuses per rank[/s]
+- percentage speed bonuses per rank changed to 5,10,15 from 5,10,20,40
 - self-healing rate reduced to 5sec from 4sec and gets activated on rank 2, it gets a healing rate increase of 5sec to 3sec on rank 3, the self-healing previously needed rank 4 to activate
 - reworked graphical overlay to better represent the different ranks
 
@@ -63,6 +65,7 @@ France
 
 Germany
 - added Mobile Rig as a new special unit
+- added Machine Gunner as a new special unit
 - gets a price discount of -25% for Gun Turrets and AA Guns. (both get built at 600$ instead of 800$)
 - can build Medium Tanks at Veteran rank
 
@@ -107,6 +110,7 @@ Russia
 
 Ukraine
 - added Flame Tank as a new special unit
+- added Grenadelauncher as a new special unit, and replaces Grenadiers for them
 - gets a price discount of -20% for the V2 Rocket Launcher. (V2 Rocket Launcher costs 720$ instead of 900$)
 - can build Submarines and Missile Submarines at Veteran rank
 
@@ -194,6 +198,7 @@ new: Unholy Barracks
 Ore Refinery
 - Ore Refinery cost increased to 1500$ from 1400$
 - Ore Refinery now properly refunds 500$ when sold
+- Harvester does not spawn until the build-up has finished
 
 Ore Silo
 - moved Ore Silo to Buildings tab from Defenses
@@ -253,6 +258,12 @@ Fake structures
 - added fake versions of Soviet Barracks, Soviet Tech Center, Iron Curtain, Ore Refinery
 - the damage threshold to explode is set to 50% from 30% for all of them
 
+Oil Derrick
+- sprite slightly offseted to the right
+
+Hospital
+- edited sprite graphic to show less temacolor on top
+
 Communications Center
 - the tech building Communications Center renamed to Observatory
 - radius of provided vision increased to 12c from 10c
@@ -260,6 +271,8 @@ Communications Center
 Forward Command
 - the name of Forward Command extended with the word Post
 - internal change: added a basic icon for Forward Command (unused)
+- fixed transparent pixels during build-up anim (unused)
+- changed sprite graphic to a logoless version
 
 new: Industry Plant
 - Industry Plant added for Turkey as a unique structure on tech center tier
@@ -405,6 +418,7 @@ Spy
 - the Armed Spy can be produced with veterancy rank when infiltrated an enemy barracks
 - The production veterancy from infiltrating enemy unit production got changed to be timed instead of permanent, and lasts for 2min duration
 - Spy cost increased to 600$ from 500$
+- can traverse water to infiltrate enemy naval production
 
 Thief
 - Thief cost reduced to 475$ from 500$
@@ -412,6 +426,7 @@ Thief
 - Thief cloaking mechanism reverted to that of mainline Red Alert
 - Thief gains a temporary speed boost of +33% whenever being shot at. this does not stack and lasts for 2sec
 - Thief hitpoints reduced to 6500 from 8000
+- can traverse water to steal ships, too
 
 Tanya
 - Tanya cost reduced to 1200$ from 1800$
@@ -441,10 +456,22 @@ new: Sniper
 new: Saboteur
 - Saboteur added for France as a special unit on tech center tier
 - has the cloaking mechanism of Dune2000's Saboteur unit
-- uses sabotage capture against buildings, taking away 50% of target structure hitpoints
+- uses sabotage capture against buildings, taking away 33% of target structure hitpoints
 - does not decloak while infiltrating
-- costs 700$ to build
+- costs 650$ to build
 - looks and sounds like a Thief
+- can traverse water to sabotage enemy naval production
+
+new: Machine Gunner
+- Machine Gunner added for Germany as a special unit on tech center tier
+- armed with the same machinegun as the jeep, apc
+- the weapon has an extra quirk where it strafes forward
+- costs 400$ to build
+
+new: Grenadelauncher
+- Grenadelauncher added for Ukraine as a special unit, replaces Grenadier for them
+- more weapon range, less speed
+- costs 225$ to build instead of 150$
 
 Technician
 - Technician given the missing muzzle fx for when inside Pillbox
@@ -679,7 +706,6 @@ new: Battle Fortress
 - a super-heavy infantry transport with concrete armor
 - attacks using a machinegun, can switch to missile launcher when ready
 - due to a quirk of the engine code infantry cannot get out while deployed the missile launcher
-
 - maximum one can be built
 - cost 2400$ to build
 
@@ -687,16 +713,19 @@ Naval units
 - Naval units can pass through shallow mud crossings (tiles number 247-252 on temperate and snow, 600-605 on desert became passable by both land and sea units)
 - Submarines will get surfaced while crossing shallow bridges
 - Submarines with Invulnerability will not submerge until the effect is over
+- Naval units too can get stolen by Thieves
 
 Naval Transport
 - cost of Naval Transport increased to 800$ from 500$
 - Naval Transport carry capacity increased to 8 from 5
 
 Gunboat
-- Gunboat cost reduced to 450$ from 500$
+- [s]Gunboat cost reduced to 450$ from 500$[/s]
 - Gunboat movespeed reduced to 128 from 142
 - auto-targeting priority changed to prefer shooting at Ships on default
 - can be built at Veteran rank by England
+- added a second turret with a weaker machinegun
+- new sprite for primary turret 
 
 Destroyer
 - Destroyer cost reduced to 900$ from 1000$
@@ -739,7 +768,7 @@ new: Nuke Submarine
 - reworked to become Nuke Submarine
 - shoots a nuclear torpedo against naval units
 - fires a nuclear missile against ground targets
-- the resulting atomic explosion affects any target
+- the resulting atomic explosion affects any target, including aircraft
 - uses ammo mechanic, can have 4 ammo, starts with only 2
 - self-reloads 1 ammo every 20sec
 - explodes in a most nuclear fashion if destroyed while got any ammo
@@ -760,6 +789,22 @@ new: Dreadnought
 - re-uses the former SAM Submarine weaponry
 - repairs out of combat like Mammoth Tanks
 - costs 1800$ to build
+
+new: Helicarrier
+- Helicarrier added at Tech Center level for both sides
+- can be deployed to function as a helipad at sea
+- enables self-repair on the helicopter landed on it
+- does not build new aircraft, only resupplies
+- costs 1000$ to build
+
+new: Engineer Boat
+- Engineer Boat added for both sides
+- essentially a Engineer at sea, in form of a boat
+- can capture enemy naval production structures
+- can restore bridges
+- can instant repair friendly production structures
+- requires a Service Depot
+- costs 500$ to build
 
 Aircraft units
 - contrail effects of planes adjusted to not use player coloring
@@ -800,6 +845,7 @@ Longbow
 - increased reload delay from 34 and 30 to 35 for both of Longbow attacks
 - linked anti-ground and anti-air attacks to prevent double-firing
 - the Longbow can be deployed to detect submarines when charged up
+- the activated detection lasts for 12sec and gets charged up in 45sec
 - Hellfire missiles can shoot at detected submarines
 - auto-targeting priority changed to prefer shooting at Vehicles on default
 - can be built for cheap by England
@@ -843,9 +889,7 @@ new: Cobra
 Support Powers
 - made all Airfield support powers pause recharging while on low power
 - rearranged the sidetab ordering of all support powers to be more sensible
-
-Atom Bomb
-- added sound on launch
+- unified the camera duration on all airfield given support powers to 6sec
 
 Sonar
 - Sonar changed to no longer require a infiltration of enemy naval production
@@ -856,8 +900,8 @@ Sonar
 
 Spy Plane
 - Spy Plane recharge time decreased to 1.5min from 2.5min
-- the Kazakhstan faction can call-in a second Spy Plane with a tech center
 - can detect cloaked units and land mines
+- the Kazakhstan faction can call-in a second Spy Plane with a tech center
 
 Paratroopers
 - Paratroopers recharge time decreased to 3min from 5min
@@ -885,6 +929,7 @@ GPS Sattelite
 
 Atom Bomb
 - Atom Bomb recharge time decreased to 7.5min from 9min
+- added sound on launch
 
 new: Air Strike
 - Air Strike ported from OpenRA - Tiberian Dawn mod

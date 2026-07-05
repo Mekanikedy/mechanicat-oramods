@@ -212,7 +212,7 @@ E2:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 40
-		Prerequisites: ~barr, ~techlevel.infonly
+		Prerequisites: ~barr, ~techlevel.infonly, ~!infantry.ukraine
 		Description: actor-e2.description
 	Valued:
 		Cost: 150
@@ -422,6 +422,7 @@ E6:
 	Passenger:
 		CustomPipType: yellow
 	InstantlyRepairs:
+		Types: building, tech-building
 		RepairSound: build5.aud
 	RepairsBridges:
 	CaptureManager:
@@ -430,12 +431,12 @@ E6:
 		Prerequisites: global-reusable-engineers
 	Captures:
 		RequiresCondition: !global-reusable-engineers
-		CaptureTypes: building
+		CaptureTypes: building, tech-building
 		PlayerExperience: 0
 		CaptureDelay: 200
 	Captures@REUSABLE:
 		RequiresCondition: global-reusable-engineers
-		CaptureTypes: building
+		CaptureTypes: building, tech-building
 		PlayerExperience: 0
 		CaptureDelay: 375
 		ConsumedByCapture: False
@@ -501,6 +502,7 @@ SPY:
 		AddToArmyValue: true
 	-Guard:
 	Mobile:
+		Locomotor: foot-amphibious
 		Voice: Move
 	RevealsShroud:
 		Range: 5c0
@@ -521,7 +523,7 @@ SPY:
 		DefaultAttackSequence: shoot
 		IdleSequences: idle1,idle2
 		StandSequences: stand,stand2
-		RequiresCondition: !parachute
+		RequiresCondition: !parachute && !swimming
 	WithDisguisingInfantryBody@PARACHUTE:
 		RequiresCondition: parachute
 		Palette: player-noshadow
@@ -545,6 +547,31 @@ SPY:
 	GrantConditionOnPrerequisite@greece:
 		Condition: owner.greece
 		Prerequisites: player.greece
+	GrantConditionOnTerrain:
+		TerrainTypes: Water
+		Condition: swimming
+	Targetable:
+		RequiresCondition: !parachute && !swimming
+	Targetable@SEA:
+		TargetTypes: WaterActor, Infantry
+		RequiresCondition: !parachute && swimming
+	WithDeathAnimation:
+		RequiresCondition: !swimming
+	WithDisguisingInfantryBody@SEA:
+		RequiresCondition: swimming
+		DefaultAttackSequence: prone-shoot
+		MoveSequence: prone-run
+		IdleSequences: prone-stand,prone-stand2
+		StandSequences: prone-stand,prone-stand2
+	WithFacingSpriteBody@SEA:
+		Name: boat
+		Sequence: boat
+		RequiresCondition: swimming
+	FireWarheadsOnDeath:
+		Weapon: VisualWaterExplode
+		EmptyWeapon: VisualWaterExplode
+		Chance: 100
+		RequiresCondition: swimming
 
 SPY.England:
 	Inherits: SPY
@@ -745,7 +772,7 @@ MEDI:
 	Health:
 		HP: 6000
 	Mobile:
-		Speed: 49
+		Speed: 48
 	RevealsShroud:
 		Range: 4c0
 	Passenger:
@@ -843,7 +870,7 @@ MECH:
 	Health:
 		HP: 8000
 	Mobile:
-		Speed: 49
+		Speed: 48
 		Voice: Move
 	RevealsShroud:
 		Range: 4c0
@@ -949,6 +976,9 @@ GNRL:
 THF:
 	Inherits: ^Soldier
 	Inherits@selection: ^SelectableSupportUnit
+	-QuantizeFacingsFromSequence:
+	QuantizeFacingsFromSequence:
+		Sequence: quantizer
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -965,11 +995,15 @@ THF:
 		HP: 6500
 	RevealsShroud:
 		Range: 5c0
+	Mobile:
+		Locomotor: foot-amphibious
+		Voice: Move
+		Speed: 72
 	Passenger:
 		CustomPipType: blue
 	CaptureManager:
 	Captures:
-		CaptureTypes: vehicle, aircraft
+		CaptureTypes: vehicle, aircraft, ship
 		PlayerExperience: 0
 	Infiltrates:
 		Types: ThiefInfiltrate
@@ -988,7 +1022,7 @@ THF:
 	WithInfantryBody:
 		IdleSequences: idle
 		StandSequences: stand
-		RequiresCondition: !parachute
+		RequiresCondition: !parachute && !swimming
 	WithInfantryBody@PARACHUTE:
 		RequiresCondition: parachute
 		Palette: player-noshadow
@@ -1004,10 +1038,31 @@ THF:
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
 		ValidDamageStates: Critical
-	Mobile:
-		Voice: Move
-		Speed: 72
 	-AttackFrontal:
+	GrantConditionOnTerrain:
+		TerrainTypes: Water
+		Condition: swimming
+	Targetable:
+		RequiresCondition: !parachute && !swimming
+	Targetable@SEA:
+		TargetTypes: WaterActor, Infantry
+		RequiresCondition: !parachute && swimming
+	WithDeathAnimation:
+		RequiresCondition: !swimming
+	WithInfantryBody@SEA:
+		RequiresCondition: swimming
+		MoveSequence: prone-run
+		IdleSequences: prone-stand
+		StandSequences: prone-stand
+	WithFacingSpriteBody@SEA:
+		Name: boat
+		Sequence: boat
+		RequiresCondition: swimming
+	FireWarheadsOnDeath:
+		Weapon: VisualWaterExplode
+		EmptyWeapon: VisualWaterExplode
+		Chance: 100
+		RequiresCondition: swimming
 
 SHOK:
 	Inherits: ^Soldier
@@ -1283,7 +1338,7 @@ SAB:
 		Description: actor-sab.description
 		Icon: alt-icon
 	Valued:
-		Cost: 700
+		Cost: 650
 	Tooltip:
 		Name: actor-sab.name
 	UpdatesPlayerStatistics:
@@ -1302,7 +1357,7 @@ SAB:
 		PlayerExperience: 0
 		CaptureDelay: 200
 		SabotageThreshold: 1
-		SabotageHPRemoval: 50
+		SabotageHPRemoval: 33
 		SabotageDamageTypes: Incendiary
 	-Infiltrates:
 	-TakeCover:
@@ -1322,3 +1377,47 @@ SAB:
 		PauseOnCondition: cloak-force-disabled
 	RenderSprites:
 		Image: thf
+
+MGI:
+	Inherits: E1
+	Selectable:
+		Class: MGI
+	Buildable:
+		BuildPaletteOrder: 140
+		Prerequisites: ~tent, atek, ~infantry.germany, ~techlevel.high
+		Description: actor-mgi.description
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: actor-mgi.name
+	Health:
+		HP: 6000
+	Mobile:
+		Speed: 48
+	Armament@PRIMARY:
+		Weapon: M60mg.infantry
+	RenderSprites:
+		Image: mgi
+
+GLI:
+	Inherits: E4
+	Buildable:
+		BuildPaletteOrder: 45
+		Prerequisites: ~barr, ~infantry.ukraine, ~techlevel.infonly
+		Description: actor-gli.description
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: actor-gli.name
+	Mobile:
+		Speed: 54
+	Armament@PRIMARY:
+		Weapon: Grenadelauncher.infantry
+		LocalOffset: 427,0,341
+		MuzzleSequence: muzzle
+	Armament@GARRISONED:
+		Weapon: Grenadelauncher.infantry
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	RenderSprites:
+		Image: gli

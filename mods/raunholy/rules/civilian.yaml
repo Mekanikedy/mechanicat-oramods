@@ -166,7 +166,7 @@ FCOM:
 	CaptureManager:
 		BeingCapturedCondition: being-captured
 	Capturable:
-		Types: building
+		Types: tech-building
 	CapturableProgressBar:
 	CapturableProgressBlink:
 	GivesBuildableArea:
@@ -175,6 +175,7 @@ FCOM:
 		PauseOnCondition: being-captured
 		Range: 8c0
 	InstantlyRepairable:
+		Types: tech-building
 	Power:
 		Amount: 0
 	ProvidesPrerequisite@buildingname:
@@ -184,6 +185,8 @@ FCOM:
 	SpawnActorOnDeath:
 		Actor: FCOM.Husk
 		OwnerType: InternalName
+	RenderSprites:
+		Image: acom
 
 FCOM.Husk:
 	Inherits: ^TechBuildingHusk
@@ -200,7 +203,7 @@ FCOM.Husk:
 		ForceHealthPercentage: 35
 		IntoActor: fcom
 	RenderSprites:
-		Image: fcom.destroyed
+		Image: acom.destroyed
 
 HOSP:
 	Inherits: ^TechBuilding
@@ -213,15 +216,16 @@ HOSP:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-128,0
+		LocalCenterOffset: 0,0,0
 	Health:
 		HP: 80000
 	CaptureManager:
 	Capturable:
-		Types: building
+		Types: tech-building
 	CapturableProgressBar:
 	CapturableProgressBlink:
 	InstantlyRepairable:
+		Types: tech-building
 	Tooltip:
 		Name: actor-hosp.name
 	TooltipDescription@ally:
@@ -252,7 +256,7 @@ HOSP.Husk:
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
-		LocalCenterOffset: 0,-128,0
+		LocalCenterOffset: 0,0,0
 	Tooltip:
 		Name: actor-hosp-husk-name
 	WithBuildingBib:
@@ -520,10 +524,11 @@ MISS:
 	WithBuildingBib:
 	CaptureManager:
 	Capturable:
-		Types: building
+		Types: tech-building
 	CapturableProgressBar:
 	CapturableProgressBlink:
 	InstantlyRepairable:
+		Types: tech-building
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
@@ -567,9 +572,10 @@ BIO:
 	CaptureManager:
 	CapturableProgressBlink:
 	Capturable:
-		Types: building
+		Types: tech-building
 	CapturableProgressBar:
 	InstantlyRepairable:
+		Types: tech-building
 	Tooltip:
 		Name: actor-bio.name
 	TooltipDescription@ally:
@@ -624,10 +630,11 @@ OILB:
 		Range: 4c0
 	CaptureManager:
 	Capturable:
-		Types: building
+		Types: tech-building
 	CapturableProgressBar:
 	CapturableProgressBlink:
 	InstantlyRepairable:
+		Types: tech-building
 	CashTrickler:
 		Interval: 375
 		Amount: 100
